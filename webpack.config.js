@@ -1,36 +1,45 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path =require('path')
+const path = require('path')
 
-module.exports ={
-	output:{
-		filename:'[name]-[contenthash].js',
+module.exports = {
+	/*entry:{
+		main: 'index.js'
+	},*/
+	output: {
+		filename: '[name]-[contenthash].js',
 		path: path.resolve(__dirname, 'dist')
 	},
-	devServer:{
-		port:8080
+	/*resolve: {
+		extensions: ['ttf', 'svg', 'woff'],
+		alias: {
+			'@fonts': path.resolve(__dirname, 'src/ui-kit/fonts')
+		}
+	},*/
+	devServer: {
+		port: 8080
 	},
-	plugins:[
+	plugins: [
 		new HtmlWebpackPlugin({
-			template:'./src/index.pug'
+			template: './src/index.pug'
 		}),
 		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin({filename: '[name]-[contenthash].css'})
+		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
 	],
-	module:{
-		rules:[
+	module: {
+		rules: [
 			{
-				test:/\.css$/,
+				test: /\.css$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
 			{
-				test:/\.scss$/,
+				test: /\.scss$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
 			},
 			{
-				test:/\.pug$/,
-				use:'pug-loader'
+				test: /\.pug$/,
+				use: 'pug-loader'
 			},
 			{
 				test: /\.(png|jpg|svg|gif)$/i,
@@ -38,7 +47,8 @@ module.exports ={
 			},
 			{
 				test: /\.(ttf|woff|woff2|eot)$/i,
-				type: 'asset/resource'
+				//type: 'asset/resource'
+				use:'file-loader'
 			}
 		]
 	}
