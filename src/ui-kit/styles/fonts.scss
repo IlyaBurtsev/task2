@@ -1,31 +1,29 @@
 @import "./colors.scss";
 
 @font-face {
-	font-family: 'Montserrat'; //-for-title-h1;
-	src: url("../fonts/Montserrat-Regular.svg") format("svg"), url("../fonts/Montserrat-Regular.ttf") format("truetype"),
-		url("../fonts/Montserrat-Regular.woff") format("woff");
-		font-style: normal;
-		font-weight: bold;
-		font-size: 24px;
-		line-height: 29.26px;
-		color: $dark-100;
-	
-	
-}
-@font-face {
-	font-family: Montserrat; //-for-title-h2;
+	font-family: 'Montserrat';
 	src: url("../fonts/Montserrat-Regular.svg"), url("../fonts/Montserrat-Regular.ttf"),
 		url("../fonts/Montserrat-Regular.woff");
+}
+
+%font-for-h1 {
+	font-family: 'Montserrat';
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 29.26px;
+	color: $dark-100;
+}
+%font-for-h2 {
+	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 19px;
 	line-height: 23.16px;
 	color: $dark-100;
 }
-@font-face {
-	font-family: Mont; //-for-title-h3;
-	src: url("../fonts/Montserrat-Regular.svg"), url("../fonts/Montserrat-Regular.ttf"),
-		url("../fonts/Montserrat-Regular.woff");
+%font-for-h3 {
+	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: bold;
 	font-size: 12px;
@@ -33,10 +31,8 @@
 	text-transform: uppercase;
 	color: $dark-100;
 }
-@font-face {
-	font-family: Montserrat; //-for-body;
-	src: url("../fonts/Montserrat-Regular.svg"), url("../fonts/Montserrat-Regular.ttf"),
-		url("../fonts/Montserrat-Regular.woff");
+%font-for-body {
+	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 14px;
