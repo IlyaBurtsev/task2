@@ -11,12 +11,11 @@ module.exports = {
 		filename: '[name]-[contenthash].js',
 		path: path.resolve(__dirname, 'dist')
 	},
-	/*resolve: {
-		extensions: ['ttf', 'svg', 'woff'],
+	resolve: {
 		alias: {
-			'@fonts': path.resolve(__dirname, 'src/ui-kit/fonts')
+			'@ui-kit': path.resolve(__dirname, 'src/ui-kit'),
 		}
-	},*/
+	},
 	devServer: {
 		port: 8080
 	},

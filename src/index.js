@@ -1,1 +1,1 @@
-import './ui-kit/styles/style.scss'
+import './ui-kit/_theme/ui-kit_theme_custom.scss'
