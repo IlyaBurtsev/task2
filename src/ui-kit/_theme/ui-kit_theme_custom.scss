@@ -1,21 +1,27 @@
 // Definition of colors theme
-$dark-100: #1F2041;
+$dark-100: #1f2041;
 $dark-75: rgba(31, 32, 65, 0.75);
 $dark-50: rgba(31, 32, 65, 0.5);
 $dark-25: rgba(31, 32, 65, 0.25);
 $dark-5: rgba(31, 32, 65, 0.05);
-$primory-color: #BC9CFF;
-$secondary-color: #6FCF97;
+$primory-color: #bc9cff;
+$secondary-color: #6fcf97;
 
 //Determination of the fonts of the theme
 @font-face {
-	font-family: 'Montserrat';
-	src: url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.svg"), url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.ttf"),
+	font-family: "Montserrat";
+	src: url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.svg"),
+		url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.ttf"),
 		url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.woff");
 }
 
-body{
-	font-family: 'Montserrat';
+input, textarea, select, button {
+	font: inherit;
+ }
+
+ 
+body {
+	font-family: "Montserrat";
 	font-style: normal;
 	font-weight: normal;
 	font-size: 14px;
@@ -23,8 +29,8 @@ body{
 	color: $dark-75;
 }
 
-h1{
-	font-family: 'Montserrat';
+h1 {
+	font-family: "Montserrat";
 	font-style: normal;
 	font-weight: bold;
 	font-size: 24px;
@@ -32,8 +38,8 @@ h1{
 	color: $dark-100;
 }
 
-h2{
-	font-family: 'Montserrat';
+h2 {
+	font-family: "Montserrat";
 	font-style: normal;
 	font-weight: bold;
 	font-size: 19px;
@@ -41,13 +47,13 @@ h2{
 	color: $dark-100;
 }
 
-h3{
-	font-family: 'Montserrat';
+h3 {
+	font-family: "Montserrat";
 	font-style: normal;
 	font-weight: bold;
 	font-size: 12px;
 	line-height: 14.63px;
 	text-transform: uppercase;
 	color: $dark-100;
+	margin: 0;
 }
-
