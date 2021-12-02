@@ -48,8 +48,7 @@ module.exports = {
 			},
 			{
 				test: /\.(ttf|woff|woff2|eot)$/i,
-				//type: 'asset/resource'
-				use:'file-loader'
+				type: 'asset/resource'
 			}
 		]
 	}

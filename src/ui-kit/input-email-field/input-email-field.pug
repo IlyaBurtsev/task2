@@ -1,5 +1,5 @@
-body 
-	.input-field
-		h3.input-field__title text field
-		input.input-field__input-text(type="email", placeholder="Email")
+mixin input-email-field (title="text field")
+	.input-email-field
+		h3.input-imail-field__title= title
+		input.input-email-field__input-text(type="email", placeholder="Email")
 		
