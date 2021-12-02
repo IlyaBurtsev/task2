@@ -1,0 +1,19 @@
+.input-field_checkbox{
+	width: 22.2rem;
+	height: unset;
+	min-height: 2rem;
+	justify-content: start;
+	flex-direction: row-reverse;
+	align-items: center;	
+}
+.input-field_checkbox__input-text{
+	width: 2rem;
+	height: 2rem;
+	align-self: baseline;
+}
+.input-field_checkbox__content{
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 1rem;
+	
+}
