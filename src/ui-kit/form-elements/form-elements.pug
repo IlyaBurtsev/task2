@@ -1,4 +1,6 @@
-include ../input-email-field/input-email-field.pug
+include ../input-field/_date/input-field_date.pug
+include ../input-field/_email/input-field_email.pug
+
 doctype html
 html(lang="en")
 	head
@@ -7,7 +9,10 @@ html(lang="en")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		title Form Elements 
 	body
-		+input-email-field()
+		.input-field.form-elements_input-field_email
+			+input-field_email()
+		.input-field.form-elements_input-field_date
+			+input-field_date()
 		
 	
 		
