@@ -14,8 +14,8 @@
 	align-self: baseline;
 }
 .input-field_checkbox__content {
+	color:rgba(31, 32, 65, 0.50);
 	display: flex;
-	//flex-wrap: wrap;
 	&::before {
 		content: "";
 		width: 2rem;
