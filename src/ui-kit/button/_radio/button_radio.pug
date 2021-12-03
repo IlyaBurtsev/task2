@@ -1,0 +1,10 @@
+mixin button_radio (title="radio buttons")
+	.button.button_radio
+		H3.button_content.button_radio__content= title
+		.button_radio_buttons
+			.button_radio__male
+				input.button__input.button_radio__input(type="radio" name="gender" value="male")
+				.button__content.button_radio__content="Мужчина"
+			.button_radio__female
+				input.button__input.button_radio__input(type="radio" name="gender" value="female")
+				.button__content.button_radio__content="Женщина"
