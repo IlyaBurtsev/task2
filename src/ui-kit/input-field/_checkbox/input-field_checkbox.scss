@@ -1,19 +1,36 @@
-.input-field_checkbox{
+.input-field_checkbox {
 	width: 22.2rem;
 	height: unset;
 	min-height: 2rem;
 	justify-content: start;
 	flex-direction: row-reverse;
-	align-items: center;	
+	align-items: center;
 }
-.input-field_checkbox__input-text{
+.input-field_checkbox__input {
+	-webkit-appearance: none;
+	position: absolute;
 	width: 2rem;
 	height: 2rem;
 	align-self: baseline;
 }
-.input-field_checkbox__content{
+.input-field_checkbox__content {
 	display: flex;
-	flex-wrap: wrap;
-	padding-left: 1rem;
-	
+	//flex-wrap: wrap;
+	&::before {
+		content: "";
+		width: 2rem;
+		height: 2rem;
+		align-self: baseline;
+		border: 0.1rem solid rgba(31, 32, 65, 0.25);
+		box-sizing: border-box;
+		border-radius: 0.4rem;
+		margin-right: 1rem;
+		flex-shrink: 0
+	}
+}
+.input-field_checkbox__input:checked + .input-field_checkbox__content::before {
+	content: "";
+	border-color: #bc9cff;
+	background:center no-repeat url(./Vector.svg);
+
 }
