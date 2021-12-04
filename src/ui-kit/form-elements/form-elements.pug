@@ -2,6 +2,8 @@ include ../input-field/_date/input-field_date.pug
 include ../input-field/_email/input-field_email.pug
 include ../button/_checkbox/button_checkbox.pug
 include ../button/_radio/button_radio.pug
+include ../button/_toggle/button_toggle.pug
+include ../button/_like/button_like.pug
 
 doctype html
 html(lang="en")
@@ -12,7 +14,12 @@ html(lang="en")
 		title Form Elements 
 	body
 		.button_checkbox.form-elements_button
-			+input-field_email
+			+button_like()
+		
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		
+
 		
 	
 		
