@@ -10,7 +10,3 @@ import'../button/_like/button_like.scss'
 import'../button/_toggle/button_toggle.js'
 import'../button/_like/button_like.js'
 
-
-
-
-

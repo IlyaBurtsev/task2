@@ -1,13 +1,23 @@
 
 $(function () {
-	$('.button_like__button').click(function (e, changeState) {
-		if(changeState === undefined){
-			$(this).toggleClass('button_like__button_selected');
-		 }
-		if ($(this).hasClass('button_like__button_selected')) {
-			$(this).trigger('button_toggle-is-on');
+	let likeClik = '.button_like__button'
+	let liked = 'button_like__button_selected'
+
+	$(likeClik).click(function () {
+		$(this).toggleClass(liked);
+		if (!isLiked) {
+			updateDisplay(++likeCounter);
+			isLiked = true;
 		} else {
-			$(this).trigger('button_toggle-is-off');
+			updateDisplay(--likeCounter);
+			isLiked = false;	
 		}
 	});
 });
+
+let likeCounter = 0;
+let isLiked = false;
+
+function updateDisplay(val) {
+	document.getElementById('button_like__counter').innerHTML = val;
+}
