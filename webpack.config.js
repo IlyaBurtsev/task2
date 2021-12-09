@@ -5,7 +5,7 @@ const path = require('path')
 
 module.exports = {
 	entry:{
-		main: '@ui-kit/form-elements/form-elements.js'
+		main: path.resolve(__dirname, 'src/index.js')
 	},
 	output: {
 		filename: '[name]-[contenthash].js',
@@ -14,7 +14,6 @@ module.exports = {
 	resolve: {
 		alias: {
 			'@ui-kit': path.resolve(__dirname, 'src/ui-kit'),
-			'@bemto': path.resolve(__dirname, 'scr/utils/bemto'),
 		}
 	},
 	devServer: {
@@ -22,7 +21,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: './src/ui-kit/form-elements/form-elements.pug'
+			template: './src/index.pug'
 		}),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
