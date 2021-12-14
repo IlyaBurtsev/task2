@@ -58,7 +58,13 @@ h3 {
 	text-transform: uppercase;
 	color: $dark-100;
 	margin:0;
-	margin-top: 0.4rem;
+	//margin-top: 0.4rem;
 	padding:0;
 	letter-spacing: 0.012rem;
+}
+a{
+	color: $primory-color;
+}
+a:hover{
+	color: $dark-50;
 }

@@ -1,0 +1,32 @@
+.button_toggle__container {
+	min-height: 2.4rem;
+	min-width: 26rem;
+	display: flex;
+	.button_toggle__input {
+		height: 2rem;
+		width: 4rem;
+		border-radius: 1rem;
+		border: 0.1rem solid rgba(31, 32, 65, 0.25);
+		box-sizing: border-box;
+		margin-right: 1rem;
+		display: flex;
+		align-items: center;
+		.button_toggle__switch{
+			height: 1.2rem;
+			width: 1.2rem;
+			border-radius: 50%;
+			background: rgba(31, 32, 65, 0.25);
+			margin: 0.4rem;
+			flex-shrink: 0;
+		}
+	}
+}
+.button_toggle__container_on{
+	.button_toggle__input{
+		justify-content: end;
+		border-color: #BC9CFF;
+		.button_toggle__switch{
+			background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+		}
+	}
+}

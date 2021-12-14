@@ -1,0 +1,15 @@
+.button_star__container {
+	width: 12rem;
+	height: 2.4rem;
+	display: flex;
+	flex-direction: row;
+}
+.button_star__star {
+	width: 2.4rem;
+	height: 2.4em;
+	background: center no-repeat url("./star_border.svg");
+}
+
+.button_star__star_rated {
+	background: center no-repeat url("./star.svg");
+}

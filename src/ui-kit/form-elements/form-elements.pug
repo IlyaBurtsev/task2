@@ -1,6 +1,12 @@
 include ../input-field/input-field.pug
 include ../input-field/_subscription/input-field_subscription.pug
 include ../button/_checkbox/button_checkbox.pug
+include ../button/_radio/button_radio.pug
+include ../button/_checkbox/_rich/button_checkbox_rich.pug
+include ../button/_toggle/button_toggle.pug
+include ../button/_like/button_like.pug
+include ../button/_star/button_star.pug
+include ../button/_default/button_default.pug
 doctype html
 html(lang="en")
 	head
@@ -10,7 +16,8 @@ html(lang="en")
 		title Form Elements 
 	body
 		.test
-			+button_checkbox('Можно пригласить гостей (до 10 человек)')
+			+button_default_pay 
+			
 			
 			
 		

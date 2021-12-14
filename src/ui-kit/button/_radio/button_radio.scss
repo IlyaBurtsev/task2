@@ -1,0 +1,9 @@
+.button_radio__input{
+	border-radius: 50%;
+}
+.button_radio__container_checked {
+	.button_radio__input{
+		border: 1px solid #BC9CFF;
+		background: center no-repeat url('./circle.svg');
+	}
+}
