@@ -1,0 +1,41 @@
+.list_checkbox__container {
+	width: 26.6rem;
+	height: 4.4rem;
+	display: flex;
+	flex-direction: column;
+}
+.list_checkbox__title-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 0.2rem;
+}
+
+.list_checkbox__title {
+	flex-grow: 1;
+}
+
+.list_checkbox__expand-icon {
+	width: 4.4rem;
+	height: 4.4rem;
+	background: center no-repeat url("./expand_more.svg");
+}
+
+.list_checkbox__list {
+	width: 22.2rem;
+	height: 17.2rem;
+	justify-content: space-between;
+	flex-direction: column;
+	flex-shrink: 0;	
+	display: none;
+}
+
+.list_checkbox__container_show {
+	.list_checkbox__expand-icon {
+		transform: rotate(180deg);
+	}
+
+	.list_checkbox__list {
+		display: flex;
+	}
+}
