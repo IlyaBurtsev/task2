@@ -8,4 +8,5 @@ import '../button/_toggle/button_toggle.js'
 import '../button/_like/button_like.js'
 import '../button/_star/button_star'
 import '../button/_default/button_default'
+import '../list/list'
 

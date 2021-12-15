@@ -1,0 +1,27 @@
+.list_bullet__container {
+	width: 29.2rem;
+	.list_bullet__list {
+		padding: 0;
+		margin: 0;
+		line-height: 24px;
+		.list_bullet__item {	
+			padding-right: 3rem;
+			display: flex;
+			flex-direction: row;
+			align-items: baseline;
+			list-style-type: none;
+			margin-bottom: 1rem;
+			&::before {
+				content: '';
+				width: 1rem;
+				height: 1rem;
+				border-radius: 50%;
+				background-color: rgba(31, 32, 65, 0.25);
+				font-size: 30px;
+				margin-right: 1rem;
+				flex-shrink: 0;
+				
+			}
+		}
+	}
+}
