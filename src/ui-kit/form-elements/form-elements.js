@@ -9,4 +9,5 @@ import '../button/_like/button_like.js'
 import '../button/_star/button_star'
 import '../button/_default/button_default'
 import '../list/list'
+import '../dropdown/dropdown'
 

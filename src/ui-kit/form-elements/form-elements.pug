@@ -2,6 +2,7 @@ include ../input-field/input-field.pug
 include ../input-field/_subscription/input-field_subscription.pug
 include ../button/button.pug
 include ../list/list.pug
+include ../dropdown/dropdown.pug
 
 doctype html
 html(lang="en")
@@ -12,8 +13,8 @@ html(lang="en")
 		title Form Elements 
 	body
 		.test
-			+list_checkbox('expandable checkbox list', ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'])
-			
+			//+list_checkbox('expandable checkbox list', ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'])
+			+dropdown('Сколько гостей', ['Взрослые', 'дети', 'младенцы'])
 			
 			
 		

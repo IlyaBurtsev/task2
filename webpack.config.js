@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path')
 
 module.exports = {
-	entry:{
+	entry: {
 		main: path.resolve(__dirname, 'src/ui-kit/form-elements/form-elements.js')
 	},
 	output: {
@@ -39,7 +39,7 @@ module.exports = {
 			{
 				test: /\.pug$/,
 				use: 'pug-loader'
-				
+
 			},
 			{
 				test: /\.(png|jpg|svg|gif)$/i,
