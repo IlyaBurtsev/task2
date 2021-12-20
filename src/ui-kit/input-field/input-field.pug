@@ -1,3 +1,5 @@
-mixin input-field(placeholder= 'type something here')
-	.input-field__container
-		input.input-field__input-text(type='text', placeholder = placeholder)
+
+mixin input-field(options)
+	//- let type=options.type ? 'input-field__container'+type : ''
+	div(class='input-field__container'+options.type)
+		input.div(class='input-field__input-text'+options.type)(type='text', placeholder = options.placeholder)
