@@ -1,9 +1,22 @@
-.button_radio__input{
-	border-radius: 50%;
+@import '../button_tamplate.scss';
+.button_radio {
+	width: 22rem;
+	height: 5.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
 }
-.button_radio__container_checked {
-	.button_radio__input{
-		border: 1px solid #BC9CFF;
-		background: center no-repeat url('./circle.svg');
-	}
+.button_radio_buttons {
+	width: 220px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.button_radio__male{
+	@include button-tamplate(50%, url(./Circle.svg), rgba(31, 32, 65, 0.75));
+}
+.button_radio__female{
+	@include button-tamplate(50%, url(./Circle.svg), rgba(31, 32, 65, 0.75));
 }
