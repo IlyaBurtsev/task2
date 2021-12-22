@@ -1,20 +1,12 @@
-@mixin button-tamplate($border-radius, $image, $color-for-cheked-content) {
-	.button {
-		width: 22.2rem;
-		height: unset;
-		min-height: 1rem;
-		justify-content: start;
-		flex-direction: row-reverse;
-		align-items: center;
-	}
+
 	.button__input {
-		display: none;
+		opacity: 0;
 		position: absolute;
 		width: 2rem;
 		height: 2rem;
 		align-self: baseline;
 	}
-	.button__content {
+	.button__label {
 		color: rgba(31, 32, 65, 0.5);
 		display: flex;
 		flex-shrink: 0;
@@ -25,16 +17,14 @@
 			align-self: baseline;
 			border: 0.1rem solid rgba(31, 32, 65, 0.25);
 			box-sizing: border-box;
-			border-radius: $border-radius;
 			margin-right: 1rem;
 			flex-shrink: 0;
 		}
 	}
-	.button__input:checked + .button__content {
-		color: $color-for-cheked-content;
+	.button__input:checked + .button__label {
 		&::before {
+			content: "";
 			border-color: #bc9cff;
-			background: center no-repeat $image;
 		}
 	}
-}
+

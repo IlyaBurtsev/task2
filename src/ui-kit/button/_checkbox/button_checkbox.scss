@@ -1,5 +1,15 @@
-@import '../button_tamplate.scss';
-
-@include button-tamplate(0.4rem, url(./Vector.svg), rgba(31, 32, 65, 0.5));
-
-
+.button__container_checkbox {
+	width: 22.2rem;
+	.button__label_checkbox {
+		&::before {
+			content: '';
+			border-radius: 0.4rem;
+		}
+	}
+	.button__input_checkbox:checked+.button__label_checkbox {
+		&::before {
+			content: '';
+			background: center no-repeat url('./checked.svg');
+		}
+	}
+}

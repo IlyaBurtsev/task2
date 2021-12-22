@@ -1,4 +1,5 @@
-mixin button_checkbox (content="Можно пригласить гостей (до 10 человек)")
-	.button.button_checkbox
-		input.button__input.button-checkbox__input(type="checkbox")
-		.button__content.button_checkbox__content= content
+mixin button_checkbox (label="Можно пригласить гостей (до 10 человек)")
+	.button__container.button__container_checkbox
+		label
+			input.button__input.button__input_checkbox(type="checkbox")
+			.button__label.button__label_checkbox=label
