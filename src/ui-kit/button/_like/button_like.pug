@@ -1,5 +1,4 @@
-mixin button_like(counter=0)
+mixin button_like(value=0)
 	.button__container.button__container_like
-		label
-			input.button__input.button__input_like(type='button')
-			.button__label.button__label_like=label
+			input.button__input_like(type='button' value=value data-liked='false')
+			
