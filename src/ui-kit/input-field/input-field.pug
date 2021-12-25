@@ -1,5 +1,7 @@
-
+- const TYPE ={'DEFAULT':'', 'SUBSCRIPTION':'_subscription' }
 mixin input-field(options)
-	//- let type=options.type ? 'input-field__container'+type : ''
-	div(class='input-field__container'+options.type)
-		input.div(class='input-field__input-text'+options.type)(type='text', placeholder = options.placeholder)
+	- let container=' input-field__container'+options.type
+	- let visibility=( options.type==TYPE.SUBSCRIPTION) ? visible : hidden
+	div(class='input-field__container'+container)
+		input.div(class='input-field__input-text')(type='text', placeholder = options.placeholder)
+		.input-field__subscibed-button_subscription(visibility: visibility)
