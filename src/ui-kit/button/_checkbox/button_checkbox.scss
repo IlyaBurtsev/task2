@@ -1,30 +1,15 @@
-.button_checkbox__container {
+.button__container_checkbox {
 	width: 22.2rem;
-	min-height: 2.2rem;
-	display: flex;
-	flex-direction: row;
-}
-.button_checkbox__input {
-	width: 2rem;
-	height: 2rem;
-	margin-right: 1rem;
-	border: 0.1rem solid rgba(31, 32, 65, 0.25);
-	box-sizing: border-box;
-	border-radius: 0.4rem;
-	flex-shrink: 0;
-	align-self: baseline;
-}
-
-.button_checkbox__content {
-	display: flex;
-	color: rgba(31, 32, 65, 0.5);
-	width: 22.2rem;
-}
-
-
-.button_checkbox__container_checked {
-	.button_checkbox__input{
-		border: 1px solid #bc9cff;
-			background: center no-repeat url("./checked.svg");
+	.button__label_checkbox {
+		&::before {
+			content: '';
+			border-radius: 0.4rem;
+		}
+	}
+	.button__input_checkbox:checked+.button__label_checkbox {
+		&::before {
+			content: '';
+			background: center no-repeat url('./checked.svg');
+		}
 	}
 }

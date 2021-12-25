@@ -1,3 +1,4 @@
+import './button.scss'
 import './_checkbox/button_checkbox'
 import './_default/button_default'
 import './_like/button_like'

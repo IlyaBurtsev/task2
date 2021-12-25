@@ -1,28 +1,25 @@
-.button_like__container {
-	display: flex;
-	width: 4rem;
-	height: 2rem;
-	border-radius: 1rem;
-	border: 1px solid rgba(31, 32, 65, 0.25);
-	box-sizing: border-box;
-	align-items: center;
-	.button_like__favorite {
+
+.button__container_like {
+	.button__input_like {
+		width: 4rem;
 		height: 2rem;
-		width: 2rem;
-		background: center no-repeat url("./favorite_icon.svg");
-	}
-	.button_like__counter {
-		color: rgba(31, 32, 65, 0.25);
+		border-radius: 1rem;
+		border: 0.1rem solid rgba(31, 32, 65, 0.25);
+		box-sizing: border-box;
 		font-size: 10px;
 		line-height: 12px;
+		color: rgba(31, 32, 65, 0.25);
+		background: 0.4rem center no-repeat url(./favorite_icon.svg);
+		text-align: right;
+		padding-right: 1rem;
 	}
 }
-.button_like__container_liked{
-	border-color: #BC9CFF;
-	.button_like__favorite{
+.button__container_like{
+	.button__input_like_liked{
+		color: rgba(188, 156, 255, 1);
+		border-color: rgba(188, 156, 255, 1);
 		background-image: url(./favorite_icon_liked.svg);
 	}
-	.button_like__counter{
-		color: #BC9CFF;
-	}
 }
+
+

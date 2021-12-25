@@ -1,9 +1,17 @@
-.button_radio__input{
-	border-radius: 50%;
-}
-.button_radio__container_checked {
-	.button_radio__input{
-		border: 1px solid #BC9CFF;
-		background: center no-repeat url('./circle.svg');
+.button__container_radio {
+	.button__label_radio {
+		&::before {
+			content: '';
+			border-radius: 50%;
+		}
+	}
+	.button__input_radio:checked+.button__label_radio {
+		color: rgba(31, 32, 65, 0.75);
+		&::before {
+			content: '';
+			background: center no-repeat url('./circle.svg');
+		}
 	}
 }
+
+
