@@ -1,15 +1,20 @@
-.button_star__container {
+.button__container_rating {
 	width: 12rem;
 	height: 2.4rem;
 	display: flex;
-	flex-direction: row;
+	flex-direction: row-reverse;
 }
-.button_star__star {
+.button__input_rating {
+	display: none;
+}
+.button__star {
 	width: 2.4rem;
 	height: 2.4em;
 	background: center no-repeat url("./star_border.svg");
 }
 
-.button_star__star_rated {
+.button__star:hover,
+.button__star:hover ~ .button__star,
+.button__input_rating:checked ~ .button__star {
 	background: center no-repeat url("./star.svg");
 }
