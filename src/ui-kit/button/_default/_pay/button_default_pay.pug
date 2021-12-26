@@ -1,4 +1,4 @@
-mixin button_default_pay(content= 'перейти к оплате')
-	.button_default__container.button_default_pay__container
-		H3.button_default__text.button_default_pay__text= content
-		.button_default_pay__arrow
+mixin button_default_pay(value= 'перейти к оплате')
+	.button__container_default_pay
+		input.button__input_default.button__input_default_pay(type='button' value=value)
+		.button__arrow_default_pay

@@ -1,9 +1,7 @@
-.button_default_white-text__container {
+.button__container_default_white-text {
 	background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%); 
-	.button_default__text {
-		color: #ffffff;
+	color: #ffffff;
+	&:active{
+		opacity: 0.5;
 	}
-}
-.button_default_white-text__container_hover{
-	opacity: 0.5;
 }

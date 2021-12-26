@@ -1,19 +1,22 @@
-.button_default_pay__container {
+.button__container_default_pay{
+	display: flex;
 	width: 32rem;
-	background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 	position: relative;
-
-	.button_default_pay__text {
-		flex-grow: 1;
-		color: white;
-		text-align: center;
-	}
-	.button_default_pay__arrow {
+	.button__arrow_default_pay {
 		position: absolute;
 		right: 0;
 		width: 4.4rem;
 		height: 4.4rem;
 		background: center no-repeat url("./arrow_forward.svg");
 		z-index: 2;
-	}	
+	}
 }
+.button__input_default_pay {
+	flex-grow: 1;
+	background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	color: white;
+	&:active{
+		opacity: 0.5;
+	}
+}
+	

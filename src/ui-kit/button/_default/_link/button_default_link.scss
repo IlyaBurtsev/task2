@@ -1,0 +1,9 @@
+.button__container_default_link {
+	width: unset;
+	height: unset;
+	border-radius: unset;
+	color: #BC9CFF;
+	&:active{
+		color:rgba(31, 32, 65, 0.5);
+	}
+}

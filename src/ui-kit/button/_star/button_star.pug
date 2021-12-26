@@ -1,11 +1,11 @@
-mixin button_rating(raiting=0)
-	.button__container_rating
+mixin button_rate(raiting=0)
+	.button__container_rate
 		- for (let i=0; i < 5; i++)
 			if((5-i)===raiting)
-				input.button__input_rating(type='radio', name='rating', id=5-i, value=5-i, checked=true)
+				input.button__input_rate(type='radio', name='rating', id=5-i, value=5-i, checked=true)
 				label.button__star(for=5-i)
 			if((5-i)!==raiting)
-				input.button__input_rating(type='radio', name='rating', id=5-i, value=5-i)
+				input.button__input_rate(type='radio', name='rating', id=5-i, value=5-i)
 				label.button__star(for=5-i)
 
 		

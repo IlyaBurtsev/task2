@@ -1,4 +1,4 @@
-.button_default__container {
+.button__input_default {
 	height: 4.4rem;
 	width: 9.9rem;
 	display: flex;
@@ -6,5 +6,11 @@
 	flex-direction: row;
 	justify-content: center;
 	border-radius: 2.2rem;
+	font-weight: bold;
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+	text-transform: uppercase;
+	letter-spacing: 0.012rem;
+	border: none;
+	background-color: white;
 }
-
