@@ -1,7 +1,30 @@
-- const TYPE ={'DEFAULT':'', 'SUBSCRIPTION':'_subscription' }
-mixin input-field(options)
-	- let container=' input-field__container'+options.type
-	- let visibility=( options.type==TYPE.SUBSCRIPTION) ? visible : hidden
-	div(class='input-field__container'+container)
-		input.div(class='input-field__input-text')(type='text', placeholder = options.placeholder)
-		.input-field__subscibed-button_subscription(visibility: visibility)
+//- - const TYPE ={'DEFAULT':'', 'SUBSCRIPTION':'_subscription' }
+//- mixin input-field(options)
+//- 	- let container=' input-field__container'+options.type
+//- 	- let visibility=( options.type==TYPE.SUBSCRIPTION) ? visible : hidden
+//- 	div(class='input-field__container'+container)
+//- 		//input.div(class='input-field__input-text')(type='text', placeholder = options.placeholder)
+//- 		.input-field__subscibed-button_subscription(visibility: visibility)
+
+//- mixin input-tamplate(options)
+//- 	-	let containerClassName = options.blockName + '__container'
+//- 	- containerClassName += options.modificatorName ? ' '+containerClassName+'_'+options.modificatorName : ''
+//- 	-	let inputClassName = options.blockName + '__input'
+//- 	- inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
+//- 	- const dataAttribute='data-'+option.dataAttributeName+'='+options.dataAttributeValue
+	 
+//- 	div(class=containerClassName)
+//- 		div(class=inputClassName)(type=options.inputType, value=options.inputValue, placeholder=options.placeholder, dataAttribute, options.stateAttribute)
+//- 		- options.customClassName ? div(class=options.customClassName) : ''
+
+mixin input-tamplate(options)
+	-	let containerClassName = options.blockName + '__container'
+	- containerClassName += options.modificatorName ? ' '+containerClassName+'_'+options.modificatorName : ''
+	-	let inputClassName = options.blockName + '__input'
+	- inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
+	//- const dataAttribute='data-'+option.dataAttributeName+'='+options.dataAttributeValue
+	- const customClass=options.customCassName ? options.customClassName : ''
+	 
+	div(class=containerClassName)
+		input(class=inputClassName)(type=options.inputType, placeholder=options.placeholder)
+		div(class=customClass)
