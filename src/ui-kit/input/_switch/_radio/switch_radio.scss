@@ -1,0 +1,17 @@
+.switch__container_radio {
+	.switch__label_radio {
+		&::before {
+			content: '';
+			border-radius: 50%;
+		}
+	}
+	.switch__input_radio:checked+.switch__label_radio {
+		color: rgba(31, 32, 65, 0.75);
+		&::before {
+			content: '';
+			background: center no-repeat url('./circle.svg');
+		}
+	}
+}
+
+

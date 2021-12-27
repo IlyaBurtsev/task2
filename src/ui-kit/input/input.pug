@@ -1,0 +1,25 @@
+
+- const INPUTTYPE = {'TOGGLE':0, 'CHECKBOX':1, 'RADIO':2}
+
+mixin input(options)
+	case options.inputType 
+		when 0
+			+input-tamplate({blockName: 'switch', modificatorName: 'toggle', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
+		default 
+			h1=options.inputType
+
+mixin input-tamplate(options)
+	- let containerClassName = options.blockName + '__container'
+	- let customClassName = options.customElementName ? options.blockName+'__'+options.customElementName : ''
+	- customClassName +=(options.modificatorName&&options.customElementName) ? ' '+customClassName+'_'+options.modificatorName : ''
+	- containerClassName += options.modificatorName ? ' '+containerClassName+'_'+options.modificatorName : ''
+	-	let inputClassName = options.blockName + '__input'
+	- inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
+	- inputClassName +=options.dataSelected ? ' '+inputClassName+'_'+options.dataSelected : ''
+	
+
+	div(class=containerClassName)
+		label
+			input(class=inputClassName)(type=options.inputType, placeholder=options.placeholder, data-selected =options.dataSelected, checked=options.checked)
+			//-TODO: Подумать, как избавиться от пустого [div] при отсутствии [options.customElementName]
+			div(class=customClassName)=options.customElementValue

@@ -1,0 +1,21 @@
+.button__container_like .button__input_like {
+  width: 4rem;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid rgba(31, 32, 65, 0.25);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 10px;
+  line-height: 12px;
+  color: rgba(31, 32, 65, 0.25);
+  background: 0.4rem center no-repeat url(./favorite_icon.svg);
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.button__container_like .button__input_like_selected {
+  color: #bc9cff;
+  border-color: #bc9cff;
+  background-image: url(./favorite_icon_liked.svg);
+}
+/*# sourceMappingURL=button_like.css.map */

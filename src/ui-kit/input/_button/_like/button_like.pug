@@ -1,0 +1,9 @@
+
+mixin button_like
+	//- -let inputClassName = 'button__input_like'
+	//- - inputClassName +=data ? ' button__input_like_selected' : ''
+	//- .button__container.button__container_like
+	//- 		input(class = inputClassName)(type='button' value=value data-selected=data)
+	+input-tamplate({blockName: 'button', modificatorName: 'like', value:10, dataSelected: 'true'})
+
+			
