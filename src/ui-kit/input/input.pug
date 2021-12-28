@@ -1,11 +1,28 @@
-
-- const INPUTTYPE = {'TOGGLE':0, 'CHECKBOX':1, 'RADIO':2}
+include ./_switch/_checkbox/_rich/switch_checkbox_rich.pug
+- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12}
 
 mixin input(options)
 	case options.inputType 
-		when 0
+		when INPUT_TYPE.TOGGLE
 			+input-tamplate({blockName: 'switch', modificatorName: 'toggle', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
-		default 
+
+		when INPUT_TYPE.CHECKBOX
+			+input-tamplate({blockName: 'switch', modificatorName: 'checkbox', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
+		when INPUT_TYPE.CHECKBOX_RICH
+			+switch_checkbox_rich({inputLabel: options.inputLabel, inputLabelDescription: options.inputLabelDescription})
+		when INPUT_TYPE.RADIO
+			+input-tamplate({blockName: 'switch', modificatorName: 'radio', inputType: 'radio', radioName: options.inputRadioName, customElementName: 'label', customElementValue: options.inputLabel})
+		when INPUT_TYPE.EMAIL
+			+input-tamplate({blockName: 'input-field', inputType: 'Email', placeholder: 'Email'})
+		when INPUT_TYPE.EMAIL_SUBSCRIPTION
+			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: 'Email', placeholder: 'Email', customElementName: 'subscribed-arrow'})
+		when INPUT_TYPE.DATE
+			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ'})
+		when INPUT_TYPE.BUTTON_WHITE_TEXT
+			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue})
+		when INPUT_TYPE.BUTTON_LIKE 	
+			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button', inputValue: options.inputValue, dataSelected: options.dataSelected})
+		default
 			h1=options.inputType
 
 mixin input-tamplate(options)
@@ -15,11 +32,9 @@ mixin input-tamplate(options)
 	- containerClassName += options.modificatorName ? ' '+containerClassName+'_'+options.modificatorName : ''
 	-	let inputClassName = options.blockName + '__input'
 	- inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
-	- inputClassName +=options.dataSelected ? ' '+inputClassName+'_'+options.dataSelected : ''
+	- inputClassName +=options.dataSelected ? ' '+inputClassName+'_selected' : ''
 	
-
-	div(class=containerClassName)
-		label
-			input(class=inputClassName)(type=options.inputType, placeholder=options.placeholder, data-selected =options.dataSelected, checked=options.checked)
+		div(class=containerClassName)
+			input(class=inputClassName)(type=options.inputType, value=options.inputValue, placeholder=options.placeholder, name=options.radioName, data-selected =options.dataSelected, checked=options.checked)
 			//-TODO: Подумать, как избавиться от пустого [div] при отсутствии [options.customElementName]
-			div(class=customClassName)=options.customElementValue
+			span(class=customClassName)=options.customElementValue

@@ -1,21 +1,23 @@
-.switch__input_checkbox_rich{
-	display: flex;
-	align-self: baseline;
-}
-.switch__label_checkbox_rich {
-	flex-direction: column;
-	font-weight: bold;
-	font-size: 14px;
-	line-height: 18px;
-	letter-spacing: 0.04rem;
-	color: rgba(31, 32, 65, 0.75);
-}
+.switch__container_checkbox_rich {
+	.switch__label_checkbox_rich {
+		width: 26.6rem;
+		font-weight: bold;
+		font-size: 14px;
+		line-height: 18px;
+		letter-spacing: 0.04rem;
+		color: rgba(31, 32, 65, 0.75);
+	}
 
-.switch__description_checkbox_rich {
-	letter-spacing: 0.01rem;
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 14px;
-	margin-top: 0.5rem;
-	color: rgba(31, 32, 65, 0.5);
+	.switch__description_checkbox_rich {
+		width: 22.6rem;
+		padding-left: 3rem;
+		flex-direction: column;
+		letter-spacing: 0.01rem;
+		font-weight: normal;
+		font-size: 12px;
+		letter-spacing: normal;
+		line-height: 14px;
+		margin-top: 0.5rem;
+		color: rgba(31, 32, 65, 0.5);
+	}
 }

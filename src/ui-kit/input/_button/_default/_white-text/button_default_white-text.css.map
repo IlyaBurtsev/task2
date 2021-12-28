@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,qCAAqC,CAAC;EACrC,UAAU,EAAE,iDAAiD;EAC7D,KAAK,EAAE,OAAO;CAId;;AAND,AAGC,qCAHoC,AAGnC,OAAO,CAAA;EACP,OAAO,EAAE,GAAG;CACZ",
-    "sources": [
-        "button_default_white-text.scss"
-    ],
-    "names": [],
-    "file": "button_default_white-text.css"
-}
