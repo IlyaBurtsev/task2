@@ -1,4 +1,5 @@
 include ./_switch/_checkbox/_rich/switch_checkbox_rich.pug
+include ./_button/_rate/button_rate.pug
 - const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12}
 
 mixin input(options)
@@ -28,6 +29,9 @@ mixin input(options)
 			+input-tamplate({blockName: 'button', modificatorName: 'link', inputType: 'button', inputValue: options.inputValue})
 		when INPUT_TYPE.BUTTON_LIKE 	
 			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button', inputValue: options.inputValue, dataSelected: options.dataSelected})
+		when INPUT_TYPE.BUTTON_RATE 
+			+button_rate({inputValue: options.inputValue})
+			
 		
 		default
 			h1=options.inputType

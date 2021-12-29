@@ -1,10 +1,10 @@
 include ../../button/button.pug
-mixin list_checkbox(title= 'expandable checkbox list', items='[]')
+mixin list_checkbox(options)
 	.list_checkbox__container.list_checkbox__container_show
-		.list_checkbox__title-container
-			H3.list_checkbox__title= title
-			.list_checkbox__expand-icon
+		.list__title-container_checkbox
+			H3.list__title_checkbox= options.title
+			.list__expand-icon_checkbox
 		.list_checkbox__list
-			each val in items 
+			each val in options.items 
 				+button_checkbox(val)
 		
