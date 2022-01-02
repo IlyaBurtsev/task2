@@ -6,7 +6,6 @@ mixin input(options)
 	case options.inputType 
 		when INPUT_TYPE.TOGGLE
 			+input-tamplate({blockName: 'switch', modificatorName: 'toggle', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
-
 		when INPUT_TYPE.CHECKBOX
 			+input-tamplate({blockName: 'switch', modificatorName: 'checkbox', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
 		when INPUT_TYPE.CHECKBOX_RICH

@@ -1,10 +1,11 @@
-include ../../button/button.pug
 mixin list_checkbox(options)
-	.list_checkbox__container.list_checkbox__container_show
-		.list__title-container_checkbox
-			H3.list__title_checkbox= options.title
-			.list__expand-icon_checkbox
-		.list_checkbox__list
-			each val in options.items 
-				+button_checkbox(val)
+		label.list__container_checkbox
+			input.list__input_checkbox(type= 'checkbox')
+			.list__title-container_checkbox
+				H3.list__title_checkbox= options.listTitle
+				.list__expand-icon_checkbox
+			.list__items_checkbox
+				each val in options.items 
+					.list__item_checkbox
+						+input({inputType: INPUT_TYPE.CHECKBOX, inputLabel: val})
 		

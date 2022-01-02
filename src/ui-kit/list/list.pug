@@ -1,2 +1,11 @@
 include ./_bullet/list_bullet.pug
 include ./_checkbox/list_checkbox.pug
+
+- const LIST_TYPE={'EXPANDABLE_CHECKBOX':0, 'BULLET':1}
+
+mixin list(options)
+	case options.listType
+		when LIST_TYPE.EXPANDABLE_CHECKBOX
+			+list_checkbox({items: options.items, listTitle: options.listTitle})
+		when LIST_TYPE.BULLET
+			+list_bullet({items: options.items, listTitle: options.listTitle})

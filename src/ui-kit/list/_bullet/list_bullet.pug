@@ -1,6 +1,7 @@
-mixin list_bullet(items= ['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']) 
-	.list_bullet__container
-		ul.list_bullet__list 
+mixin list_bullet(options) 
+	.list__container_bullet
+		H3.list__title_bullet= options.listTitle
+		ul.list__items_bullet 
 			each val, index in options.items
-				li.list_bullet__item= val
+				li.list__item_bullet= val
 				

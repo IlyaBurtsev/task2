@@ -1,4 +1,5 @@
 include ../input/input.pug
+include ../list/list.pug
 
 doctype html
 html(lang="en")
@@ -23,6 +24,8 @@ html(lang="en")
 			+input({inputType: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
 			+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
 			+input({inputType: INPUT_TYPE.BUTTON_RATE, inputValue: 3})
+			+list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
+			+list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
 			
 			
 
