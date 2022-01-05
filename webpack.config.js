@@ -1,7 +1,8 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require('path')
+const path = require('path');
+const webpack = require("webpack");
 
 module.exports = {
 	entry: {
@@ -22,6 +23,11 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: './src/ui-kit/form-elements/form-elements.pug'
+		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jquery':'jquery'
 		}),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
