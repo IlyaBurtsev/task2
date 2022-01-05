@@ -1,11 +1,11 @@
 include ./_switch/_checkbox/_rich/switch_checkbox_rich.pug
+include ./_button/_rate/button_rate.pug
 - const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12}
 
 mixin input(options)
 	case options.inputType 
 		when INPUT_TYPE.TOGGLE
 			+input-tamplate({blockName: 'switch', modificatorName: 'toggle', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
-
 		when INPUT_TYPE.CHECKBOX
 			+input-tamplate({blockName: 'switch', modificatorName: 'checkbox', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
 		when INPUT_TYPE.CHECKBOX_RICH
@@ -20,8 +20,18 @@ mixin input(options)
 			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ'})
 		when INPUT_TYPE.BUTTON_WHITE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue})
+		when INPUT_TYPE.BUTTON_PURPLE_TEXT
+			+input-tamplate({blockName: 'button', modificatorName: 'purple-text', inputType: 'button', inputValue: options.inputValue})
+		when INPUT_TYPE.BUTTON_PAY 	
+			+input-tamplate({blockName: 'button', modificatorName: 'pay', inputType: 'button', inputValue: options.inputValue, customElementName: 'arrow'})
+		when INPUT_TYPE.BUTTON_LINK	
+			+input-tamplate({blockName: 'button', modificatorName: 'link', inputType: 'button', inputValue: options.inputValue})
 		when INPUT_TYPE.BUTTON_LIKE 	
 			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button', inputValue: options.inputValue, dataSelected: options.dataSelected})
+		when INPUT_TYPE.BUTTON_RATE 
+			+button_rate({inputValue: options.inputValue})
+			
+		
 		default
 			h1=options.inputType
 
@@ -34,7 +44,7 @@ mixin input-tamplate(options)
 	- inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
 	- inputClassName +=options.dataSelected ? ' '+inputClassName+'_selected' : ''
 	
-		div(class=containerClassName)
+		label(class=containerClassName)
 			input(class=inputClassName)(type=options.inputType, value=options.inputValue, placeholder=options.placeholder, name=options.radioName, data-selected =options.dataSelected, checked=options.checked)
 			//-TODO: Подумать, как избавиться от пустого [div] при отсутствии [options.customElementName]
 			span(class=customClassName)=options.customElementValue

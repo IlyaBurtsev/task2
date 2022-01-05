@@ -1,8 +1,7 @@
-
 .button__container_like {
+	width: 4rem;
+	height: 2rem;
 	.button__input_like {
-		width: 4rem;
-		height: 2rem;
 		border-radius: 1rem;
 		border: 0.1rem solid rgba(31, 32, 65, 0.25);
 		box-sizing: border-box;
@@ -15,12 +14,10 @@
 		justify-content: end;
 	}
 }
-.button__container_like{
-	.button__input_like_selected{
+.button__container_like {
+	.button__input_like_selected {
 		color: rgba(188, 156, 255, 1);
 		border-color: rgba(188, 156, 255, 1);
 		background-image: url(./favorite_icon_liked.svg);
 	}
 }
-
-

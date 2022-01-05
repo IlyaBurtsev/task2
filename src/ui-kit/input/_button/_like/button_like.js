@@ -8,6 +8,7 @@ $(function () {
 	$(likeButton).on('click', function (event) {
 		
 		let isLiked=$(event.target).data('selected')
+		console.log('in click:'+isLiked)
 		let counter=Number($(event.target).val())
 
 		$(event.target).toggleClass(liked);	

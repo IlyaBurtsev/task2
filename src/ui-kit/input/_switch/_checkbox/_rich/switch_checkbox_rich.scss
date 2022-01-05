@@ -1,6 +1,8 @@
 .switch__container_checkbox_rich {
+	display: inline-flex;
+	width: 26.6rem;
+	flex-direction: column;
 	.switch__label_checkbox_rich {
-		width: 26.6rem;
 		font-weight: bold;
 		font-size: 14px;
 		line-height: 18px;
@@ -11,7 +13,6 @@
 	.switch__description_checkbox_rich {
 		width: 22.6rem;
 		padding-left: 3rem;
-		flex-direction: column;
 		letter-spacing: 0.01rem;
 		font-weight: normal;
 		font-size: 12px;

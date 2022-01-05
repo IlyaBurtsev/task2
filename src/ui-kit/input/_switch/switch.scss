@@ -1,25 +1,27 @@
-.switch__input {
-	opacity: 0;
-	position: absolute;
-	width: 2rem;
-	height: 2rem;
-	align-self: baseline;
-}
-.switch__label {
-	color: rgba(31, 32, 65, 0.5);
-	display: flex;
-	flex-shrink: 0;
-	&::before {
-		content: "";
+.switch__container {
+	.switch__input {
+		opacity: 0;
+		position: absolute;
 		width: 2rem;
 		height: 2rem;
 		align-self: baseline;
-		border: 0.1rem solid rgba(31, 32, 65, 0.25);
-		box-sizing: border-box;
-		margin-right: 1rem;
-		flex-shrink: 0;
+	}
+	.switch__label {
+		color: rgba(31, 32, 65, 0.5);
+		display: flex;
+		&::before {
+			content: "";
+			width: 2rem;
+			height: 2rem;
+			align-self: baseline;
+			border: 0.1rem solid rgba(31, 32, 65, 0.25);
+			box-sizing: border-box;
+			margin-right: 1rem;
+			flex-shrink: 0;
+		}
 	}
 }
+
 .switch__input:checked + .switch__label {
 	&::before {
 		content: "";
