@@ -1,5 +1,6 @@
 include ../input/input.pug
 include ../list/list.pug
+include ../dropdown/dropdown.pug
 
 doctype html
 html(lang="en")
@@ -10,28 +11,29 @@ html(lang="en")
 		title Form Elements 
 	body
 		.test
-			+input({inputType: INPUT_TYPE.TOGGLE, inputLabel: 'Получать спецпредложения'})
-			+input({inputType: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)'})
-			+input({inputType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Мужчина'})
-			+input({inputType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Женщина'})
-			+input({inputType: INPUT_TYPE.EMAIL,})
-			+input({inputType: INPUT_TYPE.EMAIL_SUBSCRIPTION})
-			+input({inputType: INPUT_TYPE.DATE,})
-			+input({inputType: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
-			+input({inputType: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me'})
-			+input({inputType: INPUT_TYPE.BUTTON_LIKE, inputValue: 10, dataSelected: 'true'})
-			+input({inputType: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
-			+input({inputType: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
-			+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
-			+input({inputType: INPUT_TYPE.BUTTON_RATE, inputValue: 3})
-			+list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
-			+list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
+			//- +input({inputType: INPUT_TYPE.TOGGLE, inputLabel: 'Получать спецпредложения'})
+			//- +input({inputType: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)'})
+			//- +input({inputType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Мужчина'})
+			//- +input({inputType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Женщина'})
+			//- +input({inputType: INPUT_TYPE.EMAIL,})
+			//- +input({inputType: INPUT_TYPE.EMAIL_SUBSCRIPTION})
+			//- +input({inputType: INPUT_TYPE.DATE,})
+			//- +input({inputType: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+			//- +input({inputType: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me'})
+			//- +input({inputType: INPUT_TYPE.BUTTON_LIKE, inputValue: 10, dataSelected: 'true'})
+			//- +input({inputType: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
+			//- +input({inputType: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
+			//- +input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
+			//- +input({inputType: INPUT_TYPE.BUTTON_RATE, inputValue: 3})
+			//- +list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
+			//- +list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
+			+dropdown({title: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
 			
 			
 
 			
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
 			
 		
 		

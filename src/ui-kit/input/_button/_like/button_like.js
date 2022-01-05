@@ -2,8 +2,8 @@
 import './button_like.scss'
 
 $(function () {
-	let likeButton = '.button__input_like'
-	let liked = 'button__input_like_selected'
+	const likeButton = '.button__input_like'
+	const liked = 'button__input_like_selected'
 	
 	$(likeButton).on('click', function (event) {
 		

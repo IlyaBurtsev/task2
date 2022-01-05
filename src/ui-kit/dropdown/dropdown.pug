@@ -1,15 +1,16 @@
 include ./dropdown-item/dropdown-item.pug
-mixin dropdown(content_title='Сколько гостей', content_expandable=[]) 
-	.dropdown__container.dropdown__container_show
+mixin dropdown(options) 
+	.dropdown__container
 		.dropdown__container-title
-			.dropdown__content= content_title
+			.dropdown__title= options.title
 			.dropdown__expand-icon
 		.dropdown__expand-container
 			.dropdown__item-container
-				each val in content_expandable 
+				each val in options.items 
 					+dropdown-item(val)
 			.dropdown__footer
-				.dropdown__clear-button= 'очистить' 
-				.dropdown__applay-button применить
-
+				.dropdown__clear-button
+					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'очистить'})
+				.dropdown__apply-button
+					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'применить'})
 	

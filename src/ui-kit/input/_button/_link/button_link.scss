@@ -1,9 +1,13 @@
-.button__input_link {
+.button__container {
 	width: unset;
 	height: unset;
-	border-radius: unset;
-	color: #BC9CFF;
-	&:active{
-		color:rgba(31, 32, 65, 0.5);
+	.button__input_link {
+		width: unset;
+		height: unset;
+		border: unset;
+		color: #bc9cff;
+		&:active {
+			color: rgba(31, 32, 65, 0.5);
+		}
 	}
 }
