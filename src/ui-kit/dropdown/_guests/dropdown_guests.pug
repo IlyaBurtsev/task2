@@ -1,0 +1,15 @@
+include ../dropdown-item/dropdown-item.pug
+mixin dropdown_guests(options) 
+	.dropdown__container.dropdown__container_guests
+		.dropdown__container-title.dropdown__container-title_guests
+			.dropdown__title.dropdown__title_guests= options.title
+			.dropdown__expand-icon
+		.dropdown__expand-container
+			.dropdown__item-container
+				each val in options.items 
+					+dropdown-item(val)
+			.dropdown__footer_guests
+				.dropdown__clear-button
+					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'очистить'})
+				.dropdown__apply-button
+					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'применить'})
