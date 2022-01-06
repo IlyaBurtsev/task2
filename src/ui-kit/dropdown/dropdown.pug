@@ -1,16 +1,6 @@
 include ./dropdown-item/dropdown-item.pug
-mixin dropdown(options) 
-	.dropdown__container
-		.dropdown__container-title
-			.dropdown__title= options.title
-			.dropdown__expand-icon
-		.dropdown__expand-container
-			.dropdown__item-container
-				each val in options.items 
-					+dropdown-item(val)
-			.dropdown__footer
-				.dropdown__clear-button
-					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'очистить'})
-				.dropdown__apply-button
-					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'применить'})
+include ./_comfort/dropdown_comfort.pug
+include ./_guests/dropdown_guests.pug
+include ./_date/dropdown_date.pug
+
 	

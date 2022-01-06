@@ -1,0 +1,52 @@
+.dropdown__container_date {
+	width: 15rem;
+}
+
+
+.air-datepicker.-inline-{
+	width: 31.8rem;
+	height: 36.7rem;
+	border: 1px solid rgba(31, 32, 65, 0.25);
+	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+	
+}
+.air-datepicker-nav{
+	height: 5.4rem;
+	align-items: center;
+	margin-left: 1.6rem;
+	margin-right: 1.6rem;
+}
+.air-datepicker--content{
+	margin-top: 0.8rem;
+	margin-left: 1.6rem;
+	margin-right: 1.6rem;
+	
+	.air-datepicker-body--cells.-days-{
+		margin-top: 1.5rem;
+	}
+}
+.air-datepicker-nav--action[data-action="prev"]{
+	width: 2.4rem;
+	height: 2.4rem;
+	background: center no-repeat url('./arrow_back.svg');
+}
+.air-datepicker-nav--action[data-action="next"]{
+	width: 2.4rem;
+	height: 2.4rem;
+	background: center no-repeat url('./arrow_forward.svg');
+}
+.air-datepicker-nav--title {
+	font-family: "Montserrat";
+	font-size: 1.9rem;
+	font-weight: bold;
+	color:rgba(31, 32, 65, 1);
+}
+.air-datepicker-body--day-names {
+	.air-datepicker-body--day-name {
+		font-family: "Montserrat";
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: rgba(188, 156, 255, 1);
+		text-transform: none;
+	}
+}

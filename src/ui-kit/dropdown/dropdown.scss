@@ -20,6 +20,9 @@
 }
 .dropdown__title{
 	flex-grow: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .dropdown__expand-icon {
 	width: 4.4rem;
@@ -51,15 +54,7 @@
 		padding-right: 0.6rem;
 		padding-top: 0.5rem;
 	}
-	.dropdown__footer {
-		font-size: 1.2rem;
-		font-weight: bold;
-		text-transform: uppercase;
-		display: flex;
-		flex-direction: row;
-		color: rgba(188, 156, 255, 1);
-		justify-content: space-between;
-	}
+	
 }
 
 
