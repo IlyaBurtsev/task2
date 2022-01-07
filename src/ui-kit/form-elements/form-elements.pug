@@ -25,11 +25,12 @@ html(lang="en")
 			//- +input({inputType: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
 			//- +input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
 			//- +input({inputType: INPUT_TYPE.BUTTON_RATE, inputValue: 3})
-			//- +list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
-			//- +list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
-			+dropdown_guests({title: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
-			+dropdown_comfort({title: 'Удобства в номере', items: ['спальни', 'кровати', 'ванные комнаты']})
-			+dropdown_date({title: 'ДД.ММ.ГГГГ'})
+			
+			+list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
+			+dropdown({dropdownType: DROPDOWN_TYPE.GUESTS, dropdownTitle: 'Сколько гостей?', dropdownItems: ['взрослые', 'дети', 'младенцы']})
+			+dropdown({dropdownType: DROPDOWN_TYPE.COMFORT, dropdownTitle: 'Удобства в номере', dropdownItems: ['спальни', 'кровати', 'ванные комнаты']})
+			+dropdown({dropdownType: DROPDOWN_TYPE.DATE, dropdownTitle: 'ДД.ММ.ГГГГ'})
+			+list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
 			
 			
 
