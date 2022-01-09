@@ -1,6 +1,6 @@
 include ./_switch/_checkbox/_rich/switch_checkbox_rich.pug
 include ./_button/_rate/button_rate.pug
-- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12}
+- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'MASKED_DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14}
 
 mixin input(options)
 	case options.inputType 
@@ -16,7 +16,7 @@ mixin input(options)
 			+input-tamplate({blockName: 'input-field', inputType: 'Email', placeholder: 'Email'})
 		when INPUT_TYPE.EMAIL_SUBSCRIPTION
 			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: 'Email', placeholder: 'Email', customElementName: 'subscribed-arrow'})
-		when INPUT_TYPE.DATE
+		when INPUT_TYPE.MASKED_DATE
 			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ'})
 		when INPUT_TYPE.BUTTON_WHITE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue})
@@ -30,6 +30,10 @@ mixin input(options)
 			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button', inputValue: options.inputValue, dataSelected: options.dataSelected})
 		when INPUT_TYPE.BUTTON_RATE 
 			+button_rate({inputValue: options.inputValue})
+		when INPUT_TYPE.FILTER_DATE 
+			+input-tamplate({blockName: 'dropdown', modificatorName: 'filter-date', inputType: 'Text', placeholder: options.placeholder, customElementName: 'expand-icon'})
+		when INPUT_TYPE.DATE 
+			+input-tamplate({blockName: 'dropdown', modificatorName: 'date', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', customElementName: 'expand-icon', dataSelected: options.dataSelected})
 			
 		
 		default
