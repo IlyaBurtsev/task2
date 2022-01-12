@@ -28,7 +28,8 @@ module.exports = {
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jquery':'jquery',
-			'window.jQuery':'jquery'
+			'window.jQuery':'jquery',
+			'noUiSlider': 'nouislider'
 		}),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
