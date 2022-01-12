@@ -1,4 +1,64 @@
-.pagination__container{
-	width: 24.1rem;
+.pagination__container-common{
+	width: 40rem;
 	height: 7.5rem;
+	display: flex;
+	flex-direction: column;
+	.pagination__navigator{
+		margin-left: 0.5rem;
+	}
+}
+.pagination__container {
+	margin-bottom: 1rem;
+	.pagination__custom-style {
+		font-family: "Montserrat";
+		.paginationjs-pages {
+			:first-child{
+				border: none;
+				border-radius: 50%;
+				> a {
+					background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);	
+					&:hover{
+						background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+					}
+				}
+			}
+			:last-child{
+				border: none;
+				border-radius: 50%;
+				> a {
+					background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+					&:hover{
+						background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+					}
+				}
+			}
+
+			li {
+				border: none;
+				> a {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 4rem;
+					height: 4rem;
+					border-radius: 50%;
+					color: rgba(31, 32, 65, 0.5);
+					&:hover {
+						background: none;
+					}
+				}
+				&.active {
+					> a {
+						height: 4rem;
+						background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+						color: #fff;
+						font-weight: bold;
+					}
+				}
+				&.disabled > a:hover {
+					background: none;
+				}
+			}
+		}
+	}
 }
