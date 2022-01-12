@@ -27,7 +27,8 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
-			'window.jquery':'jquery'
+			'window.jquery':'jquery',
+			'window.jQuery':'jquery'
 		}),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
