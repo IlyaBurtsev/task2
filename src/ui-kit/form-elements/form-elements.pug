@@ -3,6 +3,7 @@ include ../list/list.pug
 include ../dropdown/dropdown.pug
 include ../pagination/pagination.pug
 include ../slider/slider.pug
+include ../room-info/room-info.pug
 
 doctype html
 html(lang="en")
@@ -35,8 +36,9 @@ html(lang="en")
 			//- +input({inputType: INPUT_TYPE.DATE, dataSelected: 'arrival'})
 			//- +input({inputType: INPUT_TYPE.DATE, dataSelected: 'departure'})
 			//- +input({inputType: INPUT_TYPE.FILTER_DATE})
-			+pagination
-			+slider({title: 'Range Slider'})
+			//- +pagination
+			//- +slider({title: 'Range Slider'})
+			+room-info({title: 'Комфорт', description: 'Шумопоглощающие стены'})
 			
 			
 
