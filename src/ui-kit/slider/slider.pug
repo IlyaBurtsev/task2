@@ -1,2 +1,6 @@
-mixin slider()
-	.slider__container 
+mixin slider(options={})
+	.slider__container
+		.slider__info
+			H3.slider__title= options.title
+			.slider__data-range
+		.slider__range-slider 
