@@ -1,8 +1,15 @@
-
-.pagination__container {
+.pagination__container-common{
 	width: 40rem;
 	height: 7.5rem;
-	.pagination__container {
+	display: flex;
+	flex-direction: column;
+	.pagination__navigator{
+		margin-left: 0.5rem;
+	}
+}
+.pagination__container {
+	margin-bottom: 1rem;
+	.pagination__custom-style {
 		font-family: "Montserrat";
 		.paginationjs-pages {
 			:first-child{

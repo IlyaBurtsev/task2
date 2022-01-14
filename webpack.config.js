@@ -28,7 +28,12 @@ module.exports = {
 			$: 'jquery',
 			jQuery: 'jquery',
 			'window.jquery':'jquery',
+<<<<<<< HEAD
 			'window.jQuery':'jquery'
+=======
+			'window.jQuery':'jquery',
+			'noUiSlider': 'nouislider'
+>>>>>>> 87d2b36cf8e3dc53282d8740bd7e79e8e3297ace
 		}),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
@@ -53,7 +58,7 @@ module.exports = {
 				type: 'asset/resource'
 			},
 			{
-				test: /\.(ttf|woff|woff2|eot)$/i,
+				test: /\.(ttf|woff|woff2|eot|svg)$/i,
 				type: 'asset/resource'
 			}
 		]

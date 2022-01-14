@@ -1,0 +1,33 @@
+.room-info__container{
+	width: 29.1rem;
+	height: 5.1rem;
+	display: flex;
+	align-items: center;
+	.room-info__information{
+		margin-left: 1rem;
+		height: 4.8rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		.room-info__title{
+			margin-top: 0.3rem;
+			font-weight: bold;
+		}
+		.room-info__description{
+
+			margin-bottom: 0.3rem;
+		}
+
+	}
+	
+	&::before{
+		content: 'insert_emoticon';
+		font-family: 'MaterialIcons';
+		font-size: 4.8rem;
+		line-height: 4.8rem;
+		background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+		color: transparent;
+		-webkit-background-clip: text;
+	}
+}
+

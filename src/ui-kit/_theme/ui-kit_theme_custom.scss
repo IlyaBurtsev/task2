@@ -10,18 +10,26 @@ $secondary-color: #6fcf97;
 //Determination of the fonts of the theme
 @font-face {
 	font-family: "Montserrat";
-	src: url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.svg"),
-		url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.ttf"),
-		url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.woff");
+	src: url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.svg")format("woff"),
+		url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.ttf")format("truetype"),
+		url("@ui-kit/_theme/assets/fonts/Montserrat-Regular.woff")format("svg");
+}
+@font-face {
+	font-family: "MaterialIcons";
+	src: url("@ui-kit/_theme/assets/fonts/MaterialIcons-Regular.svg")format("woff"),
+		url("@ui-kit/_theme/assets/fonts/MaterialIcons-Regular.ttf")format("truetype"),
+		url("@ui-kit/_theme/assets/fonts/MaterialIcons-Regular.woff")format("svg");
 }
 
-input, textarea, select, button {
+input,
+textarea,
+select,
+button {
 	font: inherit;
 	margin: 0;
 	padding: 0;
- }
+}
 
- 
 body {
 	font-family: "Montserrat";
 	font-style: normal;
@@ -57,13 +65,13 @@ h3 {
 	line-height: 1.5rem;
 	text-transform: uppercase;
 	color: $dark-100;
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
 	letter-spacing: 0.012rem;
 }
-a{
+a {
 	color: $primory-color;
 }
-a:hover{
+a:hover {
 	color: $dark-50;
 }
