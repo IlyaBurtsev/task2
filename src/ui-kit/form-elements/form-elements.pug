@@ -38,7 +38,10 @@ html(lang="en")
 			//- +input({inputType: INPUT_TYPE.FILTER_DATE})
 			//- +pagination
 			//- +slider({title: 'Range Slider'})
-			+room-info({title: 'Комфорт', description: 'Шумопоглощающие стены'})
+			
+			
+			-let items = [{title: 'Комфорт', desription:'Шумопоглощающие'}, {title: 'Удобство', desription:'Окно в каждой из'}]
+			+room-info(items)
 			
 			
 

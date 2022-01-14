@@ -1,6 +1,5 @@
-mixin room-info(options={})
-	.room-info__container
-		.room-info__information
-			.room-info__title= options.title
-			.room-info__description= options.description
-		
+include ./room-info__item/room-info__item.pug
+mixin room-info(items=[])
+	each item in items
+		+room-info__item({title: item.title, description: item.desription})
+			

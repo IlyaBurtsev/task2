@@ -59,8 +59,10 @@ $(function () {
 
 
 	dp.$datepicker.addEventListener('click', function () {
-		if (dp.selectedDates[1]) {
-			$('.dropdown__input_date[data-selected= "departure"]').val(dp.formatDate(dp.selectedDates[1], dp.locale.dateFormat));
+		if (dp) {
+			if (dp.selectedDates[1]) {
+				$('.dropdown__input_date[data-selected= "departure"]').val(dp.formatDate(dp.selectedDates[1], dp.locale.dateFormat));
+			}
 		}
 	})
 
