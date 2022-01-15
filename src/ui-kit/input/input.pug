@@ -40,7 +40,7 @@ mixin input(options)
 		when INPUT_TYPE.GUESTS 
 			+dropdown_guests({placeholder: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
 		when INPUT_TYPE.COMFORT
-			+dropdown_comfort({placeholder: 'Удобства в номере', items: ['взрослые', 'дети', 'младенцы']})
+			+dropdown_comfort({placeholder: 'Удобства в номере', items: ['спальни', 'кровати', 'ванные комнаты']})
 		
 		default
 			h1=options.inputType

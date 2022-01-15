@@ -17,6 +17,8 @@
 			border: 0.1rem solid rgba(31, 32, 65, 0.25);
 			box-sizing: border-box;
 			background: none;
+			color: rgba(31, 32, 65, 0.5);
+		
 		}
 		.dropdown-item__add-button {
 			height: 3rem;
@@ -26,6 +28,7 @@
 			box-sizing: border-box;
 			flex-shrink: 0;
 			background: none;
+			color: rgba(31, 32, 65, 0.5);
 		}
 	}
 }

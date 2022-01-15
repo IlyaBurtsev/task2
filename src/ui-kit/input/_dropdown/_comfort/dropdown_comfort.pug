@@ -1,10 +1,9 @@
 include ../dropdown-item/dropdown-item.pug
 mixin dropdown_comfort(options) 
-	.dropdown__container.dropdown__container_comfort
-		.dropdown__container-title.dropdown__container-title_comfort
-			.dropdown__title.dropdown__title_comfort= options.title
-			.dropdown__expand-icon
+	.dropdown__container.dropdown__container_comfort.dropdown__container_show
+		input.dropdown__input.dropdown__input_guests(type= 'text', placeholder = options.placeholder)
 		.dropdown__expand-container.dropdown__expand-container_comfort
 			.dropdown__item-container
 				each val in options.items 
 					+dropdown-item(val)
+			

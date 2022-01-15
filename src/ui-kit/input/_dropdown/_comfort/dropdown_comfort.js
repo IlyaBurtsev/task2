@@ -1,3 +1,4 @@
+import './dropdown_comfort.scss'
 $(function () {
 	$('.dropdown__container_comfort').on('click', function (event) {
 
