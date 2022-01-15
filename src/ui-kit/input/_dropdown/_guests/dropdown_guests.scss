@@ -1,0 +1,22 @@
+.dropdown__container_guests {
+	flex-direction: column;
+
+	.dropdown__expand-container {
+		top: 4.9rem;
+		position: absolute;
+		width: 32rem;
+		height: 15.9rem;
+		padding-left: 1.5rem;
+		padding-right: 0.7rem;
+
+		.dropdown__footer_guests {
+			font-size: 1.2rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			display: flex;
+			flex-direction: row;
+			color: rgba(188, 156, 255, 1);
+			justify-content: space-between;
+		}
+	}
+}

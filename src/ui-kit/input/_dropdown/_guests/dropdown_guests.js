@@ -1,4 +1,4 @@
-
+import './dropdown_guests.scss'
 $(function () {
 	$('.dropdown__container_guests').on('click', function (event) {
 

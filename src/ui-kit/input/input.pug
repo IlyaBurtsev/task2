@@ -1,6 +1,9 @@
 include ./_switch/_checkbox/_rich/switch_checkbox_rich.pug
 include ./_button/_rate/button_rate.pug
-- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'MASKED_DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14}
+include ./_dropdown/_guests/dropdown_guests.pug
+include ./_dropdown/_comfort/dropdown_comfort.pug
+
+- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'EMAIL':4, 'MASKED_DATE':5, 'EMAIL_SUBSCRIPTION':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16}
 
 mixin input(options)
 	case options.inputType 
@@ -34,7 +37,10 @@ mixin input(options)
 			+input-tamplate({blockName: 'dropdown', modificatorName: 'filter-date', inputType: 'Text', placeholder: options.placeholder, customElementName: 'expand-icon'})
 		when INPUT_TYPE.DATE 
 			+input-tamplate({blockName: 'dropdown', modificatorName: 'date', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', customElementName: 'expand-icon', dataSelected: options.dataSelected})
-			
+		when INPUT_TYPE.GUESTS 
+			+dropdown_guests({placeholder: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
+		when INPUT_TYPE.COMFORT
+			+dropdown_comfort({placeholder: 'Удобства в номере', items: ['взрослые', 'дети', 'младенцы']})
 		
 		default
 			h1=options.inputType

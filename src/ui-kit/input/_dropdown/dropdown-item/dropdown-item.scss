@@ -4,6 +4,7 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 0.7rem;
+	
 	.dropdown-item__button-container {
 		width: 9.2rem;
 		display: flex;
@@ -14,17 +15,17 @@
 			width: 2.8rem;
 			border-radius: 50%;
 			border: 0.1rem solid rgba(31, 32, 65, 0.25);
-			background: center no-repeat url("./-.svg");
 			box-sizing: border-box;
+			background: none;
 		}
 		.dropdown-item__add-button {
 			height: 3rem;
 			width: 3rem;
 			border-radius: 50%;
 			border: 0.1rem solid rgba(31, 32, 65, 0.5);
-			background: center no-repeat url("./+.svg");
 			box-sizing: border-box;
 			flex-shrink: 0;
+			background: none;
 		}
 	}
 }
