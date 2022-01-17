@@ -32,6 +32,7 @@
 }
 
 .dropdown__expand-container {
+	visibility: hidden;
 	top: 4.4rem;
 	position: absolute;
 	width: 31.8rem;
@@ -51,14 +52,13 @@
 		padding-right: 0.6rem;
 	}
 }
-
-.dropdown__container_show {
-	.dropdown__input_guests {
+.dropdown__container {
+	.dropdown__expand-container_show {
 		border: 1px solid rgba(31, 32, 65, 0.5);
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 	}
-	.dropdown__expand-container {
+	.dropdown__expand-container_show + .dropdown__expand-container {
 		visibility: visible;
 	}
 }

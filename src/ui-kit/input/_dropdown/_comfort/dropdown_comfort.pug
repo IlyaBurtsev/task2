@@ -1,7 +1,7 @@
 include ../dropdown-item/dropdown-item.pug
 mixin dropdown_comfort(options) 
-	.dropdown__container.dropdown__container_comfort.dropdown__container_show
-		input.dropdown__input.dropdown__input_guests(type= 'text', placeholder = options.placeholder)
+	.dropdown__container.dropdown__container_comfort
+		input.dropdown__input.dropdown__input_comfort(type= 'text', placeholder = options.placeholder)
 		.dropdown__expand-container.dropdown__expand-container_comfort
 			.dropdown__item-container
 				each val in options.items 
