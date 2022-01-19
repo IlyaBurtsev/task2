@@ -15,6 +15,7 @@ export const consts = {
 }
 
 const optionDefault = {
+	inline: false,
 	showEvent: 'focus',
 	ItemsRequiredMessage: '',
 	footerButtonActived: false,
@@ -54,11 +55,16 @@ export class Dropdown {
 
 
 		if (this.elIsInput) {
-
-			this.bindEvents();
+			
+				this.bindEvents();
+				
 		}
+		
+		if (this.opts.inline || !this.elIsInput) {
+			(this.dropdown.closest('.dropdown__container')).classList.add('dropdown__container_inline');
+	  }
 
-		if (this.opts.visible) {
+		if (this.opts.visible && !this.opts.inline) {
 			this.show();
 		}
 		if (this.opts.selectedItems) {
@@ -73,6 +79,7 @@ export class Dropdown {
 		if (this.opts.footerButtonActived) {
 
 			this.attachFooterButtonListener();
+			this.checkDisableClearButton();
 		}
 		if (this.opts.elementReadonly) {
 			this.element.setAttribute('readonly', '')
@@ -146,7 +153,10 @@ export class Dropdown {
 	onChangeSelectedItems = (items) => {
 		this.updateInputValueView();
 		this.updateItemCounterView(items);
-		this.checkDisableClearButton();
+
+		if (this.opts.footerButtonActived) {
+			this.checkDisableClearButton();
+		}
 	}
 
 	// -------------------------------------------------
@@ -258,12 +268,15 @@ export class Dropdown {
 
 	checkDisableClearButton() {
 
-		let buttons = this.dropdown.querySelectorAll('button__input_link');
-		let clearButton = buttons.find(button => button.value === consts.clearFooterButtonName);
-		if(this.selectedItemsIsEmty()){
+		let buttons = this.dropdown.querySelectorAll('.button__input_link');
+
+		buttons = Array.prototype.slice.call(buttons);
+		let clearButton = buttons.find(button => button.value === this.opts.clearFooterButtonName);
+
+		if (this.selectedItemsIsEmty()) {
 			clearButton.setAttribute('disabled', '')
-		}else{
-			if(clearButton.hasAttribute('disabled')){
+		} else {
+			if (clearButton.hasAttribute('disabled')) {
 				clearButton.removeAttribute('disabled');
 			}
 		}

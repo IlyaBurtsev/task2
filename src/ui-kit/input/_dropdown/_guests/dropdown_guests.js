@@ -9,5 +9,6 @@ new Dropdown('.dropdown__input_guests', {
 	inputFormat: { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] },
 	ItemsRequired: ['взрослые'],
 	ItemsRequiredMessage: 'Недопустимый выбор.',
-	footerButtonActived: true
+	footerButtonActived: true,
+	inline: true
 })

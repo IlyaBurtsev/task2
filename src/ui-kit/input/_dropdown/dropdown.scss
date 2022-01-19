@@ -19,11 +19,12 @@
 		font-family: "MaterialIcons";
 		width: 4rem;
 		font-size: 2rem;
-		line-height: 2rem;
+		line-height: 4rem;
 		color: rgba(31, 32, 65, 0.75);
 		text-align: center;
 		position: absolute;
 		right: 0;
+		top: 0;
 	}
 
 	::placeholder {
@@ -33,6 +34,7 @@
 
 .dropdown__expand-container {
 	visibility: hidden;
+	background-color: white; //jknlkbjhbjhvjg
 	top: 4.4rem;
 	position: absolute;
 	width: 31.8rem;
@@ -62,3 +64,25 @@
 		visibility: visible;
 	}
 }
+
+
+
+	
+	
+	.dropdown__container_inline {
+		height: 20.2rem;
+		.dropdown__input{
+			height: 4.4rem;
+			flex-grow: 0;
+		}
+		.dropdown__expand-container{
+		box-shadow: none;
+		opacity: 1;
+		position: static;
+		visibility: visible;
+		z-index: 1;
+	}
+	
+	}
+	
+
