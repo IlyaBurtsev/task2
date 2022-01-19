@@ -1,10 +1,3 @@
-
-import './dropdown.scss'
-import '../_dropdown/dropdown-item/dropdown-item.scss'
-import './_filter-date/dropdown_filter-date'
-import './_date/dropdown_date'
-import './_guests/dropdown_guests'
-import './_comfort/dropdown_comfort'
 import {
 	deepMerge,
 	getElement,
@@ -14,23 +7,23 @@ import { bindObserverMetods } from '../../../utils/observerMetods'
 import { DropdownItem } from './dropdown-item/dropdown-item'
 
 
-
-
-
 export const consts = {
 	eventChangeSelectedItems: 'cangeSelectedItems',
+	eventApplySelectedItems: 'applySelectedItems',
 
-	dropdownShowClassName: 'dropdown__expand-container_show'
+	dropdownShowClassName: 'dropdown__expand-container_show',
 }
 
 const optionDefault = {
-	inline: false,
 	showEvent: 'focus',
-
+	ItemsRequiredMessage: '',
+	footerButtonActived: false,
+	clearFooterButtonName: 'очистить',
+	applyFooterButtonName: 'применить'
 }
 
 
-class Dropdown {
+export class Dropdown {
 	constructor(bindElement, options) {
 		this.element = getElement(bindElement);
 
@@ -44,25 +37,21 @@ class Dropdown {
 			this.elIsInput = true;
 		}
 
-		bindObserverMetods(this);
-
 		this.inited = false;
 		this.visible = false;
-		this.dropdownItem = new DropdownItem(this);
+		this.elementReadonly = this.element.getAttribute('readonly');
 
-		this.focusDate = false;
-
-
-
-		this.init()
-
-
-
+		this.init();
 	}
 
 	init() {
 
+		bindObserverMetods(this);
+
 		this.bindSubEvents();
+
+		this.dropdownItem = new DropdownItem(this);
+
 
 		if (this.elIsInput) {
 
@@ -73,12 +62,27 @@ class Dropdown {
 			this.show();
 		}
 		if (this.opts.selectedItems) {
-			this.selectedItems = opts.selectedItems;
+
+			this.selectedItems = this.opts.selectedItems;
+
+			this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.dropdown.querySelectorAll('.dropdown-item__counter')))
 		} else {
 			this.selectedItems = this.initSelectedItem();
 		}
 
+		if (this.opts.footerButtonActived) {
+
+			this.attachFooterButtonListener();
+		}
+		if (this.opts.elementReadonly) {
+			this.element.setAttribute('readonly', '')
+			this.elementReadonly = true;
+		}
+
+		this.inted = true;
+
 	}
+
 
 	initSelectedItem() {
 		let items = this.dropdown.querySelectorAll('.dropdown-item__counter');
@@ -100,6 +104,9 @@ class Dropdown {
 
 	bindSubEvents() {
 		this.on(consts.eventChangeSelectedItems, this.onChangeSelectedItems);
+	}
+	attachFooterButtonListener() {
+		this.dropdown.addEventListener('click', this.onClickFooterButton);
 	}
 
 
@@ -129,12 +136,17 @@ class Dropdown {
 	}
 
 	onClickItemButton = (e) => {
-		this.handleClick(e);
+		this.handleClickItemButton(e);
 	}
 
-	onChangeSelectedItems = (item, itemCounter) => {
+	onClickFooterButton = (e) => {
+		this.handleClickFooterButton(e);
+	}
+
+	onChangeSelectedItems = (items) => {
 		this.updateInputValueView();
-		this.updateItemCounterView(item, itemCounter);
+		this.updateItemCounterView(items);
+		this.checkDisableClearButton();
 	}
 
 	// -------------------------------------------------
@@ -146,11 +158,12 @@ class Dropdown {
 	}
 
 	hide() {
+		this.element.blur();
 		this.visible = false;
 		this.element.classList.remove(consts.dropdownShowClassName);
 	}
 
-	handleClick = (e) => {
+	handleClickItemButton = (e) => {
 
 		if (e.target.classList.contains('dropdown-item__add-button')) {
 
@@ -162,91 +175,159 @@ class Dropdown {
 				this.selectedItems[itemCount]++;
 			}
 
-			this.trigger(consts.eventChangeSelectedItems, e.target.previousSibling, this.selectedItems[itemCount]);
+			this.trigger(consts.eventChangeSelectedItems, e.target.previousSibling);
 		}
 
 		if (e.target.classList.contains('dropdown-item__sub-button')) {
 
-			let itemCount = e.target.nextSibling.getAttribute('counter')
-
+			let itemCount = e.target.nextSibling.getAttribute('counter');
 
 			if (this.selectedItems[itemCount] > 0) {
 				this.selectedItems[itemCount]--;
 			}
 
-			this.trigger(consts.eventChangeSelectedItems, e.target.nextSibling, this.selectedItems[itemCount]);
+			this.trigger(consts.eventChangeSelectedItems, e.target.nextSibling);
 		}
 
 
 	}
+
+	handleClickFooterButton = (e) => {
+		if (e.target.classList.contains('button__input_link')) {
+
+			if (e.target.value === this.opts.clearFooterButtonName) {
+				let keys = Object.keys(this.selectedItems);
+
+				keys.forEach(item => this.selectedItems[item] = 0);
+
+				this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.dropdown.querySelectorAll('.dropdown-item__counter')))
+			}
+
+			if (e.target.value === this.opts.applyFooterButtonName) {
+				this.hide();
+				this.trigger(consts.eventApplySelectedItems, this.selectedItems);
+			}
+		}
+
+	}
+
 	updateInputValueView = () => {
+		let requiredValues = [];
 
-		this.element.value = this.format(this.selectedItems);
+		let requiredItems = this.opts.ItemsRequired;
+
+		if (requiredItems) {
+
+			Object.keys(this.selectedItems).forEach(item => {
+				if (requiredItems.includes(item)) {
+					requiredValues.push(this.selectedItems[item])
+				}
+			})
+
+			if (requiredValues.includes(0)) {
+				if (this.selectedItemsIsEmty()) {
+					this.element.value = '';
+				} else {
+					this.element.value = this.opts.ItemsRequiredMessage;
+				}
+			} else {
+
+				this.element.value = this.format(this.selectedItems);
+			}
+		} else {
+
+			this.element.value = this.format(this.selectedItems);
+		}
 
 	}
 
-	updateItemCounterView = (item, itemCounter) => {
-		item.innerHTML = itemCounter;
+	selectedItemsIsEmty() {
+		let emtyItems = (Object.values(this.selectedItems)).filter(val => val === 0);
+		if (emtyItems.length === Object.values(this.selectedItems).length) {
+			return true;
+		}
 	}
+
+	updateItemCounterView = (items) => {
+		if (Array.isArray(items)) {
+			items.forEach(item => item.innerHTML = this.selectedItems[item.getAttribute('counter')])
+		} else {
+			items.innerHTML = this.selectedItems[items.getAttribute('counter')];
+		}
+	}
+
+	checkDisableClearButton() {
+
+		let buttons = this.dropdown.querySelectorAll('button__input_link');
+		let clearButton = buttons.find(button => button.value === consts.clearFooterButtonName);
+		if(this.selectedItemsIsEmty()){
+			clearButton.setAttribute('disabled', '')
+		}else{
+			if(clearButton.hasAttribute('disabled')){
+				clearButton.removeAttribute('disabled');
+			}
+		}
+
+	}
+
+
 	format(items) {
-		let itemToString = '';
+		let resultString = ''
 		if (this.opts.inputFormat) {
-			let inputFormat = this.opts.inputFormat
-			let itemTitles = Object.keys(inputFormat);
-			let test =[]
-			itemTitles.forEach(item => test[item] = '');
-			
-			itemTitles.forEach(item => {
-				
 
+			let inputFormat = this.opts.inputFormat;
+			let itemTitles = Object.keys(inputFormat);
+
+			let formatedItem = [];
+			let itemToString = '';
+
+			itemTitles.forEach(item => formatedItem[item] = '');
+
+			itemTitles.forEach(item => {
 				if (item === 'mergeItems') {
 					let mergeValue = 0;
-					
+
 					this.opts.mergeItems.forEach(e => mergeValue += items[e]);
 
-					console.dir(mergeValue)
 					itemToString = this.switchResult(mergeValue, inputFormat[item]);
-				}else{
+				} else {
 					itemToString = this.switchResult(items[item], inputFormat[item]);
 				}
-				test[item] = itemToString;
+				formatedItem[item] = itemToString;
 
 			})
-			let resultString = '';
-			test.forEach(item => {
-				
+
+
+
+			itemTitles.forEach(item => {
+				if (formatedItem[item]) {
+					if (resultString) {
+						resultString += ', ' + formatedItem[item];
+					} else {
+						resultString = formatedItem[item];
+					}
+				}
 			})
-			console.log(test)
-			return itemToString;
+
+			return resultString + '   ';
 		}
-		return 'ssfgshgdslghusfh'
-		// let mergeListTitle =['взрослые', 'дети'];
-		// let mergeValue =0;
-		// mergeListTitle.forEach(item => mergeValue += items[item] );
-		// let mergeName = ['гость', 'гостя', 'гостей' ]
-		// let result =''
-		// let itemName = ['младенец', 'младенеца', 'младенецев'];
-		// let itemTitle = 'младенцы';
 
-		// switch (mergeValue){ 
-		// 	case 0: result=''
-		// 	break;
-		// 	case 1: result = mergeValue+' '+ mergeName[0];
-		// 	break;
-		// 	case 2:
-		// 	case 3:
-		// 	case 4: result = mergeValue+' '+ mergeName[1];
-		// 	break;
+		(Object.keys(this.selectedItems)).forEach(item => {
+			let itemValue = this.selectedItems[item];
 
-		// 	default: result = mergeValue+' '+ mergeName[2];
-		// }
-		// return result;
+			if (itemValue !== 0) {
+				if (resultString) {
+					resultString += ', ' + item + ': ' + itemValue;
+				} else {
+					resultString = item + ': ' + itemValue;
+				}
+			}
+		})
 
-		// let n1 =items['взрослые']+items["дети"];
-		// let inputString1 = n1 + ' гостя';
-		// let inputString2 = inputString1 + ', ' +items["младенцы"]+ ' младенца';
-		// return inputString2;
+		return resultString + '   ';
+
 	}
+
 	switchResult(itemValue, itemName) {
 		let result = '';
 
@@ -268,11 +349,4 @@ class Dropdown {
 
 
 }
-export let mergeTitles = ['взрослые', 'дети'];
-new Dropdown('.dropdown__input_guests', {
-	visible: true,
-	mergeItems: ['взрослые', 'дети'],
-	inputFormat: { mergeItems:['гость', 'гостя', 'гостей' ], 'младенцы':['младенец', 'младенеца', 'младенецев']}
-})
 
-new Dropdown('.dropdown__input_comfort')
