@@ -1,4 +1,5 @@
 import './room-info.scss'
+import { createElement } from '../../utils/utils';
 import { getRoomRepository } from '../../repository/roomRepository/RoomRepositoryMock'
 
 init()
@@ -20,20 +21,3 @@ function init() {
 
 }
 
-export function createElement({ tagName = 'div', className = '', innerHtml = '', id = '', attrs = {} } = {}) {
-	let $element = document.createElement(tagName);
-	if (className) $element.classList.add(...className.split(' '));
-	if (id) $element.id = id;
-
-	if (innerHtml) {
-		$element.innerHTML = innerHtml;
-	}
-
-	if (attrs) {
-		for (let attr in attrs) {
-			$element.setAttribute(attr, attrs[attr]);
-		}
-	}
-
-	return $element;
-}

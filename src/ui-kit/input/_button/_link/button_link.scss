@@ -1,6 +1,8 @@
-.button__container {
-	width: unset;
-	height: unset;
+.button__container_link {
+	width: auto;
+	height: auto;
+	display: block;
+	
 	.button__input_link {
 		width: unset;
 		height: unset;

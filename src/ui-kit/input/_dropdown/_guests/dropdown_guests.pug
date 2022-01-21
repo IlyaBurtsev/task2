@@ -1,13 +1,13 @@
 include ../dropdown-item/dropdown-item.pug
-mixin dropdown_guests(options=[]) 
-	.dropdown__container.dropdown__container_guests
-		input.dropdown__input.dropdown__input_guests(type= 'text', placeholder = options.placeholder)
+mixin dropdown_guests(options) 
+	.dropdown__container_guests 
+		+input({type: INPUT_TYPE.INPUT_LONG_FIELD, placeholder: 'Сколько гостей', dataIcon:'expand_more', dropdownType: "guests"})
 		.dropdown__expand-container
-			.dropdown__item-container
-				each val in options.items 
-					+dropdown-item(val)
+			each val in options.items
+				+dropdown-item(val)
 			.dropdown__footer_guests
 				.dropdown__clear-button
-					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'очистить'})
+					+input({type: INPUT_TYPE.BUTTON_LINK, inputValue: 'очистить'})
 				.dropdown__apply-button
-					+input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'применить'})
+					+input({type: INPUT_TYPE.BUTTON_LINK, inputValue: 'применить'})
+				

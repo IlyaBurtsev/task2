@@ -1,5 +1,4 @@
-.dropdown__container_guests {
-	flex-direction: column;
+
 
 	.dropdown__footer_guests {
 		font-size: 1.2rem;
@@ -9,9 +8,10 @@
 		flex-direction: row;
 		color: rgba(188, 156, 255, 1);
 		justify-content: space-between;
-		padding-left: 1.5rem;
+		margin-top: 1.4rem;
+		padding-left: 1.4rem;
 		padding-right: 0.6rem;
-		padding-bottom: 1.4rem;
+		padding-bottom: 1.2rem;
 	}
-}
+
 

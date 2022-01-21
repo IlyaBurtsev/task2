@@ -1,3 +1,5 @@
 import './input-field.scss'
-import './_subscription/input-field_subscription.scss'
+import './_middle/input-field_middle.scss'
+import './_short/input-field_short.scss'
+
 

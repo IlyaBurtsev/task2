@@ -1,6 +1,6 @@
 .input-field__container {
 	width: 32rem;
-	height: 4.4rem;
+	height: 4.3rem;
 	display: inline-flex;
 	position: relative;
 	.input-field__input {
@@ -13,6 +13,18 @@
 		align-items: center;
 		flex-grow: 1;
 	}
+	&::after {
+		content: attr(data-icon);
+		width: 4.2rem;
+		font-family: "MaterialIcons";
+		font-size: 2.5rem;
+		color: rgba(31, 32, 65, 0.5);
+		position: absolute;
+		line-height: 4.5rem;
+		text-align: center;
+		right: 0;
+	}
+
 	::placeholder {
 		color: rgba(31, 32, 65, 0.25);
 	}
@@ -22,4 +34,11 @@
 		border-color: rgba(31, 32, 65, 0.5);
 		color: rgba(31, 32, 65, 0.75);
 	}
+}
+
+.input-field__container_colored::after{
+	background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+			color: transparent;
+			-webkit-background-clip: text;
+			background-clip: text;
 }

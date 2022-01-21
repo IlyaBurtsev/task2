@@ -3,6 +3,8 @@ include ../list/list.pug
 include ../pagination/pagination.pug
 include ../slider/slider.pug
 include ../room-info/room-info.pug
+include ../input/_button/_like/button_like.pug
+//include ../dropdown/dropdown.pug
 
 doctype html
 html(lang="en")
@@ -17,29 +19,35 @@ html(lang="en")
 			//- +input({inputType: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)'})
 			//- +input({inputType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Мужчина'})
 			//- +input({inputType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Женщина'})
-			//- +input({inputType: INPUT_TYPE.EMAIL,})
-			//- +input({inputType: INPUT_TYPE.EMAIL_SUBSCRIPTION})
+			+input({type: INPUT_TYPE.INPUT_LONG_FIELD, inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', dataSelected: 'input-mask'})
+			+input({type: INPUT_TYPE.INPUT_MIDDLE_FIELD , inputType: 'Text', placeholder: 'Email', dataIcon: "arrow_forward", isPrimaryGradient: true})
 			//- +input({inputType: INPUT_TYPE.DATE,})
-			//- +input({inputType: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
-			//- +input({inputType: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me'})
-			//- +input({inputType: INPUT_TYPE.BUTTON_LIKE, inputValue: 10, dataSelected: 'true'})
-			//- +input({inputType: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
-			//- +input({inputType: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
-			//- +input({inputType: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
-			//- +input({inputType: INPUT_TYPE.BUTTON_RATE, inputValue: 3})
+			+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+			+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me'})
+			+input({type: INPUT_TYPE.BUTTON_LIKE, inputValue: 12, dataSelected: 'true'})
+			+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
+			+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
+			+input({type: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
+			+input({type: INPUT_TYPE.BUTTON_RATE, inputValue: 3})
 			//- +list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
 			//- +list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
 			//- +dropdown({dropdownType: DROPDOWN_TYPE.GUESTS, dropdownTitle: 'Сколько гостей?', dropdownItems: ['взрослые', 'дети', 'младенцы']})
 			//- +dropdown({dropdownType: DROPDOWN_TYPE.COMFORT, dropdownTitle: 'Удобства в номере', dropdownItems: ['спальни', 'кровати', 'ванные комнаты']})
 			//- +dropdown({dropdownType: DROPDOWN_TYPE.DATE, dropdownTitle: 'ДД.ММ.ГГГГ'})
-			//- +input({inputType: INPUT_TYPE.DATE, dataSelected: 'arrival'})
-			//- +input({inputType: INPUT_TYPE.DATE, dataSelected: 'departure'})
+			//- +input({type: INPUT_TYPE.DATE, dataSelected: 'arrival'})
+			//- +input({type: INPUT_TYPE.DATE, dataSelected: 'departure'})
 			//- +input({inputType: INPUT_TYPE.FILTER_DATE})
 			//- +pagination
 			//- +slider({title: 'Range Slider'})
 			//- +room-info()
-			+input({inputType: INPUT_TYPE.GUESTS})
-			+input({inputType: INPUT_TYPE.COMFORT})
+			//- +input({type: INPUT_TYPE.COMFORT})
+			//- +input({type: INPUT_TYPE.GUESTS})
+			//- +input({type: INPUT_TYPE.INPUT_SHORT_FIELD, placeholder: 'ДД.ММ.ГГГГ'})
+			
+			
+			
+			
+
 			
 			
 

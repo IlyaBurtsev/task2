@@ -1,8 +1,8 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './dropdown_date.scss'
-
-$(function () {
+//init()
+function init() {
 
 	class AirDatepickerCustom extends AirDatepicker {
 		constructor(inputArrival, inputDeparture) {
@@ -31,8 +31,24 @@ $(function () {
 				},
 			});
 			this.$inputDeparture = document.querySelector(inputDeparture);
+			this.$inputDeparture.addEventListener('click', this.onClickInputDeparture);
 
 		}
+		show(){
+			super.show();
+			this.$inputDeparture.classList.add('input-field__input_dropdown-date_departure-focused');
+		}
+		hide(){
+			super.hide();
+			this.$inputDeparture.classList.remove('input-field__input_dropdown-date_departure-focused');
+		}
+
+
+		onClickInputDeparture = () => {
+			this.show()
+			this.$el.focus()	
+		}
+
 		clear() {
 			super.clear();
 			this.$el.value = '';
@@ -41,8 +57,8 @@ $(function () {
 		}
 
 		_setInputValue = () => {
-			let { opts, $altField, locale: { dateFormat } } = this,
-				{ altFieldDateFormat, altField } = opts;
+			let { opts, locale: { dateFormat } } = this,
+				{} = opts;
 			if (this.selectedDates[0]) {
 				this.$el.value = this.formatDate(this.selectedDates[0], dateFormat);
 			}
@@ -65,14 +81,9 @@ $(function () {
 		}
 	}
 
-	const dp = new AirDatepickerCustom('.dropdown__input_date[data-selected= "arrival"]', '.dropdown__input_date[data-selected= "departure"]');
+	new AirDatepickerCustom('.input-field__input_dropdown-date[data-selected= "arrival"]', '.input-field__input_dropdown-date[data-selected= "departure"]');
 
 
-	$('.dropdown__input_date[data-selected= "departure"]').on('click', function () {
-		console.log(dp);
-		dp.show();
-	})
-
-})
+}
 
 

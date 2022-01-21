@@ -1,20 +1,22 @@
-.button__container_pay{
+.button__container_pay {
+	height: 4.4rem;
 	width: 32rem;
 	position: relative;
-	.button__arrow_pay {
-		position: absolute;
-		right: 0;
-		width: 4.4rem;
-		height: 4.4rem;
-		background: center no-repeat url("./arrow_forward.svg");
-		z-index: 2;
+	.button__input_pay {
+		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+		color: white;
+		&:active {
+			opacity: 0.5;
+		}
 	}
-}
-.button__input_pay {
-	flex-grow: 1;
-	background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-	color: white;
-	&:active{
-		opacity: 0.5;
+	&::after {
+		content: "arrow_forward";
+		font-family: "MaterialIcons";
+		font-size: 2.5rem;
+		line-height: 4.3rem;
+		color: white;
+		position: absolute;
+		padding-right: 1rem;
+		right: 0;
 	}
 }

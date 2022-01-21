@@ -26,21 +26,33 @@ const optionDefault = {
 
 export class Dropdown {
 	constructor(bindElement, options) {
-		this.element = getElement(bindElement);
+		
+		this.$container = getElement(bindElement);
+		
+		if (!this.$container) {
+			throw new Error('Dropdown cannot find container with: "' + bindElement+'"')
+			
+		};
+		if (this.$container.nodeName === 'INPUT') {
+			this.$input = this.$container;
+		} else {
+			this.$input = this.$container.querySelector('input');
+			if (!this.$input) {
+				throw new Error('Expected <input> element to output data.')
+			}
+		}
 
-		if (!this.element) return;
-
-		this.dropdown = this.element.nextSibling
-
+		this.$dropdown = this.$container.lastChild
+		
 		this.opts = deepMerge({}, optionDefault, options);
 
-		if (this.element.nodeName === 'INPUT') {
+		if (this.$input.nodeName === 'INPUT') {
 			this.elIsInput = true;
 		}
 
 		this.inited = false;
 		this.visible = false;
-		this.elementReadonly = this.element.getAttribute('readonly');
+		this.elementReadonly = this.$input.getAttribute('readonly');
 
 		this.init();
 	}
@@ -61,7 +73,7 @@ export class Dropdown {
 		}
 		
 		if (this.opts.inline || !this.elIsInput) {
-			(this.dropdown.closest('.dropdown__container')).classList.add('dropdown__container_inline');
+			//(this.$dropdown.closest('.dropdown__container')).classList.add('dropdown__container_inline');
 	  }
 
 		if (this.opts.visible && !this.opts.inline) {
@@ -71,7 +83,7 @@ export class Dropdown {
 
 			this.selectedItems = this.opts.selectedItems;
 
-			this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.dropdown.querySelectorAll('.dropdown-item__counter')))
+			this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.$dropdown.querySelectorAll('.dropdown-item__counter')))
 		} else {
 			this.selectedItems = this.initSelectedItem();
 		}
@@ -82,7 +94,7 @@ export class Dropdown {
 			this.checkDisableClearButton();
 		}
 		if (this.opts.elementReadonly) {
-			this.element.setAttribute('readonly', '')
+			this.$input.setAttribute('readonly', '')
 			this.elementReadonly = true;
 		}
 
@@ -92,7 +104,7 @@ export class Dropdown {
 
 
 	initSelectedItem() {
-		let items = this.dropdown.querySelectorAll('.dropdown-item__counter');
+		let items = this.$dropdown.querySelectorAll('.dropdown-item__counter');
 
 		items = Array.prototype.slice.call(items);
 		items.map(item => items[item.getAttribute("counter")] = 0);
@@ -102,18 +114,18 @@ export class Dropdown {
 	}
 
 	bindEvents() {
-		this.element.addEventListener(this.opts.showEvent, this.onFocus);
-		this.element.addEventListener('blur', this.onBlur);
-		this.dropdown.addEventListener('mousedown', this.onMouseDown);
-		this.dropdown.addEventListener('mouseup', this.onMouseUp);
-		this.dropdown.addEventListener('click', this.onClickItemButton);
+		this.$input.addEventListener(this.opts.showEvent, this.onFocus);
+		this.$input.addEventListener('blur', this.onBlur);
+		this.$dropdown.addEventListener('mousedown', this.onMouseDown);
+		this.$dropdown.addEventListener('mouseup', this.onMouseUp);
+		this.$dropdown.addEventListener('click', this.onClickItemButton);
 	}
 
 	bindSubEvents() {
 		this.on(consts.eventChangeSelectedItems, this.onChangeSelectedItems);
 	}
 	attachFooterButtonListener() {
-		this.dropdown.addEventListener('click', this.onClickFooterButton);
+		this.$dropdown.addEventListener('click', this.onClickFooterButton);
 	}
 
 
@@ -139,7 +151,7 @@ export class Dropdown {
 
 	onMouseUp = (e) => {
 		this.inFocus = false;
-		this.element.focus();
+		this.$input.focus();
 	}
 
 	onClickItemButton = (e) => {
@@ -163,14 +175,14 @@ export class Dropdown {
 
 
 	show() {
-		this.element.classList.add(consts.dropdownShowClassName);
+		this.$container.classList.add(consts.dropdownShowClassName);
 		this.visible = true;
 	}
 
 	hide() {
-		this.element.blur();
+		this.$input.blur();
 		this.visible = false;
-		this.element.classList.remove(consts.dropdownShowClassName);
+		this.$container.classList.remove(consts.dropdownShowClassName);
 	}
 
 	handleClickItemButton = (e) => {
@@ -210,7 +222,7 @@ export class Dropdown {
 
 				keys.forEach(item => this.selectedItems[item] = 0);
 
-				this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.dropdown.querySelectorAll('.dropdown-item__counter')))
+				this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.$dropdown.querySelectorAll('.dropdown-item__counter')))
 			}
 
 			if (e.target.value === this.opts.applyFooterButtonName) {
@@ -236,17 +248,17 @@ export class Dropdown {
 
 			if (requiredValues.includes(0)) {
 				if (this.selectedItemsIsEmty()) {
-					this.element.value = '';
+					this.$input.value = '';
 				} else {
-					this.element.value = this.opts.ItemsRequiredMessage;
+					this.$input.value = this.opts.ItemsRequiredMessage;
 				}
 			} else {
 
-				this.element.value = this.format(this.selectedItems);
+				this.$input.value = this.format(this.selectedItems);
 			}
 		} else {
 
-			this.element.value = this.format(this.selectedItems);
+			this.$input.value = this.format(this.selectedItems);
 		}
 
 	}
@@ -268,7 +280,7 @@ export class Dropdown {
 
 	checkDisableClearButton() {
 
-		let buttons = this.dropdown.querySelectorAll('.button__input_link');
+		let buttons = this.$dropdown.querySelectorAll('.button__input_link');
 
 		buttons = Array.prototype.slice.call(buttons);
 		let clearButton = buttons.find(button => button.value === this.opts.clearFooterButtonName);
