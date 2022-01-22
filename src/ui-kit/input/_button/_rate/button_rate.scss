@@ -6,19 +6,28 @@
 	align-items: center;
 }
 .button__input_rate {
-	display: none;
-	position: absolute;
-}
-.button__star {
+	visibility: hidden;
 	width: 2.4rem;
 	height: 2.4em;
-	background: center no-repeat url("./star_border.svg");
-	
+	&::before {
+		visibility: visible;
+		content: "star_border";
+		font-family: "MaterialIcons";
+		font-size: 2.5rem;
+		line-height: 3.5rem;
+		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+		color: transparent;
+		-webkit-background-clip: text;
+		background-clip: text;
+		
+	}
 }
 
-.button__star:hover,
-.button__star:hover ~ .button__star,
-.button__input_rate:checked ~ .button__star {
-	
-	background: center no-repeat url("./star.svg");
+.button__input_rate:hover,
+.button__input_rate:hover ~ .button__input_rate,
+.button__input_rate:checked ~ .button__input_rate,
+.button__input_rate:checked{
+	&::before{
+		content: "star";	
+	}	
 }

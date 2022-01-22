@@ -5,6 +5,7 @@ import '../list/list'
 //import '../pagination/pagination'
 //import '../slider/slider'
 import '../room-info/room-info'
+import '../review/review'
 
 
 

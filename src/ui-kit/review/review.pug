@@ -1,0 +1,13 @@
+
+mixin review()
+	.rewiew__container 
+		.review__title-container
+			.review__avatar 
+				img.review__image(src=require('../review/avatar.png'), alt='avatar')
+			.review__title
+				p.review__user-name='Мурад Сарафанов'
+				p.review__date-created='5 дней назад'
+		.review__review
+			.review__like-button
+				+input({type: INPUT_TYPE.BUTTON_LIKE})
+			.review__content='Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'

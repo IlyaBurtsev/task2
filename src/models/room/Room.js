@@ -1,6 +1,8 @@
 
 export default class Room{
-	constructor(roomInfo = []){
-		this.roomInfo = roomInfo;
+	constructor(room){
+		this.roomInfo = room.roomInfo;
+		this.reviews = room.reviews;
 	}
+	
 }
