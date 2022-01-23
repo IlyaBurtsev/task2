@@ -5,7 +5,7 @@ export class Review{
 		this.userName = review.userName;
 		this.dateCreated = review.dateCreated;
 		this.likeCounter = review.likeCounter;
-		this.likedByUsers =[];
+		this.likedByUsers = review.likedByUsers;
 		this.reviewContent = review.reviewContent;
 	}
 }

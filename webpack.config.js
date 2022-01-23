@@ -1,6 +1,7 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 const webpack = require("webpack");
 
@@ -15,6 +16,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			'@ui-kit': path.resolve(__dirname, 'src/ui-kit'),
+			'@assets': path.resolve(__dirname, 'src/assets')
 		}
 	},
 	devServer: {
@@ -27,12 +29,24 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
-			'window.jquery':'jquery',
-			'window.jQuery':'jquery',
+			'window.jquery': 'jquery',
+			'window.jQuery': 'jquery',
 			'noUiSlider': 'nouislider'
 		}),
 		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
+		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' }),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: path.resolve(__dirname, "src/**/*.(png|jpg)"),
+					to() {
+						return path.resolve(__dirname, "dist/assets/[name][ext]");
+					},
+					noErrorOnMissing: true,
+				},
+			],
+		})
+
 	],
 	module: {
 		rules: [
