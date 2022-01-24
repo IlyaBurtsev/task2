@@ -1,8 +1,7 @@
+import { roomMock } from "../../entities/roomMock/room";
+import { showError } from "../../models/error/metodError";
 
-function showError(metodName){
-	throw new Error('Метод ' + metodName + ' не определен. Пожалуйста реализуйте метод.');
-}
-export default class RoomRepository {
+ class RoomRepository {
 	getRoomInfo() {
 		showError('getRoomInfo');
 	}
@@ -10,4 +9,29 @@ export default class RoomRepository {
 	getReviews() {
 		showError('getReviews');
 	}
+
+	
+}
+
+class RoomRepositoryMock extends RoomRepository {
+	constructor(room) {
+		super();
+		this.room = room;
+	}
+
+
+	getRoomInfo() {
+		return this.room.roomInfo
+	}
+
+	getReviews(){
+		return this.room.reviews
+	}
+}
+
+
+export function getRoomRepository() {
+	
+	const roomRepositoryMock = new RoomRepositoryMock(roomMock);
+	return roomRepositoryMock;
 }

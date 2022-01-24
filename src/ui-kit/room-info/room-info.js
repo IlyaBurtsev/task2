@@ -1,6 +1,6 @@
 import './room-info.scss'
 import { createElement } from '../../utils/utils';
-import { getRoomRepository } from '../../repository/roomRepository/RoomRepositoryMock'
+import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
 
 init()
 

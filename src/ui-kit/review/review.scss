@@ -1,6 +1,7 @@
 .rewiew__container {
 	//display: none;
 	width: 71.1rem;
+	margin-bottom: 2.2rem;
 	
 	.review__title-container {
 		height: 5.1rem;
@@ -10,7 +11,7 @@
 		margin-bottom: 0.9rem;
 		.review__avatar {
 			margin-right: 1rem;
-			max-width: 4.8rem;
+			width: 4.8rem;
 			height: 4.8rem;
 			border: 0.2rem solid white;
 			border-radius: 3.2rem;
@@ -25,9 +26,9 @@
 		}
 		.review__title {
 			line-height: 1rem;
-			
 			.review__user-name{
 				font-weight: bold;
+				letter-spacing: 0.03rem;
 			}
 		}
 	}
