@@ -5,6 +5,7 @@ include ../slider/slider.pug
 include ../room-info/room-info.pug
 include ../input/_button/_like/button_like.pug
 include ../review/review.pug
+include ../external-container/external-container.pug
 
 doctype html
 html(lang="en")
@@ -29,8 +30,9 @@ html(lang="en")
 			//- +input({type: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
 			//- +input({type: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
 			//- +input({type: INPUT_TYPE.BUTTON_RATE, inputValue: 4})
-			//- +list({listType: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
-			//- +list({listType: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
+
+			+list({type: LIST_TYPE.EXPANDABLE_CHECKBOX, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'Expandable'})
+			+list({type: LIST_TYPE.BULLET, items: ['45', 'hyhyjh', 'gsdg', 'gdfhh', 'gdg', 'fdhffd'], listTitle: 'bullet'})
 			//- +dropdown({dropdownType: DROPDOWN_TYPE.GUESTS, dropdownTitle: 'Сколько гостей?', dropdownItems: ['взрослые', 'дети', 'младенцы']})
 			//- +dropdown({dropdownType: DROPDOWN_TYPE.COMFORT, dropdownTitle: 'Удобства в номере', dropdownItems: ['спальни', 'кровати', 'ванные комнаты']})
 			//- +dropdown({dropdownType: DROPDOWN_TYPE.DATE, dropdownTitle: 'ДД.ММ.ГГГГ'})
@@ -44,6 +46,8 @@ html(lang="en")
 			//- +input({type: INPUT_TYPE.GUESTS})
 			//- +input({type: INPUT_TYPE.INPUT_SHORT_FIELD, placeholder: 'ДД.ММ.ГГГГ'})
 			+review()
+			//- +external-container({title: 'Text Field', description: 'Default'})
+			//- +input({type: INPUT_TYPE.INPUT_LONG_FIELD, inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', dataSelected: 'input-mask'})
 			
 			
 			

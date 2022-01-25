@@ -6,6 +6,11 @@ import '../list/list'
 //import '../slider/slider'
 import '../room-info/room-info'
 import '../review/review'
+import '../external-container/external-container'
+
+import { getcheckboxList } from '../../repository/siteSettingsRepository/siteSettingsRepository';
+
+getcheckboxList();
 
 
 
