@@ -7,7 +7,7 @@
 		padding-left: 1.4rem;
 		// color: rgba(31, 32, 65, 0.25);
 		outline: transparent;
-		border: 0.1rem solid rgba(31, 32, 65, 0.5);
+		border: 0.1rem solid rgba(31, 32, 65, 0.25);
 		box-sizing: border-box;
 		border-radius: 0.4rem;
 		align-items: center;
@@ -28,12 +28,12 @@
 	// ::placeholder {
 	// 	color: rgba(31, 32, 65, 0.25);
 	// }
-	// :hover,
-	// :focus,
-	// :focus-visible {
-	// 	border-color: rgba(31, 32, 65, 0.5);
-	// 	color: rgba(31, 32, 65, 0.75);
-	// }
+	:hover,
+	:focus,
+	:focus-visible {
+		border-color: rgba(31, 32, 65, 0.5);
+		// color: rgba(31, 32, 65, 0.75);
+	}
 }
 .dropdown__expand-container {
 	visibility: hidden;

@@ -3,7 +3,7 @@ include ./_button/_rate/button_rate.pug
 include ./_dropdown/_guests/dropdown_guests.pug
 include ./_dropdown/_comfort/dropdown_comfort.pug
 
-- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'INPUT_LONG_FIELD':4, 'INPUT_MIDDLE_FIELD':5, 'INPUT_SHORT_FIELD':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16}
+- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'INPUT_TEXT':4, 'INPUT_SUBSCRIPTION':5, 'INPUT_SHORT_FIELD':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16}
 
 mixin input(options)
 	case options.type 
@@ -15,12 +15,10 @@ mixin input(options)
 			+switch_checkbox_rich({inputLabel: options.inputLabel, inputLabelDescription: options.inputLabelDescription})
 		when INPUT_TYPE.RADIO
 			+input-tamplate({blockName: 'switch', modificatorName: 'radio', inputType: 'radio', radioName: options.inputRadioName, customElementName: 'label', customElementValue: options.inputLabel})
-		when INPUT_TYPE.INPUT_LONG_FIELD
-			+input-tamplate({blockName: 'input-field', inputType: options.inputType, placeholder: options.placeholder, dataIcon: options.dataIcon, dataSelected: options.dataSelected})
-		when INPUT_TYPE.INPUT_MIDDLE_FIELD
-			+input-tamplate({blockName: 'input-field', modificatorName: 'middle', inputType: options.inputType, placeholder: options.placeholder, dataIcon: options.dataIcon, isPrimaryGradient: options.isPrimaryGradient})
-		when INPUT_TYPE.INPUT_SHORT_FIELD
-			+input-tamplate({blockName: 'input-field', modificatorName: 'short', inputType: options.inputType, placeholder: options.placeholder, dataIcon: options.dataIcon})
+		when INPUT_TYPE.INPUT_TEXT
+			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: options.placeholder, dataSelected: options.dataSelected})
+		when INPUT_TYPE.INPUT_SUBSCRIPTION
+			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: options.inputType, placeholder: 'Email'})
 		when INPUT_TYPE.BUTTON_WHITE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue})
 		when INPUT_TYPE.BUTTON_PURPLE_TEXT
