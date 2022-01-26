@@ -66,14 +66,14 @@ export class Dropdown {
 		this.dropdownItem = new DropdownItem(this);
 
 
-		if (this.elIsInput) {
+		if (this.elIsInput ) {
 			
 				this.bindEvents();
 				
 		}
 		
 		if (this.opts.inline || !this.elIsInput) {
-			//(this.$dropdown.closest('.dropdown__container')).classList.add('dropdown__container_inline');
+			this.$container.classList.add('dropdown__container_inline');
 	  }
 
 		if (this.opts.visible && !this.opts.inline) {

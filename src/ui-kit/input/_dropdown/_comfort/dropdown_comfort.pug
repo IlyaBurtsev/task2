@@ -1,7 +1,8 @@
 include ../dropdown-item/dropdown-item.pug
 mixin dropdown_comfort(options)
 	.dropdown__container_comfort
-		+input({type: INPUT_TYPE.INPUT_MIDDLE_FIELD, placeholder: options.placeholder, dataIcon:'expand_more'})
+		.dropdown__title-container.dropdown__title-container_comfort
+			input.dropdown__input.dropdown__input_comfort
 		.dropdown__expand-container.dropdown__expand-container_comfort
 			each val in options.items 
 				+dropdown-item(val)

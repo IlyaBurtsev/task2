@@ -1,6 +1,8 @@
 import './dropdown_guests.scss'
 
 import { Dropdown } from '../dropdown'
+
+init()
 function init() {
 	new Dropdown('.dropdown__container_guests', {
 		visible: true,
@@ -10,6 +12,6 @@ function init() {
 		ItemsRequired: ['взрослые'],
 		ItemsRequiredMessage: 'Недопустимый выбор.',
 		footerButtonActived: true,
-		//inline: true
+		// inline: true
 	})
 }
