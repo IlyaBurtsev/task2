@@ -2,7 +2,7 @@ import './dropdown_guests.scss'
 
 import { Dropdown } from '../dropdown'
 
-init()
+//init()
 function init() {
 	new Dropdown('.dropdown__container_guests', {
 		visible: true,

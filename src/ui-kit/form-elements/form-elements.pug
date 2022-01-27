@@ -56,6 +56,16 @@ html(lang="en")
 				.form__container.form__container_dropdown_closed
 					+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown'})
 					+input({type: INPUT_TYPE.GUESTS})
+				.form__container.form__container_masked-field
+					+title({type: TITLE_TYPE.LONG, title: 'masked text field'})
+					+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'ДД.ММ.ГГГГ', })
+				.form__container.form__container_dropdown-date
+					.form__container_arrivval
+						+title({type: TITLE_TYPE.SHORT, title: 'date dropdown'})
+						+input({type: INPUT_TYPE.DATE})
+					.form__container_departure
+						+title({type: TITLE_TYPE.SHORT, title: 'date dropdown'})
+						+input({type: INPUT_TYPE.DATE})
 			.column2 
 			.column3
 			

@@ -2,6 +2,7 @@ include ./_switch/_checkbox/_rich/switch_checkbox_rich.pug
 include ./_button/_rate/button_rate.pug
 include ./_dropdown/_guests/dropdown_guests.pug
 include ./_dropdown/_comfort/dropdown_comfort.pug
+include ./_dropdown/_date/dropdown_date.pug
 
 - const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'INPUT_TEXT':4, 'INPUT_SUBSCRIPTION':5, 'INPUT_SHORT_FIELD':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16}
 
@@ -34,7 +35,8 @@ mixin input(options)
 		when INPUT_TYPE.FILTER_DATE 
 			+input-tamplate({blockName: 'dropdown', modificatorName: 'filter-date', inputType: 'Text', placeholder: options.placeholder, customElementName: 'expand-icon'})
 		when INPUT_TYPE.DATE 
-			+input-tamplate({blockName: 'input-field', modificatorName: 'dropdown-date', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', dataIcon:'expand_more', dataSelected: options.dataSelected})
+			+dropdown_date()
+			//- +input-tamplate({blockName: 'dropdown', modificatorName: 'dropdown-date', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', dataSelected: options.dataSelected})
 		when INPUT_TYPE.GUESTS 
 			+dropdown_guests({placeholder: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
 		when INPUT_TYPE.COMFORT
