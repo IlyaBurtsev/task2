@@ -3,32 +3,22 @@ body{
 	margin: 0;
 }
 
-//TODO remove after test
-
-// checkbox_rich
-// .test{
-// 	margin-top: 344px;
-// 	margin-left: 587px;
-// }
-
-//toggle
-// .test{
-// margin-top: 469.56px;
-// margin-left: 587px;
-// }
-
-//_like
-// .test{
-// 	margin-top: 565px;
-// 	margin-left: 587px;
-// }
-
-//star
-.test{
-	margin-top: 60px;
-	margin-left: 40px;
+.form-elements__container {
 	display: flex;
-	flex-direction: column;
-	//justify-content: space-around;
+	flex-direction: row;
+	padding: 14rem;
+	.column1{
+		flex-direction: column;
+		
+	}
+	.column1{
+		flex-direction: column;
+	}
+	.column1{
+		flex-direction: column;
+	}
+}
 
+.form__container_input-field{
+	margin-bottom: 2rem;
 }

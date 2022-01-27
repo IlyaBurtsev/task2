@@ -2,7 +2,7 @@ include ../dropdown-item/dropdown-item.pug
 mixin dropdown_guests(options) 
 	.dropdown__container_guests 
 		.dropdown__title-container
-			input.dropdown__input(type='text')
+			input.dropdown__input(type='text', placeholder= 'Сколько гостей')
 		.dropdown__expand-container
 			each val in options.items
 				+dropdown-item(val)

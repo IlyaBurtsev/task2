@@ -20,8 +20,8 @@ html(lang="en")
 			//- +input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)'})
 			//- +input({type: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Мужчина'})
 			//- +input({tType: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Женщина'})
-			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
-			+input({type: INPUT_TYPE.INPUT_SUBSCRIPTION})
+			
+			//- +input({type: INPUT_TYPE.INPUT_SUBSCRIPTION})
 			//- +input({type: INPUT_TYPE.DATE,})
 			//- +input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
 			//- +input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me'})
@@ -39,12 +39,25 @@ html(lang="en")
 			//- +pagination
 			//- +slider({title: 'Range Slider'})
 			//- +room-info()
-			+input({type: INPUT_TYPE.COMFORT})
-			+input({type: INPUT_TYPE.GUESTS})
+			//- +input({type: INPUT_TYPE.COMFORT})
+			//- +input({type: INPUT_TYPE.GUESTS})
 			//- +input({type: INPUT_TYPE.INPUT_SHORT_FIELD, placeholder: 'ДД.ММ.ГГГГ'})
-			+review()
-			//- +external-container({title: 'Text Field', description: 'Default'})
+			//- +review()
 			//- +input({type: INPUT_TYPE.INPUT_LONG_FIELD, inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', dataSelected: 'input-mask'})
+
+		.form-elements__container 
+			.column1 
+				.form__container.form__container_input-field
+					+title({type: TITLE_TYPE.LONG, title: 'text field', description: 'default'})
+					+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
+				.form__container.form__container_input-field
+					+title({type: TITLE_TYPE.LONG, title: 'text field', description: 'hover/focus'})
+					+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email', inputValue: 'This is pretty awesome'})
+				.form__container.form__container_dropdown_closed
+					+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown'})
+					+input({type: INPUT_TYPE.GUESTS})
+			.column2 
+			.column3
 			
 			
 			

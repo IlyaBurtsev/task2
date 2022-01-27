@@ -16,9 +16,9 @@ mixin input(options)
 		when INPUT_TYPE.RADIO
 			+input-tamplate({blockName: 'switch', modificatorName: 'radio', inputType: 'radio', radioName: options.inputRadioName, customElementName: 'label', customElementValue: options.inputLabel})
 		when INPUT_TYPE.INPUT_TEXT
-			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: options.placeholder, dataSelected: options.dataSelected})
+			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: options.placeholder, dataSelected: options.dataSelected, inputValue: options.inputValue})
 		when INPUT_TYPE.INPUT_SUBSCRIPTION
-			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: options.inputType, placeholder: 'Email'})
+			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: options.inputType, placeholder: 'Email', inputValue: options.inputValue})
 		when INPUT_TYPE.BUTTON_WHITE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue})
 		when INPUT_TYPE.BUTTON_PURPLE_TEXT

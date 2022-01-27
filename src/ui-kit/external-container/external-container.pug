@@ -1,4 +1,15 @@
-mixin external-container(options)
-	.external-container__container
-		H3.external-container__title= options.title 
-		.external-container__description= options.description
+include ./_long/external-container_long.pug
+include ./_middle/external-container_middle.pug
+include ./_buttons/external-container_buttons.pug
+
+-const TITLE_TYPE = {'LONG':0, 'MIDDLE':1, 'BUTTONS':2}
+
+mixin title(options)
+
+	case options.type 
+		when TITLE_TYPE.LONG 
+			+external-container_long({title: options.title, description: options.description})
+		when TITLE_TYPE.MIDDLE
+			+external-container_middle({title: options.title, description: options.description})
+		when TITLE_TYPE.BUTTONS
+			+external-container_buttons({title: options.title})
