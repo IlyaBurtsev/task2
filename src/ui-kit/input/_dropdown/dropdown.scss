@@ -1,11 +1,11 @@
 .dropdown__title-container {
 	width: 32rem;
-	height: 4.3rem;
+	height: 4.4rem;
 	display: inline-flex;
 	position: relative;
 	.dropdown__input {
 		padding-left: 1.4rem;
-		// color: rgba(31, 32, 65, 0.25);
+		color: rgba(31, 32, 65, 0.75);
 		outline: transparent;
 		border: 0.1rem solid rgba(31, 32, 65, 0.25);
 		box-sizing: border-box;
@@ -25,9 +25,9 @@
 		right: 0;
 	}
 
-	// ::placeholder {
-	// 	color: rgba(31, 32, 65, 0.25);
-	// }
+	::placeholder {
+		color: rgba(31, 32, 65, 0.75);
+	}
 	:hover,
 	:focus,
 	:focus-visible {

@@ -1,11 +1,14 @@
 mixin list_checkbox(options)
 		label.list__container_checkbox
-			input.list__input_checkbox(type= 'checkbox')
+			input.list__input_checkbox(type= 'checkbox', checked=options.checked)
 			.list__title-container_checkbox
 				H3.list__title_checkbox= options.listTitle
 				.list__expand-icon_checkbox
 			.list__items_checkbox
-				each val in options.items 
-					.list__item_checkbox
-						+input({type: INPUT_TYPE.CHECKBOX, inputLabel: val})
+				- for (let x = 0; x < 6; x++)
+					if (options.selectedItems[x])
+						.list__item_checkbox
+							+input({type: INPUT_TYPE.CHECKBOX, inputLabel: options.items[x], checked: options.selectedItems[x]})
+					else 
+						+input({type: INPUT_TYPE.CHECKBOX, inputLabel: options.items[x]})
 		

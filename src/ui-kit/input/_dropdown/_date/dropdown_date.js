@@ -3,10 +3,10 @@ import 'air-datepicker/air-datepicker.css';
 import '../dropdown.scss'
 import './dropdown_date.scss'
 
-//init()
-function init() {
 
-	class AirDatepickerCustom extends AirDatepicker {
+
+
+	export class AirDatepickerCustom extends AirDatepicker {
 		constructor(inputArrival, inputDeparture) {
 			super(inputArrival, {
 				range: true,
@@ -23,7 +23,7 @@ function init() {
 						dpHeight = $datepicker.clientHeight,
 						dpWidth = $datepicker.clientWidth;
 
-					let top = coords.y + coords.height;
+					let top = coords.y + coords.height + window.scrollY;
 					let left = coords.x;
 
 					$datepicker.style.left = `${left}px`;
@@ -38,11 +38,11 @@ function init() {
 		}
 		show(){
 			super.show();
-			this.$inputDeparture.classList.add('input-field__input_dropdown-date_departure-focused');
+			this.$inputDeparture.classList.add('dropdown__input_date_departure-focused');
 		}
 		hide(){
 			super.hide();
-			this.$inputDeparture.classList.remove('input-field__input_dropdown-date_departure-focused');
+			this.$inputDeparture.classList.remove('dropdown__input_date_departure-focused');
 		}
 
 
@@ -83,9 +83,9 @@ function init() {
 		}
 	}
 
-	new AirDatepickerCustom('.input-field__input_dropdown-date[data-selected= "arrival"]', '.input-field__input_dropdown-date[data-selected= "departure"]');
+	
 
 
-}
+
 
 

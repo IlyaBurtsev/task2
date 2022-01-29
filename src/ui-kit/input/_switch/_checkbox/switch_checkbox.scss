@@ -1,8 +1,9 @@
 .switch__container_checkbox {
-	width: 22.2rem;
 	.switch__label_checkbox {
+		width: 22.2rem;
 		background-color: white;
-		padding-bottom: 1rem;
+		padding-bottom: 1.06rem;
+		line-height: 1.8rem;
 		&::before {
 			content: '';
 			border-radius: 0.4rem;

@@ -3,40 +3,40 @@ include ./_button/_rate/button_rate.pug
 include ./_dropdown/_guests/dropdown_guests.pug
 include ./_dropdown/_comfort/dropdown_comfort.pug
 include ./_dropdown/_date/dropdown_date.pug
+include ./_dropdown/_filter-date/dropdown_filter-date.pug
 
 - const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'INPUT_TEXT':4, 'INPUT_SUBSCRIPTION':5, 'INPUT_SHORT_FIELD':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16}
 
 mixin input(options)
 	case options.type 
 		when INPUT_TYPE.TOGGLE
-			+input-tamplate({blockName: 'switch', modificatorName: 'toggle', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
+			+input-tamplate({blockName: 'switch', modificatorName: 'toggle', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel, checked: options.checked})
 		when INPUT_TYPE.CHECKBOX
-			+input-tamplate({blockName: 'switch', modificatorName: 'checkbox', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel})
+			+input-tamplate({blockName: 'switch', modificatorName: 'checkbox', inputType: 'checkbox', customElementName: 'label', customElementValue: options.inputLabel, checked: options.checked})
 		when INPUT_TYPE.CHECKBOX_RICH
 			+switch_checkbox_rich({inputLabel: options.inputLabel, inputLabelDescription: options.inputLabelDescription})
 		when INPUT_TYPE.RADIO
-			+input-tamplate({blockName: 'switch', modificatorName: 'radio', inputType: 'radio', radioName: options.inputRadioName, customElementName: 'label', customElementValue: options.inputLabel})
+			+input-tamplate({blockName: 'switch', modificatorName: 'radio', inputType: 'radio', radioName: options.inputRadioName, customElementName: 'label', customElementValue: options.inputLabel, checked: options.checked})
 		when INPUT_TYPE.INPUT_TEXT
-			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: options.placeholder, dataSelected: options.dataSelected, inputValue: options.inputValue})
+			+input-tamplate({blockName: 'input-field', inputType: 'Text', placeholder: options.placeholder, dataSelected: options.dataSelected, inputValue: options.inputValue, autofocus: options.autofocus})
 		when INPUT_TYPE.INPUT_SUBSCRIPTION
 			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: options.inputType, placeholder: 'Email', inputValue: options.inputValue})
 		when INPUT_TYPE.BUTTON_WHITE_TEXT
-			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue})
+			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', inputValue: options.inputValue, active: options.active})
 		when INPUT_TYPE.BUTTON_PURPLE_TEXT
-			+input-tamplate({blockName: 'button', modificatorName: 'purple-text', inputType: 'button', inputValue: options.inputValue})
+			+input-tamplate({blockName: 'button', modificatorName: 'purple-text', inputType: 'button', inputValue: options.inputValue, active: options.active})
 		when INPUT_TYPE.BUTTON_PAY 	
 			+input-tamplate({blockName: 'button', modificatorName: 'pay', inputType: 'button', inputValue: options.inputValue, customElementName: 'arrow'})
 		when INPUT_TYPE.BUTTON_LINK	
-			+input-tamplate({blockName: 'button', modificatorName: 'link', inputType: 'button', inputValue: options.inputValue})
+			+input-tamplate({blockName: 'button', modificatorName: 'link', inputType: 'button', inputValue: options.inputValue, active: options.active})
 		when INPUT_TYPE.BUTTON_LIKE 	
 			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button', inputValue: options.inputValue, dataSelected: options.dataSelected})
 		when INPUT_TYPE.BUTTON_RATE 
-			+button_rate({inputValue: options.inputValue})
+			+button_rate({inputValue: options.inputValue, radioName: options.inputRadioName})
 		when INPUT_TYPE.FILTER_DATE 
-			+input-tamplate({blockName: 'dropdown', modificatorName: 'filter-date', inputType: 'Text', placeholder: options.placeholder, customElementName: 'expand-icon'})
+			+dropdown_filter-date({value: options.inputValue})
 		when INPUT_TYPE.DATE 
-			+dropdown_date()
-			//- +input-tamplate({blockName: 'dropdown', modificatorName: 'dropdown-date', inputType: 'Text', placeholder: 'ДД.ММ.ГГГГ', dataSelected: options.dataSelected})
+			+dropdown_date({value: options.inputValue, dataType: options.dataType})
 		when INPUT_TYPE.GUESTS 
 			+dropdown_guests({placeholder: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
 		when INPUT_TYPE.COMFORT
@@ -48,7 +48,6 @@ mixin input(options)
 mixin input-tamplate(options)
 	- let colored = ''
 	- let containerClassName = options.blockName + '__container'
-	- options.isPrimaryGradient === true ? colored =' ' + containerClassName+'_colored' : ''
 	- containerClassName += options.modificatorName ? ' '+containerClassName+'_'+options.modificatorName : ''
 	- containerClassName +=colored
 	- let customClassName = options.customElementName ? options.blockName+'__'+options.customElementName : ''
@@ -59,6 +58,6 @@ mixin input-tamplate(options)
 	
 	
 		label(class=containerClassName)(data-icon=options.dataIcon)
-			input(class=inputClassName)(type=options.inputType, value=options.inputValue, placeholder=options.placeholder, name=options.radioName, data-selected =options.dataSelected, checked=options.checked)
+			input(class=inputClassName)(type=options.inputType, value=options.inputValue, placeholder=options.placeholder, name=options.radioName, data-selected =options.dataSelected, checked=options.checked, autofocus=options.autofocus, active=options.active)
 			//-TODO: Подумать, как избавиться от пустого [div] при отсутствии [options.customElementName]
 			span(class=customClassName)=options.customElementValue

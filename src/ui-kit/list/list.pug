@@ -6,6 +6,6 @@ include ./_checkbox/list_checkbox.pug
 mixin list(options)
 	case options.type
 		when LIST_TYPE.EXPANDABLE_CHECKBOX
-			+list_checkbox({items: options.items, listTitle: options.listTitle})
+			+list_checkbox({items: options.items, listTitle: options.listTitle, checked: options.checked, selectedItems: options.selectedItems})
 		when LIST_TYPE.BULLET
 			+list_bullet({items: options.items, listTitle: options.listTitle})

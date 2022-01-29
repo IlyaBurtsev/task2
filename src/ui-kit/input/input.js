@@ -1,5 +1,5 @@
 import './_switch/switch'
 import './_input-field/input-field'
 import './_button/button'
-import './_dropdown/index'
+import './_dropdown/dropdown'
 import './mask/input-mask'

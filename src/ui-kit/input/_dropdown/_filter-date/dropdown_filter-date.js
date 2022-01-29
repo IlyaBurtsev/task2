@@ -3,7 +3,7 @@ import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
 import './datepickerVars.scss'
 
-$(function () {
+export function initDropdownFilterDate (bindElement) {
 
 	let button = {
 		content: 'Применить',
@@ -14,10 +14,9 @@ $(function () {
 	}
 
 
-	new AirDatepicker('.dropdown__input_filter-date', {
+	new AirDatepicker(bindElement, {
 		range: true,
 		multipleDatesSeparator: ' - ',
-		container: '#container',
 		prevHtml: '<svg><path d="M16.1755 8.01562V9.98438H3.98801L9.56613 15.6094L8.15988 17.0156L0.144258 9L8.15988 0.984375L9.56613 2.39062L3.98801 8.01562H16.1755Z" fill="#BC9CFF"/></svg>',
 		nextHtml: '<svg><path d="M8.36301 0.984375L16.3786 9L8.36301 17.0156L6.95676 15.6094L12.5349 9.98438H0.347383V8.01562H12.5349L6.95676 2.39062L8.36301 0.984375Z" fill="#BC9CFF"/></svg>',
 		buttons: ['clear', button],
@@ -25,11 +24,12 @@ $(function () {
 			days: '<i>MMMM</i> <i>yyyy</i><i></i>',
 		},
 		position({ $datepicker, $target, $pointer }) {
+			console.log($target.getBoundingClientRect())
 			let coords = $target.getBoundingClientRect(),
 				dpHeight = $datepicker.clientHeight,
 				dpWidth = $datepicker.clientWidth;
 
-			let top = coords.y + coords.height;
+			let top = coords.y+coords.height+ window.scrollY;
 			let left = coords.x;
 
 			$datepicker.style.left = `${left}px`;
@@ -37,7 +37,8 @@ $(function () {
 
 			$pointer.style.display = 'none';
 		},
+		selectedDates: ['2022-08-19', '2022-08-23'],
 		dateFormat: 'dd MMM'
 	})
 
-})
+}
