@@ -7,7 +7,7 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		main: path.resolve(__dirname, 'src/ui-kit/form-elements/form-elements.js')
+		main: path.resolve(__dirname, 'src/ui-kit/cards/cards.js')
 	},
 	output: {
 		filename: '[name]-[contenthash].js',
@@ -24,7 +24,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: './src/ui-kit/form-elements/form-elements.pug'
+			template: './src/ui-kit/cards/cards.pug'
 		}),
 		new webpack.ProvidePlugin({
 			$: 'jquery',

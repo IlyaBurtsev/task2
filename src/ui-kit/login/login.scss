@@ -1,0 +1,17 @@
+.login__container {
+	width: 38rem;
+	height: 35.8rem;
+	background: #ffffff;
+	border: 0.1rem solid rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
+	border-radius: 0.4rem;
+	padding: 4rem 3rem 3rem;
+	.login__footer-container{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-top: 2.6rem;
+		align-items: baseline;
+	}
+}

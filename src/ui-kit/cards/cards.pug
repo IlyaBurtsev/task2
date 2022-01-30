@@ -1,0 +1,23 @@
+include ../choose/choose.pug
+include ../registration/registration.pug
+include ../login/login.pug
+
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Cards
+	body 
+		.cards__page-container 
+			.logo
+			.cards__container 
+				.column1
+					+choose()
+					+registration()
+				.column2 
+					+login()
+				.column3
+		
+	

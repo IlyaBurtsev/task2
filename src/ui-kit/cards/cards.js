@@ -1,0 +1,5 @@
+import './cards.scss'
+import '../_theme/ui-kit_theme_custom.scss'
+import '../choose/choose'
+import '../registration/registration'
+import '../login/login'

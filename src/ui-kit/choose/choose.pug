@@ -1,0 +1,18 @@
+include ../blocks/dropdown-date-block/dropdown-date-block.pug
+include ../external-container/external-container.pug
+include ../input/input.pug
+
+
+mixin choose() 
+		.choose__container
+			h1.choose__title= 'Найдём номера под ваши пожелания'
+			.choose__separate-container
+			.choose__dropdown-date-container
+				+dropdown-date-block({titleArrival: 'Прибытие', titleDeparture: 'Выезд'})
+			.choose__dropdown-guests-container 
+				+title({type: TITLE_TYPE.MIDDLE, title: 'Гости'})
+				+input({type: INPUT_TYPE.GUESTS})
+			.choose__button-pay-container
+				+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'подобрать номер'})
+			
+				

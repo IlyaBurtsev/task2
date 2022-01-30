@@ -1,0 +1,22 @@
+
+include ../blocks/radio-block/radio-block.pug
+
+mixin registration()
+		.registration__container 
+			h1.registration__tittle= 'Регистрация аккаунта'
+			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Имя'})
+			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Фамилия'})
+			+radio-block()
+			+title({type: TITLE_TYPE.LONG, title: 'дата рождения'})
+			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'ДД.ММ.ГГГГ'})
+			.registration__separate-container
+			+title({type: TITLE_TYPE.LONG, title: 'данные для входа в сервис'})
+			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
+			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Пароль'})
+			+input({type: INPUT_TYPE.TOGGLE, inputLabel: 'Получать спецпредложения'})
+			+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
+			.registration__footer-container
+				p.registration__information= 'Уже есть аккаунт на Toxin'
+				+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'войти'})
+
+

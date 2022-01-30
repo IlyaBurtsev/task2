@@ -1,0 +1,8 @@
+mixin dropdown-date-block(options)
+	.dropdown-date-block__container
+		.dropdown-date-block_arrival
+			+title({type: TITLE_TYPE.SHORT, title: options.titleArrival})
+			+input({type: INPUT_TYPE.DATE, dataType: 'arrival'})
+		.dropdown-date-block_departure
+			+title({type: TITLE_TYPE.SHORT, title: options.titleDeparture})
+			+input({type: INPUT_TYPE.DATE, inputValue: options.inputValue, dataType: 'departure'})

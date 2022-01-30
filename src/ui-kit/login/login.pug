@@ -1,0 +1,10 @@
+
+mixin login()
+	.login__container 
+		h1.login__tittle= 'Войти'
+		+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
+		+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Пароль'})
+		+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'войти'})
+		.login__footer-container
+			p.login__information= 'Нет аккаунта на Toxin?'
+			+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'создать'})
