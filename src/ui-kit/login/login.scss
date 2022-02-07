@@ -7,6 +7,9 @@
 	box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
 	border-radius: 0.4rem;
 	padding: 4rem 3rem 3rem;
+	.login__separate-container{
+		height: 1rem;
+	}
 	.login__footer-container{
 		display: flex;
 		flex-direction: row;

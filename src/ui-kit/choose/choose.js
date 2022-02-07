@@ -4,6 +4,9 @@ import '../blocks/dropdown-date-block/dropdown-date-block'
 import '../input/input'
 
 import { Dropdown } from '../input/_dropdown/dropdown';
+import { initDateBlock } from '../blocks/dropdown-date-block/dropdown-date-block';
+
+initDateBlock('landing');
 
 const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
 const inputFormatForGuestsDropdown = { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] };

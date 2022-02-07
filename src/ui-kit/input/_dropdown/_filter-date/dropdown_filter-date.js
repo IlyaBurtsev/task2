@@ -3,7 +3,7 @@ import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
 import './datepickerVars.scss'
 
-export function initDropdownFilterDate (bindElement) {
+export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 
 	let button = {
 		content: 'Применить',
@@ -37,8 +37,9 @@ export function initDropdownFilterDate (bindElement) {
 
 			$pointer.style.display = 'none';
 		},
-		selectedDates: ['2022-08-19', '2022-08-23'],
+		selectedDates: selectedDates ?  selectedDates: ['2022-08-19', '2022-08-23'],
+		startDate: startDate ? startDate: '',
 		dateFormat: 'dd MMM'
+		
 	})
-
 }

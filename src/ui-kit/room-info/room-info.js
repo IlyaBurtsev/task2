@@ -2,10 +2,10 @@ import './room-info.scss'
 import { createElement } from '../../utils/utils';
 import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
 
-init()
+initRoomInfo(1);
 
-function init() {
-	let roomInfo = getRoomRepository().getRoomInfo();
+function initRoomInfo(roomNamber) {
+	let roomInfo = getRoomRepository().getRoomByNumber(roomNamber).getRoomInfo();
 	const container = document.querySelector('.room-info__container')
 	if (container) {
 		roomInfo.forEach((item) => {

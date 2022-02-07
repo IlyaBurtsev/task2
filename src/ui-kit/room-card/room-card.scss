@@ -1,0 +1,41 @@
+.room-card__container {
+	width: 38rem;
+	height: 51.2rem;
+	margin-bottom: 4.2rem;
+	border: 0.1rem solid rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
+	padding: 4.1rem 3rem 2.3rem;
+	.room-card__title-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		.room-card__number{
+			height: 3rem;		
+			.number{
+				font-size: 1.2rem;
+			}
+			
+			.additional {
+				font-size: 1.2rem;
+				color: rgba(188, 156, 255, 1);
+				text-transform: uppercase;
+			}
+		}
+		.room-card__price{
+			font-size: 1.2rem;
+			color: rgba(31, 32, 65, 0.5);
+			span {
+				font-size: 1.4rem;
+				font-family: 'MontserratBold';
+			}
+		}
+	}
+	.room-card__dropdown{
+		margin-bottom: 2rem;
+	}
+	.room-card__info-container {
+		display: flex;
+		justify-content: space-between;
+	}
+}

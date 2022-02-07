@@ -8,7 +8,7 @@ mixin choose()
 			h1.choose__title= 'Найдём номера под ваши пожелания'
 			.choose__separate-container
 			.choose__dropdown-date-container
-				+dropdown-date-block({titleArrival: 'Прибытие', titleDeparture: 'Выезд'})
+				+dropdown-date-block({titleArrival: 'Прибытие', titleDeparture: 'Выезд', dataSelector: 'landing'})
 			.choose__dropdown-guests-container 
 				+title({type: TITLE_TYPE.MIDDLE, title: 'Гости'})
 				+input({type: INPUT_TYPE.GUESTS})

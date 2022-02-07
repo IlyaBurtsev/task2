@@ -89,6 +89,10 @@
 	--adp-overlay-transition-ease: ease-out;
 	--adp-overlay-z-index: 100;
 }
+
+.air-datepicker-global-container{
+	box-shadow: 0 1rem 2rem rgba(31, 32, 65, 0.05);
+}
 /* -------------------------------------------------
     Datepicker nav
    ------------------------------------------------- */
@@ -116,29 +120,31 @@
 
 .air-datepicker-nav--title {
 	font-size: 1.9rem;
-	font-weight: bold;
+	font-family: "MontserratBold";
+	line-height: 2.3rem;
 
 	i {
 		color: var(--adp-title-color);
-		margin-left: 1rem;
-		margin-bottom: 0.2rem;
 	}
 }
 
 /* -------------------------------------------------
     Datepicker body
    ------------------------------------------------- */
+	.air-datepicker--content{
+		padding: 1.8rem 2rem;
+	}
 
 /*  Day names
    ------------------------------------------------- */
 .air-datepicker-body--day-names {
 	margin: 0;
-	margin-bottom: 1rem;
+	margin-bottom: 0.8rem;
 }
 
 .air-datepicker-body--day-name {
 	text-transform: none;
-	font-weight: bold;
+	font-family: "MontserratBold";
 }
 
 /* -------------------------------------------------
@@ -146,9 +152,15 @@
    ------------------------------------------------- */
 
 .air-datepicker-cell {
+	font-size: 1.2rem;
+	&[data-year="2019"][data-month="7"][data-date="8"]{
+		background: var(--adp-background-color-current-date);
+		color: var(--adp-color-current-date);
+		font-family: "MontserratBold";
+	}
 	&.-current- {
 		background: var(--adp-background-color-current-date);
-		font-weight: bold;
+		font-family: "MontserratBold";
 		&.-focus- {
 			color: var(--adp-color-current-date);
 		 }
@@ -200,7 +212,7 @@
 .air-datepicker-button {
 	font-size: 1.2rem;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-family: "MontserratBold";
 
 	&:active {
 		color: var(--adp-btn-color-active);

@@ -5,9 +5,9 @@ import { getElement } from '../../utils/utils'
 
 createReviews('.rewiew__container');
 
-function createReviews(bindElement) {
+function createReviews(bindElement, roomNamber) {
 	let $review = getElement(bindElement);
-	const reviews = getRoomRepository().getReviews();
+	const reviews = getRoomRepository().getRoomByNumber(roomNamber).getReviews();
 	
 	const firstReview = reviews.shift();
 	

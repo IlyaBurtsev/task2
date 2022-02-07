@@ -1,0 +1,13 @@
+mixin room-card()
+	.room-card__container
+		.room-card__title-container 
+			H1.room-card__number 
+			.room-card__price 
+		+dropdown-date-block({titleArrival: 'Прибытие', titleDeparture: 'Выезд', dataSelector:'room'})
+		.room-card__dropdown
+			+title({type: TITLE_TYPE.MIDDLE, title: 'Гости'})
+			+input({type: INPUT_TYPE.GUESTS})
+		.room-card__info-container 
+			.room-card__info  
+			.room-card__price
+		+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'забронировать'})

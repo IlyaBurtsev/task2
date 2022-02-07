@@ -1,52 +1,47 @@
-import { roomMock } from "../../entities/roomMock/room";
+import { room888Mock, roomPresentationMock } from "../../entities/roomMock/room";
 import { showError } from "../../models/error/metodError";
 
  class RoomRepository {
-	getRoomInfo() {
-		showError('getRoomInfo');
+
+	getRoomByNumber(number){
+		showError('getRoomByNumber');
 	}
 
-	getReviews() {
-		showError('getReviews');
+	getRoomsByPrice(price){
+		showError('getRoomsByPrice');
+	}
+
+	// getRoomInfo() {
+	// 	showError('getRoomInfo');
+	// }
+
+	// getReviews() {
+	// 	showError('getReviews');
+	// }
+
+}
+
+class RoomRepositoryMock extends RoomRepository {
+	constructor(rooms = []) {
+		super();
+		this.rooms = rooms;
+	}
+
+	getRoomByNumber(number){
+		return this.rooms.find(room => room.getRoomNumber() === number);
+	}
+
+	getRoomsByPrice(price){
+		return this.rooms.filter(room => room.getRoomPrice <= price);
 	}
 
 	
 }
 
-class RoomRepositoryMock extends RoomRepository {
-	constructor(room) {
-		super();
-		this.room = room;
-	}
-
-
-	getRoomInfo() {
-		return this.room.roomInfo
-	}
-
-	getReviews(){
-		return this.room.reviews
-	}
-}
-class RoomRepositoryMockPresentation extends RoomRepository {
-	constructor(room) {
-		super();
-		this.room = room;
-	}
-
-
-	getRoomInfo() {
-		return this.room.roomInfo.slice(0,2);
-	}
-
-	getReviews(){
-		return this.room.reviews.slice(0,1)
-	}
-}
 
 
 export function getRoomRepository() {
 	
-	const roomRepositoryMock = new RoomRepositoryMockPresentation(roomMock);
+	const roomRepositoryMock = new RoomRepositoryMock([room888Mock, roomPresentationMock]);
 	return roomRepositoryMock;
 }

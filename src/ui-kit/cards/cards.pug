@@ -1,6 +1,7 @@
 include ../choose/choose.pug
 include ../registration/registration.pug
 include ../login/login.pug
+include ../room-card/room-card.pug
 
 doctype html
 html(lang="en")
@@ -17,7 +18,9 @@ html(lang="en")
 					+choose()
 					+registration()
 				.column2 
+					+room-card()
 					+login()
 				.column3
+				
 		
 	
