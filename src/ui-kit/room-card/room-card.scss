@@ -5,7 +5,7 @@
 	border: 0.1rem solid rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
-	padding: 4.1rem 3rem 2.3rem;
+	padding: 4.1rem 2.8rem 2.3rem 3rem;
 	.room-card__title-container {
 		display: flex;
 		justify-content: space-between;
@@ -22,6 +22,7 @@
 				text-transform: uppercase;
 			}
 		}
+		
 		.room-card__price{
 			font-size: 1.2rem;
 			color: rgba(31, 32, 65, 0.5);
@@ -32,10 +33,62 @@
 		}
 	}
 	.room-card__dropdown{
-		margin-bottom: 2rem;
+		margin-bottom: 1.8rem;
 	}
 	.room-card__info-container {
 		display: flex;
 		justify-content: space-between;
+		.room-card__info{
+			.room-card__room-info{
+				margin-bottom: 1.3rem;
+			}
+			.room-card__service-info {
+				width: 23.9rem;
+				display: flex;
+				flex-direction: row;	
+				line-height: 1.8rem;	
+				&::after{
+					content: 'i';
+					font-family: 'MontserratBold';
+					font-size: 1.2rem;
+					line-height: 1.8rem;
+					text-align: center;
+					color: rgba(31, 32, 65, 0.25);
+					width: 2rem;
+					height: 2rem;
+					border: 0.1rem solid;
+					border-radius: 50%;
+					box-sizing: border-box;
+					margin-left: 0.5rem;
+					margin-bottom: 1.4rem;
+					flex-shrink: 0;
+				}
+			}
+			.room-card__total {
+				display: flex;
+				align-items: baseline;
+				.room-card__total-info{
+					margin-top: 3rem;
+					margin-bottom: 2rem;
+				}
+				.room-card__separator{
+					flex-grow: 1;
+					border-bottom: 0.1rem dashed;
+				}
+			}
+			
+		}
+		.room-card__price-info{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			.room-card__room-price {
+				margin-bottom: 1rem;
+				
+			}
+			.room-card__total-price{
+				margin-top: 3.4rem;
+			}
+		}
 	}
 }

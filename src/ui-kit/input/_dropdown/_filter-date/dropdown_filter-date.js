@@ -25,10 +25,8 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 		},
 		position({ $datepicker, $target, $pointer }) {
 			console.log($target.getBoundingClientRect())
-			let coords = $target.getBoundingClientRect(),
-				dpHeight = $datepicker.clientHeight,
-				dpWidth = $datepicker.clientWidth;
-
+			let coords = $target.getBoundingClientRect()
+			
 			let top = coords.y+coords.height+ window.scrollY;
 			let left = coords.x;
 

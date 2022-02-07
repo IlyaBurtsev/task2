@@ -8,6 +8,18 @@ mixin room-card()
 			+title({type: TITLE_TYPE.MIDDLE, title: 'Гости'})
 			+input({type: INPUT_TYPE.GUESTS})
 		.room-card__info-container 
-			.room-card__info  
-			.room-card__price
+			.room-card__info 
+				.room-card__room-info 
+				.room-card__service-info='Сбор за услуги: ' 
+				.room-card__service-info='Сбор за дополнительные услуги'
+				.room-card__total 
+					H2.room-card__total-info='Итого'
+					.room-card__separator
+			.room-card__price-info
+				.room-card__room-price 
+				.room-card__room-price 
+				.room-card__room-price
+				H2.room-card__total-price
+					
+
 		+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'забронировать'})

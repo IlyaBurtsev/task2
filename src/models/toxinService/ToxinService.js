@@ -5,4 +5,16 @@ export class ToxinService{
 		this.discount = service.discount;
 		this.additionalServiceFee = service.additionalServiceFee;
 	}
+
+	getServiceFee(){
+		return this.serviceFee;
+	}
+
+	getDiscount(){
+		return this.discount;
+	}
+
+	getAdditionalServiceFee(){
+		return this.additionalServiceFee;
+	}
 }
