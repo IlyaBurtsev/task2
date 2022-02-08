@@ -1,0 +1,17 @@
+include ../blocks/slider-button-block/slider-button-block.pug
+mixin room-preview(roomNumber, pictures)
+	.room-preview__container(room-number= roomNumber) 
+		.room-preview__slider 
+			.room-preview__view-port 
+				.room-preview__img-container
+				.room-preview__button-container
+					+slider-button-block()
+		.room-preview__title-container
+			H2.room-preview__room-number
+			.room-preview__price
+		.room-preview__separator
+		.room-preview__rate-container 
+			+input({type: INPUT_TYPE.BUTTON_RATE, inputValue: 4, inputRadioName: roomNumber})
+			.room-preview__rating-counter
+		
+

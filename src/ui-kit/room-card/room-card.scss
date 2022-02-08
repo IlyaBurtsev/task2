@@ -6,23 +6,23 @@
 	box-sizing: border-box;
 	box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
 	padding: 4.1rem 2.8rem 2.3rem 3rem;
+	background: #FFFFFF;
 	.room-card__title-container {
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
-		.room-card__number{
+		.room-card__room-number{
 			height: 3rem;		
-			.number{
+			.room-card__number{
 				font-size: 1.2rem;
 			}
 			
-			.additional {
+			.room-card__additional {
 				font-size: 1.2rem;
 				color: rgba(188, 156, 255, 1);
 				text-transform: uppercase;
 			}
 		}
-		
 		.room-card__price{
 			font-size: 1.2rem;
 			color: rgba(31, 32, 65, 0.5);

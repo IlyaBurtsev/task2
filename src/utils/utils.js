@@ -154,7 +154,7 @@ export function removeClass(el, ...classes) {
 }
 
 /**
- * Node Cpllection to Array
+ * Node Collection to Array
  * @param {Object} [collection]
  * @returns {HTMLElement}
  */

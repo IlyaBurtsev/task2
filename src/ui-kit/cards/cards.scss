@@ -2,6 +2,7 @@ html { font-size: 62.5%; }
 body{
 	margin: 0;
 	padding: 0;
+	background: #E5E5E5;
 }
 
 .cards__page-container {
@@ -24,6 +25,8 @@ body{
 	flex-direction: column;
 	margin-right: 4rem;
 }
-// .column3{
-
-// }
+.column3{
+	.cards__datepicker{
+		margin-bottom: 4rem;
+	}
+}

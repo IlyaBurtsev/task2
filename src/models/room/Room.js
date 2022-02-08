@@ -6,6 +6,9 @@ export default class Room{
 		this.roomInfo = room.roomInfo;
 		this.reviews = room.reviews;
 		this.isLuxury = room.isLuxury;
+		this.rating = room.rating;
+		this.ratingCounter = room.ratingCounter;
+		this.pictures = room.pictures;
 	}
 
 	getRoomNumber(){
@@ -27,6 +30,18 @@ export default class Room{
 
 	isLuxury(){
 		return this.isLuxury;
+	}
+
+	getRoomRating(){
+		return this.rating;
+	}
+
+	getRoomRatingCounter(){
+		return this.ratingCounter;
+	}
+
+	getRoomPictures(){
+		return this.pictures;
 	}
 	
 }

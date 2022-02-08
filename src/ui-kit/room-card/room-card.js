@@ -3,12 +3,14 @@ import '../blocks/dropdown-date-block/dropdown-date-block'
 import { Dropdown } from '../input/_dropdown/dropdown';
 import { initDateBlock } from '../blocks/dropdown-date-block/dropdown-date-block';
 import { getServiceRepository } from '../../repository/serviceRepository/serviceRepository'
+import { getElement } from '../../utils/utils';
 
 
 export function initRoomCards(room) {
-	const $titleContainer = document.querySelector('.room-card__title-container ');
-	const $roomInfo = document.querySelector('.room-card__room-info');
-	const $roomPrice = document.querySelector('.room-card__room-price ');
+	const $roomCard = getElement('.room-card__container');
+	const $roomInfo = getElement('.room-card__room-info');
+	const $roomPrice = getElement('.room-card__room-price ');
+	const $roomNumber = getElement('.room-card__room-number', $roomCard);
 
 	const toxinService = getServiceRepository().getServiceInfo();
 
@@ -17,13 +19,15 @@ export function initRoomCards(room) {
 	const addServiceFee = toxinService.getAdditionalServiceFee();
 
 
-	let formatter = new Intl.NumberFormat('Ru')
+	const formatter = new Intl.NumberFormat('Ru')
 
 	let price = room.getRoomPrice();
+	
+	const roomNumberToString = '<span class="room-card__number">№</span> ' + room.getRoomNumber() + (room.isLuxury ? ' <span class="room-card__additional">Люкс</span>' : '');
 
-	const roomNumber = '<span class="number">№</span> ' + room.getRoomNumber() + (room.isLuxury ? ' <span class="additional">Люкс</span>' : '');
-	$titleContainer.firstElementChild.innerHTML = roomNumber;
-	$titleContainer.lastElementChild.innerHTML = `<span>${formatter.format(price)}₽</span> в сутки`;
+	$roomNumber.innerHTML = roomNumberToString;
+	$roomNumber.nextElementSibling.innerHTML = `<span>${formatter.format(price)}₽</span> в сутки`;
+
 
 	initDateBlock('room', ['2019-08-19', '2019-08-23'], setPriceInfo);
 
