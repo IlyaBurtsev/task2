@@ -1,0 +1,20 @@
+html { font-size: 62.5%; } 
+body{
+	margin: 0;
+	padding: 0;
+	background: #E5E5E5;
+}
+
+.elements__page-container {
+	width: 144rem;
+	height: 135rem;
+	padding: 14rem 0;
+}
+.logo{
+	width: 4.8rem;
+	height: 4.8rem;
+	position: absolute;
+	top: 3rem;
+	left: 3rem;
+	background: center no-repeat url('../_theme/assets/logo.svg');
+}

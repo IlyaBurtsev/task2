@@ -17,3 +17,4 @@ const room = getRoomRepository().getRoomByNumber(888);
 initDropdownFilterDate('.cards__datepicker', ['2019-08-19', '2019-08-23'], '2019-08-08');
 initRoomCards(room);
 initRoomPreview(room);
+initRoomPreview(getRoomRepository().getRoomByNumber(840));

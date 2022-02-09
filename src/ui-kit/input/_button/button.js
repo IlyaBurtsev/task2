@@ -1,6 +1,8 @@
 import './button.scss'
 import './_white-text/button_white-text.scss'
 import './_purple-text/button_purple-text.scss'
+import './_white-text_slim/button_white-text_slim.scss'
+import './_purple-text_slim/button_purple-text_slim.scss'
 import './_pay/button_pay.scss'
 import './_link/button_link.scss'
 import './_like/button_like'

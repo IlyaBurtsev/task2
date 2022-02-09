@@ -1,68 +1,96 @@
-.room-preview__container{
+.room-preview__container {
 	width: 27rem;
 	height: 25.75rem;
 	border: 0.1rem solid rgba(255, 255, 255, 1);
 	border-radius: 0.4rem;
-	background: #FFFFFF;
-	.room-preview__slider{
+	background: #ffffff;
+	.room-preview__slider {
 		width: 27rem;
 		height: 15.14rem;
 		margin-bottom: 2rem;
-		.room-preview__view-port{
+		.room-preview__view-port {
 			width: 27rem;
 			height: 15.14rem;
 			box-sizing: border-box;
 			overflow: hidden;
 			position: relative;
-			.room-preview__img-container{
+			user-select: none;
+			.room-preview__img-container {
 				display: flex;
-				transform: translate(-27rem*2, 0);
-				.room-preview__image{
+				.room-preview__image {
 					width: 100%;
 					height: 100%;
 					border-top-left-radius: 0.4rem;
 					border-top-right-radius: 0.4rem;
 					object-fit: cover;
 				}
-			}	
+			}
+			.room-preview__prev-next-button-container {
+				width: 27rem;
+				height: 15.4rem;
+				display: none;
+				justify-content: space-between;
+				align-items: center;
+				color: white;
+				position: absolute;
+				bottom: 0;
+				font-size: 2.5rem;
+				line-height: 5rem;
+				
+				.room-preview__prev-button {
+					font-family: "MaterialIcons";
+					transform: rotate(90deg);
+					padding-bottom: 1.6rem;
+				}
+				.room-preview__next-button {
+					font-family: "MaterialIcons";
+					transform: rotate(-90deg);
+					padding-bottom: 1.6rem;
+				}
+			}
+			
+			.room-preview__button-container {
+				position: absolute;
+				right: 1.2rem;
+				bottom: 1.5rem;
+				z-index: 2;
+			}
 		}
-		.room-preview__button-container{
-			position: absolute;
-			right: 0;
-			z-index: 10;
-			bottom: 0;
+		.room-preview__view-port_button_show{
+			.room-preview__prev-next-button-container{
+				display: flex;
+			}
 		}
-
 	}
 	.room-preview__title-container {
-		width: 23rem;
+		width: 23.2rem;
 		height: 2.4rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
 		padding-left: 2rem;
-		.room-preview__room-number{
-			height: 3rem;		
-			.room-preview__number{
+		.room-preview__room-number {
+			height: 3rem;
+			.room-preview__number {
 				font-size: 1.2rem;
 			}
-			
+
 			.room-preview__additional {
 				font-size: 1.2rem;
 				color: rgba(188, 156, 255, 1);
 				text-transform: uppercase;
 			}
 		}
-		.room-preview__price{
+		.room-preview__price {
 			font-size: 1.2rem;
 			color: rgba(31, 32, 65, 0.5);
 			span {
 				font-size: 1.4rem;
-				font-family: 'MontserratBold';
+				font-family: "MontserratBold";
 			}
 		}
 	}
-	.room-preview__separator{
+	.room-preview__separator {
 		width: 23rem;
 		height: 0.1rem;
 		border-bottom: 0.1rem solid rgba(31, 32, 65, 0.1);
@@ -82,9 +110,7 @@
 		padding-left: 2rem;
 		span {
 			font-size: 1.4rem;
-			font-family: 'MontserratBold';
-			
+			font-family: "MontserratBold";
 		}
-
 	}
 }

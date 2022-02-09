@@ -1,0 +1,11 @@
+.button__container_white-text_slim{
+	width: 19.6rem;
+	height: 3.4rem;
+	.button__input_white-text_slim {
+		background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%); 
+		color: #ffffff;
+		&:active{
+			opacity: 0.5;
+		}
+	}
+}

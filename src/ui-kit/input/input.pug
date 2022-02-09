@@ -5,7 +5,7 @@ include ./_dropdown/_comfort/dropdown_comfort.pug
 include ./_dropdown/_date/dropdown_date.pug
 include ./_dropdown/_filter-date/dropdown_filter-date.pug
 
-- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'INPUT_TEXT':4, 'INPUT_SUBSCRIPTION':5, 'INPUT_SHORT_FIELD':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16}
+- const INPUT_TYPE = {'TOGGLE':0, 'CHECKBOX':1, 'CHECKBOX_RICH':2, 'RADIO':3, 'INPUT_TEXT':4, 'INPUT_SUBSCRIPTION':5, 'INPUT_SHORT_FIELD':6, 'BUTTON_WHITE_TEXT':7, 'BUTTON_PURPLE_TEXT':8, 'BUTTON_PAY':9, 'BUTTON_LINK':10, 'BUTTON_LIKE':11, 'BUTTON_RATE':12, 'FILTER_DATE':13, 'DATE':14, 'GUESTS':15, 'COMFORT':16, 'RADIO_WHITE':17, 'BUTTON_WHITE_TEXT_SLIM':18, 'BUTTON_PURPLE_TEXT_SLIM':19}
 
 mixin input(options)
 	case options.type 
@@ -41,6 +41,12 @@ mixin input(options)
 			+dropdown_guests({placeholder: 'Сколько гостей?', items: ['взрослые', 'дети', 'младенцы']})
 		when INPUT_TYPE.COMFORT
 			+dropdown_comfort({placeholder: 'Удобства в номере', items: ['спальни', 'кровати', 'ванные комнаты']})
+		when INPUT_TYPE.RADIO_WHITE
+			+input-tamplate({blockName: 'switch', modificatorName: 'radio_white', inputType: 'radio', radioName: options.inputRadioName, customElementName: 'label', customElementValue: options.inputLabel, checked: options.checked, dataSelected: options.dataSelected})
+		when INPUT_TYPE.BUTTON_WHITE_TEXT_SLIM
+			+input-tamplate({blockName: 'button', modificatorName: 'white-text_slim', inputType: 'button', inputValue: options.inputValue, active: options.active})
+		when INPUT_TYPE.BUTTON_PURPLE_TEXT_SLIM
+			+input-tamplate({blockName: 'button', modificatorName: 'purple-text_slim', inputType: 'button', inputValue: options.inputValue, active: options.active})
 		
 		default
 			h1=options.inputType

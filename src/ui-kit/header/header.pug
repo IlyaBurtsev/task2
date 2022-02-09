@@ -1,0 +1,17 @@
+include ../input/input.pug
+mixin header(options) 
+	header.header__container
+		.header__company
+			.header__logo  
+			.header__name
+		.header__navigation-block
+			nav.header__navigation
+				-let i = 0;
+				each item in options.items
+					-i++
+					.header__navigation-item(position=i)=item 
+					.header__separate-container
+			+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT_SLIM, inputValue: 'Войти'})
+			.header__separate-container
+			+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT_SLIM, inputValue: 'зарегистрироваться'})
+
