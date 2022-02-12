@@ -27,27 +27,41 @@
 		align-items: center;
 		.header__navigation {
 			display: flex;
-			:first-child {
+			.header__navigation-item{
+				margin-right: 2rem;	
+			}
+			.header__navigation-item_main{
 				font-family: "MontserratBold";
+			}	
+		}
+		.header__buttons{
+			display: flex;
+			width: 30.3rem;
+			display: flex;
+			justify-content: space-between;
+		}
+		.header__sing-in{
+			display: none;
+			align-items: center;
+			.header__border{
+				width: 1rem;
+				height: 3rem;
+				border-left: 1px solid rgba(31, 32, 65, 0.1);
+				margin-right: 1.1rem;
 			}
-			.header__navigation-item[position='2'],[position='5'] {
-				display: flex;
-				align-items: center;
-				margin-right: 0.1rem;
-				&::after {
-					content: "expand_more";
-					width: 2.4rem;
-					font-family: "MaterialIcons";
-					font-size: 2.4rem;
-					color: rgba(31, 32, 65, 0.5);
-					line-height: 2rem;
-					text-align: center;
-				}
-			}
-			
+		}
+		
+		
+	}
+}
+.header__container {
+	.header__navigation-block_sing-in{
+		.header__buttons{
+			display: none;
+		}
+		.header__sing-in{
+			display: flex;
 		}
 	}
 }
-.header__separate-container {
-	width: 2rem;
-}
+

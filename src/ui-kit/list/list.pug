@@ -1,11 +1,14 @@
 include ./_bullet/list_bullet.pug
 include ./_checkbox/list_checkbox.pug
+include ./_links/list_links.pug
 
-- const LIST_TYPE={'EXPANDABLE_CHECKBOX':0, 'BULLET':1}
+- const LIST_TYPE={'EXPANDABLE_CHECKBOX':0, 'EXPANDABLE_LINKS':1, 'BULLET':2}
 
 mixin list(options)
 	case options.type
 		when LIST_TYPE.EXPANDABLE_CHECKBOX
 			+list_checkbox({items: options.items, listTitle: options.listTitle, checked: options.checked, selectedItems: options.selectedItems})
+		when LIST_TYPE.EXPANDABLE_LINKS
+			+list_links({items: options.items, listTitle: options.listTitle, checked: options.checked})
 		when LIST_TYPE.BULLET
 			+list_bullet({items: options.items, listTitle: options.listTitle})

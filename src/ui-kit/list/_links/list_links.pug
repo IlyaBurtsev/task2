@@ -1,0 +1,9 @@
+
+mixin list_links(options)
+		label.list__container_links
+			input.list__input_links(type= 'checkbox', checked=options.checked)
+			.list__title_links= options.listTitle	
+			.list__items_links
+				each value, key in options.items
+					a.list_links__link(href=value)=key
+

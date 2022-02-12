@@ -79,13 +79,14 @@ h3 {
 	color: $dark-100;
 	margin: 0;
 	padding: 0;
-	// letter-spacing: 0.012rem;
 }
 a {
-	color: $primory-color;
+	outline: none;
+	text-decoration: none;
+	color: $dark-75;
 }
 a:hover {
-	color: $dark-50;
+	color: $dark-75;
 }
 p{
 	margin-top: 0;
