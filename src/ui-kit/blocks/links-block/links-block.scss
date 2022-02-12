@@ -1,0 +1,12 @@
+.links-block__container {
+	width: 20rem;
+	display: flex;
+	flex-direction: column;
+	margin-top: 0.5rem;
+	.links-block__tittle{
+		margin-bottom: 1.8rem;
+	}
+	.links-block__link{
+		margin-bottom: 1.4rem;
+	}
+}

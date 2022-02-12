@@ -1,0 +1,5 @@
+mixin links-block(options)
+	.links-block__container 
+		H3.links-block__tittle=options.tittle
+		each value, key in options.items
+			a.links-block__link(href=value)=key
