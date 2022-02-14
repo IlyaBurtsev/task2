@@ -6,16 +6,19 @@ import '../input/input'
 import { Dropdown } from '../input/_dropdown/dropdown';
 import { initDateBlock } from '../blocks/dropdown-date-block/dropdown-date-block';
 
-initDateBlock('landing');
+export function initChoose(){
+	initDateBlock('landing');
 
-const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
-const inputFormatForGuestsDropdown = { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] };
+	const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
+	const inputFormatForGuestsDropdown = { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] };
+	
+	
+	new Dropdown('.choose__dropdown-guests-container', {
+		mergeItems: mergeItemsForGuestsDropdown,
+		inputFormat: inputFormatForGuestsDropdown,
+		ItemsRequired: ['взрослые'],
+		ItemsRequiredMessage: 'Без взрослых не заселяем.',
+		footerButtonActived: true,
+	});
+}
 
-
-new Dropdown('.choose__dropdown-guests-container', {
-	mergeItems: mergeItemsForGuestsDropdown,
-	inputFormat: inputFormatForGuestsDropdown,
-	ItemsRequired: ['взрослые'],
-	ItemsRequiredMessage: 'Без взрослых не заселяем.',
-	footerButtonActived: true,
-});

@@ -1,0 +1,15 @@
+include ../../ui-kit/header/header.pug
+include ../../ui-kit/choose/choose.pug
+include ../../ui-kit/footer/footer.pug
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Landing page
+	body
+		+header()
+		main.landing-page__main 
+			.landing-page__choose 
+				+choose()
+		+footer(FOOTER_TYPE.DESKTOP)

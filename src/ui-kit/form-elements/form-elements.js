@@ -10,7 +10,7 @@ import '../external-container/external-container'
 
 import { Dropdown } from '../input/_dropdown/dropdown'
 import { initDropdownFilterDate } from '../input/_dropdown/_filter-date/dropdown_filter-date'
-import { AirDatepickerCustom } from '../input/_dropdown/_date/dropdown_date'
+
 
 
 const inputFormatForComfortDropdown = { 'спальни': ['спальня', 'спальни', 'спален'], 'кровати': ['кровать', 'кровати', 'кроватей'], 'ванные комнаты': ['ванная комната', 'ванных комнаты', 'ванных комнат'] };
@@ -18,7 +18,7 @@ const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
 const inputFormatForGuestsDropdown = { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] };
 
 
-new AirDatepickerCustom('.dropdown__input_date[data-type= "arrival"]', '.dropdown__input_date[data-type= "departure"]');
+// new AirDatepickerCustom('.dropdown__input_date[data-type= "arrival"]', '.dropdown__input_date[data-type= "departure"]');
 initDropdownFilterDate('.dropdown__input_filter-date');
 new Dropdown('.form__container_dropdown-guests_closed', {
 	mergeItems: mergeItemsForGuestsDropdown,

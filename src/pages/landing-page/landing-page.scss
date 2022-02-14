@@ -1,0 +1,16 @@
+html { font-size: 62.5%; } 
+body{
+	margin: 0;
+	padding: 0;
+}
+
+.landing-page__main {
+	width: 144rem;
+	height: 83rem;
+	background: no-repeat, url('./landing-page.jpg');
+	background-size: 144rem 83rem;
+}
+.landing-page__choose {
+	padding-top: 7rem;
+	padding-left: 14rem;
+}

@@ -1,0 +1,32 @@
+include ../../ui-kit/header/header.pug
+include ../../ui-kit/footer/footer.pug
+include ../../ui-kit/external-container/external-container.pug
+include ../../ui-kit//slider/slider.pug
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Search room
+	body 
+		+header()
+		main.search-room__main 
+			.search-room__preferences
+				+title({type: TITLE_TYPE.MIDDLE, title: 'даты пребывания в отеле'})
+				+input({type: INPUT_TYPE.FILTER_DATE, inputValue: '19.08.2019'})
+				+title({type: TITLE_TYPE.MIDDLE, title: 'гости'})
+				+input({type: INPUT_TYPE.GUESTS})
+				+slider({title: 'диапазон цены'})
+				+title({type: TITLE_TYPE.BUTTONS, title: 'правила дома'})
+				+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно курить'})
+				+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно с питомцами', checked: 'checked'})
+				+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)', checked: 'checked'})
+				+title({type: TITLE_TYPE.BUTTONS, title: 'доступность'})
+				+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Широкий коридор', inputLabelDescription: 'Ширина коридоров в номере                не менее 91 см.'})
+				+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+				+title({type: TITLE_TYPE.MIDDLE, title: 'удобства номера'})
+				+input({type: INPUT_TYPE.COMFORT})
+				+list({type: LIST_TYPE.EXPANDABLE_CHECKBOX, listTitle : 'дополнительные удобства', items: ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'], selectedItems: ['', 'checked', 'checked', 'checked', '', '']})
+			.search-room__filtered__rooms 
+				H1.search-rooms__title='Номера, которые мы для вас подобрали'
+		+footer()

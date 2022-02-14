@@ -7,7 +7,7 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		main: path.resolve(__dirname, 'src/ui-kit/headers&footers/headers&footers.js')
+		main: path.resolve(__dirname, 'src/pages/search-room/search-room.js')
 	},
 	output: {
 		filename: '[name]-[contenthash].js',
@@ -24,7 +24,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: './src/ui-kit/headers&footers/headers&footers.pug'
+			template: './src/pages/search-room/search-room.pug'
 		}),
 		new webpack.ProvidePlugin({
 			$: 'jquery',

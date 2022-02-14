@@ -13,23 +13,7 @@
 			width: 26rem;
 			height: 4rem;
 			margin-right: 4rem;
-			.footer__company {
-				display: flex;
-				align-items: center;
-				margin-bottom: 1.8rem;
-				margin-top: 0;
-				.footer__logo {
-					width: 4rem;
-					height: 4rem;
-					background: left no-repeat url("../_theme/assets/logoColored.svg");
-					margin-right: 1.2rem;
-				}
-				.footer__name {
-					width: 5.4rem;
-					height: 1.3rem;
-					background: center no-repeat url("../_theme/assets/TOXIN.svg");
-				}
-			}
+			
 		}
 
 		.footer__subscribe-column {
@@ -46,34 +30,78 @@
 		}
 	}
 	.footer__copyright-bar {
-		width: (144-28)rem;
+		width: 116rem;
 		height: 7rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		border-top: 1px solid rgba(31, 32, 65, 0.1);
 		padding: 0rem 14rem;
-		&::after{
-			width: 2.4rem;
-			height: 2.4rem;
-			content:'\f099' ;
-			font-family: "Brands";
-			font-weight: 900;
-		}
-		&::after{
-			width: 2.4rem;
-			height: 2.4rem;
-			content:'\f082' ;
-			font-family: "Brands";
-			font-weight: 900;
-		}
-		&::after{
-			width: 2.4rem;
-			height: 2.4rem;
-			content:'\f16d' ;
-			font-family: "Brands";
-			font-weight: 900;
-		}
+		
+	}
+}
+.footer__company {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1.8rem;
+	margin-top: 0;
+	.footer__logo {
+		width: 4rem;
+		height: 4rem;
+		background: left no-repeat url("../_theme/assets/logoColored.svg");
+		margin-right: 1.2rem;
+	}
+	.footer__name {
+		width: 5.4rem;
+		height: 1.3rem;
+		background: center no-repeat url("../_theme/assets/TOXIN.svg");
+	}
+}
 
+.footer__links {
+	display: flex;
+	.footer__twitter {
+		&::after {
+			width: auto;
+			height: 2.4rem;
+			content: "\f099";
+			font-family: "Brands";
+			font-size: 2.4rem;
+			line-height: 2.3rem;
+			margin-right: 2.4rem;
+			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+			color: transparent;
+			-webkit-background-clip: text;
+			background-clip: text;
+		}
+	}
+	.footer__facebook {
+		&::after {
+			width: auto;
+			height: 2.4rem;
+			content: "\f082";
+			font-family: "Brands";
+			font-size: 2.4rem;
+			line-height: 2.3rem;
+			margin-right: 2.4rem;
+			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+			color: transparent;
+			-webkit-background-clip: text;
+			background-clip: text;
+		}
+	}
+	.footer__instagram {
+		&::after {
+			width: auto;
+			height: 2.4rem;
+			content: "\f16d";
+			font-family: "Brands";
+			font-size: 2.4rem;
+			line-height: 2.3rem;
+			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+			color: transparent;
+			-webkit-background-clip: text;
+			background-clip: text;
+		}
 	}
 }

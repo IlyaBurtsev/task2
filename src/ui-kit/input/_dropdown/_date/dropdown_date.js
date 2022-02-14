@@ -37,7 +37,7 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 			days: '<i>MMMM</i> <i>yyyy</i><i></i>',
 		},
 		position({ $datepicker, $target, $pointer }) {
-			console.log($target.getBoundingClientRect())
+
 			let coords = $target.getBoundingClientRect()
 				
 			let top = coords.y + coords.height + window.scrollY;
@@ -48,11 +48,10 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 
 			$pointer.style.display = 'none';
 		},
-		selectedDates: selectedDates ? selectedDates : ['2022-08-19', '2022-08-23'],
+		selectedDates: selectedDates ? selectedDates : ['2019-08-19', '2019-08-23'],
 		startDate: startDate ? startDate : '',
 		onShow() {
-			$inputDeparture.classList.add('dropdown__input_date_departure-focused'
-			)
+			$inputDeparture.classList.add('dropdown__input_date_departure-focused')
 		},
 		onHide() {
 			$inputDeparture.classList.remove('dropdown__input_date_departure-focused')
