@@ -1,7 +1,8 @@
 include ../../ui-kit/header/header.pug
 include ../../ui-kit/footer/footer.pug
 include ../../ui-kit/external-container/external-container.pug
-include ../../ui-kit//slider/slider.pug
+include ../../ui-kit/slider/slider.pug
+include ../../ui-kit/room-preview/room-preview.pug
 html(lang="en")
 	head
 		meta(charset="UTF-8")
@@ -27,6 +28,8 @@ html(lang="en")
 				+title({type: TITLE_TYPE.MIDDLE, title: 'удобства номера'})
 				+input({type: INPUT_TYPE.COMFORT})
 				+list({type: LIST_TYPE.EXPANDABLE_CHECKBOX, listTitle : 'дополнительные удобства', items: ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'], selectedItems: ['', 'checked', 'checked', 'checked', '', '']})
-			.search-room__filtered__rooms 
+			.search-room__rooms 
 				H1.search-rooms__title='Номера, которые мы для вас подобрали'
+				.search-rooms__fitered-rooms
+					+room-preview(980)
 		+footer()

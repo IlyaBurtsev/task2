@@ -1,4 +1,4 @@
-import { room840Mock, room888Mock, roomPresentationMock } from "../../entities/roomMock/room";
+import { roomsMock } from "../../entities/roomMock/room";
 import { showError } from "../../models/error/metodError";
 
  class RoomRepository {
@@ -42,6 +42,6 @@ class RoomRepositoryMock extends RoomRepository {
 
 export function getRoomRepository() {
 	
-	const roomRepositoryMock = new RoomRepositoryMock([room888Mock, roomPresentationMock, room840Mock]);
+	const roomRepositoryMock = new RoomRepositoryMock(roomsMock);
 	return roomRepositoryMock;
 }

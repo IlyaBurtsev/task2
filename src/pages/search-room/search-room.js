@@ -9,9 +9,12 @@ import '../../ui-kit/slider/slider'
 import '../../ui-kit/room-info/room-info'
 // import '../../ui-kit/review/review'
 import '../../ui-kit/external-container/external-container'
+import '../../ui-kit/room-preview/room-preview'
 import { initHeader } from '../../ui-kit/header/header'
 import { initDropdownFilterDate } from '../../ui-kit/input/_dropdown/_filter-date/dropdown_filter-date'
 import { Dropdown } from '../../ui-kit/input/_dropdown/dropdown'
+import { initRoomPreview } from '../../ui-kit/room-preview/room-preview'
+import { getRoomRepository } from '../../repository/roomRepository/RoomRepository'
 
 const inputFormatForComfortDropdown = { 'спальни': ['спальня', 'спальни', 'спален'], 'кровати': ['кровать', 'кровати', 'кроватей'], 'ванные комнаты': ['ванная комната', 'ванных комнаты', 'ванных комнат'] };
 const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
@@ -35,3 +38,5 @@ new Dropdown('.dropdown__container_comfort', {
 	inputFormat: inputFormatForComfortDropdown,
 	selectedItems: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
 });
+
+initRoomPreview(getRoomRepository().getRoomByNumber(980));
