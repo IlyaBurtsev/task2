@@ -6,19 +6,23 @@ body {
 	padding: 0;
 }
 .search-room__main {
+	width: 116rem;
 	display: flex;
+	padding: 4rem 14rem;
+	justify-content: space-between;
 	.search-room__preferences {
 		display: flex;
 		flex-direction: column;
-		padding: 4rem 14rem;
+		
 	}
 	.search-room__rooms {
 		display: flex;
 		flex-direction: column;
 		.search-rooms__fitered-rooms {
 			display: grid;
-			grid-template-columns: repeat(3, 27rem);
-			grid-template-rows: repeat(4, 25.75rem);
+			grid-template-columns: repeat(3, 28.2rem);
+			grid-template-rows: repeat(4, 27.8rem);
+			
 		}
 	}
 }

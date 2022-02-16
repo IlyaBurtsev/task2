@@ -3,17 +3,17 @@ import { roomReviews888Mock, roomReviewsPresentationMock} from './reviews'
 import {roomInfo888Mock, roomInfoPresentationMock } from './roomInfo'
 
 const pictures888 = [require ('@assets/888/image1.jpg'), require ('@assets/888/image2.jpg'), require ('@assets/888/image3.jpg')];
-const pictures840 = [require ('@assets/840/image1.jpg')];
+const pictures840 = [require ('@assets/840/image.jpg')];
 const pictures980 = [require ('@assets/980/image.jpg')];
 const pictures856 = [require ('@assets/856/image.jpg')];
-const pictures740 = [require ('@assets/980/image.jpg')];
-const pictures450 = [require ('@assets/980/image.jpg')];
-const pictures982 = [require ('@assets/980/image.jpg')];
-const pictures678 = [require ('@assets/980/image.jpg')];350
-const pictures350 = [require ('@assets/980/image.jpg')];
-const pictures666 = [require ('@assets/980/image.jpg')];
-const pictures444 = [require ('@assets/980/image.jpg')];
-const pictures352 = [require ('@assets/980/image.jpg')];
+const pictures740 = [require ('@assets/740/image.jpg')];
+const pictures450 = [require ('@assets/450/image.jpg')];
+const pictures982 = [require ('@assets/982/image.jpg')];
+const pictures678 = [require ('@assets/678/image.jpg')];
+const pictures350 = [require ('@assets/350/image.jpg')];
+const pictures666 = [require ('@assets/666/image.jpg')];
+const pictures444 = [require ('@assets/444/image.jpg')];
+const pictures352 = [require ('@assets/352/image.jpg')];
 
 
 const roomPresentationMock = new Room({ roomInfo: roomInfoPresentationMock, reviews: roomReviewsPresentationMock, number: 1, price: 9990 });
@@ -30,4 +30,4 @@ const room666Mock = new Room({ number: 666, price: 5000 , isLuxury: false, ratin
 const room444Mock = new Room({ number: 444, price: 5000 , isLuxury: false, rating: 2, ratingCounter: 15, pictures: pictures444});
 const room352Mock = new Room({ number: 352, price: 5000 , isLuxury: false, rating: 3, ratingCounter: 55, pictures: pictures352});
 
-export const roomsMock = [room840Mock, room888Mock, room980Mock, room856Mock, room740Mock, room982Mock, room678Mock, room450Mock, room350Mock, room444Mock, room666Mock, room352Mock, roomPresentationMock]
+export const roomsMock = [room888Mock, room840Mock,  room980Mock, room856Mock, room740Mock, room982Mock, room678Mock, room450Mock, room350Mock, room444Mock, room666Mock, room352Mock, roomPresentationMock]

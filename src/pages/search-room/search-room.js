@@ -45,10 +45,11 @@ function initSearchRoom(page) {
 		inputFormat: inputFormatForComfortDropdown,
 		selectedItems: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
 	});
-	initFilteredRooms(getRoomRepository().getRooms((currentPage*12-currentPage+1), (currentPage*12)))
+	initFilteredRooms(getRoomRepository().getRooms((currentPage*12 - 11), (currentPage*12)))
 	function initFilteredRooms(rooms) {
 		const firstRoom = rooms.shift();
 		const $roomTamplate = getElement('.room-preview__container');
+		
 
 		rooms.forEach(room => {
 			let $newRoom = $roomTamplate.cloneNode(true);
@@ -62,10 +63,10 @@ function initSearchRoom(page) {
 
 	function preparateRoom(room, $element) {
 		const roomNumber = room.getRoomNumber();
+		console.log($element.hasAttribute('room-number'))
+		$element.setAttribute("room-number", roomNumber);
 
-		$element.setAttribute('room-number', roomNumber);
-
-		getElement('room-preview__container', $element).setAttribute('room-number', roomNumber);
-		getElements('button__input_rate', $element).forEach($button => $button.setAttribute('name', roomNumber))
+		getElements('.switch__input_radio_white', $element).forEach($button => $button.setAttribute('name', `slider-${roomNumber}`)); 
+		getElements('.button__input_rate', $element).forEach($button => $button.setAttribute('name', roomNumber));
 	}
 }

@@ -40,7 +40,9 @@ class RoomRepositoryMock extends RoomRepository {
 	}
 
 	getRooms(start, end){
-		return this.rooms.splice((start-1), end);
+		const selectedRooms = this.rooms.slice((start-1), end);
+		return selectedRooms;
+		
 	}
 
 	
