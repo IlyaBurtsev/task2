@@ -1,7 +1,7 @@
 
-mixin slider-button-block(namber)
+mixin slider-button-block(number)
 	.slider-button-block__container
-		+input({type: INPUT_TYPE.RADIO_WHITE, inputRadioName: 'slider-'+namber, dataSelected: 0, checked: ''})
+		+input({type: INPUT_TYPE.RADIO_WHITE, inputRadioName: 'slider-'+number, dataSelected: 0, checked: ''})
 		- for (let i=1; i<4; i++)
-			+input({type: INPUT_TYPE.RADIO_WHITE, inputRadioName: 'slider-'+namber, dataSelected: i})
+			+input({type: INPUT_TYPE.RADIO_WHITE, inputRadioName: 'slider-'+number, dataSelected: i})
 		

@@ -1,4 +1,5 @@
 .room-preview__container {
+	display: none;
 	width: 27rem;
 	height: 25.75rem;
 	border: 0.1rem solid rgba(255, 255, 255, 1);
@@ -113,4 +114,7 @@
 			font-family: "MontserratBold";
 		}
 	}
+}
+.room-preview__container_not-empty{
+	display: block;
 }

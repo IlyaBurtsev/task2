@@ -4,9 +4,10 @@ import '../blocks/slider-button-block/slider-button-block'
 import { createElement, getElement } from '../../utils/utils';
 
 
-export function initRoomPreview(room) {
-	
-	const $roomPreview = getElement(`.room-preview__container[room-number="${room.getRoomNumber()}"]`)
+export function initRoomPreview(room, $roomPreview) {
+	if(!$roomPreview){
+		$roomPreview = getElement(`.room-preview__container[room-number="${room.getRoomNumber()}"]`)
+	}
 	const $ratingCounter = getElement('.room-preview__rating-counter', $roomPreview);
 	const $roomNumber = getElement('.room-preview__room-number', $roomPreview);
 	const $rating = getElement(`.button__input_rate[rating="${room.getRoomRating()}"]`, $roomPreview);
@@ -16,6 +17,10 @@ export function initRoomPreview(room) {
 	const $nextButton = getElement('.room-preview__next-button', $roomPreview);
 	
 	const pictures = room.getRoomPictures();
+
+	if(room){
+		$roomPreview.classList.add('room-preview__container_not-empty')
+	}
 	if(pictures.length > 1){
 		$imgContainer.parentNode.classList.add('room-preview__view-port_button_show');
 	}
@@ -74,6 +79,8 @@ export function initRoomPreview(room) {
 			
 		}
 	}
+
+	return $roomPreview
 }
 
 

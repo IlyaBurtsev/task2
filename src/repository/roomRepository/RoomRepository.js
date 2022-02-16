@@ -11,6 +11,10 @@ import { showError } from "../../models/error/metodError";
 		showError('getRoomsByPrice');
 	}
 
+	getRooms(){
+		showError('getRooms');
+	}
+
 	// getRoomInfo() {
 	// 	showError('getRoomInfo');
 	// }
@@ -33,6 +37,10 @@ class RoomRepositoryMock extends RoomRepository {
 
 	getRoomsByPrice(price){
 		return this.rooms.filter(room => room.getRoomPrice <= price);
+	}
+
+	getRooms(start, end){
+		return this.rooms.splice((start-1), end);
 	}
 
 	

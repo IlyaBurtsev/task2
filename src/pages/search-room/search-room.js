@@ -15,28 +15,57 @@ import { initDropdownFilterDate } from '../../ui-kit/input/_dropdown/_filter-dat
 import { Dropdown } from '../../ui-kit/input/_dropdown/dropdown'
 import { initRoomPreview } from '../../ui-kit/room-preview/room-preview'
 import { getRoomRepository } from '../../repository/roomRepository/RoomRepository'
-
-const inputFormatForComfortDropdown = { 'спальни': ['спальня', 'спальни', 'спален'], 'кровати': ['кровать', 'кровати', 'кроватей'], 'ванные комнаты': ['ванная комната', 'ванных комнаты', 'ванных комнат'] };
-const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
-const inputFormatForGuestsDropdown = { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] };
+import { getElement, getElements } from '../../utils/utils'
 
 
-initHeader(false, '.header__container')
+initSearchRoom();
+function initSearchRoom(page) {
 
-initDropdownFilterDate('.dropdown__input_filter-date', );
+	const inputFormatForComfortDropdown = { 'спальни': ['спальня', 'спальни', 'спален'], 'кровати': ['кровать', 'кровати', 'кроватей'], 'ванные комнаты': ['ванная комната', 'ванных комнаты', 'ванных комнат'] };
+	const mergeItemsForGuestsDropdown = ['взрослые', 'дети'];
+	const inputFormatForGuestsDropdown = { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] };
 
-new Dropdown('.dropdown__container_guests', {
-	mergeItems: mergeItemsForGuestsDropdown,
-	inputFormat: inputFormatForGuestsDropdown,
-	selectedItems: { 'взрослые': 2, 'дети': 1, 'младенцы': 1 },
-	ItemsRequired: ['взрослые'],
-	ItemsRequiredMessage: 'Без взрослых не заселяем.',
-	footerButtonActived: true,
-});
+	const currentPage = page ? page : 1;
 
-new Dropdown('.dropdown__container_comfort', {
-	inputFormat: inputFormatForComfortDropdown,
-	selectedItems: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
-});
 
-initRoomPreview(getRoomRepository().getRoomByNumber(980));
+	initHeader(false, '.header__container')
+
+	initDropdownFilterDate('.dropdown__input_filter-date',);
+
+	new Dropdown('.dropdown__container_guests', {
+		mergeItems: mergeItemsForGuestsDropdown,
+		inputFormat: inputFormatForGuestsDropdown,
+		selectedItems: { 'взрослые': 2, 'дети': 1, 'младенцы': 1 },
+		ItemsRequired: ['взрослые'],
+		ItemsRequiredMessage: 'Без взрослых не заселяем.',
+		footerButtonActived: true,
+	});
+
+	new Dropdown('.dropdown__container_comfort', {
+		inputFormat: inputFormatForComfortDropdown,
+		selectedItems: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
+	});
+	initFilteredRooms(getRoomRepository().getRooms((currentPage*12-currentPage+1), (currentPage*12)))
+	function initFilteredRooms(rooms) {
+		const firstRoom = rooms.shift();
+		const $roomTamplate = getElement('.room-preview__container');
+
+		rooms.forEach(room => {
+			let $newRoom = $roomTamplate.cloneNode(true);
+			preparateRoom(room, $newRoom);
+			initRoomPreview(room, $newRoom);
+			$roomTamplate.parentNode.append($newRoom);
+		})
+		preparateRoom(firstRoom, $roomTamplate);
+		initRoomPreview(firstRoom, $roomTamplate);
+	}
+
+	function preparateRoom(room, $element) {
+		const roomNumber = room.getRoomNumber();
+
+		$element.setAttribute('room-number', roomNumber);
+
+		getElement('room-preview__container', $element).setAttribute('room-number', roomNumber);
+		getElements('button__input_rate', $element).forEach($button => $button.setAttribute('name', roomNumber))
+	}
+}
