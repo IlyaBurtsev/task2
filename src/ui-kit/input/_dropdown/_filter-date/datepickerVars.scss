@@ -18,7 +18,7 @@
 	--adp-background-color-current-date: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
 	--adp-background-color-hover: #fff;
 	--adp-background-color-active: inear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-	--adp-background-color-in-range: rgba(188, 156, 255, 0.5);
+	--adp-background-color-in-range:rgba(188, 156, 255, 0.5);
 	--adp-background-color-in-range-focused: rgba(188, 156, 255, 0.5);
 	--adp-background-color-selected-other-month-focused: rgba(188, 156, 255, 1);
 	--adp-background-color-selected-other-month: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
@@ -90,7 +90,7 @@
 	--adp-overlay-z-index: 100;
 }
 
-.air-datepicker-global-container{
+.air-datepicker-global-container {
 	box-shadow: 0 1rem 2rem rgba(31, 32, 65, 0.05);
 }
 /* -------------------------------------------------
@@ -131,9 +131,9 @@
 /* -------------------------------------------------
     Datepicker body
    ------------------------------------------------- */
-	.air-datepicker--content{
-		padding: 1.8rem 2rem;
-	}
+.air-datepicker--content {
+	padding: 1.8rem 2rem;
+}
 
 /*  Day names
    ------------------------------------------------- */
@@ -153,47 +153,111 @@
 
 .air-datepicker-cell {
 	font-size: 1.2rem;
-	&[data-year="2019"][data-month="7"][data-date="8"]{
+	&[data-year="2019"][data-month="7"][data-date="8"] {
 		background: var(--adp-background-color-current-date);
 		color: var(--adp-color-current-date);
 		font-family: "MontserratBold";
+		&.-in-range- {
+			background: var(--adp-cell-background-color-in-range);
+		}
 	}
 	&.-current- {
 		background: var(--adp-background-color-current-date);
 		font-family: "MontserratBold";
 		&.-focus- {
 			color: var(--adp-color-current-date);
-		 }
+		}
 		&.-in-range- {
 			background: var(--adp-cell-background-color-in-range);
+		}
+	}
+
+	&.-range-from-.-weekend- {
+		background: var(--adp-cell-background-color-selected);
+		border-radius: var(--adp-cell-border-radius);
+		font-weight: bold;
+		& + .-in-range-:not(.-weekend-) {
+			&::before {
+				content: "";
+				height: 4rem;
+				width: 2rem;
+				position: absolute;
+				left: 26rem;
+				top: -4rem;
+				background-color: var(--adp-cell-background-color-in-range);
+			}
+		}
+		& + .-range-to-:not(.-weekend-){
+			background: linear-gradient(to right, var(--adp-cell-background-color-in-range) 50%, white 50%);
+			border-radius: 0;
+			&::before{
+				content: "";
+				height: 4rem;
+				width: 2rem;
+				position: absolute;
+				left: 26rem;
+				top: -4rem;
+				background-color: var(--adp-cell-background-color-in-range);
+				z-index: -1;
+			}
 		}
 	}
 	&.-range-from- {
 		background: var(--adp-cell-background-color-selected);
 		border-radius: var(--adp-cell-border-radius);
 		font-weight: bold;
-		&::before {
-			content: "";
-			height: 4rem;
-			width: 2rem;
-			position: absolute;
-			right: 0;
-			background-color: var(--adp-cell-background-color-in-range);
-			z-index: -1;
+		z-index: 2;
+		& + .-in-range- {
+			&::before {
+				content: "";
+				height: 4rem;
+				width: 2rem;
+				position: absolute;
+				left: -2rem;
+				background-color: var(--adp-cell-background-color-in-range);
+			}
+		}
+		& + .-range-to-{
+			&::before {
+				content: "";
+				height: 4rem;
+				width: 4rem;
+				position: absolute;
+				left: -2rem;
+				background-color: var(--adp-cell-background-color-in-range);
+				z-index: -1;
+			}
+			&::after{
+				content: "";
+				height: 4rem;
+				width: 4rem;
+				position: absolute;
+				background: var(--adp-cell-background-color-selected);
+				border-radius: 50%;
+				z-index: -1;
+			}
 		}
 	}
 	&.-range-to- {
 		background: var(--adp-cell-background-color-selected);
 		border-radius: var(--adp-cell-border-radius);
 		font-weight: bold;
-		&::before {
-			content: "";
-			height: 4rem;
-			width: 2rem;
-			position: absolute;
-			left: 0;
-			background-color: var(--adp-cell-background-color-in-range);
-			z-index: -1;
+	}
+	&.-in-range- {
+		& + .-range-to-,
+		& + .-other-month-.-range-to- {
+			background: linear-gradient(to right, var(--adp-cell-background-color-in-range) 50%, white 50%);
+			border-radius: 0;
+			&::after {
+				content: "";
+				height: 4rem;
+				width: 4rem;
+				position: absolute;
+				background: var(--adp-cell-background-color-selected);
+				border-radius: 50%;
+				left: 0;
+				z-index: -1;
+			}
 		}
 	}
 }
