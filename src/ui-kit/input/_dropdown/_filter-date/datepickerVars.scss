@@ -16,12 +16,17 @@
 
 	--adp-background-color: #fff;
 	--adp-background-color-current-date: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-	--adp-background-color-hover: #fff;
-	--adp-background-color-active: inear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-	--adp-background-color-in-range:rgba(188, 156, 255, 0.5);
+	--adp-background-color-hover: tranparent;
+	--adp-background-color-active: transparent; //inear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-background-color-in-range: rgba(188, 156, 255, 0.5);
 	--adp-background-color-in-range-focused: rgba(188, 156, 255, 0.5);
-	--adp-background-color-selected-other-month-focused: rgba(188, 156, 255, 1);
-	--adp-background-color-selected-other-month: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-background-color-selected-other-month-focused: rgba(188, 156, 255, 0.5); //rgba(188, 156, 255, 1);
+	--adp-background-color-selected-other-month: rgba(
+		188,
+		156,
+		255,
+		0.5
+	); // linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 	--adp-color: rgba(31, 32, 65, 0.5);
 	--adp-color-secondary: var(--adp-color);
 	--adp-accent-color: rgba(188, 156, 255, 1);
@@ -54,11 +59,21 @@
 	--adp-pointer-offset: 14px;
 
 	--adp-cell-border-radius: 50%;
-	--adp-cell-background-color-selected: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-	--adp-cell-background-color-selected-hover: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-cell-background-color-selected: rgba(188, 156, 255, 0.5); //linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-cell-background-color-selected-hover: rgba(
+		188,
+		156,
+		255,
+		0.5
+	); //linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 	--adp-cell-background-color-in-range: rgba(188, 156, 255, 0.5);
-	--adp-cell-background-color-in-range-hover: rgba(188, 156, 255, 0.5);
-	--adp-cell-border-color-in-range: var(--adp-cell-background-color-selected);
+	--adp-cell-background-color-in-range-hover: rgba(
+		188,
+		156,
+		255,
+		0.5
+	); //linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);//rgba(188, 156, 255, 0.5);
+	--adp-cell-border-color-in-range: transparent;
 
 	--adp-btn-height: 1.5rem;
 	--adp-btn-color: var(--adp-accent-color);
@@ -154,113 +169,47 @@
 .air-datepicker-cell {
 	font-size: 1.2rem;
 	&[data-year="2019"][data-month="7"][data-date="8"] {
-		background: var(--adp-background-color-current-date);
+		font-family: "MontserratBold";
 		color: var(--adp-color-current-date);
-		font-family: "MontserratBold";
-		&.-in-range- {
-			background: var(--adp-cell-background-color-in-range);
-		}
-	}
-	&.-current- {
-		background: var(--adp-background-color-current-date);
-		font-family: "MontserratBold";
-		&.-focus- {
-			color: var(--adp-color-current-date);
-		}
-		&.-in-range- {
-			background: var(--adp-cell-background-color-in-range);
+		&::after {
+			content: "";
+			height: 4rem;
+			width: 4rem;
+			position: absolute;
+			background: var(--adp-background-color-current-date);
+			border-radius: 50%;
+			z-index: -1;
 		}
 	}
 
-	&.-range-from-.-weekend- {
-		background: var(--adp-cell-background-color-selected);
-		border-radius: var(--adp-cell-border-radius);
-		font-weight: bold;
-		& + .-in-range-:not(.-weekend-) {
-			&::before {
-				content: "";
-				height: 4rem;
-				width: 2rem;
-				position: absolute;
-				left: 26rem;
-				top: -4rem;
-				background-color: var(--adp-cell-background-color-in-range);
-			}
-		}
-		& + .-range-to-:not(.-weekend-){
-			background: linear-gradient(to right, var(--adp-cell-background-color-in-range) 50%, white 50%);
-			border-radius: 0;
-			&::before{
-				content: "";
-				height: 4rem;
-				width: 2rem;
-				position: absolute;
-				left: 26rem;
-				top: -4rem;
-				background-color: var(--adp-cell-background-color-in-range);
-				z-index: -1;
-			}
+	&.-current- {
+		font-family: "MontserratBold";
+		&::after {
+			content: "";
+			height: 4rem;
+			width: 4rem;
+			position: absolute;
+			background: var(--adp-background-color-current-date);
+			border-radius: 50%;
+			z-index: -1;
 		}
 	}
-	&.-range-from- {
-		background: var(--adp-cell-background-color-selected);
-		border-radius: var(--adp-cell-border-radius);
-		font-weight: bold;
-		z-index: 2;
-		& + .-in-range- {
-			&::before {
-				content: "";
-				height: 4rem;
-				width: 2rem;
-				position: absolute;
-				left: -2rem;
-				background-color: var(--adp-cell-background-color-in-range);
-			}
-		}
-		& + .-range-to-{
-			&::before {
-				content: "";
-				height: 4rem;
-				width: 4rem;
-				position: absolute;
-				left: -2rem;
-				background-color: var(--adp-cell-background-color-in-range);
-				z-index: -1;
-			}
-			&::after{
-				content: "";
-				height: 4rem;
-				width: 4rem;
-				position: absolute;
-				background: var(--adp-cell-background-color-selected);
-				border-radius: 50%;
-				z-index: -1;
-			}
-		}
-	}
+
+	&.-range-from-,
 	&.-range-to- {
-		background: var(--adp-cell-background-color-selected);
-		border-radius: var(--adp-cell-border-radius);
-		font-weight: bold;
-	}
-	&.-in-range- {
-		& + .-range-to-,
-		& + .-other-month-.-range-to- {
-			background: linear-gradient(to right, var(--adp-cell-background-color-in-range) 50%, white 50%);
-			border-radius: 0;
-			&::after {
-				content: "";
-				height: 4rem;
-				width: 4rem;
-				position: absolute;
-				background: var(--adp-cell-background-color-selected);
-				border-radius: 50%;
-				left: 0;
-				z-index: -1;
-			}
+		font-family: "MontserratBold";
+		&::after {
+			content: "";
+			height: 4rem;
+			width: 4rem;
+			position: absolute;
+			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%); //var(--adp-cell-background-color-selected);
+			border-radius: 50%;
+			z-index: -1;
 		}
 	}
 }
+
 
 /* -------------------------------------------------
     Datepicker buttons

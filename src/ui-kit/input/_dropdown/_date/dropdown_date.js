@@ -38,7 +38,7 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 		position({ $datepicker, $target, $pointer }) {
 
 			let coords = $target.getBoundingClientRect()
-				
+
 			let top = coords.y + coords.height + window.scrollY;
 			let left = coords.x;
 
@@ -50,7 +50,8 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 		selectedDates: selectedDates ? selectedDates : ['2019-08-19', '2019-08-23'],
 		startDate: startDate ? startDate : '',
 		onShow() {
-			$inputDeparture.classList.add('dropdown__input_date_departure-focused')
+			$inputDeparture.classList.add('dropdown__input_date_departure-focused');
+			addClass();
 		},
 		onHide() {
 			$inputDeparture.classList.remove('dropdown__input_date_departure-focused')
@@ -58,10 +59,15 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 		onSelect() {
 			if (dp.selectedDates[1]) {
 				$inputDeparture.value = dp.formatDate(dp.selectedDates[1], dp.locale.dateFormat);
+			} else {
+				if (dp.selectedDates[0]) {
+					getElement('.-range-from-').classList.add('-range-to-');
+				}
 			}
-			if(callbackFunc){
+			if (callbackFunc) {
 				callbackFunc(dp.selectedDates);
 			}
+			addClass();
 		}
 	})
 
@@ -74,6 +80,15 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 		dp.show();
 		dp.$el.focus();
 	});
+
+	function addClass(){
+		if(dp.selectedDates[0]){
+			const $select = getElement('.-range-from-', dp.$datepicker);
+			if(!$select.nextElementSibling.classList.contains('-in-range-')){
+				$select.classList.add('-range-to-');
+			}
+		}
+	}
 
 }
 

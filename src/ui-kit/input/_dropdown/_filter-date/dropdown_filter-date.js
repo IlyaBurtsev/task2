@@ -2,6 +2,7 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
 import './datepickerVars.scss'
+import { getElement } from '../../../../utils/utils';
 
 export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 
@@ -14,7 +15,7 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 	}
 
 
-	new AirDatepicker(bindElement, {
+	const dp = new AirDatepicker(bindElement, {
 		range: true,
 		multipleDatesSeparator: ' - ',
 		prevHtml: '<svg><path d="M16.1755 8.01562V9.98438H3.98801L9.56613 15.6094L8.15988 17.0156L0.144258 9L8.15988 0.984375L9.56613 2.39062L3.98801 8.01562H16.1755Z" fill="#BC9CFF"/></svg>',
@@ -35,9 +36,24 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 
 			$pointer.style.display = 'none';
 		},
-		selectedDates: selectedDates ?  selectedDates: ['2022-08-19', '2022-08-23'],
+		selectedDates: selectedDates ?  selectedDates: ['2019-08-19', '2019-08-23'],
 		startDate: startDate ? startDate: '',
-		dateFormat: 'dd MMM'
+		dateFormat: 'dd MMM',
+		onSelect(){
+			addClass();
+		},
+		onShow(){
+			addClass();
+		}
 		
 	})
+	function addClass(){
+		if(dp.selectedDates[0]){
+			const $select = getElement('.-range-from-', dp.$datepicker);
+			if(!$select.nextElementSibling.classList.contains('-in-range-')){
+				$select.classList.add('-range-to-');
+			}
+		}
+	}
+	
 }
