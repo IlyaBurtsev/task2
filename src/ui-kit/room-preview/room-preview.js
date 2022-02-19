@@ -23,6 +23,7 @@ export function initRoomPreview(room, $roomPreview) {
 	}
 	if(pictures.length > 1){
 		$imgContainer.parentNode.classList.add('room-preview__view-port_button_show');
+		
 	}
 
 	let currentPicturePosition = 0;

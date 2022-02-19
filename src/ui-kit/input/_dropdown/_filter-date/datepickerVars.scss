@@ -16,17 +16,12 @@
 
 	--adp-background-color: #fff;
 	--adp-background-color-current-date: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-	--adp-background-color-hover: tranparent;
-	--adp-background-color-active: transparent; //inear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-background-color-hover: transparent;
+	--adp-background-color-active: transparent;
 	--adp-background-color-in-range: rgba(188, 156, 255, 0.5);
 	--adp-background-color-in-range-focused: rgba(188, 156, 255, 0.5);
-	--adp-background-color-selected-other-month-focused: rgba(188, 156, 255, 0.5); //rgba(188, 156, 255, 1);
-	--adp-background-color-selected-other-month: rgba(
-		188,
-		156,
-		255,
-		0.5
-	); // linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-background-color-selected-other-month-focused: rgba(188, 156, 255, 0.5);
+	--adp-background-color-selected-other-month: rgba(188, 156, 255, 0.5);
 	--adp-color: rgba(31, 32, 65, 0.5);
 	--adp-color-secondary: var(--adp-color);
 	--adp-accent-color: rgba(188, 156, 255, 1);
@@ -59,20 +54,10 @@
 	--adp-pointer-offset: 14px;
 
 	--adp-cell-border-radius: 50%;
-	--adp-cell-background-color-selected: rgba(188, 156, 255, 0.5); //linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-	--adp-cell-background-color-selected-hover: rgba(
-		188,
-		156,
-		255,
-		0.5
-	); //linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+	--adp-cell-background-color-selected: rgba(188, 156, 255, 0.5);
+	--adp-cell-background-color-selected-hover: rgba(188, 156, 255, 0.5);
 	--adp-cell-background-color-in-range: rgba(188, 156, 255, 0.5);
-	--adp-cell-background-color-in-range-hover: rgba(
-		188,
-		156,
-		255,
-		0.5
-	); //linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);//rgba(188, 156, 255, 0.5);
+	--adp-cell-background-color-in-range-hover: rgba(188, 156, 255, 0.5);
 	--adp-cell-border-color-in-range: transparent;
 
 	--adp-btn-height: 1.5rem;
@@ -180,6 +165,19 @@
 			border-radius: 50%;
 			z-index: -1;
 		}
+		&.-range-from-,
+		&.-range-to- {
+			font-family: "MontserratBold";
+			&::after {
+				content: "";
+				height: 4rem;
+				width: 4rem;
+				position: absolute;
+				background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%); //var(--adp-cell-background-color-selected);
+				border-radius: 50%;
+				z-index: -1;
+			}
+		}
 	}
 
 	&.-current- {
@@ -209,7 +207,6 @@
 		}
 	}
 }
-
 
 /* -------------------------------------------------
     Datepicker buttons
