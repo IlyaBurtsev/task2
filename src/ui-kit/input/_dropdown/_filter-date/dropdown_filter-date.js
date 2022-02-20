@@ -1,7 +1,7 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
-import './datepickerVars.scss'
+import '../air-datepicker/datepickerVars.scss'
 import { getElement } from '../../../../utils/utils';
 
 export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
@@ -48,12 +48,7 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 		
 	})
 	function addClass(){
-		if(dp.selectedDates[0]){
-			const $select = getElement('.-range-from-', dp.$datepicker);
-			if(!$select.nextElementSibling.classList.contains('-in-range-')){
-				$select.classList.add('-range-to-');
-			}
-		}
+		
 	}
 	
 }
