@@ -18,11 +18,14 @@ body {
 	.search-room__rooms {
 		display: flex;
 		flex-direction: column;
-		.search-rooms__fitered-rooms {
+		.search-room__fitered-rooms {
 			display: grid;
 			grid-template-columns: repeat(3, 28.2rem);
 			grid-template-rows: repeat(4, 27.8rem);
 			
+		}
+		.search-room__pagination {
+			align-self: center;
 		}
 	}
 }

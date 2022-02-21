@@ -7,7 +7,7 @@ const webpack = require("webpack");
 
 module.exports = {
 	entry: {
-		main: path.resolve(__dirname, 'src/pages/search-room/search-room.js')
+		main: path.resolve(__dirname, 'src/pages/room-details/room-details.js')
 	},
 	output: {
 		filename: '[name]-[contenthash].js',
@@ -24,7 +24,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: './src/pages/search-room/search-room.pug'
+			template: './src/pages/room-details/room-details.pug'
 		}),
 		new webpack.ProvidePlugin({
 			$: 'jquery',

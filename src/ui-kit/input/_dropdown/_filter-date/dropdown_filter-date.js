@@ -1,8 +1,9 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
-import '../air-datepicker/datepickerVars.scss'
+import '../air-datepicker/air-datepicker.scss'
 import { getElement } from '../../../../utils/utils';
+import { clearBackgroundForRangeFrom } from '../air-datepicker/air-datepicker';
 
 export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 
@@ -40,15 +41,13 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 		startDate: startDate ? startDate: '',
 		dateFormat: 'dd MMM',
 		onSelect(){
-			addClass();
+			clearBackgroundForRangeFrom(dp);
 		},
 		onShow(){
-			addClass();
+			clearBackgroundForRangeFrom(dp);
 		}
 		
 	})
-	function addClass(){
-		
-	}
+
 	
 }

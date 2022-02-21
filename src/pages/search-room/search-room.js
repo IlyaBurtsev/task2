@@ -4,7 +4,7 @@ import '../../ui-kit/header/header'
 import '../../ui-kit/footer/footer'
 import '../../ui-kit/input/input'
 import '../../ui-kit/list/list'
-// import '../../ui-kit/pagination/pagination'
+import '../../ui-kit/pagination/pagination'
 import '../../ui-kit/slider/slider'
 import '../../ui-kit/room-info/room-info'
 // import '../../ui-kit/review/review'
@@ -69,4 +69,5 @@ function initSearchRoom(page) {
 		getElements('.switch__input_radio_white', $element).forEach($button => $button.setAttribute('name', `slider-${roomNumber}`)); 
 		getElements('.button__input_rate', $element).forEach($button => $button.setAttribute('name', roomNumber));
 	}
+	
 }

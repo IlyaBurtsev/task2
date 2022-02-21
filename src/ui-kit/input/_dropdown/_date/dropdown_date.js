@@ -1,6 +1,7 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import { getElement } from '../../../../utils/utils';
+import { clearBackgroundForRangeFrom } from '../air-datepicker/air-datepicker';
 import '../dropdown.scss'
 import './dropdown_date.scss'
 
@@ -51,7 +52,7 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 		startDate: startDate ? startDate : '',
 		onShow() {
 			$inputDeparture.classList.add('dropdown__input_date_departure-focused');
-			addClass();
+			clearBackgroundForRangeFrom();
 		},
 		onHide() {
 			$inputDeparture.classList.remove('dropdown__input_date_departure-focused')
@@ -67,7 +68,7 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 			if (callbackFunc) {
 				callbackFunc(dp.selectedDates);
 			}
-			addClass();
+			clearBackgroundForRangeFrom(dp);
 		}
 	})
 
@@ -80,15 +81,6 @@ export function initDropdownDate(inputArrival, inputDeparture, selectedDates = [
 		dp.show();
 		dp.$el.focus();
 	});
-
-	function addClass(){
-		if(dp.selectedDates[0]){
-			const $select = getElement('.-range-from-', dp.$datepicker);
-			if(!$select.nextElementSibling.classList.contains('-in-range-')){
-				$select.classList.add('-range-to-');
-			}
-		}
-	}
 
 }
 
