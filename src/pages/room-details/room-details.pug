@@ -1,3 +1,5 @@
+include ../../ui-kit/header/header.pug
+include ../../ui-kit/footer/footer.pug
 
 html(lang="en")
 	head
@@ -6,3 +8,12 @@ html(lang="en")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		title Room details
 	body 
+		+header()
+		main.room-details__main 
+			.room-details__picture-container
+				img.room-details__main-picture
+				.room-details__other-picture-container
+			.room-details__chart-container 
+				canvas.room-details__chart(width="311" height="120")
+					
+

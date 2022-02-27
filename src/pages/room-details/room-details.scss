@@ -1,0 +1,20 @@
+.room-details__main {
+  .room-details__picture-container {
+    height: 48.5rem;
+    max-width: 144rem;
+    &.room-details__main-picture {
+      max-width: 98.1rem;
+    }
+    &.room-details__other-picture-container {
+      max-width: 45.9rem;
+    }
+  }
+  .room-details__chart-container {
+		width: 31.1rem;
+		height: 12rem;
+    canvas.room-details__chart {	
+      width: auto;
+      height: 120px;
+    }
+  }
+}
