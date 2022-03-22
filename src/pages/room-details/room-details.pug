@@ -1,5 +1,8 @@
 include ../../ui-kit/header/header.pug
 include ../../ui-kit/footer/footer.pug
+include ../../ui-kit/room-info/room-info.pug
+include ../../ui-kit/room-card/room-card.pug
+include ../../ui-kit/review/review.pug
 
 html(lang="en")
 	head
@@ -13,7 +16,16 @@ html(lang="en")
 			.room-details__picture-container
 				img.room-details__main-picture
 				.room-details__other-picture-container
-			.room-details__chart-container 
-				canvas.room-details__chart(width="311" height="120")
+			section.room-details__section 
+				.room-details__column1
+					.room-details__row1
+						+room-info()
+						.room-details__chart-container 
+							canvas.room-details__chart
+							.room-details__legend 
+								+list({type: LIST_TYPE.BULLET, items:['Великолепно', 'Хорошо', 'Удовлетворительно', 'Разочарован']})
+					+review()
+					+list({type: LIST_TYPE.BULLET, items:['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']})
+				+room-card()
 					
 

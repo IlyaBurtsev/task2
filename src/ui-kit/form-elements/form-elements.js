@@ -10,6 +10,7 @@ import '../external-container/external-container'
 
 import { Dropdown } from '../input/_dropdown/dropdown'
 import { initDropdownFilterDate } from '../input/_dropdown/_filter-date/dropdown_filter-date'
+import { initRoomInfo } from '../room-info/room-info'
 
 
 
@@ -57,6 +58,8 @@ new Dropdown('.form__container_dropdown-guests_opened', {
 	ItemsRequiredMessage: 'Без взрослых не заселяем.',
 	footerButtonActived: true,
 });
+
+initRoomInfo(1);
 
 
 

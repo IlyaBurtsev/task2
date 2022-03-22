@@ -3,11 +3,11 @@ import { getRoomRepository } from '../../repository/roomRepository/RoomRepositor
 import { getUserRepository } from '../../repository/userRepository/UserRepository';
 import { getElement } from '../../utils/utils'
 
-createReviews('.rewiew__container');
+// initReviews('.rewiew__container');
 
-function createReviews(bindElement, roomNamber) {
+export function initReviews(bindElement, room) {
 	let $review = getElement(bindElement);
-	const reviews = getRoomRepository().getRoomByNumber(roomNamber).getReviews();
+	const reviews = room.getReviews();
 	
 	const firstReview = reviews.shift();
 	
@@ -16,7 +16,7 @@ function createReviews(bindElement, roomNamber) {
 		let $newReview = $review.cloneNode(true);
 		
 		setReviewData($newReview, review);
-		$review.parentNode.append($newReview);
+		$review.append($newReview);
 	})
 	setReviewData($review, firstReview);
 
