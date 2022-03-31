@@ -63,7 +63,7 @@ mixin input-tamplate(options)
 	- inputClassName +=options.dataSelected === "true" ? ' '+inputClassName+'_selected' : ''
 	
 	
-		label(class=containerClassName)(data-icon=options.dataIcon)
-			input(class=inputClassName)(type=options.inputType, value=options.inputValue, placeholder=options.placeholder, name=options.radioName, data-selected =options.dataSelected, checked=options.checked, autofocus=options.autofocus, active=options.active)
+		label(class=containerClassName, data-icon=options.dataIcon)
+			input(class=inputClassName, type=options.inputType, value=options.inputValue, placeholder=options.placeholder, name=options.radioName, data-selected =options.dataSelected, checked=options.checked, autofocus=options.autofocus, active=options.active)
 			//-TODO: Подумать, как избавиться от пустого [div] при отсутствии [options.customElementName]
 			span(class=customClassName)=options.customElementValue

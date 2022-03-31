@@ -90,7 +90,7 @@ export class Dropdown {
 
 			this.selectedItems = this.opts.selectedItems;
 
-			this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.$dropdown.querySelectorAll('.dropdown-item__counter')))
+			// this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.$dropdown.querySelectorAll('.dropdown-item__counter')))
 		} else {
 			this.selectedItems = this.initSelectedItem();
 		}
@@ -98,7 +98,7 @@ export class Dropdown {
 		if (this.opts.footerButtonActived) {
 
 			this.attachFooterButtonListener();
-			this.checkDisableClearButton();
+			// this.checkDisableClearButton();
 		}
 		if (this.opts.elementReadonly) {
 			this.$input.setAttribute('readonly', '')
@@ -111,6 +111,7 @@ export class Dropdown {
 
 
 	initSelectedItem() {
+		
 		let items = this.$dropdown.querySelectorAll('.dropdown-item__counter');
 
 		items = Array.prototype.slice.call(items);

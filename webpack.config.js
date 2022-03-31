@@ -2,75 +2,162 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const path = require('path');
+const path = require("path");
+const fs = require('fs');
 const webpack = require("webpack");
+const loader = require("sass-loader");
 
-module.exports = {
-	entry: {
-		main: path.resolve(__dirname, 'src/pages/room-details/room-details.js')
-	},
-	output: {
-		filename: '[name]-[contenthash].js',
-		path: path.resolve(__dirname, 'dist')
-	},
-	resolve: {
-		alias: {
-			'@ui-kit': path.resolve(__dirname, 'src/ui-kit'),
-			'@assets': path.resolve(__dirname, 'src/assets')
-		}
-	},
-	devServer: {
-		port: 8080
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: './src/pages/room-details/room-details.pug'
-		}),
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery',
-			'window.jquery': 'jquery',
-			'window.jQuery': 'jquery',
-			'noUiSlider': 'nouislider'
-		}),
-		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' }),
-		new CopyPlugin({
-			patterns: [
-				{
-					from: path.resolve(__dirname, "src/**/*.(png|jpg)"),
-					to() {
-						return path.resolve(__dirname, "dist/assets/[name][ext]");
+
+module.exports = (env, argv = {}) => {
+  const { mode = "development" } = argv;
+  const isProduction = mode === "production";
+  const isDevelopment = mode === "development";
+	const pagesDir = path.resolve(__dirname, 'src', 'pages');
+  const pages = [];
+	console.log(isDevelopment+' isDev');
+	console.log(isProduction+' isProd')
+	fs.readdirSync(pagesDir).forEach((file) => {
+    pages.push(file);
+  });
+	const entryPoints = Object.assign({}, ...pages.map(page => 
+    ({[page]: `${pagesDir}/${page}/${page}.js`, })));
+
+  const htmlPlugins = pages.map((fileName) => {
+    return new HtmlWebpackPlugin({
+      filename: `${fileName}.html`,
+      template: `${pagesDir}/${fileName}/${fileName}.pug`,
+      inject: 'body',
+			chunks:[fileName],
+      hash: true,
+      meta: {
+        viewport: "initial-scale=1.0, width=device-width",
+        "msapplication-TileColor": "#da532c",
+      },
+      minify: isProduction
+        ? {
+            html5: true,
+            collapseWhitespace: true,
+            minifyCSS: true,
+            minifyJS: true,
+            minifyURLs: false,
+            removeAttributeQuotes: false,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeOptionalTags: true,
+            removeRedundantAttributes: false,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributese: true,
+            useShortDoctype: true,
+          }
+        : false,
+    });
+  });
+	
+ 
+  const getStyleLoaders = () => {
+    return [
+      // isProduction ? MiniCssExtractPlugin.loader : "style-loader",
+			MiniCssExtractPlugin.loader,
+      "css-loader",
+    ];
+  };
+  const getPlugins = () => {
+    const plugins = [
+      new CleanWebpackPlugin(),
+      new webpack.ProgressPlugin(),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jquery": "jquery",
+        "window.jQuery": "jquery",
+        noUiSlider: "nouislider",
+      }),
+      ...htmlPlugins,
+    ];
+		plugins.push(
+			new MiniCssExtractPlugin({
+				filename: "[name].css?version=[contenthash]",
+				chunkFilename: "[id].css?version=[contenthash]",
+			})
+		);
+    if (isProduction) {
+      plugins.push(
+        new MiniCssExtractPlugin({
+          filename: "[name].css?version=[contenthash]",
+          chunkFilename: "[id].css?version=[contenthash]",
+        })
+      );
+    }
+    return plugins;
+  };
+  return {
+    mode: isProduction ? "production" : "development",
+    output: {
+      filename: "[name].js?version=[hash]",
+      pathinfo: isDevelopment,
+		
+    },
+		entry: entryPoints,
+    resolve: {
+      alias: {
+        "@ui-kit": path.resolve(__dirname, "src/ui-kit"),
+        "@assets": path.resolve(__dirname, "src/assets"),
+      },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: 	getStyleLoaders(),
+        },
+        {
+          test: /\.scss$/,
+          use: [...getStyleLoaders(), "sass-loader"],
+        },
+        {
+          test: /\.pug$/,
+          use: {
+						loader: "pug-loader",
+						options: {
+							pretty: true,
+						},
 					},
-					noErrorOnMissing: true,
-				},
-			],
-		})
+        },
+        {
+          test: /\.(png|jpg|svg|gif)$/i,
+					exclude: /(fonts|favicon)/,
+          // type: "asset/resource",
+					use: {
+						loader: 'file-loader',
+						options: {
+							outputPath: './assets/images',
+							name: '[name]-[contenthash].[ext]',
+						}
+					}
+					
+        },
+        {
+          test: /\.(ttf|woff|woff2|eot|svg)$/i,
+					include: /fonts/,
+          // type: "asset/resource",
+					use: {
+						loader: 'file-loader',
+						options: {
+							outputPath: './assets/fonts/',
+							name: '[name].[ext]?version=[contenthash]',
+						}
+					}
+        },
+      ],
+    },
+	
+		plugins: getPlugins(),
 
-	],
-	module: {
-		rules: [
-			{
-				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
-			},
-			{
-				test: /\.scss$/,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-			},
-			{
-				test: /\.pug$/,
-				use: 'pug-loader'
-
-			},
-			{
-				test: /\.(png|jpg|svg|gif)$/i,
-				type: 'asset/resource'
-			},
-			{
-				test: /\.(ttf|woff|woff2|eot|svg)$/i,
-				type: 'asset/resource'
-			}
-		]
-	}
-}
+		devServer: {
+			static: './dist',
+			open : '/index.html',
+      hot: false,
+      open: false,
+    },
+  };
+};
