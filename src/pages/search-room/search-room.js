@@ -63,7 +63,6 @@ function initSearchRoom(page) {
 
 	function preparateRoom(room, $element) {
 		const roomNumber = room.getRoomNumber();
-		console.log($element.hasAttribute('room-number'))
 		$element.setAttribute("room-number", roomNumber);
 
 		getElements('.switch__input_radio_white', $element).forEach($button => $button.setAttribute('name', `slider-${roomNumber}`)); 

@@ -20,15 +20,15 @@ export class DropdownItem {
 			items.forEach(item => {
 
 				if ((this.dropdown.selectedItems[item.getAttribute('counter')]) > 0) {
-					item.previousSibling.classList.add('dropdown-item__sub-button_active');
-					item.previousSibling.removeAttribute("disabled");
+					item.previousElementSibling.classList.add('dropdown-item__sub-button_active');
+					item.previousElementSibling.removeAttribute("disabled");
 
 				} else {
-					item.previousSibling.classList.remove('dropdown-item__sub-button_active');
+					item.previousElementSibling.classList.remove('dropdown-item__sub-button_active');
 				}
 			})
 		} else {
-			let subButton = items.previousSibling;
+			let subButton = items.previousElementSibling;
 			if (this.dropdown.selectedItems[items.getAttribute('counter')] > 0) {
 				if (subButton.hasAttribute("disabled")) {
 					subButton.removeAttribute("disabled");

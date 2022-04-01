@@ -49,7 +49,7 @@ export class Dropdown {
 			}
 		}
 
-		this.$dropdown = this.$container.lastChild
+		this.$dropdown = this.$container.lastElementChild
 		
 		this.opts = deepMerge({}, optionDefault, options);
 
@@ -89,8 +89,7 @@ export class Dropdown {
 		if (this.opts.selectedItems) {
 
 			this.selectedItems = this.opts.selectedItems;
-
-			// this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.$dropdown.querySelectorAll('.dropdown-item__counter')))
+			this.trigger(consts.eventChangeSelectedItems, Array.prototype.slice.call(this.$dropdown.querySelectorAll('.dropdown-item__counter')))
 		} else {
 			this.selectedItems = this.initSelectedItem();
 		}
@@ -98,7 +97,7 @@ export class Dropdown {
 		if (this.opts.footerButtonActived) {
 
 			this.attachFooterButtonListener();
-			// this.checkDisableClearButton();
+			this.checkDisableClearButton();
 		}
 		if (this.opts.elementReadonly) {
 			this.$input.setAttribute('readonly', '')
@@ -197,7 +196,7 @@ export class Dropdown {
 
 		if (e.target.classList.contains('dropdown-item__add-button')) {
 
-			let itemCount = e.target.previousSibling.getAttribute('counter')
+			let itemCount = e.target.previousElementSibling.getAttribute('counter')
 
 			if (!this.selectedItems[itemCount]) {
 				this.selectedItems[itemCount] = 1;
@@ -205,18 +204,18 @@ export class Dropdown {
 				this.selectedItems[itemCount]++;
 			}
 
-			this.trigger(consts.eventChangeSelectedItems, e.target.previousSibling);
+			this.trigger(consts.eventChangeSelectedItems, e.target.previousElementSibling);
 		}
 
 		if (e.target.classList.contains('dropdown-item__sub-button')) {
 
-			let itemCount = e.target.nextSibling.getAttribute('counter');
+			let itemCount = e.target.nextElementSibling.getAttribute('counter');
 
 			if (this.selectedItems[itemCount] > 0) {
 				this.selectedItems[itemCount]--;
 			}
 
-			this.trigger(consts.eventChangeSelectedItems, e.target.nextSibling);
+			this.trigger(consts.eventChangeSelectedItems, e.target.nextElementSibling);
 		}
 
 

@@ -56,8 +56,7 @@ module.exports = (env, argv = {}) => {
  
   const getStyleLoaders = () => {
     return [
-      // isProduction ? MiniCssExtractPlugin.loader : "style-loader",
-			MiniCssExtractPlugin.loader,
+      isProduction ? MiniCssExtractPlugin.loader : "style-loader",
       "css-loader",
     ];
   };
@@ -74,12 +73,6 @@ module.exports = (env, argv = {}) => {
       }),
       ...htmlPlugins,
     ];
-		plugins.push(
-			new MiniCssExtractPlugin({
-				filename: "[name].css?version=[contenthash]",
-				chunkFilename: "[id].css?version=[contenthash]",
-			})
-		);
     if (isProduction) {
       plugins.push(
         new MiniCssExtractPlugin({
@@ -94,7 +87,8 @@ module.exports = (env, argv = {}) => {
     mode: isProduction ? "production" : "development",
     output: {
       filename: "[name].js?version=[hash]",
-      pathinfo: isDevelopment,
+			assetModuleFilename: 'assets/[name][ext]',
+			clean: true,
 		
     },
 		entry: entryPoints,
@@ -126,27 +120,19 @@ module.exports = (env, argv = {}) => {
         {
           test: /\.(png|jpg|svg|gif)$/i,
 					exclude: /(fonts|favicon)/,
-          // type: "asset/resource",
-					use: {
-						loader: 'file-loader',
-						options: {
-							outputPath: './assets/images',
-							name: '[name]-[contenthash].[ext]',
-						}
-					}
+          type: "asset/resource",
+					generator: {
+						filename: 'assets/images/[name]-[contenthash].[ext]',
+					},
 					
         },
         {
           test: /\.(ttf|woff|woff2|eot|svg)$/i,
 					include: /fonts/,
-          // type: "asset/resource",
-					use: {
-						loader: 'file-loader',
-						options: {
-							outputPath: './assets/fonts/',
-							name: '[name].[ext]?version=[contenthash]',
-						}
-					}
+          type: "asset/resource",
+					generator: {
+						filename: 'assets/fonts/[name][ext]',
+					},
         },
       ],
     },
@@ -154,7 +140,6 @@ module.exports = (env, argv = {}) => {
 		plugins: getPlugins(),
 
 		devServer: {
-			static: './dist',
 			open : '/index.html',
       hot: false,
       open: false,
