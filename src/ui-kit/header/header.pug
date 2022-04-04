@@ -3,23 +3,24 @@ include ../list/list.pug
 
 mixin header(options) 
 	header.header__container
-		.header__company
-			.header__logo  
-			.header__name
-		.header__navigation-block
-			nav.header__navigation
-				a.header__navigation-item.header__navigation-item_main(href='https://www.google.ru')='О нас'
-				.header__navigation-item
-					+list({type: LIST_TYPE.EXPANDABLE_LINKS, listTitle: 'Услуги', items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru', 'Выбор 3':'https://www.google.ru'}})
-				a.header__navigation-item(href='https://www.google.ru')='Вакансии'
-				a.header__navigation-item(href='https://www.google.ru')='Новости'
-				.header__navigation-item
-					+list({type: LIST_TYPE.EXPANDABLE_LINKS, listTitle: 'Соглашения', items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru'}})
-			.header__buttons
-				+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT_SLIM, inputValue: 'Войти'})
-				.header__separate-container
-				+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT_SLIM, inputValue: 'зарегистрироваться'})
-			.header__sing-in
-				.header__border
-				.header__user='Юлий Цезарь'
+		.header__inner-container
+			.header__company
+				.header__logo  
+				.header__name
+			.header__navigation-block
+				nav.header__navigation
+					a.header__navigation-item.header__navigation-item_main(href='https://www.google.ru')='О нас'
+					.header__navigation-item
+						+list({type: LIST_TYPE.EXPANDABLE_LINKS, listTitle: 'Услуги', items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru', 'Выбор 3':'https://www.google.ru'}})
+					a.header__navigation-item(href='https://www.google.ru')='Вакансии'
+					a.header__navigation-item(href='https://www.google.ru')='Новости'
+					.header__navigation-item
+						+list({type: LIST_TYPE.EXPANDABLE_LINKS, listTitle: 'Соглашения', items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru'}})
+				.header__buttons
+					+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT_SLIM, inputValue: 'Войти'})
+					.header__separate-container
+					+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT_SLIM, inputValue: 'зарегистрироваться'})
+				.header__sing-in
+					.header__border
+					.header__user='Юлий Цезарь'
 

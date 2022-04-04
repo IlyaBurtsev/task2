@@ -2,6 +2,7 @@ import "./room-details.scss";
 import "../../ui-kit/_theme/ui-kit_theme_custom.scss";
 import "../../ui-kit/header/header";
 import '../../ui-kit/room-card/room-card'
+import '../../page-templates/page-template/page-template'
 import Chart from "chart.js/auto";
 import { getElement } from "../../utils/utils";
 import { initRoomInfo } from "../../ui-kit/room-info/room-info";
