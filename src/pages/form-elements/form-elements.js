@@ -1,16 +1,16 @@
 import './form-elements.scss'
 import '../../ui-kit/_theme/ui-kit_theme_custom.scss'
-import '../input/input'
-import '../list/list'
-import '../pagination/pagination'
-import '../slider/slider'
-import '../room-info/room-info'
-import '../review/review'
-import '../external-container/external-container'
+import '../../ui-kit/input/input'
+import '../../ui-kit/list/list'
+import '../../ui-kit/pagination/pagination'
+import '../../ui-kit/slider/slider'
+import '../../ui-kit/room-info/room-info'
+import '../../ui-kit/review/review'
+import '../../ui-kit/external-container/external-container'
 
-import { Dropdown } from '../input/_dropdown/dropdown'
-import { initDropdownFilterDate } from '../input/_dropdown/_filter-date/dropdown_filter-date'
-import { initRoomInfo } from '../room-info/room-info'
+import { Dropdown } from '../../ui-kit/input/_dropdown/dropdown'
+import { initDropdownFilterDate } from '../../ui-kit/input/_dropdown/_filter-date/dropdown_filter-date'
+import { initRoomInfo } from '../../ui-kit/room-info/room-info'
 
 
 

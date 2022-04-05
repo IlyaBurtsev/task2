@@ -8,6 +8,11 @@ body {
 .body__container {
   display: flex;
   flex: 0 0 auto;
+	flex-direction: column;
+}
+.wraper{
+	display: flex;
+  flex: 0 0 auto;
 }
 .header{
   &__block-container {
@@ -15,6 +20,14 @@ body {
     flex: 0 1 192rem;
     margin-left: auto;
     margin-right: auto;
-    background: #ffffff;
   }
+	
+}
+.main{
+	&__block-container{
+		display: flex;
+		flex: 0 1 192rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }

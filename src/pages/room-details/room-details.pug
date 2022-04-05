@@ -1,24 +1,25 @@
 extends ../../page-templates/page-template/page-template.pug
 
 include ../../ui-kit/room-info/room-info.pug
-//- include ../../ui-kit/room-card/room-card.pug
+include ../../ui-kit/room-card/room-card.pug
 include ../../ui-kit/review/review.pug
-
+block title 	
+	title Room details
 block main
-	//- .room-details__main 
-	//- 	.room-details__picture-container
-	//- 		img.room-details__main-picture
-	//- 		.room-details__other-picture-container
-	//- 	section.room-details__section 
-	//- 		.room-details__column1
-	//- 			.room-details__row1
-	//- 				+room-info()
-	//- 				.room-details__chart-container 
-	//- 					canvas.room-details__chart
-	//- 					.room-details__legend 
-	//- 						+list({type: LIST_TYPE.BULLET, items:['Великолепно', 'Хорошо', 'Удовлетворительно', 'Разочарован']})
-	//- 			+review()
-	//- 			+list({type: LIST_TYPE.BULLET, items:['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']})
-			//- +room-card()
+	main.room-details__main 
+		.room-details__picture-container
+			img.room-details__main-picture
+			.room-details__other-picture-container
+		section.room-details__section 
+			.room-details__column1
+				.room-details__row1
+					+room-info()
+					.room-details__chart-container 
+						canvas.room-details__chart
+						.room-details__legend 
+							+list({type: LIST_TYPE.BULLET, items:['Великолепно', 'Хорошо', 'Удовлетворительно', 'Разочарован']})
+				+review()
+				+list({type: LIST_TYPE.BULLET, items:['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']})
+			+room-card()
 					
 

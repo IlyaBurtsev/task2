@@ -1,17 +1,15 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const path = require("path");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 const fs = require('fs');
-const webpack = require("webpack");
-const loader = require("sass-loader");
+const webpack = require('webpack');
 
 
 module.exports = (env, argv = {}) => {
-  const { mode = "development" } = argv;
-  const isProduction = mode === "production";
-  const isDevelopment = mode === "development";
+  const { mode = 'development' } = argv;
+  const isProduction = mode === 'production';
+  const isDevelopment = mode === 'development';
 	const pagesDir = path.resolve(__dirname, 'src', 'pages');
   const pages = [];
 	console.log(isDevelopment+' isDev');
@@ -29,10 +27,6 @@ module.exports = (env, argv = {}) => {
       inject: 'body',
 			chunks:[fileName],
       hash: true,
-      meta: {
-        viewport: "initial-scale=1.0, width=device-width",
-        "msapplication-TileColor": "#da532c",
-      },
       minify: isProduction
         ? {
             html5: true,
@@ -56,8 +50,8 @@ module.exports = (env, argv = {}) => {
  
   const getStyleLoaders = () => {
     return [
-      isProduction ? MiniCssExtractPlugin.loader : "style-loader",
-      "css-loader",
+      isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+      'css-loader',
     ];
   };
   const getPlugins = () => {
@@ -65,28 +59,29 @@ module.exports = (env, argv = {}) => {
       new CleanWebpackPlugin(),
       new webpack.ProgressPlugin(),
       new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jquery": "jquery",
-        "window.jQuery": "jquery",
-        noUiSlider: "nouislider",
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jquery': 'jquery',
+        'window.jQuery': 'jquery',
+        noUiSlider: 'nouislider',
       }),
       ...htmlPlugins,
+			
     ];
     if (isProduction) {
       plugins.push(
         new MiniCssExtractPlugin({
-          filename: "[name].css?version=[contenthash]",
-          chunkFilename: "[id].css?version=[contenthash]",
+          filename: '[name].css?version=[contenthash]',
+          chunkFilename: '[id].css?version=[contenthash]',
         })
       );
     }
     return plugins;
   };
   return {
-    mode: isProduction ? "production" : "development",
+    mode: isProduction ? 'production' : 'development',
     output: {
-      filename: "[name].js?version=[hash]",
+      filename: '[name].js?version=[hash]',
 			assetModuleFilename: 'assets/[name][ext]',
 			clean: true,
 		
@@ -94,8 +89,8 @@ module.exports = (env, argv = {}) => {
 		entry: entryPoints,
     resolve: {
       alias: {
-        "@ui-kit": path.resolve(__dirname, "src/ui-kit"),
-        "@assets": path.resolve(__dirname, "src/assets"),
+        '@theme': path.resolve(__dirname, 'src/theme'),
+        '@assets': path.resolve(__dirname, 'src/assets'),
       },
     },
     module: {
@@ -106,12 +101,12 @@ module.exports = (env, argv = {}) => {
         },
         {
           test: /\.scss$/,
-          use: [...getStyleLoaders(), "sass-loader"],
+          use: [...getStyleLoaders(), 'sass-loader'],
         },
         {
           test: /\.pug$/,
           use: {
-						loader: "pug-loader",
+						loader: 'pug-loader',
 						options: {
 							pretty: true,
 						},
@@ -120,7 +115,7 @@ module.exports = (env, argv = {}) => {
         {
           test: /\.(png|jpg|svg|gif)$/i,
 					exclude: /(fonts|favicon)/,
-          type: "asset/resource",
+          type: 'asset/resource',
 					generator: {
 						filename: 'assets/images/[name]-[contenthash].[ext]',
 					},
@@ -129,7 +124,7 @@ module.exports = (env, argv = {}) => {
         {
           test: /\.(ttf|woff|woff2|eot|svg)$/i,
 					include: /fonts/,
-          type: "asset/resource",
+          type: 'asset/resource',
 					generator: {
 						filename: 'assets/fonts/[name][ext]',
 					},

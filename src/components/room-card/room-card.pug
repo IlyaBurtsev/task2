@@ -1,5 +1,5 @@
 include ../blocks/dropdown-date-block/dropdown-date-block.pug
-include ../external-container/external-container.pug
+//- include ../external-container/external-container.pug
 mixin room-card()
 	.room-card__container
 		.room-card__title-container
@@ -7,7 +7,7 @@ mixin room-card()
 			.room-card__price
 		+dropdown-date-block({titleArrival: 'Прибытие', titleDeparture: 'Выезд', dataSelector:'room'})
 		.room-card__dropdown
-			+title({type: TITLE_TYPE.MIDDLE, title: 'Гости'})
+			//- +title({type: TITLE_TYPE.MIDDLE, title: 'Гости'})
 			+input({type: INPUT_TYPE.GUESTS})
 		.room-card__info-container 
 			.room-card__info 
