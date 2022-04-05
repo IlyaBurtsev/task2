@@ -1,0 +1,19 @@
+
+mixin input-tamplate(options={})
+
+	-
+		let containerClassName = options.blockName + '__container'
+		containerClassName += options.modificatorName ? '_'+options.modificatorName : ''
+		let customClassName = options.customElementName ? options.blockName+'__'+options.customElementName : ''
+		customClassName +=(options.modificatorName&&options.customElementName) ? '_'+options.modificatorName : ''
+		let inputClassName = options.blockName + '__input'
+		inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
+		inputClassName +=options.dataSelected === "true" ? ' '+inputClassName+'_selected' : ''
+	
+	
+	label(class=containerClassName, data-icon=options.dataIcon)
+		input(class=inputClassName, type=options.inputType, value=options.inputValue, placeholder=options.placeholder,
+			name=options.radioName, data-selected =options.dataSelected, checked=options.checked, 
+		 autofocus=options.autofocus, active=options.active)
+		//-TODO: Подумать, как избавиться от пустого [div] при отсутствии [options.customElementName]
+		span(class=customClassName)=options.customElementValue

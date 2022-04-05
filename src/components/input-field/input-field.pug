@@ -1,0 +1,18 @@
+include ../../component-templates/input-template/input-template.pug
+- const INPUT_FIELD={'TEXT':0, 'SUBSCRIBE':1}
+mixin input-field(options={})
+
+	-
+
+		const {type=INPUT_FIELD.TEXT, placeholder='', dataSelected, inputValue, autofocus  } = options 
+	
+	case type 
+		when INPUT_FIELD.TEXT
+			+input-tamplate({blockName: 'input-field', inputType: 'text', placeholder: placeholder, 
+			dataSelected: dataSelected, inputValue: inputValue, autofocus: autofocus})
+		when INPUT_FIELD.SUBSCRIBE
+			+input-tamplate({blockName: 'input-field', modificatorName: 'subscription', inputType: 'text', 
+			placeholder: 'Email', inputValue: options.inputValue})
+	
+
+

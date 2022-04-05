@@ -1,3 +1,3 @@
 import './index.scss'
-import '../../ui-kit/_theme/ui-kit_theme_custom.scss'
-console.log('helo')
+// import '@theme/theme_custom.scss'
+import '../../components/input-field/input-field'

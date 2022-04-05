@@ -65,7 +65,10 @@ module.exports = (env, argv = {}) => {
         'window.jQuery': 'jquery',
         noUiSlider: 'nouislider',
       }),
-      ...htmlPlugins,
+      // ...htmlPlugins,
+			new HtmlWebpackPlugin({
+				template: `${pagesDir}/index/index.pug`
+			})
 			
     ];
     if (isProduction) {
@@ -86,11 +89,13 @@ module.exports = (env, argv = {}) => {
 			clean: true,
 		
     },
-		entry: entryPoints,
+		// entry: entryPoints,
+		entry: `${pagesDir}/index/index.js`,
     resolve: {
       alias: {
-        '@theme': path.resolve(__dirname, 'src/theme'),
+        '@theme': path.resolve(__dirname, 'src/styles/theme-castom'),
         '@assets': path.resolve(__dirname, 'src/assets'),
+				'@component-templates': path.resolve(__dirname, 'src/component-templates')
       },
     },
     module: {
