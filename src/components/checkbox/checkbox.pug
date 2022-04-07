@@ -1,0 +1,19 @@
+include ../../component-templates/input-template/input-template.pug
+
+-const CHECKBOX = {'DEFAULT': 0, 'RICH': 1}
+
+mixin checkbox(options={})
+
+	- const {type=CHECKBOX.DEFAULT, label='', labelDescription='', checked} = options 
+	case type
+	
+		when CHECKBOX.DEFAULT
+			+input-tamplate({blockName: 'checkbox', inputType: 'checkbox', 
+			customElementName: 'label', customElementValue: label, checked: checked})
+
+		when CHECKBOX.RICH
+			- let richLabel = label + '\n' + labelDescription
+			+input-tamplate({blockName: 'checkbox', modificatorName: 'rich', inputType: 'checkbox', 
+			customElementName: 'label', customElementValue: richLabel, checked: checked})
+	
+

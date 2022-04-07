@@ -1,4 +1,7 @@
 include ../../components/input-field/input-field.pug
+include ../../components/checkbox/checkbox.pug
+include ../../components/toggle/toggle.pug
+
 html(lang="en")
 	head
 		meta(charset="UTF-8")
@@ -10,4 +13,10 @@ html(lang="en")
 			a(href='./landing-page.html') laanding-page
 			a(href='./room-details.html') room-details 
 			a(href='./search-room.html') search-room
-		+input-field({type: INPUT_FIELD.TEXT})
+			+input-field({type: INPUT_FIELD.SUBSCRIBE})
+			+input-field
+			+checkbox({label: 'lkj;lhlkh'})
+			+checkbox({type: CHECKBOX.RICH, label: 'Помощник для инвалидов', 
+			labelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+			+toggle({label: 'kojgofjn'})
+		

@@ -1,0 +1,41 @@
+@import '@theme/variables.scss';
+
+$checkbox-margin: 3rem;
+
+.checkbox {
+  &__container {
+    max-width: 22.2rem;
+  }
+  &__input {
+    opacity: 0;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+  }
+  &__label {
+    color: rgba(31, 32, 65, 0.5);
+    line-height: 1.8rem;
+    white-space: pre-wrap;
+    margin-left: $checkbox-margin;
+    &::before {
+      content: "";
+      width: 2rem;
+      height: 2rem;
+      border: 0.1rem solid $dark-25;
+      border-radius: 0.4rem;
+      box-sizing: border-box;
+      margin-left: -$checkbox-margin;
+      margin-right: 1rem;
+      display: inline-block;
+      vertical-align: bottom;
+			background-color: white;
+    }
+  }
+}
+.checkbox__input:checked + .checkbox__label {
+  &::before {
+    content: "";
+    background: center no-repeat url("./checked.svg");
+		border-color: $primory-color;
+  }
+}

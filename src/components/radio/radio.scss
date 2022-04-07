@@ -1,0 +1,19 @@
+.radio {
+  &__container {
+    width: auto; 
+  }
+  &__label {
+    &::before {
+      content: "";
+      border-radius: 50%;
+    }
+  }
+}
+.radio__input_radio:checked + .radio__label {
+	color: rgba(31, 32, 65, 0.75);
+	&::before {
+		content: "";
+		background: no-repeat url("./circle.svg");
+		background-position: 0.3rem 0.3rem;
+	}
+}

@@ -1,0 +1,18 @@
+.checkbox {
+  &__container_rich {
+    max-width: 26.6rem;
+  }
+  &__label_rich {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    &::first-line {
+      font-weight: 700;
+      font-size: 1.4rem;
+      line-height: 3rem;
+    }
+    &::before {
+      vertical-align: middle;
+      margin-bottom: 0.2rem;
+    }
+  }
+}
