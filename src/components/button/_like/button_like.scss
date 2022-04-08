@@ -1,14 +1,16 @@
+@import '@theme/variables.scss';
+
 .button__container_like {
 	width: 4rem;
 	height: 2rem;
 	position: relative;
 	.button__input_like {
 		border-radius: 1rem;
-		border: 0.1rem solid rgba(31, 32, 65, 0.25);
+		border: 0.1rem solid $dark-25;
 		box-sizing: border-box;
 		font-size: 10px;
 		line-height: 12px;
-		color: rgba(31, 32, 65, 0.25);
+		color: $dark-25;
 		text-align: right;
 		padding-right: 1rem;
 		justify-content: end;
@@ -17,7 +19,7 @@
 		content: "favorite_border";
 		font-family: "MaterialIcons";
 		font-size: 1rem;
-		color: rgba(31, 32, 65, 0.5);
+		color: $dark-50;
 		position: absolute;
 		margin-left: 0.5rem;
 		line-height: 2rem;
@@ -28,13 +30,13 @@
 
 .button__input_like_selected {
 	.button__input_like {
-		color: rgba(188, 156, 255, 1);
-		border-color: rgba(188, 156, 255, 1);
+		color: $primory-color;
+		border-color: $primory-color;
 	}
 
 	&::before {
 		content: "favorite";
-		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+		background: $primory_gradient;
 		color: transparent;
 		-webkit-background-clip: text;
 		background-clip: text;

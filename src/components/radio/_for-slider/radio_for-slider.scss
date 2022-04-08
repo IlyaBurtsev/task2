@@ -1,0 +1,17 @@
+.radio {
+	&__label_for-slider {
+		&::before {
+			content: '';
+			width: 0.75rem;
+			height: 0.75rem;
+			border-color: white;
+			margin-right: 0.4rem;
+		}
+	}
+}
+.radio__input_for-slider:checked + .radio__label_for-slider {
+	&::before {
+		content: '';
+		background-color: white;
+	}
+}

@@ -7,14 +7,20 @@ mixin input-tamplate(options={})
 		let customClassName = options.customElementName ? options.blockName+'__' + options.customElementName : ''
 		customClassName +=(options.modificatorName&&options.customElementName) ? ' ' + customClassName + '_' + options.modificatorName : ''
 		let inputClassName = options.blockName + '__input'
+		let activeClassName=''
+		if(options.active&&options.modificatorName)
+			activeClassName=inputClassName+'_'+options.modificatorName+'_active'
+		else 
+			if(options.active)
+				activeClassName=inputClassName+'_active'
 		inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
 		inputClassName +=options.dataSelected === "true" ? ' '+inputClassName+'_selected' : ''
-	
-	
+		inputClassName +=' '+activeClassName
+
 	label(class=containerClassName, data-icon=options.dataIcon)
 		input(class=inputClassName, type=options.inputType, value=options.inputValue, placeholder=options.placeholder,
 			name=options.radioName, data-selected =options.dataSelected, checked=options.checked, 
-		 autofocus=options.autofocus, active=options.active)
+		 autofocus=options.autofocus)
 		if (customClassName)
 			div(class=customClassName)=options.customElementValue
 	

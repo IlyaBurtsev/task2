@@ -1,0 +1,16 @@
+@import '@theme/variables.scss';
+
+.button__input_purple-text {
+  border: 2px solid;
+  border-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+  
+
+
+	// padding: 2px 2px;
+  // border-radius: 22px;
+  // background: $primory_gradient;
+
+  color: $primory-color;
+  &:active {
+  }
+}

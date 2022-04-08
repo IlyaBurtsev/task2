@@ -1,0 +1,25 @@
+include ../../component-templates/input-template/input-template.pug
+
+-const BUTTON= {'WHITE_TEXT': 0, 'PURPLE_TEXT':1, 'PAY':2, 'LINK':3, 'LIKE ':4}
+
+mixin button(options={})
+
+	- const {type=BUTTON.WHITE_TEXT, label='', dataSelected, active  } = options
+
+	case type 
+		when BUTTON.WHITE_TEXT
+			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', 
+			inputValue: label, active: active})
+		when BUTTON.PURPLE_TEXT
+			+input-tamplate({blockName: 'button', modificatorName: 'purple-text', inputType: 'button', 
+			inputValue: label, active: active})
+		when BUTTON.PAY 	
+			+input-tamplate({blockName: 'button', modificatorName: 'pay', inputType: 'button', 
+			inputValue: label, customElementName: 'arrow'})
+		when BUTTON.LINK	
+			+input-tamplate({blockName: 'button', modificatorName: 'link', inputType: 'button', 
+			inputValue: label, active: active})
+		when BUTTON.LIKE 	
+			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button',
+			 dataSelected: dataSelected})
+		

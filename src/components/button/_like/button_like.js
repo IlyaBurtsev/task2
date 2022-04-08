@@ -2,7 +2,7 @@ import {
 	getElements,
 	collectionToArray,
 	closest, 
-} from '../../../../utils/utils'
+} from '../../../utils/utils'
 import './button_like.scss'
 
 

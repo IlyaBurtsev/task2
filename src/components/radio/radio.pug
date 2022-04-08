@@ -8,9 +8,10 @@ mixin radio(options={})
 
 	case type 
 		when RADIO.DEFAULT
-			+input-tamplate({blockName: 'switch', modificatorName: 'radio', inputType: 'radio', 
-			radioName: radioName, customElementName: 'label', customElementValue: label, checked: checked})
+			+input-tamplate({blockName: 'radio', inputType: 'radio', radioName: radioName, 
+			customElementName: 'label', customElementValue: label, checked: checked})
 		when RADIO.FOR_SLIDER
-			+input-tamplate({blockName: 'switch', modificatorName: 'radio_white', inputType: 'radio', 
-			radioName: inputRadioName, customElementName: 'label', customElementValue: label, checked: checked, dataSelected: dataSelected})
+			+input-tamplate({blockName: 'radio', modificatorName: 'for-slider', inputType: 'radio', 
+			radioName: inputRadioName, customElementName: 'label', customElementValue: label, 
+			checked: checked, dataSelected: dataSelected})
 	

@@ -1,18 +1,18 @@
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
-const fs = require("fs");
-const webpack = require("webpack");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const fs = require('fs');
+const webpack = require('webpack');
 
 module.exports = (env, argv = {}) => {
-  const { mode = "development" } = argv;
-  const isProduction = mode === "production";
-  const isDevelopment = mode === "development";
-  const pagesDir = path.resolve(__dirname, "src", "pages");
+  const { mode = 'development' } = argv;
+  const isProduction = mode === 'production';
+  const isDevelopment = mode === 'development';
+  const pagesDir = path.resolve(__dirname, 'src', 'pages');
   const pages = [];
-  console.log(isDevelopment + " isDev");
-  console.log(isProduction + " isProd");
+  console.log(isDevelopment + ' isDev');
+  console.log(isProduction + ' isProd');
   fs.readdirSync(pagesDir).forEach((file) => {
     pages.push(file);
   });
@@ -25,7 +25,7 @@ module.exports = (env, argv = {}) => {
     return new HtmlWebpackPlugin({
       filename: `${fileName}.html`,
       template: `${pagesDir}/${fileName}/${fileName}.pug`,
-      inject: "body",
+      inject: 'body',
       chunks: [fileName],
       hash: true,
       minify: isProduction
@@ -50,8 +50,8 @@ module.exports = (env, argv = {}) => {
 
   const getStyleLoaders = () => {
     return [
-      isProduction ? MiniCssExtractPlugin.loader : "style-loader",
-      "css-loader",
+      isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+      'css-loader',
     ];
   };
   const getPlugins = () => {
@@ -59,11 +59,11 @@ module.exports = (env, argv = {}) => {
       new CleanWebpackPlugin(),
       new webpack.ProgressPlugin(),
       new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jquery": "jquery",
-        "window.jQuery": "jquery",
-        noUiSlider: "nouislider",
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jquery': 'jquery',
+        'window.jQuery': 'jquery',
+        noUiSlider: 'nouislider',
       }),
       // ...htmlPlugins,
       new HtmlWebpackPlugin({
@@ -73,26 +73,26 @@ module.exports = (env, argv = {}) => {
     if (isProduction) {
       plugins.push(
         new MiniCssExtractPlugin({
-          filename: "[name].css?version=[contenthash]",
-          chunkFilename: "[id].css?version=[contenthash]",
+          filename: '[name].css?version=[contenthash]',
+          chunkFilename: '[id].css?version=[contenthash]',
         })
       );
     }
     return plugins;
   };
   return {
-    mode: isProduction ? "production" : "development",
+    mode: isProduction ? 'production' : 'development',
     output: {
-      filename: "[name].js?version=[hash]",
-      assetModuleFilename: "assets/[name][ext]",
+      filename: '[name].js?version=[hash]',
+      assetModuleFilename: 'assets/[name][ext]',
       clean: true,
     },
     // entry: entryPoints,
     entry: `${pagesDir}/index/index.js`,
     resolve: {
       alias: {
-        "@theme": path.resolve(__dirname, "src/styles/theme-custom"),
-        "@assets": path.resolve(__dirname, "src/assets"),
+        '@theme': path.resolve(__dirname, 'src/styles/theme-custom'),
+        '@assets': path.resolve(__dirname, 'src/assets'),
       },
     },
     module: {
@@ -103,12 +103,12 @@ module.exports = (env, argv = {}) => {
         },
         {
           test: /\.scss$/,
-          use: [...getStyleLoaders(), "sass-loader"],
+          use: [...getStyleLoaders(), 'sass-loader'],
         },
         {
           test: /\.pug$/,
           use: {
-            loader: "pug-loader",
+            loader: 'pug-loader',
             options: {
               pretty: true,
             },
@@ -118,17 +118,17 @@ module.exports = (env, argv = {}) => {
           test: /\.(png|jpg|svg|gif)$/i,
           //TODO add favicon
           exclude: /(fonts)/,
-          type: "asset/resource",
+          type: 'asset/resource',
           generator: {
-            filename: "assets/images/[name]-[contenthash].[ext]",
+            filename: 'assets/images/[name]-[contenthash].[ext]',
           },
         },
         {
           test: /\.(ttf|woff|woff2|eot|svg)$/i,
           include: /fonts/,
-          type: "asset/resource",
+          type: 'asset/resource',
           generator: {
-            filename: "assets/fonts/[name][ext]",
+            filename: 'assets/fonts/[name][ext]',
           },
         },
       ],
@@ -137,7 +137,7 @@ module.exports = (env, argv = {}) => {
     plugins: getPlugins(),
 
     devServer: {
-      open: "/index.html",
+      open: '/index.html',
       hot: false,
       open: false,
     },

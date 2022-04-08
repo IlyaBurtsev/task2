@@ -1,19 +1,39 @@
+@import '@theme/variables.scss';
+
 .radio {
   &__container {
-    width: auto; 
+   max-width: 26rem;
+  }
+  &__input {
+    opacity: 0;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    align-self: baseline;
   }
   &__label {
+    color: $dark-50;
+    display: flex;
+    line-height: 1.8rem;
     &::before {
-      content: "";
+      content: '';
+      width: 2rem;
+      height: 2rem;
+      align-self: baseline;
+      border: 0.1rem solid $dark-25;
       border-radius: 50%;
+      box-sizing: border-box;
+      margin-right: 1rem;
+      flex-shrink: 0;
     }
   }
 }
-.radio__input_radio:checked + .radio__label {
-	color: rgba(31, 32, 65, 0.75);
-	&::before {
-		content: "";
-		background: no-repeat url("./circle.svg");
-		background-position: 0.3rem 0.3rem;
-	}
+.radio__input:checked + .radio__label {
+  color: $dark-75;
+  &::before {
+    content: '';
+    background: no-repeat url('./circle.svg');
+    background-position: 0.3rem 0.3rem;
+    border-color: $primory-color;
+  }
 }

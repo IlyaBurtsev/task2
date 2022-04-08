@@ -1,0 +1,12 @@
+@import '@theme/variables.scss';
+
+.button__input_white-text {
+	background: $primory_gradient;
+	color: #ffffff;
+	&:active{
+		opacity: 0.5;
+	}
+	&_active{
+		opacity: 0.5;
+	}
+}
