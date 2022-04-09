@@ -5,7 +5,7 @@ include ../../component-templates/input-template/input-template.pug
 
 mixin button(options={})
 
-	- const {type=BUTTON.WHITE_TEXT, label='', dataSelected, commonModificators=[], disabled } = options
+	- const {type=BUTTON.WHITE_TEXT, label='', dataSelected, commonModificators=[], disabled , useJS=[]} = options
 
 	case type 
 		when BUTTON.WHITE_TEXT
@@ -25,5 +25,5 @@ mixin button(options={})
 			if (label)
 				- counter = label
 			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button',
-			 inputValue: counter, commonModificators: commonModificators, disabled: disabled})
+			 inputValue: counter, commonModificators: commonModificators, disabled: disabled, useJS: useJS})
 		

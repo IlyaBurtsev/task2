@@ -1,43 +1,18 @@
-import { 
-	getElements,
-	collectionToArray,
-	closest, 
-} from '../../../utils/utils'
-import './button_like.scss'
+import { closest, addClass, removeClass } from '../../../utils/utils';
+import './button_like.scss';
 
+//-TODO только для проверки, потом убрать.
+$('.js-button__container_like').on('click', (e) => likeButtonPressed(e));
 
-const likeButton = '.button__input_like'
-const liked = 'button__input_like_selected'
+export function likeButtonPressed(e) {
+  let container = closest(e.target, '.js-button__container_like');
+  let isLiked = container.classList.contains('button__container_like_selected');
 
-$(function () {
-
-
-	initButtonState();
-
-	$(likeButton).on('click', function (event) {
-
-		let isLiked = $(event.target).data('selected');
-		let counter = Number($(event.target).val());
-
-		$(event.target.closest('.button__container_like')).toggleClass(liked);
-		if (!isLiked) {
-			$(event.target).val(counter + 1);
-			$(event.target).data('selected', true);
-		} else {
-			$(event.target).val(counter - 1);
-			$(event.target).data('selected', false);
-		}
-	})
-})
-
-function initButtonState() {
-	const likeButtons = collectionToArray(getElements(likeButton));
-	likeButtons.forEach(button => {
-		if(button.getAttribute('data-selected') === 'true'){
-			closest(button, '.button__container_like').classList.add(liked);
-		}
-	})
+  if (!isLiked) {
+    e.target.value++;
+    addClass(container, 'button__container_like_selected');
+  } else {
+    e.target.value--;
+    removeClass(container, 'button__container_like_selected');
+  }
 }
-
-
-

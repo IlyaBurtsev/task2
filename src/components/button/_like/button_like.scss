@@ -1,4 +1,4 @@
-@import "@theme/variables.scss";
+@import '@theme/variables.scss';
 
 .button {
   &__container_like {
@@ -8,8 +8,8 @@
     position: relative;
 
     &::before {
-      content: "favorite_border";
-      font-family: "MaterialIcons";
+      content: 'favorite_border';
+      font-family: 'MaterialIcons';
       font-size: 1rem;
       color: $dark-50;
       position: absolute;
@@ -20,11 +20,15 @@
     }
     &_selected {
       &::before {
-        content: "favorite";
+        content: 'favorite';
         background: $primory_gradient;
         color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
+      }
+      .button__input_like {
+        color: $primory-color;
+        border-color: $primory-color;
       }
     }
   }
@@ -38,10 +42,5 @@
     text-align: right;
     padding-right: 1rem;
     justify-content: end;
-		&_selected {
-			color: $primory-color;
-			border-color: $primory-color;
-		}
   }
-  
 }
