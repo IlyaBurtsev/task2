@@ -1,8 +1,10 @@
 .button {
   &__container {
-    width: 9.9rem;
+    min-width: 9.9rem;
+		max-width: 32rem;
     height: 4.4rem;
     display: flex;
+		
   }
   &__input {
     align-items: center;
@@ -17,5 +19,11 @@
     border: none;
     background-color: white;
     flex-grow: 1;
+		cursor: pointer;
+
+		&:disabled{
+			cursor: default;
+		}
   }
+	
 }

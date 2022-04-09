@@ -3,6 +3,7 @@ include ../../components/checkbox/checkbox.pug
 include ../../components/toggle/toggle.pug
 include ../../components/radio/radio.pug
 include ../../components/button/button.pug
+include ../../component-templates/global-constants/constants.pug
 
 html(lang="en")
 	head
@@ -22,10 +23,10 @@ html(lang="en")
 			labelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
 			+toggle({label: 'kojgofjn'})
 			+radio({label: 'jkklglyufguy'})
-			+button({type: BUTTON.WHITE_TEXT, label: 'khbkhlj', active: true})
-			+button({type: BUTTON.PURPLE_TEXT, label : 'jkhjgglflfk'})
-			+button({type: BUTTON.PAY, label: 'kjlhghjggjggjkg'})
-			+button({type: BUTTON.LINK, label: 'jkhjgjkfkffhj'})
-			+button({type: BUTTON.LIKE})
+			+button({type: BUTTON.WHITE_TEXT, label: 'khbkhlj', disabled: true, commonModificators: [MODIFICATOR.SELECTED]})
+			+button({type: BUTTON.PURPLE_TEXT, label : 'jkhjgglflfk' , disabled: true})
+			+button({type: BUTTON.PAY, label: 'kjlhghjggjggjkg', disabled: true})
+			+button({type: BUTTON.LINK, label: 'jkhjgjkfkffhj', disabled: true})
+			+button({type: BUTTON.LIKE, label: 10, commonModificators: [MODIFICATOR.SELECTED]})
 
 		

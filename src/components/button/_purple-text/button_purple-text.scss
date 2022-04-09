@@ -1,16 +1,24 @@
 @import '@theme/variables.scss';
 
-.button__input_purple-text {
-  border: 2px solid;
-  border-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-  
+.button {
+  &__container_purple-text_custom-height {
+    height: 3.4rem;
+  }
+  &__input_purple-text {
+    background: linear-gradient(white 0 0) padding-box,
+      $primory_gradient border-box;
+    border: 0.2rem solid transparent;
 
-
-	// padding: 2px 2px;
-  // border-radius: 22px;
-  // background: $primory_gradient;
-
-  color: $primory-color;
-  &:active {
+    color: $primory-color;
+    &:disabled,
+    &:active {
+      background: linear-gradient(white 0 0) padding-box,
+        linear-gradient(
+            180deg,
+            rgba(188, 156, 255, 0.5) 0%,
+            rgba(139, 164, 249, 0.5) 100%
+          )
+          border-box;
+    }
   }
 }

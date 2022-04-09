@@ -4,7 +4,7 @@ include ../../component-templates/input-template/input-template.pug
 
 mixin input-field(options={})
 
-	- const {type=INPUT_FIELD.TEXT, inputType='text', placeholder='',  dataSelected, inputText, autofocus} = options 
+	- const {type=INPUT_FIELD.TEXT, inputType='text', placeholder,  dataSelected, inputText, autofocus} = options 
 	
 	case type 
 		when INPUT_FIELD.TEXT

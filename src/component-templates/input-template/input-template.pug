@@ -2,25 +2,36 @@
 mixin input-tamplate(options={})
 
 	-
-		let containerClassName = options.blockName + '__container'
-		containerClassName += options.modificatorName ? ' '+containerClassName+'_'+ options.modificatorName : ''
-		let customClassName = options.customElementName ? options.blockName+'__' + options.customElementName : ''
-		customClassName +=(options.modificatorName&&options.customElementName) ? ' ' + customClassName + '_' + options.modificatorName : ''
-		let inputClassName = options.blockName + '__input'
-		let activeClassName=''
-		if(options.active&&options.modificatorName)
-			activeClassName=inputClassName+'_'+options.modificatorName+'_active'
-		else 
-			if(options.active)
-				activeClassName=inputClassName+'_active'
-		inputClassName += options.modificatorName ? ' '+inputClassName+'_'+options.modificatorName : ''
-		inputClassName +=options.dataSelected === "true" ? ' '+inputClassName+'_selected' : ''
-		inputClassName +=' '+activeClassName
+		const {blockName='', modificatorName='', customElementName='', customElementValue='', commonModificators=[], 
+		inputType, inputValue,  placeholder, inputName, checked, autofocus, disabled } = options
 
-	label(class=containerClassName, data-icon=options.dataIcon)
-		input(class=inputClassName, type=options.inputType, value=options.inputValue, placeholder=options.placeholder,
-			name=options.radioName, data-selected =options.dataSelected, checked=options.checked, 
-		 autofocus=options.autofocus)
-		if (customClassName)
-			div(class=customClassName)=options.customElementValue
+		let containerClassName = blockName + '__container'
+		let inputClassName = blockName + '__input'
+		let customClassName = customElementName ? blockName+'__' + customElementName : ''
 	
+		let modificatorsContainerClassName=''
+		let modificatorsInputClassName=''
+
+	if ((commonModificators.length)&&modificatorName)
+		each modificator in commonModificators	
+			- modificatorsContainerClassName=containerClassName+'_'+modificatorName+'_'+modificator+' '
+			- modificatorsInputClassName=inputClassName+'_'+modificatorName+'_'+modificator+' '
+	else 
+		if (commonModificators.length)
+			each modificator in commonModificators
+				- modificatorsContainerClassName=containerClassName+'_'+ modificator+' '
+				- modificatorsInputClassName=inputClassName+'_'+ modificator+' '
+	-
+		containerClassName += modificatorName ? ' '+containerClassName+'_'+ modificatorName : ''
+		inputClassName += modificatorName ? ' '+inputClassName+'_'+modificatorName : ''
+		customClassName +=(modificatorName&&customElementName) ? ' ' + customClassName + '_' + modificatorName : ''
+		containerClassName += ' '+modificatorsContainerClassName
+		inputClassName += ' '+modificatorsInputClassName
+
+	label(class=containerClassName)
+		input(class=inputClassName, type=inputType, value=inputValue, placeholder=placeholder,
+			name=inputName, checked=checked, autofocus=autofocus, disabled=disabled)
+		if (customClassName)
+			div(class=customClassName)=customElementValue
+			//-TODO  Не забыть потом отрефакторить логику компонентов основанных на атрибуте data-selected, теперь это будет общим модификатором в классе _selected
+

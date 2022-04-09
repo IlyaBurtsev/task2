@@ -1,12 +1,15 @@
 @import '@theme/variables.scss';
 
-.button__input_white-text {
-	background: $primory_gradient;
-	color: #ffffff;
-	&:active{
-		opacity: 0.5;
+.button {
+	&__container_white-text_custom-height{
+		height: 3.4rem;
 	}
-	&_active{
-		opacity: 0.5;
-	}
+  &__input_white-text {
+    background: $primory_gradient;
+    color: #ffffff;
+    &:disabled,
+    &:active {
+      opacity: 0.5;
+    }
+  }
 }

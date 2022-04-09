@@ -3,19 +3,17 @@
 .button {
   &__container_link {
     width: auto;
-    height: 1.5rem;
-    display: flex;
+    height: auto;
+    display: inline-block;
   }
   &__input_link {
     width: unset;
     height: unset;
     border: unset;
     color: $primory-color;
+		&:disabled,
     &:active {
       color: $dark-50;
     }
-  }
-  &__input_link:disabled {
-    display: none;
   }
 }
