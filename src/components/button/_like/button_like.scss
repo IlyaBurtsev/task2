@@ -11,7 +11,7 @@
       content: 'favorite_border';
       font-family: 'MaterialIcons';
       font-size: 1rem;
-      color: $dark-50;
+      color: $dark-25;
       position: absolute;
       margin-left: 0.5rem;
       line-height: 2rem;
@@ -37,6 +37,7 @@
     border: 0.1rem solid $dark-25;
     box-sizing: border-box;
     font-size: 10px;
+		font-weight: normal;
     line-height: 12px;
     color: $dark-25;
     text-align: right;

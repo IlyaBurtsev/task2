@@ -1,0 +1,20 @@
+@import '@theme/variables.scss';
+
+.title {
+  &__container {
+    max-width: 32rem;
+    display: flex;
+    margin-bottom: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+		&_custom-margin-bottom{
+			margin-bottom: 1.6rem;
+		}
+  }
+  &__description {
+    color: $dark-50;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+}

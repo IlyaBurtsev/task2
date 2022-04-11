@@ -5,4 +5,5 @@ import '../../components/checkbox/checkbox'
 import '../../components/toggle/toggle'
 import '../../components/radio/radio'
 import '../../components/button/button'
+import '../../components/title/title'
 

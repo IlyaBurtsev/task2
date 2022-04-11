@@ -1,0 +1,12 @@
+mixin title (options={})
+	-
+		const {title='', description='', commonModificators=[]} = options
+		let containerClassNames = 'title__container' 
+		
+	if (commonModificators.length)
+		each modificator in commonModificators
+			- containerClassNames +=' title__container_' + modificator
+
+	div(class= containerClassNames)
+		H3.title__title= title 
+		H3.title__description= description

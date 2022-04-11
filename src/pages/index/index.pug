@@ -3,6 +3,8 @@ include ../../components/checkbox/checkbox.pug
 include ../../components/toggle/toggle.pug
 include ../../components/radio/radio.pug
 include ../../components/button/button.pug
+include ../../components/title/title.pug
+
 include ../../component-templates/global-constants/constants.pug
 
 html(lang="en")
@@ -17,13 +19,15 @@ html(lang="en")
 			a(href='./room-details.html') room-details 
 			a(href='./search-room.html') search-room
 			+input-field({type: INPUT_FIELD.SUBSCRIBE})
+			+title({title: 'Text Field', description: 'Hover /Focus'})
 			+input-field
 			+checkbox({label: 'lkj;lhlkh'})
 			+checkbox({type: CHECKBOX.RICH, label: 'Помощник для инвалидов', 
 			labelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
 			+toggle({label: 'kojgofjn'})
 			+radio({label: 'jkklglyufguy'})
-			+button({type: BUTTON.WHITE_TEXT, label: 'khbkhlj', disabled: true, commonModificators: [MODIFICATOR.SELECTED]})
+			+title({title: 'Buttons', commonModificators: [MODIFICATOR.CUSTOM_MARGIN_BOTTOM]})
+			+button({type: BUTTON.WHITE_TEXT, label: 'khbkhlj', commonModificators: [MODIFICATOR.SELECTED]})
 			+button({type: BUTTON.PURPLE_TEXT, label : 'jkhjgglflfk' , disabled: true})
 			+button({type: BUTTON.PAY, label: 'kjlhghjggjggjkg', disabled: true})
 			+button({type: BUTTON.LINK, label: 'jkhjgjkfkffhj', disabled: true})
