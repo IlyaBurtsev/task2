@@ -11,17 +11,16 @@ module.exports = (env, argv = {}) => {
   const isDevelopment = mode === 'development';
   const pagesDir = path.resolve(__dirname, 'src', 'pages');
   const pages = [];
+	const entries = [];
   console.log(isDevelopment + ' isDev');
   console.log(isProduction + ' isProd');
   fs.readdirSync(pagesDir).forEach((file) => {
     pages.push(file);
   });
-  const entryPoints = Object.assign(
-    {},
-    ...pages.map((page) => ({ [page]: `${pagesDir}/${page}/${page}.js` }))
-  );
-
   const htmlPlugins = pages.map((fileName) => {
+
+		entries.push(`${pagesDir}/${fileName}/${fileName}.js`);
+
     return new HtmlWebpackPlugin({
       filename: `${fileName}.html`,
       template: `${pagesDir}/${fileName}/${fileName}.pug`,
@@ -87,7 +86,7 @@ module.exports = (env, argv = {}) => {
       assetModuleFilename: 'assets/[name][ext]',
       clean: true,
     },
-    // entry: entryPoints,
+    // entry: ...entries,
     entry: `${pagesDir}/index/index.js`,
     resolve: {
       alias: {

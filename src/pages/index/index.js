@@ -6,4 +6,36 @@ import '../../components/toggle/toggle'
 import '../../components/radio/radio'
 import '../../components/button/button'
 import '../../components/title/title'
+import { bindObserverMetods } from '../../utils/observerMetods'
+import { initLikeButton, likeButtonPressed } from '../../components/button/_like/button_like'
+
+
+
+class Test {
+	constructor() {
+		this.init()
+		this.test()
+	}
+	init(){
+		bindObserverMetods(this)
+		this.on('like', this.onClick)
+	}
+	test(){
+		document.addEventListener('click', this.clecked)
+	}
+	clecked = (e) =>{
+		likeButtonPressed(e, this.setLikeTriger)
+	}
+	setLikeTriger = (n, id) => {
+		this.trigger('like', n, id);
+	}
+	onClick = (n, id) => {
+		console.log('test ok '+ n +' ' + id)
+	}
+
+}
+const button = initLikeButton(document, 111111)
+console.log(button)
+
+new Test()
 

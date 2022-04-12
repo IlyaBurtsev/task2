@@ -10,7 +10,8 @@ mixin input-tamplate(options={})
 		let customClassName = customElementName ? blockName+'__' + customElementName : ''
 	
 		let modificatorsContainerClassName=''
-		let jsClasses=''
+		let jsContainerClasses=''
+		let jsInputClasses=''
 		//- let modificatorsInputClassName=''
 
 	if ((commonModificators.length)&&modificatorName)
@@ -26,14 +27,16 @@ mixin input-tamplate(options={})
 		each jsClass in useJS
 			case jsClass
 				when JS_CLASS.CONTAINER 
-					- jsClasses= modificatorName ? 'js-' + containerClassName + '_' + modificatorName : 'js-' + containerClassName
-		
+					- jsContainerClasses= modificatorName ? 'js-' + containerClassName + '_' + modificatorName : 'js-' + containerClassName
+				when JS_CLASS.INPUT
+					- jsInputClasses= modificatorName ? 'js-' + inputClassName + '_' + modificatorName : 'js-' + inputClassName
 	-
 		containerClassName += modificatorName ? ' '+containerClassName+'_'+ modificatorName : ''
 		inputClassName += modificatorName ? ' '+inputClassName+'_'+modificatorName : ''
 		customClassName +=(modificatorName&&customElementName) ? ' ' + customClassName + '_' + modificatorName : ''	
-		containerClassName += ' ' + jsClasses
+		containerClassName += ' ' + jsContainerClasses
 		containerClassName += ' '+modificatorsContainerClassName
+		inputClassName += ' ' + jsInputClasses
 		//- inputClassName += ' '+modificatorsInputClassName
 
 	label(class=containerClassName)
