@@ -1,1 +1,19 @@
+include ./__dropdown-item/dropdown-item.pug
 
+
+//- - const DROPDOWN = {'GUESTS':0}
+
+mixin dropdown(options={})
+
+	- const {items=[1,1,1,], placeholder} = options
+	.dropdown__container
+		+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder})
+		.dropdown__expand-container
+			each val in items
+				+dropdown-item(val)
+			.dropdown__footer_guests
+				.dropdown__clear-button
+					+button({type: BUTTON.LINK, inputValue: 'очистить'})
+				.dropdown__apply-button
+					+button({type: BUTTON.LINK, inputValue: 'применить'})
+				

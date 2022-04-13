@@ -1,9 +1,9 @@
 import './dropdown.scss';
 import './__dropdown-item/dropdown-item.scss';
-import '../_filter-date/dropdown_filter-date';
-import '../_date/dropdown_date';
-import '../_guests/dropdown_guests';
-import '../_comfort/dropdown_comfort';
+// import '../_filter-date/dropdown_filter-date';
+// import '../_date/dropdown_date';
+// import '../_guests/dropdown_guests';
+// import '../_comfort/dropdown_comfort';
 import {
   addClass,
   getElement,
@@ -25,10 +25,11 @@ const switchToOpenState = (dropdown) => {
 const switchToClosedState = (dropdown) => {
   removeClass(dropdown, 'dropdown__container_open');
 };
-const initItems = (dropdown, itemNames) => {
+const initItemNames = (dropdown, itemNames) => {
   let items = getElements(getItemSelector, dropdown);
   if (items.length === itemNames.length) {
     items.array.forEach((element, i = 0) => {
+			element.setAttribute('itemName', itemNames[i])
       element.value = itemNames[i++];
     });
   } else {

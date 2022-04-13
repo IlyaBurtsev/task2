@@ -6,6 +6,7 @@ import '../../components/toggle/toggle'
 import '../../components/radio/radio'
 import '../../components/button/button'
 import '../../components/title/title'
+import '../../components/dropdown/dropdown'
 import { bindObserverMetods } from '../../utils/observerMetods'
 import { initLikeButton, likeButtonPressed } from '../../components/button/_like/button_like'
 

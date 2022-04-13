@@ -139,13 +139,14 @@ export class Dropdown {
     this.handleClickItemButton(e);
   };
 	onClickAddButton = (button, counter, itemName) => {
+		this.selectedItems[itemName] = counter;
 		if(counter = 0) {
-			getSubtractButton(button);
 			subtractButtonActived(getSubtractButton(button));
 		}
 	}
 
 	onClickSubtractButton = (button, counter, itemName) => {
+		this.selectedItems[itemName] = counter;
 		if(counter = 0) {
 			subtractButtonDisabled(button);
 		}
