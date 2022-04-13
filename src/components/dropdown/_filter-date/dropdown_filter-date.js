@@ -2,7 +2,7 @@ import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
 import '../air-datepicker/air-datepicker.scss'
-import { getElement } from '../../../../utils/utils';
+import { getElement } from '../../../utils/utils';
 import { clearBackgroundForRangeFrom } from '../air-datepicker/air-datepicker';
 
 export function initDropdownFilterDate (bindElement, selectedDates, startDate) {

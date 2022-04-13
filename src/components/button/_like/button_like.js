@@ -7,7 +7,7 @@ export const initLikeButton = (bindElement, userId) =>{
 	return button;
 }
 
-export const likeButtonPressed = (e, setLikePressedTriger) => {
+export const likeButtonPressed = (e, setLikePressedTrigger) => {
 	if (e.target.classList.contains('button__input_like')) {
 		
 		let container = closest(e.target, '.js-button__container_like');
@@ -20,7 +20,7 @@ export const likeButtonPressed = (e, setLikePressedTriger) => {
     	e.target.value--;
    	 removeClass(container, 'button__container_like_selected');
   	}
-		setLikePressedTriger(e.target.value, e.target.getAttribute('user-id'));
+		setLikePressedTrigger(e.target.value, e.target.getAttribute('user-id'));
 	} 
 }
 

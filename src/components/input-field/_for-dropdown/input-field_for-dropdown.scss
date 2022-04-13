@@ -1,0 +1,36 @@
+@import '@theme/variables.scss';
+
+.input-field {
+  &__container_for-dropdown {
+    &::after {
+      content: 'expand_more';
+      width: 4.2rem;
+      font-family: 'MaterialIcons';
+      font-size: 2.5rem;
+      color: $dark-50;
+      position: absolute;
+      line-height: 4.5rem;
+      text-align: center;
+      right: 0;
+    }
+  }
+  &__input_for-dropdown {
+    &::placeholder {
+      color: $dark-75;
+    }
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      border-color: $dark-50;
+    }
+  }
+}
+.dropdown__container_open {
+  .input-field {
+    &__input_for-dropdown {
+      border: 1px solid $dark-50;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

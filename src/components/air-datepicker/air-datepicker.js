@@ -1,4 +1,4 @@
-import { getElement } from "../../../../utils/utils";
+import { getElement } from "../../../utils/utils";
 
 export function clearBackgroundForRangeFrom(dp){
 	if(dp.selectedDates.length ===1){

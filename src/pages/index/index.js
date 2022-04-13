@@ -24,9 +24,9 @@ class Test {
 		document.addEventListener('click', this.clecked)
 	}
 	clecked = (e) =>{
-		likeButtonPressed(e, this.setLikeTriger)
+		likeButtonPressed(e, this.setLikeTrigger)
 	}
-	setLikeTriger = (n, id) => {
+	setLikeTrigger = (n, id) => {
 		this.trigger('like', n, id);
 	}
 	onClick = (n, id) => {

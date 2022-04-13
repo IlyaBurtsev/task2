@@ -162,3 +162,10 @@ export function collectionToArray(collection) {
 	return Array.prototype.slice.call(collection);
 }
 
+export function showError(metodName){
+	throw new Error('Метод ' + metodName + ' не определен. Пожалуйста реализуйте метод.');
+}
+export function showWarning(msg){
+	console.warn(msg);
+}
+

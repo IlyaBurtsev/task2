@@ -1,19 +1,16 @@
-import './dropdown.scss';
-import '../_dropdown/dropdown-item/dropdown-item.scss';
-import './_filter-date/dropdown_filter-date';
-import './_date/dropdown_date';
-import './_guests/dropdown_guests';
-import './_comfort/dropdown_comfort';
+
 
 import { deepMerge, getElement } from '../../../utils/utils';
 
 import { bindObserverMetods } from '../../../utils/observerMetods';
-import { DropdownItem } from './dropdown-item/dropdown-item';
+import { addButtonClicked, DropdownItem, getSubtractButton, subtractButtonActived, subtractButtonClicked, subtractButtonDisabled } from '../__dropdown-item/dropdown-item';
 
 export const consts = {
-  eventChangeSelectedItems: 'cangeSelectedItems',
-  eventApplySelectedItems: 'applySelectedItems',
-
+  changeSelectedItems: 'cangeSelectedItems',
+  applySelectedItems: 'applySelectedItems',
+	addButtonClicked: 'addButtonClicked',
+	subtractButtonClicked: 'subtractButtonClicked',
+	
   dropdownShowClassName: 'dropdown__expand-container_show',
 };
 
@@ -27,34 +24,23 @@ const optionDefault = {
 };
 
 export class Dropdown {
-  constructor(bindElement, options) {
-    this.$container = getElement(bindElement);
+  constructor(dropdown, options) {
+    this.dropdown = dropdown;
 
-    if (!this.$container) {
-      throw new Error(
-        'Dropdown cannot find container with: "' + bindElement + '"'
-      );
-    }
-    if (this.$container.nodeName === 'INPUT') {
-      this.$input = this.$container;
-    } else {
-      this.$input = this.$container.querySelector('input');
-      if (!this.$input) {
-        throw new Error('Expected <input> element to output data.');
-      }
-    }
-
-    this.$dropdown = this.$container.lastElementChild;
+    // if (this.$container.nodeName === 'INPUT') {
+    //   this.$input = this.$container;
+    // } else {
+    //   this.$input = this.$container.querySelector('input');
+    //   if (!this.$input) {
+    //     throw new Error('Expected <input> element to output data.');
+    //   }
+    // }
 
     this.opts = deepMerge({}, optionDefault, options);
 
-    if (this.$input.nodeName === 'INPUT') {
-      this.elIsInput = true;
-    }
-
     this.inited = false;
     this.visible = false;
-    this.elementReadonly = this.$input.getAttribute('readonly');
+    // this.elementReadonly = this.$input.getAttribute('readonly');
 
     this.init();
   }
@@ -64,23 +50,21 @@ export class Dropdown {
 
     this.bindSubEvents();
 
-    this.dropdownItem = new DropdownItem(this);
+    // if (this.elIsInput) {
+    //   this.bindEvents();
+    // }
 
-    if (this.elIsInput) {
-      this.bindEvents();
-    }
+    // if (this.opts.inline || !this.elIsInput) {
+    //   this.$container.classList.add('dropdown__container_inline');
+    // }
 
-    if (this.opts.inline || !this.elIsInput) {
-      this.$container.classList.add('dropdown__container_inline');
-    }
-
-    if (this.opts.visible && !this.opts.inline) {
+    if (this.opts.visible) {
       this.show();
     }
     if (this.opts.selectedItems) {
       this.selectedItems = this.opts.selectedItems;
       this.trigger(
-        consts.eventChangeSelectedItems,
+        consts.changeSelectedItems,
         Array.prototype.slice.call(
           this.$dropdown.querySelectorAll('.dropdown-item__counter')
         )
@@ -120,7 +104,8 @@ export class Dropdown {
   }
 
   bindSubEvents() {
-    this.on(consts.eventChangeSelectedItems, this.onChangeSelectedItems);
+    this.on(consts.changeSelectedItems, this.onChangeSelectedItems);
+		this.on(consts.addButtonClicked, )
   }
   attachFooterButtonListener() {
     this.$dropdown.addEventListener('click', this.onClickFooterButton);
@@ -153,6 +138,18 @@ export class Dropdown {
   onClickItemButton = (e) => {
     this.handleClickItemButton(e);
   };
+	onClickAddButton = (button, counter, itemName) => {
+		if(counter = 0) {
+			getSubtractButton(button);
+			subtractButtonActived(getSubtractButton(button));
+		}
+	}
+
+	onClickSubtractButton = (button, counter, itemName) => {
+		if(counter = 0) {
+			subtractButtonDisabled(button);
+		}
+	}
 
   onClickFooterButton = (e) => {
     this.handleClickFooterButton(e);
@@ -181,33 +178,8 @@ export class Dropdown {
   }
 
   handleClickItemButton = (e) => {
-    if (e.target.classList.contains('dropdown-item__add-button')) {
-      let itemCount = e.target.previousElementSibling.getAttribute('counter');
-
-      if (!this.selectedItems[itemCount]) {
-        this.selectedItems[itemCount] = 1;
-      } else {
-        this.selectedItems[itemCount]++;
-      }
-
-      this.trigger(
-        consts.eventChangeSelectedItems,
-        e.target.previousElementSibling
-      );
-    }
-
-    if (e.target.classList.contains('dropdown-item__sub-button')) {
-      let itemCount = e.target.nextElementSibling.getAttribute('counter');
-
-      if (this.selectedItems[itemCount] > 0) {
-        this.selectedItems[itemCount]--;
-      }
-
-      this.trigger(
-        consts.eventChangeSelectedItems,
-        e.target.nextElementSibling
-      );
-    }
+		addButtonClicked(e);
+		subtractButtonClicked(e);
   };
 
   handleClickFooterButton = (e) => {
@@ -218,7 +190,7 @@ export class Dropdown {
         keys.forEach((item) => (this.selectedItems[item] = 0));
 
         this.trigger(
-          consts.eventChangeSelectedItems,
+          consts.changeSelectedItems,
           Array.prototype.slice.call(
             this.$dropdown.querySelectorAll('.dropdown-item__counter')
           )
@@ -227,9 +199,10 @@ export class Dropdown {
 
       if (e.target.value === this.opts.applyFooterButtonName) {
         this.hide();
-        this.trigger(consts.eventApplySelectedItems, this.selectedItems);
+        this.trigger(consts.applySelectedItems, this.selectedItems);
       }
     }
+
   };
 
   updateInputValueView = () => {
