@@ -3,13 +3,14 @@
 import { deepMerge, getElement } from '../../../utils/utils';
 
 import { bindObserverMetods } from '../../../utils/observerMetods';
-import { addButtonClicked, DropdownItem, getSubtractButton, subtractButtonActived, subtractButtonClicked, subtractButtonDisabled } from '../__dropdown-item/dropdown-item';
+import { addButtonsActived, addButtonsDisabled, getSubtractButton, itemButtonClicked, subtractButtonActived, subtractButtonDisabled } from '../__dropdown-item/dropdown-item';
 
 export const consts = {
   changeSelectedItems: 'cangeSelectedItems',
   applySelectedItems: 'applySelectedItems',
-	addButtonClicked: 'addButtonClicked',
-	subtractButtonClicked: 'subtractButtonClicked',
+	itemButtonClicked: 'itemButtonClicked',
+	onZeroItemCounter: 'onZeroCounter',
+	counterIsGreaterThanZero: 'counterIsGreaterThanZero',
 	
   dropdownShowClassName: 'dropdown__expand-container_show',
 };
@@ -17,6 +18,9 @@ export const consts = {
 const optionDefault = {
   inline: false,
   showEvent: 'focus',
+	minItemValue: 0,
+	totalMaxValue: '',
+	isAddButtonsDisabled: false,
   ItemsRequiredMessage: '',
   footerButtonActived: false,
   clearFooterButtonName: 'очистить',
@@ -81,6 +85,7 @@ export class Dropdown {
       this.$input.setAttribute('readonly', '');
       this.elementReadonly = true;
     }
+		this.itemNames = Object.keys(this.selectedItems);
 
     this.inted = true;
   }
@@ -138,19 +143,40 @@ export class Dropdown {
   onClickItemButton = (e) => {
     this.handleClickItemButton(e);
   };
-	onClickAddButton = (button, counter, itemName) => {
+	
+	onItemButtonClicked = (button, counter, itemName) => {
+		this.checkMinItemValue(this.opts.minItemValue, this.selectedItems[itemName], counter, button)
 		this.selectedItems[itemName] = counter;
-		if(counter = 0) {
-			subtractButtonActived(getSubtractButton(button));
+		this.checkTotalMaxValue(this.opts.totalMaxValue);
+	}
+
+	checkTotalMaxValue = (totalMaxValue) => {
+		if (totalMaxValue){
+			let totalCounter = 0;
+			this.itemNames.forEach(itemName => totalCounter+=this.selectedItems[itemName]);
+			if (totalCounter === totalMaxValue){
+				addButtonsDisabled(this.dropdown);
+				this.opts.isAddButtonsDisabled = true;
+			}else {
+				if (this.opts.isAddButtonsDisabled) {
+					addButtonsActived(this.dropdown);
+				}
+			}
 		}
 	}
 
-	onClickSubtractButton = (button, counter, itemName) => {
-		this.selectedItems[itemName] = counter;
-		if(counter = 0) {
-			subtractButtonDisabled(button);
+	checkMinItemValue = (minItemValue, previousValue, currentValue, button) => {
+		if (minItemValue){
+			if (previousValue === minItemValue) {	
+				subtractButtonActived(getSubtractButton(button));
+			}
+			if (currentValue === minItemValue) {
+				subtractButtonDisabled(button);
+			}
 		}
 	}
+
+
 
   onClickFooterButton = (e) => {
     this.handleClickFooterButton(e);
@@ -179,8 +205,7 @@ export class Dropdown {
   }
 
   handleClickItemButton = (e) => {
-		addButtonClicked(e);
-		subtractButtonClicked(e);
+		itemButtonClicked(e, this.trigger(consts.itemButtonClicked, this.onClickItemButton))
   };
 
   handleClickFooterButton = (e) => {

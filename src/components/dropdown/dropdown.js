@@ -25,22 +25,22 @@ const switchToOpenState = (dropdown) => {
 const switchToClosedState = (dropdown) => {
   removeClass(dropdown, 'dropdown__container_open');
 };
-const initItemNames = (dropdown, itemNames) => {
-  let items = getElements(getItemSelector, dropdown);
-  if (items.length === itemNames.length) {
-    items.array.forEach((element, i = 0) => {
-			element.setAttribute('itemName', itemNames[i])
-      element.value = itemNames[i++];
-    });
-  } else {
-    if (items.length) {
-      showWarning(
-        'Колличество наименований в объявлении дропдауна не совпадает с разметкой в ' +
-          dropdown
-      );
-      return false;
-    }
-		showWarning('Элементы не найдены в ' +	dropdown);
-  }
-  return true;
-};
+// const initItemNames = (dropdown, itemNames) => {
+//   let items = getElements(getItemSelector, dropdown);
+//   if (items.length === itemNames.length) {
+//     items.array.forEach((element, i = 0) => {
+// 			element.setAttribute('itemName', itemNames[i])
+//       element.value = itemNames[i++];
+//     });
+//   } else {
+//     if (items.length) {
+//       showWarning(
+//         'Колличество наименований в объявлении дропдауна не совпадает с разметкой в ' +
+//           dropdown
+//       );
+//       return false;
+//     }
+// 		showWarning('Элементы не найдены в ' +	dropdown);
+//   }
+//   return true;
+// };
