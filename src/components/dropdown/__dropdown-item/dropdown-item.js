@@ -12,7 +12,7 @@ const addButtonClicked = (e, itemButtonClikedTrigger) => {
 	if(e.target.classList.contains('dropdown-item__add-button_active')) {
 		let counter = e.target.previousElementSibling;
 		counter.value++;
-		itemButtonClikedTrigger(e.target, counter.value, counter.getAttribute("itemName"));
+		itemButtonClikedTrigger(e.target, Number(counter.value), counter.getAttribute("itemName"));
 		return true;
 	}
 	
@@ -48,8 +48,9 @@ export const subtractButtonActived = (button) => {
 }
 
 export const addButtonsDisabled = (container) => {
-	buttons = getElements('js-dropdown-item__add-button', container);
-	buttons.array.forEach(button => {
+	const buttons = getElements('.js-dropdown-item__add-button', container);
+	console.log(buttons)
+	buttons.forEach(button => {
 		button.setAttribute("disabled", '');
 		removeClass(button, 'dropdown-item__add-button_active');
 	});

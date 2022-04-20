@@ -9,6 +9,8 @@ import '../../components/title/title'
 import '../../components/dropdown/dropdown'
 import { bindObserverMetods } from '../../utils/observerMetods'
 import { initLikeButton, likeButtonPressed } from '../../components/button/_like/button_like'
+import { Dropdown } from '../../components/dropdown/Classes/Dropdown'
+import { getElement } from '../../utils/utils'
 
 
 
@@ -31,7 +33,7 @@ class Test {
 		this.trigger('like', n, id);
 	}
 	onClick = (n, id) => {
-		console.log('test ok '+ n +' ' + id)
+		// console.log('test ok '+ n +' ' + id)
 	}
 
 }
@@ -39,6 +41,12 @@ const button = initLikeButton(document, 111111)
 console.log(button)
 
 new Test()
+new Dropdown(getElement('.js-dropdown__container'), {
+	mergeItems:  ['взрослые', 'дети'],
+	inputFormat: { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] },
+	totalMaxValue: 20,
+	footerButtonActived: true,
+})
 
 
 
