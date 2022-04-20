@@ -1,0 +1,53 @@
+
+
+mixin dropdown-tamplate(options={})
+	-
+		const {blockName='dropdown', modificatorName='', third-party-plugin=false, commonModificators=[],
+		 items=[], inputValue, double-input=false, firstInputValue,  secondInputValue, firstTitle='', secondTitle,
+		  placeholder, footerButtonActive=false, useJS=[JS_CLASS.CONTAINER ] } = options
+
+		let containerClassName = blockName + '__container'
+		
+		let modificatorsContainerClassName=''
+		let jsContainerClasses=''
+
+	if ((commonModificators.length)&&modificatorName)
+		each modificator in commonModificators	
+			- modificatorsContainerClassName=containerClassName+'_'+modificatorName+'_'+modificator+' '
+	else 
+		if (commonModificators.length)
+			each modificator in commonModificators
+				- modificatorsContainerClassName=containerClassName+'_'+ modificator+' '
+	if (useJS.length)
+		each jsClass in useJS
+			case jsClass
+				when JS_CLASS.CONTAINER 
+					- jsContainerClasses= modificatorName ? 'js-' + containerClassName + '_' + modificatorName : 'js-' + containerClassName
+				
+	-
+		containerClassName += modificatorName ? ' '+containerClassName+'_'+ modificatorName : ''
+		containerClassName += ' ' + jsContainerClasses
+		containerClassName += ' '+modificatorsContainerClassName
+
+
+	div(class=containerClassName)
+		if (double-input)
+			.dropdown__first-input
+				+title({title: firstTitle})
+				+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: firstInputValue})
+			.dropdown__second-input
+				+title({title: secondTitle})
+				+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: secondInputValue})
+		else 	
+			+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: inputValue})
+		if (!third-party-plugin)
+			.dropdown__expand-container
+				each itemName in items
+					+dropdown-item(itemName)
+				if (footerButtonActive)
+					.dropdown__footer
+						.dropdown__clear-button.js-dropdown__clear-button
+							+button({type: BUTTON.LINK, inputValue: 'очистить'})
+						.dropdown__apply-button
+							+button({type: BUTTON.LINK, inputValue: 'применить'})
+			

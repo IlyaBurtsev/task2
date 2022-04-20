@@ -3,7 +3,8 @@
 import { deepMerge, getElement } from '../../../utils/utils';
 
 import { bindObserverMetods } from '../../../utils/observerMetods';
-import { addButtonsActived, addButtonsDisabled, getSubtractButton, itemButtonClicked, subtractButtonActived, subtractButtonDisabled } from '../__dropdown-item/dropdown-item';
+import { addButtonsActived, addButtonsDisabled, getCountersItemName, getSubtractButton, itemButtonClicked, subtractButtonActived, subtractButtonDisabled } from '../__dropdown-item/dropdown-item';
+import { applayButtonClicked, clearButtonClicked, getAllItemsCounter, getInput, switchToClosedState, switchToOpenState } from '../dropdown';
 
 export const consts = {
   changeSelectedItems: 'cangeSelectedItems',
@@ -31,20 +32,10 @@ export class Dropdown {
   constructor(dropdown, options) {
     this.dropdown = dropdown;
 
-    // if (this.$container.nodeName === 'INPUT') {
-    //   this.$input = this.$container;
-    // } else {
-    //   this.$input = this.$container.querySelector('input');
-    //   if (!this.$input) {
-    //     throw new Error('Expected <input> element to output data.');
-    //   }
-    // }
-
     this.opts = deepMerge({}, optionDefault, options);
 
     this.inited = false;
     this.visible = false;
-    // this.elementReadonly = this.$input.getAttribute('readonly');
 
     this.init();
   }
@@ -52,69 +43,47 @@ export class Dropdown {
   init() {
     bindObserverMetods(this);
 
-    this.bindSubEvents();
-
-    // if (this.elIsInput) {
-    //   this.bindEvents();
-    // }
-
-    // if (this.opts.inline || !this.elIsInput) {
-    //   this.$container.classList.add('dropdown__container_inline');
-    // }
-
     if (this.opts.visible) {
       this.show();
     }
-    if (this.opts.selectedItems) {
-      this.selectedItems = this.opts.selectedItems;
-      this.trigger(
-        consts.changeSelectedItems,
-        Array.prototype.slice.call(
-          this.$dropdown.querySelectorAll('.dropdown-item__counter')
-        )
-      );
-    } else {
-      this.selectedItems = this.initSelectedItem();
-    }
-
-    if (this.opts.footerButtonActived) {
-      this.attachFooterButtonListener();
-      this.checkDisableClearButton();
-    }
+   
     if (this.opts.elementReadonly) {
-      this.$input.setAttribute('readonly', '');
+      getInput(this.dropdown).setAttribute('readonly', '');
       this.elementReadonly = true;
     }
-		this.itemNames = Object.keys(this.selectedItems);
-
+		this.initSelectedItems();
+	
     this.inted = true;
   }
 
-  initSelectedItem() {
-    let items = this.$dropdown.querySelectorAll('.dropdown-item__counter');
+	initSelectedItems = () => {
+		this.selectedItems = new Map();
+		this.totalCounter = 0;
+		getAllItemsCounter(this.dropdown).forEach(counter => this.selectedItems.set(getCountersItemName(counter), counter.value));
+		this.trigger(consts.changeSelectedItems);
+	}
 
-    items = Array.prototype.slice.call(items);
-    items.map((item) => (items[item.getAttribute('counter')] = 0));
-    items.splice(0, 3);
-
-    return items;
-  }
+	
 
   bindEvents() {
-    this.$input.addEventListener(this.opts.showEvent, this.onFocus);
-    this.$input.addEventListener('blur', this.onBlur);
-    this.$dropdown.addEventListener('mousedown', this.onMouseDown);
-    this.$dropdown.addEventListener('mouseup', this.onMouseUp);
-    this.$dropdown.addEventListener('click', this.onClickItemButton);
+    getInput(this.dropdown).addEventListener(this.opts.showEvent, this.onFocus);
+    getInput(this.dropdown).addEventListener('blur', this.onBlur);
+    this.dropdown.addEventListener('mousedown', this.onMouseDown);
+    this.dropdown.addEventListener('mouseup', this.onMouseUp);
+    
   }
 
-  bindSubEvents() {
-    this.on(consts.changeSelectedItems, this.onChangeSelectedItems);
-		this.on(consts.addButtonClicked, )
-  }
   attachFooterButtonListener() {
-    this.$dropdown.addEventListener('click', this.onClickFooterButton);
+		if (this.opts.footerButtonActived) {
+			this.dropdown.addEventListener('click', this.handleClickFooterButton);
+		} 
   }
+
+	removeFooterButtonListener() {
+		if (this.opts.footerButtonActived) {
+			this.dropdown.removeEventListener('click', this.handleClickFooterButton);
+		} 
+	}
 
   //  Subscription events
   // -------------------------------------------------
@@ -137,24 +106,107 @@ export class Dropdown {
 
   onMouseUp = (e) => {
     this.inFocus = false;
-    this.$input.focus();
+    getInput(this.dropdown).focus();
   };
 
-  onClickItemButton = (e) => {
-    this.handleClickItemButton(e);
+	handleClickItemButton = (e) => {
+		itemButtonClicked(e, this.itemButtonClickedTrigger)
   };
+
+	handleClickFooterButton = (e) => {
+		this.footerButtonClicked(e)
+	}
+
+	//  Subscription events with observer methods
+  // -------------------------------------------------
+
 	
 	onItemButtonClicked = (button, counter, itemName) => {
 		this.checkMinItemValue(this.opts.minItemValue, this.selectedItems[itemName], counter, button)
 		this.selectedItems[itemName] = counter;
 		this.checkTotalMaxValue(this.opts.totalMaxValue);
+		this.trigger(consts.changeSelectedItems);
+	}
+
+  onChangeSelectedItems = () => {
+    this.updateInputValueView();
+
+    if (this.opts.footerButtonActived) {
+      this.checkDisableClearButton();
+    }
+  };
+
+	
+  // -------------------------------------------------
+
+  show() {
+		this.dropdown.addEventListener('click', this.handleClickItemButton);
+		this.on(consts.itemButtonClicked, this.onClickItemButton);
+		this.on(consts.changeSelectedItems, this.onChangeSelectedItems);
+		this.attachFooterButtonListener();
+
+    this.visible = true;
+		switchToOpenState(this.dropdown);
+  }
+
+  hide() {
+		this.dropdown.removeEventListener('click', this.handleClickItemButton);
+		this.of(consts.itemButtonClicked, this.onClickItemButton);
+		this.of(consts.changeSelectedItems, this.onChangeSelectedItems);
+		this.removeFooterButtonListener();
+
+		getInput(this.dropdown).blur();
+
+    this.visible = false;
+    switchToClosedState(this.dropdown);
+  }
+
+  updateInputValueView = () => {
+    let requiredValues = [];
+
+    let requiredItems = this.opts.ItemsRequired;
+
+    if (requiredItems) {
+      Object.keys(this.selectedItems).forEach((item) => {
+        if (requiredItems.includes(item)) {
+          requiredValues.push(this.selectedItems[item]);
+        }
+      });
+
+      if (requiredValues.includes(0)) {
+        if (this.selectedItemsIsEmty()) {
+          getInput(this.dropdown).value = '';
+        } else {
+          getInput(this.dropdown).value = this.opts.ItemsRequiredMessage;
+        }
+      } else {
+        getInput(this.dropdown).value = this.format(this.selectedItems);
+      }
+    } else {
+      getInput(this.dropdown).value = this.format(this.selectedItems);
+    }
+  };
+
+	getTotalCounter(){
+		let totalCounter = 0;
+		getAllItemsCounter(this.dropdown).map(value => totalCounter+= value);
+		return totalCounter;
+	} 
+
+  selectedItemsIsEmty() {
+    if(this.getTotalCounter() === 0){
+			return true;
+		}
+		return false;
+  }
+
+	clearItemsCounter = () => {
+		getAllItemsCounter(this.dropdown).forEach(counter => counter.value = 0);
 	}
 
 	checkTotalMaxValue = (totalMaxValue) => {
 		if (totalMaxValue){
-			let totalCounter = 0;
-			this.itemNames.forEach(itemName => totalCounter+=this.selectedItems[itemName]);
-			if (totalCounter === totalMaxValue){
+			if (this.getTotalCounter() === totalMaxValue){
 				addButtonsDisabled(this.dropdown);
 				this.opts.isAddButtonsDisabled = true;
 			}else {
@@ -176,107 +228,6 @@ export class Dropdown {
 		}
 	}
 
-
-
-  onClickFooterButton = (e) => {
-    this.handleClickFooterButton(e);
-  };
-
-  onChangeSelectedItems = (items) => {
-    this.updateInputValueView();
-    this.updateItemCounterView(items);
-
-    if (this.opts.footerButtonActived) {
-      this.checkDisableClearButton();
-    }
-  };
-
-  // -------------------------------------------------
-
-  show() {
-    this.$container.classList.add(consts.dropdownShowClassName);
-    this.visible = true;
-  }
-
-  hide() {
-    this.$input.blur();
-    this.visible = false;
-    this.$container.classList.remove(consts.dropdownShowClassName);
-  }
-
-  handleClickItemButton = (e) => {
-		itemButtonClicked(e, this.trigger(consts.itemButtonClicked, this.onClickItemButton))
-  };
-
-  handleClickFooterButton = (e) => {
-    if (e.target.classList.contains('button__input_link')) {
-      if (e.target.value === this.opts.clearFooterButtonName) {
-        let keys = Object.keys(this.selectedItems);
-
-        keys.forEach((item) => (this.selectedItems[item] = 0));
-
-        this.trigger(
-          consts.changeSelectedItems,
-          Array.prototype.slice.call(
-            this.$dropdown.querySelectorAll('.dropdown-item__counter')
-          )
-        );
-      }
-
-      if (e.target.value === this.opts.applyFooterButtonName) {
-        this.hide();
-        this.trigger(consts.applySelectedItems, this.selectedItems);
-      }
-    }
-
-  };
-
-  updateInputValueView = () => {
-    let requiredValues = [];
-
-    let requiredItems = this.opts.ItemsRequired;
-
-    if (requiredItems) {
-      Object.keys(this.selectedItems).forEach((item) => {
-        if (requiredItems.includes(item)) {
-          requiredValues.push(this.selectedItems[item]);
-        }
-      });
-
-      if (requiredValues.includes(0)) {
-        if (this.selectedItemsIsEmty()) {
-          this.$input.value = '';
-        } else {
-          this.$input.value = this.opts.ItemsRequiredMessage;
-        }
-      } else {
-        this.$input.value = this.format(this.selectedItems);
-      }
-    } else {
-      this.$input.value = this.format(this.selectedItems);
-    }
-  };
-
-  selectedItemsIsEmty() {
-    let emtyItems = Object.values(this.selectedItems).filter(
-      (val) => val === 0
-    );
-    if (emtyItems.length === Object.values(this.selectedItems).length) {
-      return true;
-    }
-  }
-
-  updateItemCounterView = (items) => {
-    if (Array.isArray(items)) {
-      items.forEach(
-        (item) =>
-          (item.innerHTML = this.selectedItems[item.getAttribute('counter')])
-      );
-    } else {
-      items.innerHTML = this.selectedItems[items.getAttribute('counter')];
-    }
-  };
-
   checkDisableClearButton() {
     let buttons = this.$dropdown.querySelectorAll('.button__input_link');
 
@@ -293,6 +244,17 @@ export class Dropdown {
       }
     }
   }
+
+	footerButtonClicked = (e) => {
+    if (clearButtonClicked(e)) {
+			this.clearItemsCounter();
+			this.trigger(consts.changeSelectedItems);
+    }
+		if (applayButtonClicked(e)) {
+			this.hide();
+			this.trigger(consts.applySelectedItems, this.selectedItems);
+		}
+  };
 
   format(items) {
     let resultString = '';
@@ -367,4 +329,8 @@ export class Dropdown {
     }
     return result;
   }
+
+	itemButtonClickedTrigger = (button, counter, itemName) => {
+		this.trigger(consts.itemButtonClicked, button, counter, itemName)
+	};
 }

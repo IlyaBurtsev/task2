@@ -1,16 +1,12 @@
 import { addClass, getElement, getElements, removeClass } from "../../../utils/utils";
 
-// export const getItemSelector = () => {
-// 	return '.js-dropdown-item__title';
-// }
+export const getItemCounterSelector = () => {
+	return '.js-dropdown-item__counter';
+}
 
-// export const setCounter = (counter, itemName, dropdown) => {
-// 	if (!dropdown) {
-// 		dropdown = document;
-// 	}
-// 	getElement(`[itemName=${itemName}]`, dropdown).value = counter;
-
-// }
+export const getCountersItemName = (counter) => {
+	return counter.getAttribute("itemName");
+}
 
 const addButtonClicked = (e, itemButtonClikedTrigger) => {
 	if(e.target.classList.contains('dropdown-item__add-button_active')) {
