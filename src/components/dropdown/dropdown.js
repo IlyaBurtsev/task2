@@ -13,10 +13,6 @@ import {
 } from '../../utils/utils';
 import { getItemCounterSelector} from './__dropdown-item/dropdown-item';
 
-export const getInput = (dropdown) => {
-  return getElement('.js-input-field__input_for-dropdown', dropdown);
- 
-};
 
 export const switchToOpenState = (dropdown) => {
   addClass(dropdown, 'dropdown__container_open');
