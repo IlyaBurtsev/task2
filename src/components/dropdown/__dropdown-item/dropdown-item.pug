@@ -2,6 +2,6 @@ mixin dropdown-item(title='')
 	.dropdown-item__container 
 		h3.dropdown-item__title= title
 		.dropdown-item__button-container
-			button.dropdown-item__sub-button.js-dropdown-item__sub-button(itemName= title, disabled= "disabled")= '-'
-			input.dropdown-item__counter.js-dropdown-item__counter(itemName= title, value=0, type='button', disbled)
-			button.dropdown-item__add-button.js-dropdown-item__add-button.dropdown-item__add-button_active(itemName= title)= '+' 
+			button.dropdown-item__sub-button.js-dropdown-item__sub-button(item-name= title, disabled= "disabled")= '-'
+			input.dropdown-item__counter.js-dropdown-item__counter(item-name= title, value=0, type='button', disbled)
+			button.dropdown-item__add-button.js-dropdown-item__add-button.dropdown-item__add-button_active(item-name= title)= '+' 

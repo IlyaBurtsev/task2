@@ -13,7 +13,9 @@ import {
 } from '../../utils/utils';
 import { getItemCounterSelector} from './__dropdown-item/dropdown-item';
 
-
+export const getInput = (container) => {
+	return getElement('.js-input-field__input_for-dropdown', container);
+}
 export const switchToOpenState = (dropdown) => {
   addClass(dropdown, 'dropdown__container_open');
 };
@@ -22,8 +24,12 @@ export const switchToClosedState = (dropdown) => {
   removeClass(dropdown, 'dropdown__container_open');
 };
 
-export const getAllItemsCounter = (dropdown) => {
-	return getElements(getItemCounterSelector(), dropdown);
+export const getSelectedItems = (dropdown) => { 
+	let selectedItems = new Map;
+	getElements('.js-dropdown-item__counter', dropdown).forEach(counter => {
+		selectedItems.set(counter.getAttribute('item-name'), Number(counter.value));
+	});
+	return selectedItems;
 }
 
 export const clearButtonClicked = (e) => {
