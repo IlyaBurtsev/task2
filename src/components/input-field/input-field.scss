@@ -1,13 +1,15 @@
-@import '@theme/variables.scss';
+@import '@theme/colors.scss';
 
 .input-field {
   &__container {
     max-width: 32rem;
+		min-width: 15rem;
 		height: 4.4rem;
     display: flex;
     position: relative;
   }
   &__input {
+		width: 100%;
     padding-left: 1.4rem;
     color: $dark-25;
     outline: transparent;
@@ -15,7 +17,6 @@
     box-sizing: border-box;
     border-radius: 0.4rem;
     align-items: center;
-    flex-grow: 1;
     &::placeholder {
       color: $dark-25;
     }

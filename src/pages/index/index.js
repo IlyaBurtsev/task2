@@ -13,7 +13,7 @@ import { initLikeButton, likeButtonPressed } from '../../components/button/_like
 import { getElement } from '../../utils/utils'
 import { Dropdown } from '../../components/dropdown/_item-quantity/Classes/Dropdown'
 import { initDropdownDate } from '../../components/dropdown/_date-picker/dropdown_date-picker'
-import { initDropdownFilterDate } from '../../components/dropdown/_date-picker/_filter-date/dropdown_filter-date'
+
 
 
 class Test {
@@ -52,7 +52,7 @@ new Test()
 // 	itemsRequiredMessage: 'Без взрослых не заселяем.',
 // })
 
-initDropdownFilterDate(getElement('.js-dropdown__container'))
+initDropdownDate(getElement('.js-dropdown__container'))
 
 
 

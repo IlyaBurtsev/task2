@@ -1,10 +1,22 @@
 .dropdown {
 	&__container{
 		max-width: 32rem;
-		min-width: 10rem;
+		min-width: 26.6rem;
 		position:relative;
 	}
-	&__input-conteiner {
+	&__inputs-conteiner {
+		width: 100%;
 		display: flex;
+		gap: 2rem;
+	}
+	@media screen and (max-width: 420px) {
+		&__inputs-conteiner {
+			flex-wrap: wrap;
+		}
+	}
+	
+	&__input-container {
+		width: 100%;
+		min-width: 15rem;
 	}
 }

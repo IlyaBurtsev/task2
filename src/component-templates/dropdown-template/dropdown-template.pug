@@ -32,11 +32,11 @@ mixin dropdown-template(options={})
 
 	div(class=containerClassName)
 		if (doubleInput)
-			.dropdown__input-conteiner
-				.dropdown__first-input
+			.dropdown__inputs-conteiner.js-dropdown__inputs-container
+				.dropdown__input-container
 					+title({title: firstTitle})
 					+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: firstInputValue})
-				.dropdown__second-input
+				.dropdown__input-container
 					+title({title: secondTitle})
 					+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: secondInputValue})
 		else 	

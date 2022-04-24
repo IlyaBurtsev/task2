@@ -1,4 +1,4 @@
-@import '@theme/variables.scss';
+@import '@theme/colors.scss';
 
 .input-field {
   &__container_for-dropdown {
@@ -15,9 +15,11 @@
     }
   }
   &__input_for-dropdown {
+		text-transform: lowercase;
 		color: $dark-75;
     &::placeholder {
       color: $dark-75;
+			text-transform: uppercase;
     }
   }
 }
