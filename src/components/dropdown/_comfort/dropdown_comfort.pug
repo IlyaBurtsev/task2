@@ -1,9 +1,0 @@
-include ../dropdown-item/dropdown-item.pug
-mixin dropdown_comfort(options)
-	.dropdown__container_comfort
-		.dropdown__title-container.dropdown__title-container_comfort
-			input.dropdown__input.dropdown__input_comfort
-		.dropdown__expand-container.dropdown__expand-container_comfort
-			each val in options.items 
-				+dropdown-item(val)
-			

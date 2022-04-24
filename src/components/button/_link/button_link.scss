@@ -4,6 +4,7 @@
   &__container_link {
     width: auto;
     height: auto;
+		min-width: unset;
     display: inline-block;
   }
   &__input_link {

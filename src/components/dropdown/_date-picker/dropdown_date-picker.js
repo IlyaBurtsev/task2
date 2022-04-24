@@ -1,9 +1,8 @@
 import AirDatepicker from 'air-datepicker';
-import 'air-datepicker/air-datepicker.css';
+// import 'air-datepicker/air-datepicker.css';
 import { getElement } from '../../../utils/utils';
-import { clearBackgroundForRangeFrom } from '../air-datepicker/air-datepicker';
-import '../dropdown.scss'
-import './dropdown_date.scss'
+import { clearBackgroundForRangeFrom } from './__air-datepicker/air-datepicker';
+import './dropdown_date-picker.scss'
 
 
 

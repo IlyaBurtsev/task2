@@ -2,7 +2,7 @@ import {
   addClass,
   getElement,
   removeClass,
-} from '../../../utils/utils';
+} from '../../../../utils/utils';
 
 export const getItemNameWhenAddButtonClicked = (e) => {
   if (e.target.classList.contains('dropdown-item__add-button_active')) {

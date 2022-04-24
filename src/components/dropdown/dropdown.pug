@@ -1,25 +1,24 @@
 include ../../component-templates/dropdown-template/dropdown-template.pug
-include ./__dropdown-item/dropdown-item.pug
+include ./_item-quantity/__dropdown-item/dropdown-item.pug
 
 
-- const DROPDOWN = {'GUESTS':0, 'COMFORT':1, 'FILTER_DATE':2, 'DATE':3 }
+- const DROPDOWN = {'ITEM_QUANTITY':0, 'DATE_PICKER':1}
 
 mixin dropdown(options={})
 
 	-
-		const {type, items=[], placeholder, inputValue='', firstInputValue, secondInputValue, firstTitle, secondTitle} = options
-		const guestsItems = ['взрослые', 'дети', 'младенцы']
+		const {type, items=[], placeholder, inputValue='', firstInputValue, secondInputValue, firstTitle, secondTitle,
+		doubleInput=false, footerButtonActive=false, commonModificators=[]} = options
+		const guestsItems = {'взрослые':2, 'дети':1, 'младенцы':0}
 		const comfortItems = ['спальни', 'кровати', 'ванные комнаты']
 
 	
 	case type 	
-		when DROPDOWN.GUESTS 
-			+dropdown-template({modificator: 'guests', placeholder: 'Сколько гостей', items: guestsItems, footerButtonActive: true})
-		when DROPDOWN.COMFORT 
-			+dropdown-template({modificator: 'comfort', placeholder: 'Выберите удобства', items: comfortItems})
-		when DROPDOWN.FILTER_DATE 
-			+dropdown-template({modificator: 'filter-date', placeholder: 'Выберите диапазон дат', inputValue: inputValue})
-		when DROPDOWN.DATE 
-			//- +dropdown-template({modificator: 'date', firstInputValue: firstInputValue, secondInputValue: secondInputValue, firstTitle: firstTitle, secondTitle: secondTitle })	
-	
+		when DROPDOWN.ITEM_QUANTITY
+			+dropdown-template({modificatorName: 'item-quantity', placeholder: placeholder, items: items, footerButtonActive: footerButtonActive,
+			 commonModificators: commonModificators,})
+		when DROPDOWN.DATE_PICKER
+			+dropdown-template({modificatorName: 'date-picker', placeholder: placeholder, inputValue: inputValue, thirdPartyPlugin: true,
+				firstInputValue: firstInputValue, secondInputValue: secondInputValue,doubleInput: doubleInput, commonModificators: commonModificators,})
+		
 				

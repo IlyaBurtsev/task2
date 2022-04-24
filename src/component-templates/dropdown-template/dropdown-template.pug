@@ -20,28 +20,31 @@ mixin dropdown-template(options={})
 		each jsClass in useJS
 			case jsClass
 				when JS_CLASS.CONTAINER 
-					- jsContainerClasses= modificatorName ? 'js-' + containerClassName + '_' + modificatorName : 'js-' + containerClassName
+					- jsContainerClasses= 'js-' + containerClassName
 				
 	-
 		containerClassName += modificatorName ? ' '+containerClassName+'_'+ modificatorName : ''
 		containerClassName += ' ' + jsContainerClasses
 		containerClassName += ' '+modificatorsContainerClassName
+		containerClassName += doubleInput ? ' ' + 'double-input-field' : ''
+		containerClassName += footerButtonActive ? ' footer-button-active' : ''
 
 
 	div(class=containerClassName)
 		if (doubleInput)
-			.dropdown__first-input
-				+title({title: firstTitle})
-				+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: firstInputValue})
-			.dropdown__second-input
-				+title({title: secondTitle})
-				+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: secondInputValue})
+			.dropdown__input-conteiner
+				.dropdown__first-input
+					+title({title: firstTitle})
+					+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: firstInputValue})
+				.dropdown__second-input
+					+title({title: secondTitle})
+					+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: secondInputValue})
 		else 	
 			+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: inputValue})
 		if (!thirdPartyPlugin)
 			.dropdown__expand-container
-				each itemName in items
-					+dropdown-item(itemName)
+				each value, itemName in items
+					+dropdown-item(itemName, value)
 				if (footerButtonActive)
 					.dropdown__footer
 						.dropdown__clear-button.js-dropdown__clear-button

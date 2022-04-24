@@ -1,7 +1,7 @@
-mixin dropdown-item(title='')
+mixin dropdown-item(title='', value=0)
 	.dropdown-item__container 
 		h3.dropdown-item__title= title
 		.dropdown-item__button-container
 			button.dropdown-item__sub-button.js-dropdown-item__sub-button(item-name= title, disabled= "disabled")= '-'
-			input.dropdown-item__counter.js-dropdown-item__counter(item-name= title, value=0, type='button', disbled)
+			input.dropdown-item__counter.js-dropdown-item__counter(item-name= title, value=value, type='button', disbled)
 			button.dropdown-item__add-button.js-dropdown-item__add-button.dropdown-item__add-button_active(item-name= title)= '+' 

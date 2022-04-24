@@ -1,11 +1,11 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import './dropdown_filter-date.scss'
-import '../air-datepicker/air-datepicker.scss'
-import { getElement } from '../../../utils/utils';
-import { clearBackgroundForRangeFrom } from '../air-datepicker/air-datepicker';
+import '../__air-datepicker/air-datepicker.scss'
+import { clearBackgroundForRangeFrom } from '../__air-datepicker/air-datepicker';
+import { getElement } from '../../../../utils/utils';
 
-export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
+export function initDropdownFilterDate (bindElement, selectedDates) {
 
 	let button = {
 		content: 'Применить',
@@ -15,8 +15,9 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 		}
 	}
 
-
-	const dp = new AirDatepicker(bindElement, {
+	const dp = new AirDatepicker(getElement('.js-input-field__input_for-dropdown', bindElement), {
+		container: bindElement,
+		visible:true,
 		range: true,
 		multipleDatesSeparator: ' - ',
 		prevHtml: '<svg><path d="M16.1755 8.01562V9.98438H3.98801L9.56613 15.6094L8.15988 17.0156L0.144258 9L8.15988 0.984375L9.56613 2.39062L3.98801 8.01562H16.1755Z" fill="#BC9CFF"/></svg>',
@@ -26,28 +27,17 @@ export function initDropdownFilterDate (bindElement, selectedDates, startDate) {
 			days: '<i>MMMM</i> <i>yyyy</i><i></i>',
 		},
 		position({ $datepicker, $target, $pointer }) {
-			console.log($target.getBoundingClientRect())
-			let coords = $target.getBoundingClientRect()
-			
-			let top = coords.y+coords.height+ window.scrollY;
-			let left = coords.x;
-
-			$datepicker.style.left = `${left}px`;
+			let top = 6;
 			$datepicker.style.top = `${top}px`;
 
 			$pointer.style.display = 'none';
 		},
 		selectedDates: selectedDates ?  selectedDates: ['2019-08-19', '2019-08-23'],
-		startDate: startDate ? startDate: '',
 		dateFormat: 'dd MMM',
-		onSelect(){
-			clearBackgroundForRangeFrom(dp);
-		},
-		onShow(){
-			clearBackgroundForRangeFrom(dp);
-		}
-		
-	})
-
+		onSelect({datepicker}){
+			clearBackgroundForRangeFrom(datepicker);
+		},	
+	});
 	
 }
+

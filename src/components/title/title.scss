@@ -3,12 +3,13 @@
 .title {
   &__container {
     max-width: 32rem;
+		min-width: 15rem;
     display: flex;
     margin-bottom: 0.5rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: start;
-		&_custom-margin-bottom{
+		&_custom-parametr {
 			margin-bottom: 1.6rem;
 		}
   }

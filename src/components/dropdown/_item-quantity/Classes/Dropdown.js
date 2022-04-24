@@ -1,29 +1,22 @@
 
 
-import { deepMerge, getElement, showWarning } from '../../../utils/utils';
+import { deepMerge, showWarning } from '../../../../utils/utils';
 
-import { bindObserverMetods } from '../../../utils/observerMetods';
-import { getCountersItemName,  getItemNameWhenAddButtonClicked, disableAddButton, activeAddButton, disableSubtractButton, activeSubtractButton, updateCounterView, getItemNameWhenubtractButtonClicked } from '../__dropdown-item/dropdown-item';
-import { activeClearButton, applayButtonClicked, clearButtonClicked, disableClearButton, getInput, getSelectedItems, switchToClosedState, switchToOpenState } from '../dropdown';
+import { bindObserverMetods } from '../../../../utils/observerMetods';
+import { getItemNameWhenAddButtonClicked, disableAddButton, activeAddButton, disableSubtractButton, activeSubtractButton, updateCounterView, getItemNameWhenubtractButtonClicked } from '../__dropdown-item/dropdown-item';
+import { activeClearButton, applayButtonClicked, clearButtonClicked, disableClearButton, getInput, getSelectedItems, switchToClosedState, switchToOpenState } from '../dropdown_item-quantity';
 
 export const consts = {
   changeSelectedItem: 'cangeSelectedItem',
   applySelectedItems: 'applySelectedItems',
 	itemButtonClicked: 'itemButtonClicked',
-	onZeroItemCounter: 'onZeroCounter',
-	counterIsGreaterThanZero: 'counterIsGreaterThanZero',
-	
-  dropdownShowClassName: 'dropdown__expand-container_show',
 };
 
 const optionDefault = {
-  inline: false,
 	minItemValue: 0,
 	totalMaxValue: '',
-  ItemsRequiredMessage: '',
+  itemsRequiredMessage: '',
   footerButtonActived: false,
-  clearFooterButtonName: 'очистить',
-  applyFooterButtonName: 'применить',
 };
 
 export class Dropdown {
@@ -71,6 +64,9 @@ export class Dropdown {
 
 	initSelectedItems = () => {
 		this.selectedItems = getSelectedItems(this.dropdown);
+		for (const itemName of this.selectedItems.keys()) {
+			this.trigger(consts.changeSelectedItem, itemName);
+		}
 	}
 
   bindEvents() {
@@ -78,6 +74,7 @@ export class Dropdown {
     getInput(this.dropdown).addEventListener('blur', this.onBlur);
     this.dropdown.addEventListener('mousedown', this.onMouseDown);
     this.dropdown.addEventListener('mouseup', this.onMouseUp); 
+		this.on(consts.changeSelectedItem, this.onChangeSelectedItem);
   }
 
   attachFooterButtonListener() {
@@ -124,9 +121,6 @@ export class Dropdown {
 	handleClickFooterButton = (e) => {
 		this.footerButtonClicked(e)
 	}
-
-	//  Subscription events with observer methods
-  // -------------------------------------------------
 
   onChangeSelectedItem = (itemName, previousValue) => {
     this.updateInputView();
@@ -184,22 +178,21 @@ export class Dropdown {
     let requiredValues = [];
 		let input = getInput(this.dropdown);
 
-    let requiredItems = this.opts.ItemsRequired;
+    let requiredItems = this.opts.itemsRequired;
 
     if (requiredItems) {
-      this.selectedItems.forEach((item) => {
-        if (requiredItems.includes(item)) {
+			for (let item of this.selectedItems.keys()) {
+				if (requiredItems.includes(item)) {
           requiredValues.push(this.selectedItems.get(item));
         }
-      });
-
+			}
       if (requiredValues.includes(0)) {
         if (this.selectedItemsIsEmty()) {
 					
 					
           input.value = '';
         } else {
-          input.value = this.opts.ItemsRequiredMessage;
+          input.value = this.opts.itemsRequiredMessage;
         }
       } else {
         input.value = this.format(this.selectedItems);
@@ -256,11 +249,16 @@ export class Dropdown {
 		}
 		if (previousValue == 0){
 			activeSubtractButton(itemName, this.dropdown);
+			return;
+		}
+		if (!previousValue) {
+			if(this.selectedItems.get(itemName)>0) {
+				activeSubtractButton(itemName, this.dropdown);
+			}
 		}
 	}
 
   checkDisableClearButton() {
-    
     if (this.selectedItemsIsEmty()) {
       disableClearButton(this.dropdown);
 			this.isClearButtonDisabled = true;
@@ -296,11 +294,11 @@ export class Dropdown {
         if (item === 'mergeItems') {
           let mergeValue = 0;
 
-          this.opts.mergeItems.forEach((mergeItemNames) => (mergeValue +=Number(items.get(mergeItemNames))));
+          this.opts.mergeItems.forEach((mergeItemNames) => (mergeValue +=items.get(mergeItemNames)));
 
           itemToString = this.switchResult(mergeValue, inputFormat[item]);
         } else {
-          itemToString = this.switchResult(Number(items.get(item)), inputFormat[item]);
+          itemToString = this.switchResult(items.get(item), inputFormat[item]);
         }
         formatedItem[item] = itemToString;
       });

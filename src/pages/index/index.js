@@ -9,9 +9,11 @@ import '../../components/title/title'
 import '../../components/dropdown/dropdown'
 import { bindObserverMetods } from '../../utils/observerMetods'
 import { initLikeButton, likeButtonPressed } from '../../components/button/_like/button_like'
-import { Dropdown } from '../../components/dropdown/Classes/Dropdown'
-import { getElement } from '../../utils/utils'
 
+import { getElement } from '../../utils/utils'
+import { Dropdown } from '../../components/dropdown/_item-quantity/Classes/Dropdown'
+import { initDropdownDate } from '../../components/dropdown/_date-picker/dropdown_date-picker'
+import { initDropdownFilterDate } from '../../components/dropdown/_date-picker/_filter-date/dropdown_filter-date'
 
 
 class Test {
@@ -41,12 +43,18 @@ const button = initLikeButton(document, 111111)
 console.log(button)
 
 new Test()
-new Dropdown(getElement('.js-dropdown__container'), {
-	mergeItems:  ['взрослые', 'дети'],
-	inputFormat: { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] },
-	totalMaxValue: 20,
-	footerButtonActived: true,
-})
+// new Dropdown(getElement('.js-dropdown__container'), {
+// 	mergeItems:  ['взрослые', 'дети'],
+// 	inputFormat: { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] },
+// 	totalMaxValue: 20,
+// 	footerButtonActived: true,
+// 	itemsRequired: ['взрослые'],
+// 	itemsRequiredMessage: 'Без взрослых не заселяем.',
+// })
+
+initDropdownFilterDate(getElement('.js-dropdown__container'))
+
+
 
 
 
