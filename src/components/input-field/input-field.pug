@@ -1,6 +1,6 @@
 include ../../component-templates/input-template/input-template.pug
 
-- const INPUT_FIELD={'TEXT':0, 'SUBSCRIBE':1, 'FOR_DATE_DROPDOWN':3}
+- const INPUT_FIELD={'TEXT':0, 'SUBSCRIBE':1, 'FOR_DATE_DROPDOWN':3, 'FOR_ITEMS_DROPDOWN':4}
 
 mixin input-field(options={})
 
@@ -15,6 +15,9 @@ mixin input-field(options={})
 			placeholder: 'Email', inputValue: inputText, customElementName: 'submit-button', customElementValue: 'arrow_forward'})
 		when INPUT_FIELD.FOR_DATE_DROPDOWN 
 			+input-tamplate({blockName: 'input-field', modificatorName: 'for-date-dropdown', inputType: inputType, 
+			placeholder: placeholder, inputValue: inputText, useJS : [JS_CLASS.INPUT]})
+		when INPUT_FIELD.FOR_ITEMS_DROPDOWN 
+			+input-tamplate({blockName: 'input-field', modificatorName: 'for-items-dropdown', inputType: inputType, 
 			placeholder: placeholder, inputValue: inputText, useJS : [JS_CLASS.INPUT]})
 
 	

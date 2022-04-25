@@ -11,7 +11,7 @@ import {
 
 
 export const getInput = (container) => {
-	return getElement('.js-input-field__input_for-dropdown', container);
+	return getElement('.js-input-field__input_for-items-dropdown', container);
 }
 export const switchToOpenState = (dropdown) => {
   addClass(dropdown, 'dropdown__container_item-quantity_open');
@@ -56,7 +56,7 @@ export const applayButtonClicked = (e) => {
 export const initQuantityDropdown = (bindElement, callbackFunc) => {
 	const footerButtonActive = bindElement.classList.contains('footer-button-active');
 	const visible = bindElement.classList.contains('dropdown__container_item-quantity_open');
-	const dropdownSettings = '';
+	let dropdownSettings = '';
 
 	if (footerButtonActive) {
 		dropdownSettings = {

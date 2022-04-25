@@ -1,4 +1,4 @@
-import './_item-quantity/dropdown_item-quantity'
+
 import './dropdown.scss'
 
 import { getElement, getElements } from '../../utils/utils';

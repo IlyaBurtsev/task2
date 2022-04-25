@@ -8,6 +8,10 @@ include ../../components/dropdown/dropdown.pug
 
 include ../../component-templates/global-constants/constants.pug
 
+-
+	const guestsItems = {'взрослые':2, 'дети':1, 'младенцы':0}
+	const comfortItems = ['спальни', 'кровати', 'ванные комнаты']
+
 html(lang="en")
 	head
 		meta(charset="UTF-8")
@@ -35,7 +39,13 @@ html(lang="en")
 			+button({type: BUTTON.LIKE, label: 10, commonModificators: [MODIFICATOR.SELECTED]})
 			+button({type: BUTTON.LIKE, label: 7})
 			+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23'})
-			+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23', doubleInput: true, commonModificators: [MODIFICATOR.OPEN]})
+			+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23', doubleInput: true, commonModificators: []})
+			+dropdown({type: DROPDOWN.ITEM_QUANTITY, 
+			items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
+			placeholder: 'Сколько комнат', commonModificators: [MODIFICATOR.OPEN]})
+			+dropdown({type: DROPDOWN.ITEM_QUANTITY, 
+			items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
+			footerButtonActive: true, commonModificators: [MODIFICATOR.OPEN], placeholder: 'Сколько гостей'})
 			.separator
 		
 
