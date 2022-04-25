@@ -1,5 +1,6 @@
 import './dropdown_item-quantity.scss';
 import './__dropdown-item/dropdown-item.scss';
+import { Dropdown } from './Classes/Dropdown';
 
 import {
   addClass,
@@ -7,6 +8,7 @@ import {
   getElements,
   removeClass,
 } from '../../../utils/utils';
+
 
 export const getInput = (container) => {
 	return getElement('.js-input-field__input_for-dropdown', container);
@@ -51,3 +53,35 @@ export const applayButtonClicked = (e) => {
 
 
 
+export const initQuantityDropdown = (bindElement, callbackFunc) => {
+	const footerButtonActive = bindElement.classList.contains('footer-button-active');
+	const visible = bindElement.classList.contains('dropdown__container_item-quantity_open');
+	const dropdownSettings = '';
+
+	if (footerButtonActive) {
+		dropdownSettings = {
+			mergeItems: ['взрослые', 'дети'],
+			inputFormat: { mergeItems: ['гость', 'гостя', 'гостей'], 'младенцы': ['младенец', 'младенца', 'младенцев'] },
+			itemsRequired: ['взрослые'],
+			itemsRequiredMessage: 'Без взрослых не заселяем.',
+			totalMaxValue: 20,
+			footerButtonActived: true,
+		}
+	}else {
+		dropdownSettings = {
+			inputFormat: { 'спальни': ['спальня', 'спальни', 'спален'], 
+			'кровати': ['кровать', 'кровати', 'кроватей'], 
+			'ванные комнаты': ['ванная комната', 'ванных комнаты', 'ванных комнат'] },
+		}
+	}
+
+	new Dropdown(bindElement, {
+		visible: visible,
+		...dropdownSettings,
+		onSelectItems(selectedItems) {
+			if(callbackFunc) {
+				callbackFunc(selectedItems);
+			}
+		}
+	})
+}

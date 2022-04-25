@@ -123,14 +123,18 @@ export class Dropdown {
 	}
 
   onChangeSelectedItem = (itemName, previousValue) => {
+		const {footerButtonActived, callback: onSelectItems} = this.opts;
     this.updateInputView();
 		updateCounterView(itemName, this.selectedItems.get(itemName), this.dropdown)
 		this.checkMinItemValue(itemName, previousValue);
 		this.checkTotalMaxValue();
 
-    if (this.opts.footerButtonActived) {
+    if (footerButtonActived) {
       this.checkDisableClearButton();
     }
+		if (typeof onSelectItems === 'function') {
+			onSelectItems(this.selectedItems);
+		}
   };
 
 	

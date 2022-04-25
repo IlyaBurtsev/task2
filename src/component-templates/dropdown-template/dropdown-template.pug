@@ -1,7 +1,7 @@
 mixin dropdown-template(options={})
 	-
 		const {blockName='dropdown', modificatorName='', thirdPartyPlugin=false, commonModificators=[],
-		 items=[], inputValue, doubleInput=false, firstInputValue,  secondInputValue, firstTitle='', secondTitle,
+		 items=[], selectedDates, doubleInput=false, firstDate,  secondDate, firstTitle='', secondTitle,
 		  placeholder, footerButtonActive=false, useJS=[JS_CLASS.CONTAINER ] } = options
 
 		let containerClassName = blockName + '__container'
@@ -26,22 +26,24 @@ mixin dropdown-template(options={})
 		containerClassName += modificatorName ? ' '+containerClassName+'_'+ modificatorName : ''
 		containerClassName += ' ' + jsContainerClasses
 		containerClassName += ' '+modificatorsContainerClassName
-		containerClassName += doubleInput ? ' ' + 'double-input-field' : ''
+		containerClassName += doubleInput ? ' double-input-field' : ''
 		containerClassName += footerButtonActive ? ' footer-button-active' : ''
 
 
 	div(class=containerClassName)
-		if (doubleInput)
-			.dropdown__inputs-conteiner.js-dropdown__inputs-container
-				.dropdown__input-container
-					+title({title: firstTitle})
-					+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: firstInputValue})
-				.dropdown__input-container
-					+title({title: secondTitle})
-					+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: secondInputValue})
-		else 	
-			+input-field({type: INPUT_FIELD.FOR_DROPDOWN, placeholder: placeholder, value: inputValue})
-		if (!thirdPartyPlugin)
+		if (thirdPartyPlugin)
+			if (doubleInput)
+				.dropdown__inputs-conteiner.js-dropdown__inputs-container
+					.dropdown__input-container
+						+title({title: firstTitle})
+						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: selectedDates})
+					.dropdown__input-container
+						+title({title: secondTitle})
+						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, secondDate: secondDate})
+			else 	
+				+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: selectedDates})
+		else
+			+input-field({type: INPUT_FIELD.FOR_ITEMS_DROPDOWN, placeholder: placeholder})
 			.dropdown__expand-container
 				each value, itemName in items
 					+dropdown-item(itemName, value)

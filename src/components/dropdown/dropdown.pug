@@ -7,7 +7,7 @@ include ./_item-quantity/__dropdown-item/dropdown-item.pug
 mixin dropdown(options={})
 
 	-
-		const {type, items=[], placeholder, inputValue='', firstInputValue, secondInputValue, firstTitle, secondTitle,
+		const {type, items=[], placeholder, selectedDates, firstTitle, secondTitle,
 		doubleInput=false, footerButtonActive=false, commonModificators=[]} = options
 		const guestsItems = {'взрослые':2, 'дети':1, 'младенцы':0}
 		const comfortItems = ['спальни', 'кровати', 'ванные комнаты']
@@ -18,7 +18,7 @@ mixin dropdown(options={})
 			+dropdown-template({modificatorName: 'item-quantity', placeholder: placeholder, items: items, footerButtonActive: footerButtonActive,
 			 commonModificators: commonModificators,})
 		when DROPDOWN.DATE_PICKER
-			+dropdown-template({modificatorName: 'date-picker', placeholder: placeholder, inputValue: inputValue, thirdPartyPlugin: true,
-				firstInputValue: firstInputValue, secondInputValue: secondInputValue,doubleInput: doubleInput, commonModificators: commonModificators,})
+			+dropdown-template({modificatorName: 'date-picker', placeholder: 'ДД.ММ.ГГГГ', thirdPartyPlugin: true,
+				selectedDates: selectedDates, firstTitle: firstTitle,  secondTitle: secondTitle, secondDate: secondDate, doubleInput: doubleInput, commonModificators: commonModificators,})
 		
 				
