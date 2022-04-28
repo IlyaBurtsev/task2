@@ -5,6 +5,9 @@ include ../../components/radio/radio.pug
 include ../../components/button/button.pug
 include ../../components/title/title.pug
 include ../../components/dropdown/dropdown.pug
+include ../../components/rating/rating.pug
+include ../../components/list/list.pug
+include ../../components/radio-block/radio-block.pug
 
 include ../../component-templates/global-constants/constants.pug
 
@@ -25,27 +28,44 @@ html(lang="en")
 			a(href='./search-room.html') search-room
 			+input-field({type: INPUT_FIELD.SUBSCRIBE})
 			+title({title: 'Text Field', description: 'Hover /Focus'})
-			+input-field
+				+input-field
 			+checkbox({label: 'lkj;lhlkh'})
 			+checkbox({type: CHECKBOX.RICH, label: 'Помощник для инвалидов', 
 			labelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
 			+toggle({label: 'kojgofjn'})
 			+radio({label: 'jkklglyufguy'})
 			+title({title: 'Buttons', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
-			+button({type: BUTTON.WHITE_TEXT, label: 'khbkhlj', commonModificators: [MODIFICATOR.SELECTED]})
-			+button({type: BUTTON.PURPLE_TEXT, label : 'jkhjgglflfk' , disabled: true})
-			+button({type: BUTTON.PAY, label: 'kjlhghjggjggjkg', disabled: true})
-			+button({type: BUTTON.LINK, label: 'jkhjgjkfkffhj', disabled: true})
-			+button({type: BUTTON.LIKE, label: 10, commonModificators: [MODIFICATOR.SELECTED]})
-			+button({type: BUTTON.LIKE, label: 7})
+				+button({type: BUTTON.WHITE_TEXT, label: 'khbkhlj', commonModificators: [MODIFICATOR.SELECTED]})
+				+button({type: BUTTON.PURPLE_TEXT, label : 'jkhjgglflfk' , disabled: true})
+				+button({type: BUTTON.PAY, label: 'kjlhghjggjggjkg', disabled: true})
+				+button({type: BUTTON.LINK, label: 'jkhjgjkfkffhj', disabled: true})
+				+button({type: BUTTON.LIKE, label: 10, commonModificators: [MODIFICATOR.SELECTED]})
+				+button({type: BUTTON.LIKE, label: 7})
 			+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23'})
 			+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23', doubleInput: true, commonModificators: []})
 			+dropdown({type: DROPDOWN.ITEM_QUANTITY, 
 			items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
-			placeholder: 'Сколько комнат', commonModificators: [MODIFICATOR.OPEN]})
+			placeholder: 'Сколько комнат'})
 			+dropdown({type: DROPDOWN.ITEM_QUANTITY, 
 			items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
-			footerButtonActive: true, commonModificators: [MODIFICATOR.OPEN], placeholder: 'Сколько гостей'})
+			footerButtonActive: true, placeholder: 'Сколько гостей'})
+			+rating({inputValue:3, groupName: 'rating'})
+			+list({
+				type: LIST.CHECKBOX, 
+				title: 'expandable checkbox list',
+				items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
+				commonModificators: [MODIFICATOR.EXPANDABLE],
+				open: true
+				})
+			+list({
+				type: LIST.CHECKBOX, 
+				checkboxType: CHECKBOX.RICH,
+				title: 'expandable checkbox list',
+				items: {
+					'Широкий коридор \n Ширина коридоров в номере \n не менее 91 см.':0,
+					'Помощник для инвалидов \n На 1 этаже вас встретит специалист  и проводит до номера.':0
+					}})
+			+radio-block()
 			.separator
 		
 

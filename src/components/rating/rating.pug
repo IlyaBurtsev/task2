@@ -1,0 +1,10 @@
+mixin rating (options)
+	-const {inputValue, groupName} = options
+	.button__container_rate
+		- for (let i=0; i < 5; i++)
+			if((5-i)===inputValue)
+				input.button__input_rate(type='radio', name=groupName, rating=5-i, value=5-i, checked=true)
+			if((5-i)!==inputValue)
+				input.button__input_rate(type='radio', name=groupName, rating=5-i, value=5-i)
+
+		

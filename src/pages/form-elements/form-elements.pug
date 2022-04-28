@@ -1,125 +1,180 @@
-include ../../components/input/input.pug
+extends ../../page-templates/page-template/page-template.pug
+
+include ../../components/input-field/input-field.pug
+include ../../components/checkbox/checkbox.pug
+include ../../components/toggle/toggle.pug
+include ../../components/radio/radio.pug
+include ../../components/button/button.pug
+include ../../components/title/title.pug
+include ../../components/dropdown/dropdown.pug
+include ../../components/rating/rating.pug
 include ../../components/list/list.pug
+include ../../components/radio-block/radio-block.pug
 include ../../components/pagination/pagination.pug
 include ../../components/slider/slider.pug
 include ../../components/room-info/room-info.pug
-include ../../components/input/_button/_like/button_like.pug
 include ../../components/review/review.pug
-include ../../components/external-container/external-container.pug
 
-doctype html
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=edge")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title Form Elements 
+
+
+block title 	
+	title Form Elements 
+block header 
+block main
 	body
 		.form-elements__page-container
 			.logo
 			.form-elements__container 
 				.column1 
 					.form__container.form__container_input-field
-						+title({type: TITLE_TYPE.LONG, title: 'text field', description: 'default'})
-						+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
+						+title({title: 'text field', description: 'default'})
+							+input-field({placeholder: 'Email'})
 					.form__container.form__container_input-field
-						+title({type: TITLE_TYPE.LONG, title: 'text field', description: 'hover / focus'})
-						+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email', inputValue: 'This is pretty awesome', autofocus: 'autofocus'})
+						+title({title: 'text field', description: 'hover / focus'})
+							+input-field({placeholder: 'Email', inputValue: 'This is pretty awesome', autofocus: 'autofocus'})
 					.form__container.form__container_dropdown-guests_closed
-						+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown'})
-						+input({type: INPUT_TYPE.GUESTS})
+						+title({title: 'Dropdown'})
+							+dropdown({
+								type: DROPDOWN.ITEM_QUANTITY, 
+								items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
+								footerButtonActive:true
+								})
 					.form__container.form__container_masked-field
-						+title({type: TITLE_TYPE.LONG, title: 'masked text field'})
-						+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'ДД.ММ.ГГГГ', })
+						+title({title: 'masked text field'})
+							+input-field({placeholder: 'ДД.ММ.ГГГГ', })
 					.form__container.form__container_dropdown-date
-						.form__container_arrival
-							+title({type: TITLE_TYPE.SHORT, title: 'date dropdown'})
-							+input({type: INPUT_TYPE.DATE, dataType: 'arrival'})
-						.form__container_departure
-							+title({type: TITLE_TYPE.SHORT, title: 'date dropdown'})
-							+input({type: INPUT_TYPE.DATE, inputValue: '19.08.2019', dataType: 'departure'})
+						+dropdown({
+							type: DROPDOWN.DATE_PICKER, 
+							doubleInput: true,
+							firstTitle: 'date dropdown', 
+							secondTitle: 'date dropdown',
+							secondDate: '19.08.2019'
+							})
 					.form__container.form__container_dropdown-filter-date
-						+title({type: TITLE_TYPE.MIDDLE, title: 'filter date dropdown'})
-						+input({type: INPUT_TYPE.FILTER_DATE, inputValue: '19.08.2019'})
+						+title({title: 'filter date dropdown'})
+							+dropdown({type: DROPDOWN.DATE_PICKER})
 					.form__container.form__container_email-subscription 
-						+title({type: TITLE_TYPE.MIDDLE, title: 'subscription text field'})
-						+input({type: INPUT_TYPE.INPUT_SUBSCRIPTION})
+						+title({title: 'subscription text field'})
+							+input-field({type: INPUT_FIELD.SUBSCRIBE})
 				.column2 
 					.form__container_switch.form__container_switch_checkbox
-						+title({type: TITLE_TYPE.BUTTONS, title: 'Checkbox Buttons'})
-						+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно курить'})
-						+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно с питомцами', checked: 'checked'})
-						+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)', checked: 'checked'})
+						+list({
+							type: LIST.CHECKBOX, 
+							title: 'Checkbox Buttons',
+							items: {'Можно курить':0, 'Можно с питомцами':1, 'Можно пригласить гостей (до 10 человек)':1},
+							})
 					.form__container_switch.form__container_switch_radio
-						+title({type: TITLE_TYPE.BUTTONS, title: 'Radio Buttons'})
-						.form__container_radio-container
-							+input({type: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Мужчина', checked: 'checked'})
-							+input({type: INPUT_TYPE.RADIO, inputRadioName: 'gender', inputLabel: 'Женщина'})
+						+title({title: 'Radio Buttons', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+							+radio-block()
 					.form__container_switch.form__container_switch_toggle 
-						+title({type: TITLE_TYPE.BUTTONS, title: 'Toggle'})
-						.form__container_toggle-container
-							+input({type: INPUT_TYPE.TOGGLE, inputLabel: 'Получать спецпредложения', checked: 'checked'})
-							+input({type: INPUT_TYPE.TOGGLE, inputLabel: 'Получать спецпредложения'})
+						+title({title: 'Toggle', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+							+toggle({label: 'Получать спецпредложения', checked: true})
+							+toggle({label: 'Получать спецпредложения'})
 					.form__container_switch.form__container_like 
-						+title({type: TITLE_TYPE.BUTTONS, title: 'like button'})
-						.form__container_like-container
-							+input({type: INPUT_TYPE.BUTTON_LIKE, inputValue: 2})
-							+input({type: INPUT_TYPE.BUTTON_LIKE, inputValue: 12, dataSelected: 'true'})
+						+title({title: 'like button', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+							.form__container_like-container
+								+button({type: BUTTON.LIKE, label: 2})
+								+button({type: BUTTON.LIKE, label: 12, dataSelected: 'true'})
 					.form__container_switch.form__container_rate 
-						+title({type: TITLE_TYPE.BUTTONS, title: 'rate button'})
-						.form__container_rate-container
-							+input({type: INPUT_TYPE.BUTTON_RATE, inputValue: 4, inputRadioName: 'rating4'})
-							+input({type: INPUT_TYPE.BUTTON_RATE, inputValue: 5, inputRadioName: 'rating5'})
+						+title({title: 'rate button', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+							.form__container_rate-container
+								+rating({inputValue: 4, groupName: 'rating4'})
+								+rating({inputValue: 5, groupName: 'rating5'})
 				.column3
 					.form__container_slider
 						+slider({title: 'Range Slider'})
 					.form__container_button 
-						+title({type: TITLE_TYPE.BUTTONS, title: 'buttons'})
-						.form__container_buttons-container 
-							+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me'})
-							+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT, inputValue: 'click me', active: 'active'})
-						.form__container_buttons-container 
-							+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me'})
-							+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'click me', active: 'active'})
-						.form__container_buttons-container.form__container_buttons-container_link 
-							+input({type: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me'})
-							+input({type: INPUT_TYPE.BUTTON_LINK, inputValue: 'click me', active: 'active'})
-					.form__container_buttons 
-						+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
+						+title({title: 'buttons', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+							.form__container_buttons-container 
+								+button({type: BUTTON.WHITE_TEXT, label: 'click me'})
+								+button({type: BUTTON.WHITE_TEXT, label: 'click me', disabled: true})
+							.form__container_buttons-container 
+								+button({type: BUTTON.PURPLE_TEXT, label: 'click me'})
+								+button({type: BUTTON.PURPLE_TEXT, label: 'click me', disabled: true})
+							.form__container_buttons-container.form__container_buttons-container_link 
+								+button({type: BUTTON.LINK, label: 'click me'})
+								+button({type: BUTTON.LINK, label: 'click me', disabled: true})
+						.form__container_buttons 
+							+button({type: BUTTON.PAY, label: 'Перейти к оплате'})
 					.form__container_pagination 
-						+title({type: TITLE_TYPE.BUTTONS, title: 'pagination'})
-						+pagination
+						+title({title: 'pagination', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+							+pagination
 			.form-elements__container_row2 
 				.column4
 					.form__container_dropdown.form__container_dropdown-comfort_closed
-						+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown', description: 'Default'})
-						+input({type: INPUT_TYPE.COMFORT})
+						+title({title: 'Dropdown', description: 'Default'})
+							+dropdown({type: DROPDOWN.ITEM_QUANTITY, 
+								items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
+								placeholder: 'Сколько комнат'})
 					.form__container_dropdown.form__container_dropdown-comfort_opened
-						+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown', description: 'expanded'})
-						+input({type: INPUT_TYPE.COMFORT})
+						+title({title: 'Dropdown', description: 'expanded'})
+							+dropdown({
+								type: DROPDOWN.ITEM_QUANTITY, 
+								items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
+								placeholder: 'Сколько комнат',
+								commonModificators: [MODIFICATOR.OPEN]
+								})
 				.form__container_dropdown.form__container_dropdown-guests-empty_opened
-					+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown'})
-					+input({type: INPUT_TYPE.GUESTS})
+					+title({title: 'Dropdown'})
+						+dropdown({
+							type: DROPDOWN.ITEM_QUANTITY, 
+							items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
+							footerButtonActive: true, 
+							placeholder: 'Сколько гостей',
+							commonModificators: [MODIFICATOR.OPEN]
+							})
 				.form__container_dropdown.form__container_dropdown-guests_opened
-					+title({type: TITLE_TYPE.MIDDLE, title: 'Dropdown'})
-					+input({type: INPUT_TYPE.GUESTS})
+					+title({title: 'Dropdown'})
+						+dropdown({
+							type: DROPDOWN.ITEM_QUANTITY, 
+							items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
+							footerButtonActive: true, 
+							placeholder: 'Сколько гостей',
+							commonModificators: [MODIFICATOR.OPEN]
+							})
 			.form-elements__container_row3 
 				.column5
 					.form__container_expandable-list_closed
-						+list({type: LIST_TYPE.EXPANDABLE_CHECKBOX, listTitle : 'expandable checkbox list', items: ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'], selectedItems: ['', 'checked', 'checked', 'checked', '', '']})
+						+list({
+							type: LIST.CHECKBOX, 
+							title: 'expandable checkbox list',
+							items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
+							commonModificators: [MODIFICATOR.EXPANDABLE]
+							})
 					.form__container_expandable-list_opened
-						+list({type: LIST_TYPE.EXPANDABLE_CHECKBOX, listTitle : 'expandable checkbox list', checked: true,  items: ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'], selectedItems: ['', 'checked', 'checked', 'checked', '', '']})
+							+list({
+							type: LIST.CHECKBOX, 
+							title: 'expandable checkbox list',
+							items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
+							open: true,
+							commonModificators: [MODIFICATOR.EXPANDABLE]
+							})
 				.form__container__rich-checkbox
-					+title({type: TITLE_TYPE.BUTTONS, title: 'rich Checkbox Buttons'})
-					+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Широкий коридор', inputLabelDescription: 'Ширина коридоров в номере                не менее 91 см.'})
-					+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
+					+list({
+						type: LIST.CHECKBOX, 
+						checkboxType: CHECKBOX.RICH,
+						title: 'rich Checkbox Buttons',
+						items: {
+							'Широкий коридор \n Ширина коридоров в номере \n не менее 91 см.':0,
+							'Помощник для инвалидов \n На 1 этаже вас встретит специалист  и проводит до номера.':0
+							}
+						})
 				.form__container_bullet-list 
-					+list({type:LIST_TYPE.BULLET, listTitle: 'bullet list', items: ['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00 а выезд до 12:00']})
+					+list({
+						type:LIST.BULLET, 
+						listTitle: 'bullet list', 
+						items: [
+							'Нельзя с питомцами', 
+							'Без вечеринок и мероприятий', 
+							'Время прибытия — после 13:00 а выезд до 12:00'
+							]
+						})
 			.form-elements__container_row4 
 				.form__container_room-info
 					+room-info()
 				.form__container_review
-					+review()
+					//- +review()
+block footer 
 			
 
 			

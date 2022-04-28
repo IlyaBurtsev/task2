@@ -3,16 +3,22 @@
 .title {
   &__container {
     max-width: 32rem;
-		min-width: 15rem;
+    min-width: 15rem;
     display: flex;
-    margin-bottom: 0.5rem;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: start;
-		&_custom-parametr {
-			margin-bottom: 1.6rem;
-		}
+    flex-direction: column;
+   
   }
+  &__title-container {
+		display: flex;
+		justify-content: space-between;
+    align-items: start;
+		margin-bottom: 0.5rem;
+  }
+	&__container_custom-parametr {
+		.title__title-container {
+      margin-bottom: 1.6rem;
+    }
+	}
   &__description {
     color: $dark-50;
     text-transform: uppercase;

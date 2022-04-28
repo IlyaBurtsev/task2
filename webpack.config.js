@@ -12,8 +12,6 @@ module.exports = (env, argv = {}) => {
   const pagesDir = path.resolve(__dirname, 'src', 'pages');
   const pages = [];
 	const entries = [];
-  console.log(isDevelopment + ' isDev');
-  console.log(isProduction + ' isProd');
   fs.readdirSync(pagesDir).forEach((file) => {
     pages.push(file);
   });
@@ -66,7 +64,7 @@ module.exports = (env, argv = {}) => {
       }),
       // ...htmlPlugins,
       new HtmlWebpackPlugin({
-        template: `${pagesDir}/index/index.pug`,
+        template: `${pagesDir}/form-elements/form-elements.pug`
       }),
     ];
     if (isProduction) {
@@ -87,7 +85,7 @@ module.exports = (env, argv = {}) => {
       clean: true,
     },
     // entry: ...entries,
-    entry: `${pagesDir}/index/index.js`,
+    entry: `${pagesDir}/form-elements/form-elements.js`,
     resolve: {
       alias: {
         '@theme': path.resolve(__dirname, 'src/styles/theme-custom'),

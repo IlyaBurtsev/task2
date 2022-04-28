@@ -8,5 +8,7 @@ mixin title (options={})
 			- containerClassNames +=' title__container_' + modificator
 
 	div(class= containerClassNames)
-		H3.title__title= title 
-		H3.title__description= description
+		.title__title-container
+			H3.title__title= title 
+			H3.title__description= description
+		block

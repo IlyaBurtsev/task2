@@ -1,17 +1,17 @@
 include ../../component-templates/input-template/input-template.pug
 
-- const RADIO= {'DEFAULT':0, 'FOR_SLIDER':1}
+
 
 mixin radio(options={})
 
-	- const {type=RADIO.DEFAULT, label='', radioName='', dataSelected, checked} = options 
+	- const {type=RADIO.DEFAULT, label='', groupName='', selected} = options 
 
 	case type 
 		when RADIO.DEFAULT
-			+input-tamplate({blockName: 'radio', inputType: 'radio', radioName: radioName, 
-			customElementName: 'label', customElementValue: label, checked: checked})
+			+input-tamplate({blockName: 'radio', inputType: 'radio', inputName: groupName, 
+			customElementName: 'label', customElementValue: label, checked: selected})
 		when RADIO.FOR_SLIDER
 			+input-tamplate({blockName: 'radio', modificatorName: 'for-slider', inputType: 'radio', 
-			radioName: inputRadioName, customElementName: 'label', customElementValue: label, 
-			checked: checked, dataSelected: dataSelected})
+			inputName: groupName, customElementName: 'label', customElementValue: label, 
+			checked: selected})
 	

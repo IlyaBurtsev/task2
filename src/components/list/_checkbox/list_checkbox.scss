@@ -1,37 +1,48 @@
-.list__container_checkbox {
-	width: 26.6rem;
-	//height: 4.4rem;
-	display: flex;
-	flex-direction: column;
-	.list__input_checkbox {
+.list {
+  &__container_checkbox {
+    width: 26.6rem;
+    //height: 4.4rem;
+    display: flex;
+    flex-direction: column; 
+	
+  }
+	&__input_checkbox {
 		opacity: 0;
 		position: absolute;
 	}
-	.list__title-container_checkbox {
+	&__title-container_checkbox {
 		height: 4.4rem;
 		display: flex;
 		align-items: center;
-		.list__title_checkbox {
-			flex-grow: 1;
-		}
+	 
+	}
+	&__title_checkbox {
+		flex-grow: 1;
+	}
+	
+	&__items_checkbox {
+		margin-top: 0.2rem;
+		display: flex;
+		flex-direction: column;
+	}
+	&__container_checkbox_expandable{
 		.list__expand-icon_checkbox {
 			width: 4.4rem;
 			height: 4.4rem;
-			background: center no-repeat url("./expand_more.svg");
+			background: center no-repeat url('./expand_more.svg');
 		}
-	}
-	.list__items_checkbox {
-		margin-top: 0.2rem;
-		display: none;
-		flex-direction: column;
+		.list__items_checkbox {
+			display: none;
+		}
+		.list__input_checkbox:checked + .list__title-container_checkbox {
+			.list__expand-icon_checkbox {
+				transform: rotate(180deg);
+			}
+		}
+		.list__input_checkbox:checked ~ .list__items_checkbox {
+			display: flex;
+		}
 	}
 }
 
-.list__input_checkbox:checked + .list__title-container_checkbox {
-	.list__expand-icon_checkbox {
-		transform: rotate(180deg);
-	}
-}
-.list__input_checkbox:checked ~ .list__items_checkbox {
-	display: flex;
-}
+

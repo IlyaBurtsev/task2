@@ -1,11 +1,11 @@
 include ../../component-templates/input-template/input-template.pug
 
-- const BUTTON= {'WHITE_TEXT': 0, 'PURPLE_TEXT':1, 'PAY':2, 'LINK':3, 'LIKE':4}
+
 
 
 mixin button(options={})
 
-	- const {type=BUTTON.WHITE_TEXT, label='', dataSelected, commonModificators=[], disabled } = options
+	- const {type=BUTTON.WHITE_TEXT, label='', commonModificators=[], disabled } = options
 
 	case type 
 		when BUTTON.WHITE_TEXT

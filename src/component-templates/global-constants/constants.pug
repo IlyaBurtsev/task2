@@ -1,6 +1,20 @@
 include ../../component-templates/input-template/input-template.pug
 
+
+
 -
-	const MODIFICATOR = {'SELECTED':'selected', 'OPEN':'open', 'CUSTOM_PARAMETR':'custom-parametr'}
+	const MODIFICATOR = {'SELECTED':'selected', 'OPEN':'open', 'EXPANDABLE':'expandable', 'CUSTOM_PARAMETR':'custom-parametr'}
 	const JS_CLASS = {'CONTAINER': 0, 'INPUT':1}
 
+- const INPUT_FIELD={'TEXT':0, 'SUBSCRIBE':1, 'FOR_DATE_DROPDOWN':3, 'FOR_ITEMS_DROPDOWN':4}
+-const CHECKBOX = {'DEFAULT': 0, 'RICH': 1}
+
+- const TOGGLE= {'DEFAULT':0}
+
+- const BUTTON= {'WHITE_TEXT': 0, 'PURPLE_TEXT':1, 'PAY':2, 'LINK':3, 'LIKE':4}
+
+- const RADIO= {'DEFAULT':0, 'FOR_SLIDER':1}
+
+- const DROPDOWN = {'ITEM_QUANTITY':0, 'DATE_PICKER':1}
+
+- const LIST={'CHECKBOX':0, 'LINKS':1, 'BULLET':2}

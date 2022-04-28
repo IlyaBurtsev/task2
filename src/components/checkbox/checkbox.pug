@@ -1,6 +1,6 @@
 include ../../component-templates/input-template/input-template.pug
 
--const CHECKBOX = {'DEFAULT': 0, 'RICH': 1}
+
 
 mixin checkbox(options={})
 
@@ -14,6 +14,6 @@ mixin checkbox(options={})
 		when CHECKBOX.RICH
 			- let richLabel = label + '\n' + labelDescription
 			+input-tamplate({blockName: 'checkbox', modificatorName: 'rich', inputType: 'checkbox', 
-			customElementName: 'label', customElementValue: richLabel, checked: checked})
+			customElementName: 'label', customElementValue: label, checked: checked})
 	
 

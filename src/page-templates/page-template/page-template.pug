@@ -1,5 +1,6 @@
-include ../../ui-kit/header/header.pug
-include ../../ui-kit/footer/footer.pug
+//- include ../../components/header/header.pug
+//- include ../../components/footer/footer.pug
+include ../../component-templates/global-constants/constants.pug
 
 html(lang="en")
 	head
@@ -12,11 +13,11 @@ html(lang="en")
 			.wraper
 				.header__block-container 
 					block header 
-						+header()
+						//- +header()
 			.wraper
 				.main__block-container
 					block main
 			.wraper
 				.footer__block-container 
 					block footer 
-						+footer()
+						//- +footer()

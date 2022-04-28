@@ -1,14 +1,20 @@
 mixin list_checkbox(options)
-		label.list__container_checkbox
-			input.list__input_checkbox(type= 'checkbox', checked=options.checked)
+		-
+			const {checkboxType=CHECKBOX.DEFAULT, title='', open, items, commonModificators} = options
+			let containerClassName = 'list__container_checkbox'
+			if (commonModificators)
+			commonModificators.forEach(modificator => containerClassName+=' '+containerClassName+'_'+modificator)
+		label(class = containerClassName)
+			input.list__input_checkbox(type= 'checkbox', checked=open)
 			.list__title-container_checkbox
-				H3.list__title_checkbox= options.listTitle
+				H3.list__title_checkbox= title
 				.list__expand-icon_checkbox
 			.list__items_checkbox
-				- for (let x = 0; x < 6; x++)
-					if (options.selectedItems[x])
-						.list__item_checkbox
-							+input({type: INPUT_TYPE.CHECKBOX, inputLabel: options.items[x], checked: options.selectedItems[x]})
-					else 
-						+input({type: INPUT_TYPE.CHECKBOX, inputLabel: options.items[x]})
+				each state, label in items
+					.list__item_checkbox
+						if (state)
+							+checkbox({type: checkboxType, label: label, checked: state})
+						else 	
+							+checkbox({type: checkboxType, label: label})
+
 		
