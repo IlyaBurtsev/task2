@@ -51,11 +51,16 @@ export const applayButtonClicked = (e) => {
 	return false;
 }
 
+export const swithToInline = (dropdown) => {
+	addClass(dropdown, 'dropdown__container_item-quantity_inline')
+}
+
 
 
 export const initQuantityDropdown = (bindElement, callbackFunc) => {
 	const footerButtonActive = bindElement.classList.contains('footer-button-active');
 	const visible = bindElement.classList.contains('dropdown__container_item-quantity_open');
+	const inline = bindElement.classList.contains('dropdown__container_item-quantity_inline');
 	let dropdownSettings = '';
 
 	if (footerButtonActive) {
@@ -77,6 +82,7 @@ export const initQuantityDropdown = (bindElement, callbackFunc) => {
 
 	new Dropdown(bindElement, {
 		visible: visible,
+		inline: inline,
 		...dropdownSettings,
 		onSelectItems(selectedItems) {
 			if(callbackFunc) {

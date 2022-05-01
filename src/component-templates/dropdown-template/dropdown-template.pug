@@ -11,11 +11,11 @@ mixin dropdown-template(options={})
 
 	if ((commonModificators.length)&&modificatorName)
 		each modificator in commonModificators	
-			- modificatorsContainerClassName=containerClassName+'_'+modificatorName+'_'+modificator+' '
+			- modificatorsContainerClassName += containerClassName+'_'+modificatorName+'_'+modificator+' '
 	else 
 		if (commonModificators.length)
 			each modificator in commonModificators
-				- modificatorsContainerClassName=containerClassName+'_'+ modificator+' '
+				- modificatorsContainerClassName += containerClassName+'_'+ modificator+' '
 	if (useJS.length)
 		each jsClass in useJS
 			case jsClass

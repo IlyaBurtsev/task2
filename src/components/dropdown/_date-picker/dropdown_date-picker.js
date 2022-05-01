@@ -1,5 +1,6 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+import ru from './__air-datepicker/locale/ru'
 import '../_date-picker/__air-datepicker/air-datepicker.scss'
 
 import { getElement, getElements } from '../../../utils/utils';
@@ -85,6 +86,7 @@ export function initDateDropdown(bindElement, callbackFunc) {
 	checkScreenSize();
 
 	let dp = new AirDatepicker(input, {
+		locale: ru,
 		container: bindElement,
 		visible:  bindElement.classList.contains('dropdown__container_date-picker_open'),
 		range: true,

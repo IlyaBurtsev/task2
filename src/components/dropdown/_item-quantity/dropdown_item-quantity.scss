@@ -2,7 +2,8 @@
 
 .dropdown {
   &__expand-container {
-		display: none;
+		display: flex;
+		visibility: hidden;
 		width: 100%;
     background-color: white;
     position: absolute;
@@ -23,7 +24,12 @@
 	}
 	&__container_item-quantity_open {
 		.dropdown__expand-container {
-			display: flex;
+			visibility:visible;
+		}
+	}	
+	&__container_item-quantity_inline {
+		.dropdown__expand-container {
+			position: unset;
 		}
 	}	
 	&__footer {

@@ -15,11 +15,9 @@
     }
   }
   &__input_for-date-dropdown {
-		text-transform: lowercase;
 		color: $dark-75;
     &::placeholder {
       color: $dark-75;
-			text-transform: uppercase;
     }
 		&:hover,
     &:focus,

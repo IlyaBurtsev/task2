@@ -21,10 +21,12 @@ body{
 	flex-direction: row;
 	justify-content: space-between;
 	.column1{
+		display: flex;
 		flex-direction: column;
+		gap: 2rem;
 		
 	}
-	.column1{
+	.column2{
 		flex-direction: column;
 	}
 	.column1{
@@ -138,4 +140,15 @@ body{
 }
 .form__container_review{
 	margin-top: 1rem;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	width: 26.6rem;
+	margin-top: 2.2rem;
+}
+.separate-container{
+	margin-top: 0.3rem;
 }

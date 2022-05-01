@@ -4,7 +4,7 @@ import { deepMerge, showWarning } from '../../../../utils/utils';
 
 import { bindObserverMetods } from '../../../../utils/observerMetods';
 import { getItemNameWhenAddButtonClicked, disableAddButton, activeAddButton, disableSubtractButton, activeSubtractButton, updateCounterView, getItemNameWhenubtractButtonClicked } from '../__dropdown-item/dropdown-item';
-import { activeClearButton, applayButtonClicked, clearButtonClicked, disableClearButton, getInput, getSelectedItems, switchToClosedState, switchToOpenState } from '../dropdown_item-quantity';
+import { activeClearButton, applayButtonClicked, clearButtonClicked, disableClearButton, getInput, getSelectedItems, switchToClosedState, switchToOpenState, swithToInline } from '../dropdown_item-quantity';
 
 export const consts = {
   changeSelectedItem: 'cangeSelectedItem',
@@ -48,6 +48,10 @@ export class Dropdown {
     if (this.opts.visible) {
       this.show();
     }
+
+		if (this.opts.inline) {
+			swithToInline(this.dropdown);
+		}
    
     if (this.opts.elementReadonly) {
       getInput(this.dropdown).setAttribute('readonly', '');
