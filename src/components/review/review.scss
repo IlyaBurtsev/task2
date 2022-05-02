@@ -1,48 +1,43 @@
-.rewiew__container {
-	//display: none;
-	width: 71.1rem;
-	margin-bottom: 2.2rem;
-	
-	.review__title-container {
-		height: 5.1rem;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		margin-bottom: 0.9rem;
-		.review__avatar {
-			margin-right: 1rem;
-			width: 4.8rem;
-			height: 4.8rem;
-			border: 0.2rem solid white;
-			border-radius: 3.2rem;
-			filter: drop-shadow(0 1rem 2rem rgba(31, 32, 65, 0.1));
-			box-sizing: border-box;
-			.review__image {
-				width: 100%;
-				height: 100%;
-				border-radius: 3.2rem;
-				object-fit: cover;
-			}
-		}
-		.review__title {
-			line-height: 1rem;
-			.review__user-name{
-				font-family: "MontserratBold";
-			}
-		}
+.review {
+  &__container {
+    //display: none;
+    margin-bottom: 2.2rem;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+	&__avatar {
+		margin-right: 1.4rem;
+		width: 4.8rem;
+		height: 4.8rem;
+		border: 0.2rem solid white;
+		border-radius: 3.2rem;
+		filter: drop-shadow(0 1rem 2rem rgba(31, 32, 65, 0.1));
+		box-sizing: border-box;
+	 
 	}
-	.review__review {
-		display: flex;
-		.review__like-button{
-			display: flex;
-			width: 4.8rem;
-			margin-top: 0.2rem;
-			justify-content: center;	
-		}
-		.review__content {
-			width: 65.3rem;
-			line-height: 2.4rem;
-			margin-left: 1rem;
-		}
+	&__image {
+		width: 100%;
+		height: 100%;
+		border-radius: 3.2rem;
+		object-fit: cover;
+		margin-left: 0.4rem;
 	}
+	&__user-name {
+		font-weight: 700;
+	}
+  &__review {
+    display: flex;
+    align-items: baseline;
+  }
+	&__like-button{
+		padding-left: 0.8rem;
+	}
+  &__content {
+    padding-left: 1.4rem;
+  }
 }

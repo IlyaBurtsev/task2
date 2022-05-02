@@ -23,4 +23,3 @@ export const initDropdown = (elementContainer, callbackFunc) => {
 	initCurrentType(dropdown, callbackFunc);
 }
 
-initDropdowns();

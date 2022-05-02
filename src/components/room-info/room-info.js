@@ -4,8 +4,8 @@ import { getRoomRepository } from '../../repository/roomRepository/RoomRepositor
 
 
 
-export function initRoomInfo(roomNamber) {
-	let roomInfo = getRoomRepository().getRoomByNumber(roomNamber).getRoomInfo();
+export function initRoomInfo(room) {
+	let roomInfo = room.getRoomInfo();
 	const container = document.querySelector('.room-info__container')
 	if (container) {
 		roomInfo.forEach((item) => {

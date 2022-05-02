@@ -2,13 +2,6 @@ import './form-elements.scss'
 import '../../components/pagination/pagination'
 import '../../components/slider/slider'
 import '../../components/room-info/room-info'
-// import '../../components/review/review'
-
-
-// import { Dropdown } from '../../ui-kit/input/_dropdown/dropdown'
-// import { initDropdownFilterDate } from '../../ui-kit/input/_dropdown/_filter-date/dropdown_filter-date'
-// import { initRoomInfo } from '../../ui-kit/room-info/room-info'
-
 import '@theme/theme_custom.scss'
 import '../../components/input-field/input-field'
 import '../../components/checkbox/checkbox'
@@ -20,15 +13,21 @@ import '../../components/dropdown/dropdown'
 import '../../components/rating/rating'
 import '../../components/list/list'
 import '../../components/radio-block/radio-block'
-import { bindObserverMetods } from '../../utils/observerMetods'
-import { initLikeButton, likeButtonPressed } from '../../components/button/_like/button_like'
+import '../../components/review/review'
+import { likeButtonDemo} from '../../components/button/_like/button_like'
+import { initRoomInfo } from '../../components/room-info/room-info'
+import { initReviews } from '../../components/review/review'
+import { getRoomRepository } from '../../repository/roomRepository/RoomRepository'
+import { getUserRepository } from '../../repository/userRepository/UserRepository'
+import { initDropdowns } from '../../components/dropdown/dropdown'
 
-// import { getElement, getElements } from '../../utils/utils'
+initDropdowns()
 
-import { initDateDropdown} from '../../components/dropdown/_date-picker/dropdown_date-picker'
+const demoRoom = getRoomRepository().getRoomByNumber(1);
+likeButtonDemo();
 
-
-// initRoomInfo(1);
+initRoomInfo(demoRoom);
+initReviews(demoRoom.getReviews(), document, getUserRepository())
 
 
 

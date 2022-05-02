@@ -11,7 +11,6 @@
 		position: absolute;
 	}
 	&__title-container_checkbox {
-		height: 4.4rem;
 		display: flex;
 		align-items: center;
 	 
@@ -21,14 +20,29 @@
 	}
 	
 	&__items_checkbox {
-		margin-top: 0.2rem;
+		margin-top: 1.7rem;
 		display: flex;
 		flex-direction: column;
+	
+	}
+	&__item_checkbox{
+		margin-bottom: 1rem;
+		&:last-child{
+			margin-bottom: 0rem;
+		}
+	}
+	&__container_checkbox_custom-parametr{
+		.list__items_checkbox{
+			margin-top: 1rem;
+		}
+		.list__item_checkbox{
+			margin-bottom: 0.5rem;
+		}
 	}
 	&__container_checkbox_expandable{
 		.list__expand-icon_checkbox {
 			width: 4.4rem;
-			height: 4.4rem;
+			height: 1.5rem;
 			background: center no-repeat url('./expand_more.svg');
 		}
 		.list__items_checkbox {

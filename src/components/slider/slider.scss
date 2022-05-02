@@ -4,17 +4,17 @@
 	justify-content: space-between;
 	width: 26.6rem;
 	height: 4.4rem;
+	padding-bottom: 0.3rem;
 	.slider__info{
 		height: 1.5rem;
-		//margin-top: 0.4rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: start;
-		
 		.slider__data-range{
 			height: 1.5rem;
 			font-size: 1.2rem;
 			color: rgba(31, 32, 65, 0.5);
+			line-height: 1.5rem;
 		}
 		
 	}

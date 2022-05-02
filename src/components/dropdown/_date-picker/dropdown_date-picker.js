@@ -62,6 +62,7 @@ export function initDateDropdown(bindElement, callbackFunc) {
 			if (dp.selectedDates.length >1) {
 				inputs[1].value = dp.formatDate(dp.selectedDates[1], dp.locale.dateFormat);
 			}else {
+				if(dp.selectedDates.length)
 				inputs[1].value ='';
 			}
 		}

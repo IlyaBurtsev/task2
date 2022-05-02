@@ -5,7 +5,7 @@
 	align-items: center;
 	border-bottom: 0.1rem solid rgba(31, 32, 65, 0.1);
 	padding-bottom: 1.8rem;
-	margin-bottom: 2rem;
+	margin-bottom: 1.9rem;
 	.room-info__information {
 		margin-left: 1rem;
 		height: 4.8rem;
@@ -13,11 +13,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		.room-info__title {
-			margin-top: 0.3rem;
-			font-family: "MontserratBold";
-		}
-		.room-info__description {
-			margin-bottom: 0.3rem;
+			font-weight: 700;
 		}
 	}
 

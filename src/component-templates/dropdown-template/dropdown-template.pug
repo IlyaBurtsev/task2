@@ -39,7 +39,7 @@ mixin dropdown-template(options={})
 						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: selectedDates})
 					.dropdown__input-container
 						+title({title: secondTitle})
-						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, secondDate: secondDate})
+						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: secondDate})
 			else 	
 				+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: selectedDates})
 		else

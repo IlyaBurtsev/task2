@@ -1,13 +1,18 @@
-import { closest, addClass, removeClass, getElement } from '../../../utils/utils';
 import './button_like.scss';
+import { closest, addClass, removeClass, getElement, getElements } from '../../../utils/utils';
 
-export const initLikeButton = (bindElement, userId) =>{
+
+export const initLikeButton = (bindElement, userId, value, liked) =>{
 	const button = getElement('.js-button__input_like', bindElement);
 	button.setAttribute('user-id', userId);
+	button.value = value;
+	if (liked) {
+		addClass(	closest(button, '.js-button__container_like'), 'button__container_like_selected')
+	}
 	return button;
 }
 
-export const likeButtonPressed = (e, setLikePressedTrigger) => {
+export const likeButtonPressed = (e, callbackFunc) => {
 	if (e.target.classList.contains('button__input_like')) {
 		
 		let container = closest(e.target, '.js-button__container_like');
@@ -20,9 +25,12 @@ export const likeButtonPressed = (e, setLikePressedTrigger) => {
     	e.target.value--;
    	 removeClass(container, 'button__container_like_selected');
   	}
-		setLikePressedTrigger(e.target.value, e.target.getAttribute('user-id'));
+		if(typeof callbackFunc == 'function')
+		callbackFunc(e.target.value, e.target.getAttribute('user-id'));
 	} 
 }
 
-//-TODO только для проверки, потом убрать.
-// $('.js-button__container_like').on('click', likeButtonPressed);
+export const likeButtonDemo = () => {
+	getElements('.js-button__input_like').forEach(button =>	button.addEventListener('click', likeButtonPressed));
+}
+

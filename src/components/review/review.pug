@@ -5,9 +5,9 @@ mixin review()
 			.review__avatar 
 				img.review__image( alt='avatar')
 			.review__title
-				p.review__user-name=''
-				p.review__date-created=''
+				.review__user-name=''
+				.review__date-created=''
 		.review__review
 			.review__like-button
-				+input({type: INPUT_TYPE.BUTTON_LIKE, inputValue: 0 })
+				+button({type: BUTTON.LIKE, inputValue: 0 })
 			.review__content=''

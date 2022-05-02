@@ -1,47 +1,39 @@
-import './review.scss'
-import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
-import { getUserRepository } from '../../repository/userRepository/UserRepository';
-import { getElement } from '../../utils/utils'
+import './review.scss';
+import { getElement } from '../../utils/utils';
+import { initLikeButton } from '../button/_like/button_like';
 
-// initReviews('.rewiew__container');
 
-export function initReviews(bindElement, room) {
-	let $review = getElement(bindElement);
-	const reviews = room.getReviews();
+export function initReviews(reviews, bindElement, userRepository) {
+	const fragment = document.createDocumentFragment();
+	const review = getElement('.rewiew__container', bindElement);
+	const firstReviewData = reviews.shift();
 	
-	const firstReview = reviews.shift();
-	
-	reviews.forEach(review => {
-		
-		let $newReview = $review.cloneNode(true);
-		
-		setReviewData($newReview, review);
-		$review.append($newReview);
+	reviews.forEach(reviewData => {	
+		let newReview = review.cloneNode(true);
+		setReviewData(newReview, reviewData);
+		fragment.append(newReview);
 	})
-	setReviewData($review, firstReview);
+	setReviewData(review, firstReviewData);
+	review.append(fragment);
 
 
-	function setReviewData($reviewItem, reviewItem) {
-		const creator = getUserRepository().getUserById(reviewItem.creator);
+	function setReviewData(review, reviewData) {
+		const creator = userRepository.getUserById(reviewData.creator);
+		const userName = getElement('.review__user-name', review);
 
-		getElement('.review__image', $reviewItem).src = creator.avatar;
+		let isLiked = false;
+
+		getElement('.review__image', review).src = creator.avatar;
 		
-		const $user = getElement('.review__user-name', $reviewItem);
+		userName.innerHTML = creator.userToString();
+		userName.nextElementSibling.innerHTML = reviewData.dateCreated;
 
-		$user.innerHTML = creator.userToString();
-		$user.nextElementSibling.innerHTML = reviewItem.dateCreated;
-
-		const $likeButton = getElement('.button__input_like', $reviewItem);
-
-		$likeButton.value = reviewItem.likeCounter;
-
-		if (reviewItem.likedByUsers.includes(getUserRepository().getCurrentUser().getId())) {
-
-			$likeButton.setAttribute('data-selected', true);
-		}else{
-			$likeButton.setAttribute('data-selected', false);
+		if (reviewData.likedByUsers.includes(userRepository.getCurrentUser().getId())){
+			isLiked=true;
 		}
-		getElement('.review__content', $reviewItem).innerHTML = reviewItem.reviewContent;
+		initLikeButton(review, creator.getId(), reviewData.likeCounter, isLiked);
+
+		getElement('.review__content', review).innerHTML = reviewData.reviewContent;
 	}
 
 }

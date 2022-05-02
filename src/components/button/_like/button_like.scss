@@ -3,7 +3,8 @@
 .button {
   &__container_like {
     width: 4rem;
-    min-width: unset;
+    min-width: 4rem;
+		max-width: 4rem;
     height: 2rem;
     position: relative;
 
