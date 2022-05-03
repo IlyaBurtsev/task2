@@ -1,22 +1,27 @@
-
-include ../blocks/radio-block/radio-block.pug
+include ../../components/input-field/input-field.pug
+include ../../components/radio-block/radio-block.pug
+include ../../components/title/title.pug
+include ../../components/toggle/toggle.pug
+include ../../components/button/button.pug
 
 mixin registration()
 		.registration__container 
-			h1.registration__tittle= 'Регистрация аккаунта'
-			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Имя'})
-			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Фамилия'})
+			h1.registration__title= 'Регистрация аккаунта'
+			+input-field({placeholder: 'Имя'})
+			+input-field({placeholder: 'Фамилия'})
 			+radio-block()
-			+title({type: TITLE_TYPE.LONG, title: 'дата рождения'})
-			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'ДД.ММ.ГГГГ'})
-			.registration__separate-container
-			+title({type: TITLE_TYPE.LONG, title: 'данные для входа в сервис'})
-			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
-			+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Пароль'})
-			+input({type: INPUT_TYPE.TOGGLE, inputLabel: 'Получать спецпредложения'})
-			+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'Перейти к оплате'})
+			.registration__separate-container1
+			+title({title: 'дата рождения'})
+				+input-field({placeholder: 'ДД.ММ.ГГГГ'})
+			.registration__separate-container2
+			+title({title: 'данные для входа в сервис'})
+				+input-field({placeholder: 'Email'})
+			+input-field({placeholder: 'Пароль'})
+			+toggle({label: 'Получать спецпредложения'})
+			.registration__separate-container1
+			+button({type: BUTTON.PAY, label: 'Перейти к оплате'})
 			.registration__footer-container
 				p.registration__information= 'Уже есть аккаунт на Toxin'
-				+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'войти'})
+				+button({type: BUTTON.PURPLE_TEXT, label: 'войти'})
 
 

@@ -1,16 +1,13 @@
-include ../choose/choose.pug
-include ../registration/registration.pug
-include ../login/login.pug
-include ../room-card/room-card.pug
-include ../room-preview/room-preview.pug
+extends ../../page-templates/page-template/page-template.pug
+include ../../components/choose/choose.pug
+include ../../components/registration/registration.pug
+include ../../components/room-card/room-card.pug
+include ../../components/login/login.pug
 
-doctype html
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=edge")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title Cards
+block title 	
+	title Cards 
+block header 
+block main
 	body 
 		.cards__page-container 
 			.logo
@@ -23,11 +20,4 @@ html(lang="en")
 					+login()
 				.column3
 					.cards__datepicker
-					.cards__room888
-						+room-preview(888) 
-					.cards__room840 	
-						+room-preview(840)
-					
-				
-		
-	
+block footer	

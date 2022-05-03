@@ -3,7 +3,6 @@ import '../blocks/slider-button-block/slider-button-block'
 
 import { createElement, getElement } from '../../utils/utils';
 
-
 export function initRoomPreview(room, $roomPreview) {
 	if(!$roomPreview){
 		$roomPreview = getElement(`.room-preview__container[room-number="${room.getRoomNumber()}"]`)

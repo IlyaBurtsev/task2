@@ -1,5 +1,5 @@
-
 import './dropdown.scss'
+import '../../component-templates/dropdown-template/dropdown-template'
 
 import { getElement, getElements } from '../../utils/utils';
 import { initDateDropdown } from './_date-picker/dropdown_date-picker';

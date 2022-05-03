@@ -14,7 +14,7 @@ mixin room-preview(roomNumber='23', pictures)
 			.room-preview__price
 		.room-preview__separator
 		.room-preview__rate-container 
-			+input({type: INPUT_TYPE.BUTTON_RATE, inputValue: 4, inputRadioName: roomNumber})
+			+rating({inputValue: 4, groupName: roomNumber})
 			.room-preview__rating-counter
 		
 

@@ -1,11 +1,14 @@
+include ../../components/input-field/input-field.pug
+include ../../components/button/button.pug
 
 mixin login()
 	.login__container 
 		h1.login__tittle= 'Войти'
-		+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Email'})
-		+input({type: INPUT_TYPE.INPUT_TEXT, placeholder: 'Пароль'})
-		.login__separate-container
-		+input({type: INPUT_TYPE.BUTTON_PAY, inputValue: 'войти'})
+		+input-field({placeholder: 'Email'})
+		.login__separate-container-1rem
+		+input-field({placeholder: 'Пароль'})
+		.login__separate-container-2rem
+		+button({type: BUTTON.PAY, label: 'войти'})
 		.login__footer-container
 			p.login__information= 'Нет аккаунта на Toxin?'
-			+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT, inputValue: 'создать'})
+			+button({type: BUTTON.PURPLE_TEXT, label: 'создать'})

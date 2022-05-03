@@ -1,3 +1,6 @@
 import './registration.scss'
-import '../input/input'
-import '../blocks/radio-block/radio-block'
+import '../input-field/input-field'
+import '../radio-block/radio-block'
+import '../title/title'
+import '../toggle/toggle'
+import '../button/button'

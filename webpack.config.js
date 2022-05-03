@@ -64,7 +64,7 @@ module.exports = (env, argv = {}) => {
       }),
       // ...htmlPlugins,
       new HtmlWebpackPlugin({
-        template: `${pagesDir}/form-elements/form-elements.pug`
+        template: `${pagesDir}/cards/cards.pug`
       }),
     ];
     if (isProduction) {
@@ -85,7 +85,7 @@ module.exports = (env, argv = {}) => {
       clean: true,
     },
     // entry: ...entries,
-    entry: `${pagesDir}/form-elements/form-elements.js`,
+    entry: `${pagesDir}/cards/cards.js`,
     resolve: {
       alias: {
         '@theme': path.resolve(__dirname, 'src/styles/theme-custom'),

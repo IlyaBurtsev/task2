@@ -16,7 +16,7 @@ body{
 	position: absolute;
 	top: 3rem;
 	left: 3rem;
-	background: center no-repeat url('../_theme/assets/logo.svg');
+	background: center no-repeat url('@theme/assets/logo.svg');
 }
 .cards__container {
 	display: flex;
@@ -26,12 +26,14 @@ body{
 	display: flex;
 	flex-direction: column;
 	margin-right: 3.8rem;
+	gap: 4rem;
 }
 
 .column2{
 	display: flex;
 	flex-direction: column;
 	margin-right: 4rem;
+	gap: 4.2rem;
 }
 .column3{
 	.cards__datepicker{
@@ -40,4 +42,7 @@ body{
 	.cards__room888{
 		margin-bottom: 3.7rem;
 	}
+}
+.cards__datepicker{
+	width: 32rem;
 }
