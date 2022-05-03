@@ -4,17 +4,21 @@ import '../../components/choose/choose'
 import '../../components/registration/registration'
 import '../../components/room-card/room-card'
 import '../../components/login/login'
-// import '../../components/room-preview/room-preview'
+import '../../components/room-preview/room-preview'
 
 import { initRoomCards } from '../../components/room-card/room-card'
 import { getRoomRepository } from '../../repository/roomRepository/RoomRepository'
 import { getServiceRepository } from '../../repository/serviceRepository/serviceRepository'
 import { calendarDemo } from '../../components/dropdown/_date-picker/dropdown_date-picker'
-// import {initRoomPreview} from '../../component/room-preview/room-preview'
+import {initRoomPreview} from '../../components/room-preview/room-preview'
+import { getElement } from '../../utils/utils'
 
-const room = getRoomRepository().getRoomByNumber(888);
+const room888 = getRoomRepository().getRoomByNumber(888);
+const room840 = getRoomRepository().getRoomByNumber(840);
 
-initRoomCards(room, getServiceRepository().getServiceInfo());
+initRoomCards(room888, getServiceRepository().getServiceInfo());
 calendarDemo('.cards__datepicker')
-// initRoomPreview(room);
-// initRoomPreview(getRoomRepository().getRoomByNumber(840));
+
+initRoomPreview(room888, getElement('.room-preview__container'));
+initRoomPreview(room840, getElement('.room-preview__container').nextElementSibling);
+

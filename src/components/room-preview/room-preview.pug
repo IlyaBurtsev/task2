@@ -1,6 +1,6 @@
-include ../blocks/slider-button-block/slider-button-block.pug
-mixin room-preview(roomNumber='23', pictures)
-	.room-preview__container(room-number = roomNumber) 
+include ../rating/rating.pug
+mixin room-preview()
+	.room-preview__container
 		.room-preview__slider 
 			.room-preview__view-port 
 				.room-preview__img-container
@@ -8,13 +8,12 @@ mixin room-preview(roomNumber='23', pictures)
 					.room-preview__prev-button="expand_more"
 					.room-preview__next-button="expand_more"
 				.room-preview__button-container
-					+slider-button-block(roomNumber)
 		.room-preview__title-container
 			H2.room-preview__room-number
 			.room-preview__price
 		.room-preview__separator
 		.room-preview__rate-container 
-			+rating({inputValue: 4, groupName: roomNumber})
+			+rating({})
 			.room-preview__rating-counter
 		
 

@@ -56,7 +56,9 @@
 				right: 1.2rem;
 				bottom: 1.5rem;
 				z-index: 2;
+			
 			}
+		
 		}
 		.room-preview__view-port_button_show{
 			.room-preview__prev-next-button-container{
@@ -118,4 +120,16 @@
 }
 .room-preview__container_not-empty{
 	display: block;
+}
+
+.room-preview__slider-button {
+	width: 0.75rem;
+	height: 0.75rem;
+	border-radius: 50%;
+	border: 1px solid #FFFFFF;
+	box-sizing: border-box;
+	filter: drop-shadow(0px 5px 5px rgba(31, 32, 65, 0.3));;
+	&_selected{
+		background-color: #FFFFFF;
+	}
 }

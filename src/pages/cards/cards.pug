@@ -3,6 +3,7 @@ include ../../components/choose/choose.pug
 include ../../components/registration/registration.pug
 include ../../components/room-card/room-card.pug
 include ../../components/login/login.pug
+include ../../components/room-preview/room-preview.pug
 
 block title 	
 	title Cards 
@@ -20,4 +21,6 @@ block main
 					+login()
 				.column3
 					.cards__datepicker
+					+room-preview()
+					+room-preview()
 block footer	

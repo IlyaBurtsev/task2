@@ -14,7 +14,7 @@ export function initReviews(reviews, bindElement, userRepository) {
 		fragment.append(newReview);
 	})
 	setReviewData(review, firstReviewData);
-	review.append(fragment);
+	review.after(fragment);
 
 
 	function setReviewData(review, reviewData) {
