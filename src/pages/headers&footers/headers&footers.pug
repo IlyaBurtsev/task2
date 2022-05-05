@@ -1,24 +1,21 @@
+extends ../../page-templates/page-template/page-template.pug
 
-include ../header/header.pug
-include ../footer/footer.pug
+include ../../components/header/header.pug
+include ../../components/footer/footer.pug
 
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=edge")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title Heders&Footers
+block title 	
+	title Heders&Footers
+block header 
+block main		
 	body 
-		.elements__page-container
-			.logo
-			.elements__header
+		.headers-and-footers__page-container
+			.headers-and-footers__logo
+			+header()
+			.headers-and-footers__signin-header.js-headers-and-footers__signin-header
 				+header()
-			.elements__header_sing-in
-				+header()
-			.elements__footer_desktop 
-				+footer(FOOTER_TYPE.DESKTOP)
-			.elements__footer_mobile 
-				+footer(FOOTER_TYPE.MOBILE)
+			+footer()
+			.headers-and-footers__footer_mobile 
+				+footer()
 	 		
 
 	 		

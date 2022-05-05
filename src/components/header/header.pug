@@ -1,26 +1,45 @@
-include ../input/input.pug
-include ../list/list.pug
+include ../../components/button/button.pug
+include ../../components/list/list.pug
 
 mixin header(options) 
-	header.header__container
+	header.header__container.js-header__container
 		.header__inner-container
 			.header__company
 				.header__logo  
 				.header__name
-			.header__navigation-block
+			.header__navigation-block.js-header__navigation-block
 				nav.header__navigation
 					a.header__navigation-item.header__navigation-item_main(href='https://www.google.ru')='О нас'
 					.header__navigation-item
-						+list({type: LIST_TYPE.EXPANDABLE_LINKS, listTitle: 'Услуги', items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru', 'Выбор 3':'https://www.google.ru'}})
+						+list({
+							type: LIST.LINKS, 
+							title: 'Услуги', 
+							items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru', 'Выбор 3':'https://www.google.ru'},
+							commonModificators: [MODIFICATOR.EXPANDABLE]
+							})
 					a.header__navigation-item(href='https://www.google.ru')='Вакансии'
 					a.header__navigation-item(href='https://www.google.ru')='Новости'
 					.header__navigation-item
-						+list({type: LIST_TYPE.EXPANDABLE_LINKS, listTitle: 'Соглашения', items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru'}})
+						+list({
+							type: LIST.LINKS, 
+							title: 'Соглашения', 
+							items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru'},
+							commonModificators: [MODIFICATOR.EXPANDABLE]
+							})
 				.header__buttons
-					+input({type: INPUT_TYPE.BUTTON_PURPLE_TEXT_SLIM, inputValue: 'Войти'})
-					.header__separate-container
-					+input({type: INPUT_TYPE.BUTTON_WHITE_TEXT_SLIM, inputValue: 'зарегистрироваться'})
+					.header__signin-button
+						+button({
+							type: BUTTON.PURPLE_TEXT, 
+							label: 'Войти', 
+							commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]
+							})
+					.header__registration-button
+						+button({
+							type: BUTTON.WHITE_TEXT, 
+							label: 'зарегистрироваться', 
+							commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]
+							})
 				.header__sing-in
 					.header__border
-					.header__user='Юлий Цезарь'
+					.header__user.js-header__user
 

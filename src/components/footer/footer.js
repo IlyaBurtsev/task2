@@ -1,3 +1,4 @@
 import './footer.scss'
 import './_mobile/footer_mobile.scss'
-import '../blocks/links-block/links-block'
+import '../../components/links-block/links-block'
+import '../../components/input-field/input-field'

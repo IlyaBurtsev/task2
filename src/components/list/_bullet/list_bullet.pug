@@ -1,7 +1,8 @@
 mixin list_bullet(options) 
+	- const {title, items} = options
 	.list__container_bullet
-		H3.list__title_bullet= options.listTitle
+		H3.list__title_bullet= title
 		ul.list__items_bullet 
-			each val, index in options.items
+			each val, index in items
 				li.list__item_bullet= val
 				

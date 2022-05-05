@@ -1,10 +1,14 @@
 import './headers&footers.scss'
-import '../_theme/ui-kit_theme_custom.scss'
+import '@theme/theme_custom.scss'
 import '../../components/list/list'
 import '../../components/header/header'
 import '../../components/footer/footer'
 import { initHeader } from '../../components/header/header'
+import {getUserRepository} from '../../repository/userRepository/UserRepository'
+import { getElement } from '../../utils/utils'
 
-initHeader(false, '.elements__header');
+const user =getUserRepository().getCurrentUser();
 
-initHeader(true, '.elements__header_sing-in')
+initHeader(getElement('.js-header__container'));
+
+initHeader(getElement('.js-headers-and-footers__signin-header'), user.userToString())

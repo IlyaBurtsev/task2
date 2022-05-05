@@ -20,13 +20,13 @@
 		.header__logo {
 			width: 4.8rem;
 			height: 4.8rem;
-			background: left no-repeat url("../_theme/assets/logoColored.svg");
+			background: left no-repeat url("@theme/assets/logoColored.svg");
 			margin-right: 0.4rem;
 		}
 		.header__name {
 			width: 5.4rem;
 			height: 1.3rem;
-			background: center no-repeat url("../_theme/assets/TOXIN.svg");
+			background: center no-repeat url("@theme/assets/TOXIN.svg");
 		}
 	}
 	.header__navigation-block {
@@ -38,14 +38,14 @@
 				margin-right: 2rem;	
 			}
 			.header__navigation-item_main{
-				font-family: "MontserratBold";
+				font-weight: 700;
 			}	
 		}
 		.header__buttons{
 			display: flex;
 			width: 30.3rem;
 			display: flex;
-			justify-content: space-between;
+			gap: 2rem;
 		}
 		.header__sing-in{
 			display: none;
@@ -70,5 +70,11 @@
 			display: flex;
 		}
 	}
+}
+.header__signin-button {
+	width: 8.7rem;
+}
+.header__registration-button{
+	width: 19.6rem;
 }
 

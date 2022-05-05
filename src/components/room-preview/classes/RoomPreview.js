@@ -96,12 +96,10 @@ class RoomPreview {
   };
 
 	onSliderHover = () => {
-		console.log('over')
 		setSliderHovered(this.slider);
 	}
 
 	onSliderOut = () => {
-		console.log('out')
 		removeSliderHovered(this.slider);
 	}
 

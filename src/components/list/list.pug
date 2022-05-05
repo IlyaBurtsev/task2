@@ -2,13 +2,12 @@ include ./_bullet/list_bullet.pug
 include ./_checkbox/list_checkbox.pug
 include ./_links/list_links.pug
 
-
 mixin list(options)
 	- const {type, items, title, open, checkboxType, commonModificators} = options
 	case type
 		when LIST.CHECKBOX
 			+list_checkbox({checkboxType: checkboxType, items: items, title: title, open: open, commonModificators})
 		when LIST.LINKS
-			+list_links({items: options.items, listTitle: options.listTitle, checked: options.checked})
+			+list_links({items: items, title: title, open:open, commonModificators})
 		when LIST.BULLET
-			+list_bullet({items: options.items, listTitle: options.listTitle})
+			+list_bullet({items: items, title: title})

@@ -1,8 +1,6 @@
 include ../../component-templates/input-template/input-template.pug
 
 
-
-
 mixin button(options={})
 
 	- const {type=BUTTON.WHITE_TEXT, label='', commonModificators=[], disabled } = options
@@ -13,7 +11,7 @@ mixin button(options={})
 			inputValue: label, commonModificators: commonModificators, disabled: disabled})
 		when BUTTON.PURPLE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'purple-text', inputType: 'button', 
-			inputValue: label, disabled: disabled})
+			inputValue: label, commonModificators: commonModificators, disabled: disabled})
 		when BUTTON.PAY 	
 			+input-tamplate({blockName: 'button', modificatorName: 'pay', inputType: 'button', 
 			inputValue: label, disabled: disabled})
