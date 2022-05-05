@@ -2,13 +2,13 @@ import Room from '../../models/room/Room'
 import { roomReviews888Mock, roomReviewsPresentationMock} from './reviews'
 import {roomInfo888Mock, roomInfoPresentationMock } from './roomInfo'
 
-const pictures888 = [require ('@assets/888/image1.jpg'), require ('@assets/888/image2.jpg'), require ('@assets/888/image3.jpg')];
-const pictures840 = [require ('@assets/840/image.jpg')];
-const pictures980 = [require ('@assets/980/image.jpg')];
-const pictures856 = [require ('@assets/856/image.jpg')];
-const pictures740 = [require ('@assets/740/image.jpg')];
-const pictures450 = [require ('@assets/450/image.jpg')];
-const pictures982 = [require ('@assets/982/image.jpg')];
+const pictures888 = [require ('@assets/888/image1.jpg'), require ('@assets/888/image2.jpg'), require ('@assets/888/image3.jpg'), require ('@assets/888/image4.jpg')];
+const pictures840 = [require ('@assets/840/image.jpg'), require ('@assets/840/image2.jpg'), require ('@assets/840/image3.jpg'), require ('@assets/840/image4.jpg')];
+const pictures980 = [require ('@assets/980/image.jpg'), require ('@assets/980/image2.jpg'), require ('@assets/980/image3.jpg'), require ('@assets/980/image4.jpg')];
+const pictures856 = [require ('@assets/856/image.jpg'), require ('@assets/856/image2.jpg'), require ('@assets/856/image3.jpg'), require ('@assets/856/image4.jpg')];
+const pictures740 = [require ('@assets/740/image.jpg'), require ('@assets/740/image2.jpg'), require ('@assets/740/image3.jpg'), require ('@assets/740/image4.jpg')];
+const pictures450 = [require ('@assets/450/image.jpg'), require ('@assets/450/image2.jpg'), require ('@assets/450/image3.jpg'), require ('@assets/450/image4.jpg')];
+const pictures982 = [require ('@assets/982/image.jpg'), require ('@assets/982/image2.jpg'), require ('@assets/982/image3.jpg'), require ('@assets/982/image4.jpg')];
 const pictures678 = [require ('@assets/678/image.jpg')];
 const pictures350 = [require ('@assets/350/image.jpg')];
 const pictures666 = [require ('@assets/666/image.jpg')];

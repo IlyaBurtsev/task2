@@ -10,8 +10,5 @@ mixin radio(options={})
 		when RADIO.DEFAULT
 			+input-tamplate({blockName: 'radio', inputType: 'radio', inputName: groupName, 
 			customElementName: 'label', customElementValue: label, checked: selected})
-		when RADIO.FOR_SLIDER
-			+input-tamplate({blockName: 'radio', modificatorName: 'for-slider', inputType: 'radio', 
-			inputName: groupName, customElementName: 'label', customElementValue: label, 
-			checked: selected})
+	
 	

@@ -19,6 +19,7 @@ const room840 = getRoomRepository().getRoomByNumber(840);
 initRoomCards(room888, getServiceRepository().getServiceInfo());
 calendarDemo('.cards__datepicker')
 
-initRoomPreview(room888, getElement('.room-preview__container'));
-initRoomPreview(room840, getElement('.room-preview__container').nextElementSibling);
+initRoomPreview([room888]);
+initRoomPreview([room840], getElement('.cards__room-preview'));
+
 

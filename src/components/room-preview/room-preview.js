@@ -1,85 +1,142 @@
-import './room-preview.scss'
-import '../rating/rating'
+import './room-preview.scss';
+import '../rating/rating';
 
+import { addClass, createElement, getElement, getElements, removeClass } from '../../utils/utils';
+import { RoomPreview } from './classes/RoomPreview';
 
-import { createElement, getElement } from '../../utils/utils';
+const bindRoomPreview = (preview) => {
+  removeClass(preview, 'room-preview__container_empty');
+};
 
-export function initRoomPreview(room, roomPreview) {
+const getSlider = (container) => {
+	return getElement('.js-room-preview__slider', container);
+}
 
-	const ratingCounter = getElement('.room-preview__rating-counter', roomPreview);
-	const roomNumber = getElement('.room-preview__room-number', roomPreview);
-	const rating = getElement(`.button__input_rate[rating="${room.getRoomRating()}"]`, roomPreview);
-	const imgContainer = getElement('.room-preview__img-container', roomPreview);
+const setSliderHovered = (slider) => {
+	addClass(slider, 'room-preview__slider_hover')
+}
 
-	const prevButton = getElement('.room-preview__prev-button', roomPreview);
-	const nextButton = getElement('.room-preview__next-button', roomPreview);
-	const navButtonsContainer = getElement('.room-preview__button-container', roomPreview);
+const removeSliderHovered = (slider) => {
+	removeClass(slider, 'room-preview__slider_hover')
+}
+const getImageContainer = (container) => {
+  return getElement('.js-room-preview__img-container', container);
+};
+
+const getNavButtonsContainer = (container) => {
+  return getElement('.js-room-preview__button-container', container);
+};
+
+const createImg = (path) => {
+  return createElement({
+    tagName: 'img',
+    className: 'room-preview__image',
+    attrs: { src: path, alt: 'room image' },
+  });
 	
-	const pictures = room.getRoomPictures();
+};
 
-	if(room){
-		roomPreview.classList.add('room-preview__container_not-empty')
+const createSliderNavButton = (position) => {
+  return createElement({
+    tagName: 'div',
+    className: 'room-preview__slider-button',
+    attrs: { position: position },
+  });
+};
+
+const setTitlePreview = (preview, titlePreviewData) => {
+  const { roomNumber, isLuxury, roomPrice } = titlePreviewData;
+  const roomNumberElement = getElement('.js-room-preview__room-number', preview);
+  const formatter = new Intl.NumberFormat('Ru');
+
+  const roomNumberToString =
+    '<span class="room-preview__number">№</span> ' +
+    roomNumber +
+    (isLuxury ? '<span class="room-preview__additional">Люкс</span>' : '');
+
+  roomNumberElement.innerHTML = roomNumberToString;
+  roomNumberElement.nextElementSibling.innerHTML = `<span>${formatter.format(
+    roomPrice
+  )}₽</span> в сутки`;
+};
+
+const setRating = (preview, ratingValue, ratingCount) => {
+  const rating = getElement(
+    `.button__input_rate[rating="${ratingValue}"]`,
+    preview
+  );
+  rating.setAttribute('checked', '');
+
+  const ratingCounter = getElement(
+    '.room-preview__rating-counter',
+    preview
+  );
+  ratingCounter.innerHTML = `<span>${ratingCount}</span> Отзывов`;
+};
+
+const sliderNextButtonPressed = (element) => {
+  if (element.classList.contains('room-preview__next-button')) {
+    return true;
+  }
+};
+
+const sliderPreviousButtonPressed = (element) => {
+  if (element.classList.contains('room-preview__prev-button')) {
+    return true;
+  }
+};
+
+const sliderNavButtonPressed = (element) => {
+  if (element.classList.contains('room-preview__slider-button')) {
+    return element.getAttribute('position');
+  }else {
+		return false;
 	}
-	if(pictures.length > 1){
-		imgContainer.parentNode.classList.add('room-preview__view-port_button_show');	
-	}
+};
 
-	let currentPicturePosition = 0;
-	const imgFragment = document.createDocumentFragment();
-	const buttonsFragment = document.createDocumentFragment();
-	pictures.forEach((picture, i) => {
-		let img = createElement({ tagName: 'img', className: 'room-preview__image', attrs: { alt: 'room image' } });
-		let button = createElement({tagName: 'div', className: 'room-preview__slider-button room-preview__slider-button_selected', attrs: {position: i}});
-		img.src = picture;
-		imgFragment.append(img);
-		buttonsFragment.append(button);
-	})
-	imgContainer.append(imgFragment);
-	navButtonsContainer.append(buttonsFragment);
+const setNavButtonSelected = (button) => {
+	addClass(button, 'room-preview__slider-button_selected');
+}
 
-	navButtonsContainer.addEventListener('click', showPicture);
-	nextButton.addEventListener('click', showNextPicture);
-	prevButton.addEventListener('click', showPrevPicture);
-
-
-
-	rating.setAttribute('checked', '');
-	const formatter = new Intl.NumberFormat('Ru');
-
-	const roomNumberToString = '<span class="room-preview__number">№</span> ' + room.getRoomNumber() + (room.isLuxury ? '<span class="room-preview__additional">Люкс</span>' : '');
-
-	roomNumber.innerHTML = roomNumberToString;
-	roomNumber.nextElementSibling.innerHTML = `<span>${formatter.format(room.getRoomPrice())}₽</span> в сутки`;
-
-	ratingCounter.innerHTML = `<span>${room.getRoomRatingCounter()}</span> Отзывов`
-
-	function showPicture(e) {
-		if (e.target.classList.contains('room-preview__slider-button')) {
-			let position = e.target.getAttribute('position');
-			if (position > pictures.length - 1) {
-				position = pictures.length - 1;
-			}	
-			currentPicturePosition = position;	
-			imgContainer.style.transform = `translate(${-27*position}rem, 0)`;	
-		}
-		
-	}
-
-	function showNextPicture(){
-		if(currentPicturePosition < pictures.length -1){
-			imgContainer.style.transform = `translate(${-27*(++currentPicturePosition)}rem, 0)`;	
-		}
-	}
-	function showPrevPicture(){
-		if(currentPicturePosition > 0){
-			// getElement(`.switch__input_radio_white[data-selected="${currentPicturePosition}"]`).removeAttribute('checked');
-			imgContainer.style.transform = `translate(${-27*(--currentPicturePosition)}rem, 0)`;
-			// getElement(`.switch__input_radio_white[data-selected="${currentPicturePosition}"]`).setAttribute('checked', '');
-			
-		}
-	}
-
-	return roomPreview
+const removeNavButtonSelected = (button) => {
+	removeClass(button, 'room-preview__slider-button_selected')
 }
 
 
+const initRoomPreview = (previewsData, elementContainer) => {
+	const bindElement = getElement('.js-room-preview__container', elementContainer);
+	if (!previewsData) {
+		return;
+	}
+	const firstPreviewData = previewsData.shift();
+	
+	const previewsFragment = document.createDocumentFragment();
+	previewsData.forEach(previewData => {
+		const newPreview = bindElement.cloneNode(true);
+		new RoomPreview(newPreview, previewData);
+		previewsFragment.append(newPreview);
+	})
+
+	new RoomPreview(bindElement, firstPreviewData);
+	
+	bindElement.after(previewsFragment); 
+}
+
+export {
+  bindRoomPreview,
+	getSlider,
+	setSliderHovered,
+	removeSliderHovered,
+  getImageContainer,
+  getNavButtonsContainer,
+  createImg,
+  createSliderNavButton,
+  setTitlePreview,
+  setRating,
+	sliderNextButtonPressed,
+	sliderPreviousButtonPressed,
+	sliderNavButtonPressed,
+	setNavButtonSelected,
+	removeNavButtonSelected,
+	initRoomPreview
+};

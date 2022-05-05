@@ -6,7 +6,7 @@ import { bindObserverMetods } from '../../../../utils/observerMetods';
 import { getItemNameWhenAddButtonClicked, disableAddButton, activeAddButton, disableSubtractButton, activeSubtractButton, updateCounterView, getItemNameWhenubtractButtonClicked } from '../__dropdown-item/dropdown-item';
 import { activeClearButton, applayButtonClicked, clearButtonClicked, disableClearButton, getInput, getSelectedItems, switchToClosedState, switchToOpenState, swithToInline } from '../dropdown_item-quantity';
 
-export const consts = {
+export const dropdownConsts = {
   changeSelectedItem: 'cangeSelectedItem',
   applySelectedItems: 'applySelectedItems',
 	itemButtonClicked: 'itemButtonClicked',
@@ -69,7 +69,7 @@ export class Dropdown {
 	initSelectedItems = () => {
 		this.selectedItems = getSelectedItems(this.dropdown);
 		for (const itemName of this.selectedItems.keys()) {
-			this.trigger(consts.changeSelectedItem, itemName);
+			this.trigger(dropdownConsts.changeSelectedItem, itemName);
 		}
 	}
 
@@ -78,7 +78,7 @@ export class Dropdown {
     getInput(this.dropdown).addEventListener('blur', this.onBlur);
     this.dropdown.addEventListener('mousedown', this.onMouseDown);
     this.dropdown.addEventListener('mouseup', this.onMouseUp); 
-		this.on(consts.changeSelectedItem, this.onChangeSelectedItem);
+		this.on(dropdownConsts.changeSelectedItem, this.onChangeSelectedItem);
   }
 
   attachFooterButtonListener() {
@@ -146,7 +146,7 @@ export class Dropdown {
 
   show() {
 		this.dropdown.addEventListener('click', this.handleClickItemButton);
-		this.on(consts.changeSelectedItem, this.onChangeSelectedItem);
+		this.on(dropdownConsts.changeSelectedItem, this.onChangeSelectedItem);
 		this.attachFooterButtonListener();
 
     this.visible = true;
@@ -155,7 +155,7 @@ export class Dropdown {
 
   hide() {
 		this.dropdown.removeEventListener('click', this.handleClickItemButton);
-		this.off(consts.changeSelectedItem, this.onChangeSelectedItem);
+		this.off(dropdownConsts.changeSelectedItem, this.onChangeSelectedItem);
 		this.removeFooterButtonListener();
 
 		getInput(this.dropdown).blur();
@@ -169,7 +169,7 @@ export class Dropdown {
 		if(itemName) {
 			const previousValue = this.selectedItems.get(itemName);
 			this.selectedItems.set(itemName, (this.selectedItems.get(itemName)+1));
-			this.trigger(consts.changeSelectedItem, itemName, previousValue);
+			this.trigger(dropdownConsts.changeSelectedItem, itemName, previousValue);
 		}
 	};
 
@@ -178,7 +178,7 @@ export class Dropdown {
 		if(itemName) {
 			const previousValue = this.selectedItems.get(itemName);
 			this.selectedItems.set(itemName, (this.selectedItems.get(itemName)-1));
-			this.trigger(consts.changeSelectedItem, itemName, previousValue);
+			this.trigger(dropdownConsts.changeSelectedItem, itemName, previousValue);
 		}
 	};
 
@@ -229,7 +229,7 @@ export class Dropdown {
 	clearItemsCounter = () => {
 		for (let itemName of this.selectedItems.keys()){
 			this.selectedItems.set(itemName, 0);
-			this.trigger(consts.changeSelectedItem, itemName);
+			this.trigger(dropdownConsts.changeSelectedItem, itemName);
 		}
 	}
 
@@ -283,7 +283,7 @@ export class Dropdown {
     }
 		if (applayButtonClicked(e)) {
 			this.hide();
-			this.trigger(consts.applySelectedItems, this.selectedItems);
+			this.trigger(dropdownConsts.applySelectedItems, this.selectedItems);
 		}
   };
 

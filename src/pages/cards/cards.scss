@@ -25,7 +25,7 @@ body{
 .column1{
 	display: flex;
 	flex-direction: column;
-	margin-right: 3.8rem;
+	margin-right: 3.9rem;
 	gap: 4rem;
 }
 
@@ -36,13 +36,12 @@ body{
 	gap: 4.2rem;
 }
 .column3{
-	.cards__datepicker{
-		margin-bottom: 4rem;
-	}
-	.cards__room888{
-		margin-bottom: 3.7rem;
-	}
+	width: 33rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3.8rem;
 }
 .cards__datepicker{
 	width: 32rem;
+	margin-bottom: 0.2rem;
 }

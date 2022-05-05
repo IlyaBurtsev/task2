@@ -7,7 +7,26 @@ import { getElement, getElements } from '../../../utils/utils';
 import { clearBackgroundForRangeFrom } from './__air-datepicker/air-datepicker';
 import { initMask } from '../../mask/input-mask';
 
+const getButtons = () => {
+	const apply = {
+		content: 'Применить',
+		className: 'dropdown__apply-button_date',
+		onClick: (dp) => {
+			dp.hide();
+			callbackFunc(dp.selectedDates);
+		}
+	}
 
+	const clear = {
+		content: 'Очистить',
+		className: 'dropdown__clear-button_date',
+		onClick: (dp) => {
+			dp.clear();
+			doubleInput ? inputs[1].value = '':'';
+		}
+	}
+	return [clear, apply];
+}
 export function initDateDropdown(bindElement, callbackFunc) {
 	
 	const doubleInput = bindElement.classList.contains('double-input-field');
@@ -38,24 +57,6 @@ export function initDateDropdown(bindElement, callbackFunc) {
 	
 	doubleInput ? initMask(input, 'ДД.ММ.ГГГГ') : '';
 	
-
-	const apply = {
-		content: 'Применить',
-		className: 'dropdown__apply-button_date',
-		onClick: (dp) => {
-			dp.hide();
-			callbackFunc(dp.selectedDates);
-		}
-	}
-
-	const clear = {
-		content: 'Очистить',
-		className: 'dropdown__clear-button_date',
-		onClick: (dp) => {
-			dp.clear();
-			doubleInput ? inputs[1].value = '':'';
-		}
-	}
 
 	const updateSecondInputView = () => {
 		if(doubleInput) {
@@ -103,7 +104,7 @@ export function initDateDropdown(bindElement, callbackFunc) {
 		nextHtml: '<svg><path d="M8.36301 0.984375L16.3786 9L8.36301 17.0156L6.95676 15.6094L12.5349 9.98438H0.347383V8.01562H12.5349L6.95676 2.39062L8.36301 0.984375Z" fill="#BC9CFF"/></svg>',
 		dateFormat: dateFormat,
 
-		buttons: [clear, apply],
+		buttons: getButtons(),
 
 		navTitles: {
 			days: '<i>MMMM</i> <i>yyyy</i><i></i>',
@@ -149,6 +150,7 @@ export const calendarDemo = (selector) => {
 		navTitles: {
 			days: '<i>MMMM</i> <i>yyyy</i><i></i>',
 		},
+		buttons: getButtons(),
 	})
 }
 
