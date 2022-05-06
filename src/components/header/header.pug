@@ -4,19 +4,16 @@ include ../../components/list/list.pug
 mixin header(options) 
 	header.header__container.js-header__container
 		.header__inner-container
-			.header__company
-				.header__logo  
-				.header__name
+			.header__logo  
 			.header__navigation-block.js-header__navigation-block
 				nav.header__navigation
-					a.header__navigation-item.header__navigation-item_main(href='https://www.google.ru')='О нас'
-					.header__navigation-item
-						+list({
-							type: LIST.LINKS, 
-							title: 'Услуги', 
-							items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru', 'Выбор 3':'https://www.google.ru'},
-							commonModificators: [MODIFICATOR.EXPANDABLE]
-							})
+					a.header__navigation-about(href='https://www.google.ru')='О нас'
+					+list({
+						type: LIST.LINKS,
+						title: 'Услуги', 
+						items: {'Выбор 1': 'https://www.google.ru', 'Выбор 2':'https://www.google.ru', 'Выбор 3':'https://www.google.ru'},
+						commonModificators: [MODIFICATOR.EXPANDABLE]
+						})
 					a.header__navigation-item(href='https://www.google.ru')='Вакансии'
 					a.header__navigation-item(href='https://www.google.ru')='Новости'
 					.header__navigation-item

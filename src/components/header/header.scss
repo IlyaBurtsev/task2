@@ -1,80 +1,67 @@
-.header__container {
-	width: 100%;
-	height: 7rem;
-	display: flex;
-	background: #ffffff;
-	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-	box-sizing: border-box;
-	.header__inner-container{
-		display: flex;
+.header {
+  &__container {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+    box-sizing: border-box;
+  }
+  &__inner-container {
+    display: flex;
     flex: 0 1 116rem;
     margin-left: auto;
     margin-right: auto;
-		padding: 0rem 14rem;
-		justify-content: space-between;
+    padding: 0rem 5rem;
+    justify-content: space-between;
+		align-items: center;
+  }
+	&__logo {
+		width: 100%;
+		height: 4rem;
+		background: left no-repeat url('@theme/assets/Toxin.svg');
 	}
 
-	.header__company {
-		display: flex;
-		align-items: center;
-		.header__logo {
-			width: 4.8rem;
-			height: 4.8rem;
-			background: left no-repeat url("@theme/assets/logoColored.svg");
-			margin-right: 0.4rem;
-		}
-		.header__name {
-			width: 5.4rem;
-			height: 1.3rem;
-			background: center no-repeat url("@theme/assets/TOXIN.svg");
-		}
-	}
-	.header__navigation-block {
-		display: flex;
-		align-items: center;
-		.header__navigation {
-			display: flex;
-			.header__navigation-item{
-				margin-right: 2rem;	
-			}
-			.header__navigation-item_main{
-				font-weight: 700;
-			}	
-		}
-		.header__buttons{
-			display: flex;
-			width: 30.3rem;
-			display: flex;
-			gap: 2rem;
-		}
-		.header__sing-in{
-			display: none;
-			align-items: center;
-			.header__border{
-				width: 1rem;
-				height: 3rem;
-				border-left: 1px solid rgba(31, 32, 65, 0.1);
-				margin-right: 1.1rem;
-			}
-		}
-		
-		
-	}
-}
-.header__container {
-	.header__navigation-block_sing-in{
-		.header__buttons{
-			display: none;
-		}
-		.header__sing-in{
-			display: flex;
-		}
-	}
-}
-.header__signin-button {
-	width: 8.7rem;
-}
-.header__registration-button{
-	width: 19.6rem;
-}
+  &__navigation-block {
+    display: flex;
+    align-items: center;
+		white-space: nowrap;
+		gap: 2rem;
+  }
+  &__navigation {
+    display: flex;
+		gap: 2rem;
+  }
 
+  &__navigation-about {
+    font-weight: 700;
+  }
+  &__buttons {
+    display: flex;
+    gap: 2rem;
+  }
+	&__signin-button {
+    width: 8.7rem;
+  }
+  &__registration-button {
+    width: 19.6rem;
+  }
+  &__border {
+    width: 1rem;
+    height: 3rem;
+    border-left: 1px solid rgba(31, 32, 65, 0.1);
+    margin-right: 1.1rem;
+  }
+  &__sing-in {
+    display: none;
+    align-items: center;
+  }
+  &__navigation-block_sing-in {
+    .header__buttons {
+      display: none;
+    }
+    .header__sing-in {
+      display: flex;
+    }
+  }
+}
