@@ -1,5 +1,6 @@
-//- include ../../components/header/header.pug
-//- include ../../components/footer/footer.pug
+include ../../components/header/header.pug
+include ../../components/footer/footer.pug
+
 include ../../component-templates/global-constants/constants.pug
 
 html(lang="en")
@@ -10,14 +11,10 @@ html(lang="en")
 		block title
 	body 
 		.body__container
-			.wraper
-				.header__block-container 
-					block header 
-						//- +header()
-			.wraper
-				.main__block-container
+			.body__inner-container
+				block header 
+					+header()
+				.body__main
 					block main
-			.wraper
-				.footer__block-container 
-					block footer 
-						//- +footer()
+				block footer 
+					+footer()

@@ -5,29 +5,16 @@ body {
   margin: 0;
   padding: 0;
 }
-.body__container {
-  display: flex;
-  flex: 0 0 auto;
-	flex-direction: column;
-}
-.wraper{
-	display: flex;
-  flex: 0 0 auto;
-}
-.header{
-  &__block-container {
-    display: flex;
-    flex: 0 1 192rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-	
-}
-.main{
-	&__block-container{
+.body {
+  &__container {
 		display: flex;
-		flex: 0 1 192rem;
-		margin-left: auto;
-		margin-right: auto;
+		justify-content: center;	
+  }
+	&__inner-container {
+		width: 100%;
+		max-width: 192rem;
+	}
+	&__main {
+		flex: 1 0 auto;
 	}
 }
