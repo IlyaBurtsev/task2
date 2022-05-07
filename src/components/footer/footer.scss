@@ -1,87 +1,42 @@
 .footer {
   &__container {
 		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
     background: #ffffff;
     box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 		box-sizing: border-box;
   }
-	&__inner-container{
+	&__flexable-container {
+		width: 100%;
+		display: flex;
+		&_copyright {
+			border-top: 1px solid rgba(31, 32, 65, 0.1);
+		}
+	}
+	&__main-info{
 		display: flex;
 		flex: 0 1 116rem;
-    margin-left: auto;
-    margin-right: auto;
-	}
-
-	&__main-info {
-		display: flex;
-		height: 17.3rem;
-		padding: 10rem 5rem;
+		justify-content: space-between;
+    margin: 0 auto;
+		padding: 10rem 5rem 8.2rem;	
 	}
 	&__toxin-info {
-		width: 26rem;
-		height: 4rem;
-		margin-right: 4rem;
+		display: flex;
+		flex: 0 1 29rem;
+		flex-direction: column;
+		margin-right: 1rem;
 	}
-  &__company {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.8rem;
-    margin-top: 0;
-   
-  }
+	&__info {
+		max-width: 26rem;
+	}
 	&__logo {
 		width: 11rem;
 		height: 4rem;
 		background: left no-repeat url('@theme/assets/Toxin.svg');
+		margin-bottom: 1.8rem;
 	}
-  &__links {
-    display: flex;
-  }
-	&__twitter {
-		&::after {
-			width: auto;
-			height: 2.4rem;
-			content: '\f099';
-			font-family: 'Brands';
-			font-size: 2.4rem;
-			line-height: 2.3rem;
-			margin-right: 2.4rem;
-			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-			color: transparent;
-			-webkit-background-clip: text;
-			background-clip: text;
-		}
-	}
-	&__facebook {
-		&::after {
-			width: auto;
-			height: 2.4rem;
-			content: '\f082';
-			font-family: 'Brands';
-			font-size: 2.4rem;
-			line-height: 2.3rem;
-			margin-right: 2.4rem;
-			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-			color: transparent;
-			-webkit-background-clip: text;
-			background-clip: text;
-		}
-	}
-	&__instagram {
-		&::after {
-			width: auto;
-			height: 2.4rem;
-			content: '\f16d';
-			font-family: 'Brands';
-			font-size: 2.4rem;
-			line-height: 2.3rem;
-			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-			color: transparent;
-			-webkit-background-clip: text;
-			background-clip: text;
-		}
-	}
-
 	&__subscribe-column {
 		width: 26rem;
 		display: flex;
@@ -93,24 +48,84 @@
 		width: 26rem;
 		margin-top: 0.4rem;
 	}
-	.footer__copyright-bar {
-		display: flex;
-	}
+  &__links {
+    display: flex;
+  }
 	&__copyright-bar {
-		display: flex;
 		height: 7rem;
+		display: flex;
+		flex: 0 1 116rem;
+		justify-content: space-between;
 		align-items: center;
-		border-top: 1px solid rgba(31, 32, 65, 0.1);
-		padding: 0rem 5rem;
-		flex-wrap: wrap;
+    margin: 0 auto;
+		padding: 0rem 5rem;	
 	}
-	
-	@media screen and (max-width: 76.8rem){
+	&__social {
+		&::after {
+			width: auto;
+			height: 2.4rem;
+			font-family: 'Brands';
+			font-size: 2.4rem;
+			line-height: 2.3rem;
+			margin-right: 2.3rem;
+			background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+			color: transparent;
+			-webkit-background-clip: text;
+			background-clip: text;	
+		}
+		&_twitter {
+			&::after {
+				content: '\f099';
+			}
+		}
+		&_facebook {
+			&::after {
+				content: '\f082';
+			}
+		}
+		&_instagram {
+			&::after {
+				content: '\f16d';
+				margin-right: 0;
+			}
+		}
+	}
+	@media screen and (max-width: 1099px){
 		&__main-info {
-			width: 11rem;
+			flex-basis: 10.57rem;
+			padding: 12rem 0 1.8rem 1rem;
 			:not(:first-child){
 				display: none;
 			}
+		}
+		&__flexable-container_copyright {
+			border-top: unset;
+		}
+		&__copyright-bar {
+			flex-direction: column;
+			padding-bottom: 12rem;
+			gap: 2.1rem;
+		}
+		&__links {
+			padding-left: 2rem;
+		}
+	}
+
+	&__container_mobile-demo{
+		.footer__main-info {
+			flex-basis: 10.57rem;
+			padding: 12rem 0 0 1.1rem;
+			:not(:first-child){
+				display: none;
+			}
+		}
+		.footer__flexable-container_copyright {
+			border-top: unset;
+		}
+		.footer__copyright-bar {
+			flex-direction: column;
+			padding-bottom: 12rem;
+			gap: 2.1rem;
 		}
 	}
 }

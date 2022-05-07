@@ -3,24 +3,23 @@ include ../../components/input-field/input-field.pug
 
 mixin footer()
 	footer.footer__container
-		.footer__inner-container
-
-				.footer__main-info
-					.footer__toxin-info
-						.footer__logo  
-						.footer__info='Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»'
-					+links-block({tittle: 'навигация', items: {'О нас':'https://www.google.ru', 'Новости':'https://www.google.ru', 'Служба поддержки':'https://www.google.ru', 'Услуги':'https://www.google.ru',}})
-					+links-block({tittle: 'о нас', items: {'О сервисе':'https://www.google.ru', 'Наша команда':'https://www.google.ru', 'Вакансии':'https://www.google.ru', 'Инвесторы':'https://www.google.ru',}})
-					+links-block({tittle: 'Служба поддержки', items: {'Соглашения':'https://www.google.ru', 'Сообщества':'https://www.google.ru', 'Связь с нами':'https://www.google.ru',}})
-					.footer__subscribe-column
-						H3.footer__subscribe-tittle='Подписка' 
-						.footer__subscribe-info= 'Получайте специальные предложения и новости сервиса'
-						.footer__subscribe-field
-							+input-field({type: INPUT_FIELD.SUBSCRIBE})
-		.footer__copyright-bar 
-			.footer__inner-container
+		.footer__flexable-container
+			.footer__main-info
+				.footer__toxin-info
+					.footer__logo  
+					.footer__info='Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»'
+				+links-block({tittle: 'навигация', items: {'О нас':'https://www.google.ru', 'Новости':'https://www.google.ru', 'Служба поддержки':'https://www.google.ru', 'Услуги':'https://www.google.ru',}})
+				+links-block({tittle: 'о нас', items: {'О сервисе':'https://www.google.ru', 'Наша команда':'https://www.google.ru', 'Вакансии':'https://www.google.ru', 'Инвесторы':'https://www.google.ru',}})
+				+links-block({tittle: 'Служба поддержки', items: {'Соглашения':'https://www.google.ru', 'Сообщества':'https://www.google.ru', 'Связь с нами':'https://www.google.ru',}})
+				.footer__subscribe-column
+					H3.footer__subscribe-tittle='Подписка' 
+					.footer__subscribe-info= 'Получайте специальные предложения и новости сервиса'
+					.footer__subscribe-field
+						+input-field({type: INPUT_FIELD.SUBSCRIBE})
+		.footer__flexable-container.footer__flexable-container_copyright 
+			.footer__copyright-bar 
 				.footer__copyright='Copyright © 2018 Toxin отель. Все права защищены.'
 				.footer__links
-					a.footer__twitter(href='https://twitter.com')
-					a.footer__facebook(href='https://www.facebook.com')
-					a.footer__instagram(href='https://www.instagram.com')
+					a.footer__social.footer__social_twitter(href='https://twitter.com')
+					a.footer__social.footer__social_facebook(href='https://www.facebook.com')
+					a.footer__social.footer__social_instagram(href='https://www.instagram.com')
