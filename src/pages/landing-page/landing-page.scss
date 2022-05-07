@@ -8,22 +8,44 @@ body {
 
 .landing-page {
   &__main {
+		display: flex;
+		align-items: flex-end;
+		justify-content: end;
     background: center bottom no-repeat url('./landing-page.png');
+		background-size: cover;
   }
 	&__flexable-container{
-		height: 83rem;
+		max-width: 116rem;
 		display: flex;
 		flex: 0 1 116rem;
-		justify-content: space-between;
-		align-items: center;
+		align-items: flex-end;
     margin: 0 auto;
 		padding: 0rem 5rem;	
 	}
 	&__additional {
-
+		max-width: 29.7rem;
+		margin-bottom: 1.8rem;	
+		margin-left: auto;
+		text-align: right;
+		&_external{
+			display: none;
+			max-width: 29.7rem;
+			margin-bottom: 1.8rem;	
+			margin-right: 14rem;
+		}
+	}
+	@media screen and (min-width: 1441px){
+		&__additional {
+			display: none;
+			&_external{
+				display: block;
+			}
+		}
+	}
+	&__choose {
+		padding-top: 7rem;
+		padding-bottom: 38.6rem;
+		
 	}
 }
-.landing-page__choose {
-  position: relative;
-  padding-top: 7rem;
-}
+
