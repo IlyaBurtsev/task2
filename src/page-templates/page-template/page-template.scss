@@ -8,19 +8,20 @@ body {
 .body {
   &__container {
 		height: 100%;
-		max-height: 120rem;
 		//TODO for PP
 		// width: 144rem;
 		// height: 90rem;	
   }	
 	&__inner-container {
 		max-width: 192rem;
+		max-height: 164.3rem;
 		margin: 0 auto;
 		//TODO for PP
 		// margin: 0 0;
 	}
 	&__visible-content {
 		height: 100%;
+		max-height: 120rem;
 		display: flex;
 		flex-direction: column;
 	}

@@ -15,6 +15,7 @@
     }
   }
   &__input_for-date-dropdown {
+		cursor: pointer;
 		color: $dark-75;
     &::placeholder {
       color: $dark-75;

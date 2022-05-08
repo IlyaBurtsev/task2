@@ -8,6 +8,7 @@ body {
 
 .landing-page {
   &__container {
+		max-height: 120rem;
     display: flex;
     flex-grow: 1;
     justify-content: center;
