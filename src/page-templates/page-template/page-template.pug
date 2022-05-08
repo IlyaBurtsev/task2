@@ -12,8 +12,10 @@ html(lang="en")
 	body 
 		.body__container
 			.body__inner-container
-				block header 
-					+header()
-				block main
+				.body__visible-content
+					block header 
+						+header()
+					main.body__main
+						block content
 				block footer 
 					+footer()
