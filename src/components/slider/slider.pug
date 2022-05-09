@@ -1,6 +1,8 @@
-mixin slider(options={})
+mixin slider(options)
+	-const {title='', description=''} = options
 	.slider__container
 		.slider__info
-			H3.slider__title= options.title
+			H3.slider__title= title
 			.slider__data-range
 		.slider__range-slider 
+		.slider__description= description

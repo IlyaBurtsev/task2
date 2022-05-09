@@ -11,17 +11,19 @@ block title
 block content
 	section.search-room__container 
 		.search-room__flexable-container
-			.search-room__preferences
+			aside.search-room__preferences
 				+title({title: 'даты пребывания в отеле'})
 					+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23'})
-				+title({title: 'гости'})
-					+dropdown({
-						type: DROPDOWN.ITEM_QUANTITY, 
-						placeholder: 'Сколько гостей',
-						items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
-						footerButtonActive:true
-						})
-				+slider({title: 'диапазон цены'})
+					.search-room__separate-container_after-date-dropdown
+					+title({title: 'гости'})
+						+dropdown({
+							type: DROPDOWN.ITEM_QUANTITY, 
+							placeholder: 'Сколько гостей',
+							items: {'взрослые':2, 'дети':1, 'младенцы':1}, 
+							footerButtonActive:true
+							})
+					.search-room__separate-container
+				+slider({title: 'диапазон цены', description: 'Стоимость за сутки пребывания в номере'})
 				+list({
 						type: LIST.CHECKBOX, 
 						title: 'правила дома',
@@ -47,7 +49,6 @@ block content
 					type: LIST.CHECKBOX, 
 					title: 'дополнительные удобства',
 					items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
-					open: true,
 					commonModificators: [MODIFICATOR.EXPANDABLE]
 					})
 			.search-room__rooms 
@@ -56,4 +57,8 @@ block content
 					+room-preview({})
 				.search-room__pagination 
 					+pagination()
+block body-additional
+	.body-additional__absolute-screensize-container
+		.body-additional__aside-button
+
 

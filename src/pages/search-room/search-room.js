@@ -14,8 +14,9 @@ import '../../components/room-preview/room-preview';
 import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
 import { initRoomPreviews } from '../../components/room-preview/room-preview';
 import { initDropdowns } from '../../components/dropdown/dropdown';
+import { initHeader } from '../../components/header/header';
 
-
+initHeader();
 const initSearchRoom = (page) => {
   const currentPage = page ? page : 1;
   const roomsData = getRoomRepository().getRooms(
