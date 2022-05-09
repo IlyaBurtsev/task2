@@ -18,15 +18,6 @@ const initHeader = (currentUser, bindElement) => {
 const initBurgerMenu = (navBlock) => {
 	const menu = navBlock.previousElementSibling;
 
-	const onClickMenu = () => {	
-		if (!navBlock.classList.contains('header__navigation-block_opened')) {
-			addClass(navBlock, 'header__navigation-block_opened');	
-			menu.style.transform = 'rotate(90deg)'
-		}else {
-			removeClass(navBlock, 'header__navigation-block_opened')
-			menu.style.transform = 'rotate(0deg)'
-		}
-	}
 	const openMenu = () => {
 		addClass(navBlock, 'header__navigation-block_opened');	
 		menu.style.transform = 'rotate(90deg)'

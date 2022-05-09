@@ -5,7 +5,7 @@ mixin room-preview(options)
 		let sliderClassName = 'room-preview__slider js-room-preview__slider'
 		hoverDemo ? sliderClassName+=' room-preview__slider_hover_demo' :''
 	.room-preview__container.room-preview__container_empty.js-room-preview__container
-		.div(class=sliderClassName) 
+		div(class=sliderClassName) 
 			.room-preview__view-port 
 				.room-preview__img-container.js-room-preview__img-container
 				.room-preview__prev-button="expand_more"
@@ -16,7 +16,7 @@ mixin room-preview(options)
 			.room-preview__price
 		.room-preview__separator
 		.room-preview__rate-container 
-			+rating({})
+			+rating({disabled: true})
 			.room-preview__rating-counter.js-room-preview__rating-counter
 		
 

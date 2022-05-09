@@ -1,38 +1,59 @@
-include ../../ui-kit/header/header.pug
-include ../../ui-kit/footer/footer.pug
-include ../../ui-kit/external-container/external-container.pug
-include ../../ui-kit/slider/slider.pug
-include ../../ui-kit/room-preview/room-preview.pug
-include ../../ui-kit/pagination/pagination.pug
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(http-equiv="X-UA-Compatible", content="IE=edge")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title Search room
-	body 
-		+header()
-		main.search-room__main 
+extends ../../page-templates/page-template/page-template.pug
+
+include ../../components/title/title.pug
+include ../../components/dropdown/dropdown.pug
+include ../../components/slider/slider.pug
+include ../../components/room-preview/room-preview.pug
+include ../../components/pagination/pagination.pug
+
+block title 	
+	title Search room
+block content
+	section.search-room__container 
+		.search-room__flexable-container
 			.search-room__preferences
-				+title({type: TITLE_TYPE.MIDDLE, title: 'даты пребывания в отеле'})
-				+input({type: INPUT_TYPE.FILTER_DATE, inputValue: '19.08.2019'})
-				+title({type: TITLE_TYPE.MIDDLE, title: 'гости'})
-				+input({type: INPUT_TYPE.GUESTS})
+				+title({title: 'даты пребывания в отеле'})
+					+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23'})
+				+title({title: 'гости'})
+					+dropdown({
+						type: DROPDOWN.ITEM_QUANTITY, 
+						placeholder: 'Сколько гостей',
+						items: {'взрослые':2, 'дети':1, 'младенцы':0}, 
+						footerButtonActive:true
+						})
 				+slider({title: 'диапазон цены'})
-				+title({type: TITLE_TYPE.BUTTONS, title: 'правила дома'})
-				+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно курить'})
-				+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно с питомцами', checked: 'checked'})
-				+input({type: INPUT_TYPE.CHECKBOX, inputLabel: 'Можно пригласить гостей (до 10 человек)', checked: 'checked'})
-				+title({type: TITLE_TYPE.BUTTONS, title: 'доступность'})
-				+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Широкий коридор', inputLabelDescription: 'Ширина коридоров в номере                не менее 91 см.'})
-				+input({type: INPUT_TYPE.CHECKBOX_RICH, inputLabel: 'Помощник для инвалидов', inputLabelDescription: 'На 1 этаже вас встретит специалист  и проводит до номера.'})
-				+title({type: TITLE_TYPE.MIDDLE, title: 'удобства номера'})
-				+input({type: INPUT_TYPE.COMFORT})
-				+list({type: LIST_TYPE.EXPANDABLE_CHECKBOX, listTitle : 'дополнительные удобства', items: ['Завтрак', 'Письменный стол', 'Стул для кормления', 'Кроватка', 'Телевизор', 'Шампунь'], selectedItems: ['', 'checked', 'checked', 'checked', '', '']})
+				+list({
+						type: LIST.CHECKBOX, 
+						title: 'правила дома',
+						items: {'Можно курить':0, 'Можно с питомцами':1, 'Можно пригласить гостей \n(до 10 человек)':1},
+						})
+				+list({
+					type: LIST.CHECKBOX, 
+					checkboxType: CHECKBOX.RICH,
+					title: 'доступность',
+					items: {
+						'Широкий коридор \nШирина коридоров в номере \nне менее 91 см.':0,
+						'Помощник для инвалидов \nНа 1 этаже вас встретит специалист \nи проводит до номера.':0
+						},
+					commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]
+					})
+				+title({title: 'удобства номера'})
+					+dropdown({
+						type: DROPDOWN.ITEM_QUANTITY, 
+						items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
+						placeholder: 'Сколько комнат'
+						})
+				+list({
+					type: LIST.CHECKBOX, 
+					title: 'дополнительные удобства',
+					items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
+					open: true,
+					commonModificators: [MODIFICATOR.EXPANDABLE]
+					})
 			.search-room__rooms 
 				H1.search-room__title='Номера, которые мы для вас подобрали'
 				.search-room__fitered-rooms
-					+room-preview()
+					+room-preview({})
 				.search-room__pagination 
 					+pagination()
-		+footer(FOOTER_TYPE.DESKTOP)
+

@@ -1,32 +1,39 @@
-.button__container_rate {
-	width: 12rem;
-	height: 2.4rem;
-	display: flex;
-	flex-direction: row-reverse;
-	align-items: center;
+.rating {
+  &__container {
+    width: 12rem;
+    height: 2.4rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  &__input {
+    visibility: hidden;
+    width: 2.4rem;
+    height: 2.4em;
+    &::before {
+      visibility: visible;
+      content: 'star_border';
+      font-family: 'MaterialIcons';
+      font-size: 2.5rem;
+      line-height: 3.4rem;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
 }
-.button__input_rate {
-	visibility: hidden;
-	width: 2.4rem;
-	height: 2.4em;
-	&::before {
-		visibility: visible;
-		content: "star_border";
-		font-family: "MaterialIcons";
-		font-size: 2.5rem;
-		line-height: 3.4rem;
-		background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-		color: transparent;
-		-webkit-background-clip: text;
-		background-clip: text;	
-	}
+.rating__input:checked ~ .rating__input,
+.rating__input:checked {
+  &::before {
+    content: 'star';
+  }
 }
-
-.button__input_rate:hover,
-.button__input_rate:hover ~ .button__input_rate,
-.button__input_rate:checked ~ .button__input_rate,
-.button__input_rate:checked{
-	&::before{
-		content: "star";	
-	}	
+.rating__container_actived {
+  .rating__input:hover,
+  .rating__input:hover ~ .rating__input {
+		&::before {
+			content: 'star';
+		}
+  }
 }

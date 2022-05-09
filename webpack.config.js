@@ -64,7 +64,7 @@ module.exports = (env, argv = {}) => {
       }),
       // ...htmlPlugins,
       new HtmlWebpackPlugin({
-        template: `${pagesDir}/landing-page/landing-page.pug`
+        template: `${pagesDir}/search-room/search-room.pug`
       }),
     ];
     if (isProduction) {
@@ -85,7 +85,7 @@ module.exports = (env, argv = {}) => {
       clean: true,
     },
     // entry: ...entries,
-    entry: `${pagesDir}/landing-page/landing-page.js`,
+    entry: `${pagesDir}/search-room/search-room.js`,
     resolve: {
       alias: {
         '@theme': path.resolve(__dirname, 'src/styles/theme-custom'),

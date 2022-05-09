@@ -1,10 +1,15 @@
 mixin rating (options)
-	-const {inputValue=1, groupName} = options
-	.button__container_rate
+	-
+		const {inputValue=1, groupName, disabled} = options
+		let containerClassName = 'rating__container'
+		if (!disabled)
+			containerClassName +=' ' + containerClassName + '_actived'
+
+	div(class=containerClassName)
 		- for (let i=0; i < 5; i++)
 			if((5-i)===inputValue)
-				input.button__input_rate(type='radio', name=groupName, rating=5-i, value=5-i, checked=true)
+				input.rating__input.js-rating__input(type='radio', name=groupName, rating=5-i, value=5-i, checked=true, disabled=disabled)
 			if((5-i)!==inputValue)
-				input.button__input_rate(type='radio', name=groupName, rating=5-i, value=5-i)
+				input.rating__input.js-rating__input(type='radio', name=groupName, rating=5-i, value=5-i, disabled=disabled)
 
 		

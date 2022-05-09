@@ -1,8 +1,5 @@
 import './room-info.scss'
 import { createElement } from '../../utils/utils';
-import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
-
-
 
 export function initRoomInfo(room) {
 	let roomInfo = room.getRoomInfo();

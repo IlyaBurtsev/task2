@@ -51,7 +51,6 @@ $header-height: 7rem;
     align-items: center;
     white-space: nowrap;
     background-color: rgba(255, 255, 255, 1);
-    padding: 2rem 2rem;
     gap: 2rem;
 
     @media screen and (max-width: 1100px) {
@@ -61,6 +60,7 @@ $header-height: 7rem;
       align-items: flex-start;
       margin-top: $header-height;
       margin-left: auto;
+			padding: 2rem 2rem;
       top: 0;
       z-index: 2;
     }

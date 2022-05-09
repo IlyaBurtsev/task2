@@ -1,31 +1,33 @@
-html {
-	font-size: 62.5%;
-}
-body {
-	margin: 0;
-	padding: 0;
-}
-.search-room__main {
-	width: 116rem;
-	display: flex;
-	padding: 4rem 14rem;
-	justify-content: space-between;
-	.search-room__preferences {
+
+.search-room {
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+  }
+  &__flexable-container {
+    display: flex;
+    flex: 0 0 116rem;
+    padding: 3rem 5rem;
+		justify-content: space-between;
+  }
+	&__preferences {
 		display: flex;
 		flex-direction: column;
-		
+		gap: 3rem;
 	}
-	.search-room__rooms {
+	&__rooms {
 		display: flex;
-		flex-direction: column;
-		.search-room__fitered-rooms {
-			display: grid;
-			grid-template-columns: repeat(3, 28.2rem);
-			grid-template-rows: repeat(4, 27.8rem);
-			
-		}
-		.search-room__pagination {
-			align-self: center;
-		}
+		flex-direction: column;	
+	}
+	&__fitered-rooms {
+		display: grid;
+		grid-template-columns: repeat(3, 27rem);
+		grid-template-rows: repeat(4, 25.75rem);
+		gap: 2.1rem 1.2rem
+	}
+	&__pagination {
+		align-self: center;
 	}
 }

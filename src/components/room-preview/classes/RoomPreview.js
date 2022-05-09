@@ -1,4 +1,5 @@
 import { bindObserverMetods } from '../../../utils/observerMetods';
+import { setRatingGroupName } from '../../rating/rating';
 import {
   bindRoomPreview,
   createImg,
@@ -6,6 +7,7 @@ import {
   getImageContainer,
   getNavButtonsContainer,
   getSlider,
+  initRatingBlock,
   removeNavButtonSelected,
   removeSliderHovered,
   setNavButtonSelected,
@@ -50,12 +52,13 @@ class RoomPreview {
       isLuxury: this.previewData.isLuxury,
       roomPrice: this.previewData.getRoomPrice(),
     });
-
-    setRating(
-      this.preview,
-      this.previewData.getRoomRating(),
-      this.previewData.getRoomRatingCounter()
-    );
+		
+		initRatingBlock({
+			ratingValue: this.previewData.getRoomRating(),
+			ratingCount: this.previewData.getRoomRatingCounter(),
+			groupName: this.previewData.getRoomNumber(),
+			bindElement: this.preview,
+		})
   }
 
   setImageSlider = (imagePaths) => {

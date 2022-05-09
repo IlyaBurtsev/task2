@@ -3,6 +3,7 @@ import '../rating/rating';
 
 import { addClass, createElement, getElement, getElements, removeClass } from '../../utils/utils';
 import { RoomPreview } from './classes/RoomPreview';
+import { setRatingGroupName, setRatingValue } from '../rating/rating';
 
 const bindRoomPreview = (preview) => {
   removeClass(preview, 'room-preview__container_empty');
@@ -60,18 +61,22 @@ const setTitlePreview = (preview, titlePreviewData) => {
   )}₽</span> в сутки`;
 };
 
-const setRating = (preview, ratingValue, ratingCount) => {
-  const rating = getElement(
-    `.button__input_rate[rating="${ratingValue}"]`,
-    preview
-  );
-  rating.setAttribute('checked', '');
 
-  const ratingCounter = getElement(
+
+const setRatingInfo = (ratingCount, bindElement) => {
+	const ratingCounter = getElement(
     '.room-preview__rating-counter',
-    preview
+    bindElement
   );
   ratingCounter.innerHTML = `<span>${ratingCount}</span> Отзывов`;
+}
+
+const initRatingBlock = (options) => {
+	const {ratingValue, ratingCount, groupName, bindElement} = options
+
+	setRatingGroupName(groupName, bindElement);
+	setRatingValue(ratingValue, bindElement);
+	setRatingInfo(ratingCount, bindElement);
 };
 
 const sliderNextButtonPressed = (element) => {
@@ -103,7 +108,7 @@ const removeNavButtonSelected = (button) => {
 }
 
 
-const initRoomPreview = (previewsData, elementContainer) => {
+const initRoomPreviews = (previewsData, elementContainer) => {
 	const bindElement = getElement('.js-room-preview__container', elementContainer);
 	if (!previewsData) {
 		return;
@@ -132,11 +137,11 @@ export {
   createImg,
   createSliderNavButton,
   setTitlePreview,
-  setRating,
+  initRatingBlock,
 	sliderNextButtonPressed,
 	sliderPreviousButtonPressed,
 	sliderNavButtonPressed,
 	setNavButtonSelected,
 	removeNavButtonSelected,
-	initRoomPreview
+	initRoomPreviews
 };
