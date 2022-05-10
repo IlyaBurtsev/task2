@@ -40,6 +40,9 @@
 		}
 	}
 	&__container_checkbox_expandable{
+		.list__title-container_checkbox{
+			cursor: pointer;
+		}
 		.list__expand-icon_checkbox {
 			width: 4.4rem;
 			height: 1.5rem;

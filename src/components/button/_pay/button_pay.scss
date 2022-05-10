@@ -18,8 +18,11 @@
     background: $primory_gradient;
     color: white;
 		&:disabled,
-    &:active {
+    &:hover {
       opacity: 0.5;
+    }
+		&:active {
+      opacity: 1;
     }
   }
 }

@@ -9,7 +9,6 @@ const setRatingGroupName = (groupName, bindElement) => {
 
 const setRatingValue = (ratingValue, bindElement) => {
   const rating = getElement(`.js-rating__input[rating="${ratingValue}"]`, bindElement);
-	console.log(bindElement)
   rating.setAttribute('checked', '');
 };
 

@@ -11,54 +11,55 @@ block title
 block content
 	section.search-room__container 
 		.search-room__flexable-container
-			aside.search-room__preferences
-				+title({title: 'даты пребывания в отеле'})
-					+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23'})
-					.search-room__separate-container_after-date-dropdown
-					+title({title: 'гости'})
+			.search-room__aside-button-container 
+				.search-room__aside-button
+			.search-room__preferences-container.js-search-room__preferences-container
+				aside.search-room__preferences
+					+title({title: 'даты пребывания в отеле'})
+						+dropdown({type: DROPDOWN.DATE_PICKER, selectedDates: '2019-08-19 2019-08-23'})
+						.search-room__separate-container_after-date-dropdown
+						+title({title: 'гости'})
+							+dropdown({
+								type: DROPDOWN.ITEM_QUANTITY, 
+								placeholder: 'Сколько гостей',
+								items: {'взрослые':2, 'дети':1, 'младенцы':1}, 
+								footerButtonActive:true
+								})
+						.search-room__separate-container
+					+slider({title: 'диапазон цены', description: 'Стоимость за сутки пребывания в номере'})
+					+list({
+							type: LIST.CHECKBOX, 
+							title: 'правила дома',
+							items: {'Можно курить':0, 'Можно с питомцами':1, 'Можно пригласить гостей \n(до 10 человек)':1},
+							})
+					+list({
+						type: LIST.CHECKBOX, 
+						checkboxType: CHECKBOX.RICH,
+						title: 'доступность',
+						items: {
+							'Широкий коридор \nШирина коридоров в номере \nне менее 91 см.':0,
+							'Помощник для инвалидов \nНа 1 этаже вас встретит специалист \nи проводит до номера.':0
+							},
+						commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]
+						})
+					+title({title: 'удобства номера'})
 						+dropdown({
 							type: DROPDOWN.ITEM_QUANTITY, 
-							placeholder: 'Сколько гостей',
-							items: {'взрослые':2, 'дети':1, 'младенцы':1}, 
-							footerButtonActive:true
+							items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
+							placeholder: 'Сколько комнат'
 							})
-					.search-room__separate-container
-				+slider({title: 'диапазон цены', description: 'Стоимость за сутки пребывания в номере'})
-				+list({
+					+list({
 						type: LIST.CHECKBOX, 
-						title: 'правила дома',
-						items: {'Можно курить':0, 'Можно с питомцами':1, 'Можно пригласить гостей \n(до 10 человек)':1},
+						title: 'дополнительные удобства',
+						items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
+						commonModificators: [MODIFICATOR.EXPANDABLE]
 						})
-				+list({
-					type: LIST.CHECKBOX, 
-					checkboxType: CHECKBOX.RICH,
-					title: 'доступность',
-					items: {
-						'Широкий коридор \nШирина коридоров в номере \nне менее 91 см.':0,
-						'Помощник для инвалидов \nНа 1 этаже вас встретит специалист \nи проводит до номера.':0
-						},
-					commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]
-					})
-				+title({title: 'удобства номера'})
-					+dropdown({
-						type: DROPDOWN.ITEM_QUANTITY, 
-						items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
-						placeholder: 'Сколько комнат'
-						})
-				+list({
-					type: LIST.CHECKBOX, 
-					title: 'дополнительные удобства',
-					items: {'Завтрак':0, 'Письменный стол':1, 'Стул для кормления':1, 'Кроватка':1, 'Телевизор':0, 'Шампунь':0},
-					commonModificators: [MODIFICATOR.EXPANDABLE]
-					})
 			.search-room__rooms 
 				H1.search-room__title='Номера, которые мы для вас подобрали'
 				.search-room__fitered-rooms
 					+room-preview({})
 				.search-room__pagination 
 					+pagination()
-block body-additional
-	.body-additional__absolute-screensize-container
-		.body-additional__aside-button
+
 
 

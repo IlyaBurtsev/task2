@@ -7,12 +7,14 @@ $checkbox-margin: 3rem;
     max-width: 22.2rem;
   }
   &__input {
+		cursor: pointer;
     opacity: 0;
     position: absolute;
     width: 2rem;
     height: 2rem;
   }
   &__label {
+		cursor: pointer;
     color: rgba(31, 32, 65, 0.5);
     line-height: 1.8rem;
     white-space: pre-wrap;
@@ -36,6 +38,12 @@ $checkbox-margin: 3rem;
   &::before {
     content: "";
     background: center no-repeat url("./checked.svg");
+		border-color: $primory-color;
+  }
+}
+.checkbox__input:hover + .checkbox__label {
+  &::before {
+    content: "";
 		border-color: $primory-color;
   }
 }

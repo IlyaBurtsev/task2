@@ -90,7 +90,10 @@ a {
   color: $dark-75;
 }
 a:hover {
-  color: $dark-75;
+  opacity: 0.5;
+}
+a:active{
+	opacity: 1;
 }
 p {
   margin-top: 0;

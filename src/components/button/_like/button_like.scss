@@ -19,6 +19,7 @@
       text-align: center;
       left: 0;
     }
+		&:hover,
     &_selected {
       &::before {
         content: 'favorite';

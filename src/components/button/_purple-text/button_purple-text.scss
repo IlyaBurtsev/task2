@@ -8,10 +8,9 @@
     background: linear-gradient(white 0 0) padding-box,
       $primory_gradient border-box;
     border: 0.2rem solid transparent;
-
     color: $primory-color;
-    &:disabled,
-    &:active {
+    &:hover,
+    &:disabled {
       background: linear-gradient(white 0 0) padding-box,
         linear-gradient(
             180deg,
@@ -20,5 +19,9 @@
           )
           border-box;
     }
+		&:active {
+			background: linear-gradient(white 0 0) padding-box,
+      $primory_gradient border-box;
+		}
   }
 }

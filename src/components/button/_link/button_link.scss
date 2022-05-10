@@ -13,8 +13,11 @@
     border: unset;
     color: $primory-color;
 		&:disabled,
-    &:active {
+    &:hover {
       color: $dark-50;
+    }
+		&:active {
+      color: $primory-color;
     }
   }
 }
