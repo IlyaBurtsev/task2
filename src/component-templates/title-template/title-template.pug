@@ -1,0 +1,38 @@
+mixin title-template(options={})
+	-
+		const {blockName='title', modificatorName='', titleH2=false, title='', description='', commonModificators=[]} = options
+
+		let containerClassName = blockName + '__container'
+		let titleContainerClassName = blockName + '__title-container'
+		let titleClassName = blockName + '__title'
+		let descriptionClassName = blockName + '__description'
+
+		let modificatorsContainerClassName=''
+
+	if ((commonModificators.length)&&modificatorName)
+		each modificator in commonModificators	
+			- modificatorsContainerClassName=containerClassName+'_'+modificatorName+'_'+modificator+' '
+	else 
+		if (commonModificators.length)
+			each modificator in commonModificators
+				- modificatorsContainerClassName=containerClassName+'_'+ modificator+' '
+
+	-
+		containerClassName += modificatorName ? ' '+containerClassName+'_'+ modificatorName : ''
+		titleContainerClassName += modificatorName ? ' '+titleContainerClassName+'_'+ modificatorName : ''
+		titleClassName += modificatorName ? ' '+titleClassName+'_'+ modificatorName : ''
+		descriptionClassName += modificatorName ? ' '+descriptionClassName0+'_'+ modificatorName : ''
+
+		containerClassName += ' '+modificatorsContainerClassName
+
+
+	div(class=containerClassName)
+		div(class=titleContainerClassName)
+			if (titleH2)
+				H2(class=titleClassName)=title 
+				span(class=descriptionClassName)=description
+			else 
+				H3(class=titleClassName)=title 
+				H3(class=descriptionClassName)=description
+		block
+

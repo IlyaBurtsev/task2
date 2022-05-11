@@ -6,19 +6,13 @@
     min-width: 15rem;
     display: flex;
     flex-direction: column;
-   
   }
   &__title-container {
 		display: flex;
 		justify-content: space-between;
     align-items: start;
 		margin-bottom: 0.5rem;
-  }
-	&__container_custom-parametr {
-		.title__title-container {
-      margin-bottom: 1.6rem;
-    }
-	}
+  }	
   &__description {
     color: $dark-50;
     text-transform: uppercase;

@@ -1,0 +1,14 @@
+.title {
+  &__container_for-section {
+    max-width: unset;
+  }
+  &__title-container_for-section {
+    margin-bottom: 2rem;
+  }
+	&__description {
+    text-transform: unset;
+		font-size: 1.4rem;
+    // font-weight: 400;
+    line-height: 1.4rem;
+  }
+}

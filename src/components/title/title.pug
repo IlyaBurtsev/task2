@@ -1,14 +1,19 @@
-mixin title (options={})
-	-
-		const {title='', description='', commonModificators=[]} = options
-		let containerClassNames = 'title__container' 
-		
-	if (commonModificators.length)
-		each modificator in commonModificators
-			- containerClassNames +=' title__container_' + modificator
+include ../../component-templates/title-template/title-template.pug
 
-	div(class= containerClassNames)
-		.title__title-container
-			H3.title__title= title 
-			H3.title__description= description
-		block
+
+mixin title (options={})
+
+	- const {type=TITLE.DEFAULT, title='', description='', commonModificators=[]} = options
+
+	case type 
+		when TITLE.DEFAULT 
+			+title-template({title: title, description: description, commonModificators: commonModificators})
+				block
+		when TITLE.FOR_BUTTON 
+			+title-template({modificatorName: 'for-button', title: title, description: description, commonModificators: commonModificators})
+				block
+		when TITLE.FOR_SECTION
+			+title-template({modificatorName: 'for-section', titleH2:true, title: title, description: description, commonModificators: commonModificators})
+				block
+				
+	

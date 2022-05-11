@@ -11,10 +11,15 @@
 		display: flex;
 		box-sizing: border-box;
 	}
+	&__title {
+		margin-bottom: 2rem;
+	}
 	&__main-picture {
 		width: calc(981/1440*100%);
 	}
 	&__other-picture-container {
+		display: flex;
+		flex-direction: column;
 	}
 	
 	&__flexable-container {
