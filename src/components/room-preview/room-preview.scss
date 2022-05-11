@@ -6,7 +6,7 @@
     border-radius: 0.4rem;
     background: #ffffff;
     box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-		box-sizing: border-box;
+    box-sizing: border-box;
     &_empty {
       display: none;
     }
@@ -40,7 +40,7 @@
     color: white;
     width: 15.1rem;
     height: 4.2rem;
-		border-bottom-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
     font-size: 2.5rem;
     display: none;
     justify-content: center;
@@ -63,7 +63,7 @@
     color: white;
     width: 15.1rem;
     height: 4.2rem;
-		border-bottom-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
     font-size: 2.5rem;
     display: none;
     justify-content: center;
@@ -77,16 +77,17 @@
       rgba(0, 0, 0, 0) 99.99%,
       rgba(255, 255, 255, 0) 100%
     );
-
     cursor: pointer;
   }
-  &__slider_hover, 
-	&__slider_hover_demo {
-    .room-preview__next-button {
-      display: flex;
-    }
-    .room-preview__prev-button {
-      display: flex;
+  &__view-port {
+		&_hover-demo,
+    &:hover {
+      .room-preview__next-button {
+        display: flex;
+      }
+      .room-preview__prev-button {
+        display: flex;
+      }
     }
   }
   &__button-container {

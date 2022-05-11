@@ -13,13 +13,6 @@ const getSlider = (container) => {
 	return getElement('.js-room-preview__slider', container);
 }
 
-const setSliderHovered = (slider) => {
-	addClass(slider, 'room-preview__slider_hover')
-}
-
-const removeSliderHovered = (slider) => {
-	removeClass(slider, 'room-preview__slider_hover')
-}
 const getImageContainer = (container) => {
   return getElement('.js-room-preview__img-container', container);
 };
@@ -130,8 +123,6 @@ const initRoomPreviews = (previewsData, elementContainer) => {
 export {
   bindRoomPreview,
 	getSlider,
-	setSliderHovered,
-	removeSliderHovered,
   getImageContainer,
   getNavButtonsContainer,
   createImg,

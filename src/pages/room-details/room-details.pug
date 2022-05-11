@@ -1,25 +1,43 @@
 extends ../../page-templates/page-template/page-template.pug
 
-include ../../ui-kit/room-info/room-info.pug
-include ../../ui-kit/room-card/room-card.pug
-include ../../ui-kit/review/review.pug
+include ../../components/room-info/room-info.pug
+include ../../components/room-card/room-card.pug
+include ../../components/review/review.pug
+include ../../components/list/list.pug
+include ../../components/title/title.pug
+
 block title 	
 	title Room details
-block main
-	main.room-details__main 
-		.room-details__picture-container
+block content
+	.room-details__container
+		section.room-details__picture-container
 			img.room-details__main-picture
 			.room-details__other-picture-container
-		section.room-details__section 
-			.room-details__column1
-				.room-details__row1
-					+room-info()
-					.room-details__chart-container 
-						canvas.room-details__chart
-						.room-details__legend 
-							+list({type: LIST_TYPE.BULLET, items:['Великолепно', 'Хорошо', 'Удовлетворительно', 'Разочарован']})
-				+review()
-				+list({type: LIST_TYPE.BULLET, items:['Нельзя с питомцами', 'Без вечеринок и мероприятий', 'Время прибытия — после 13:00, а выезд до 12:00']})
-			+room-card()
+		.room-details__flexable-container
+			section.room-details__info
+				.room-details__main-info
+					+room-card()
+				.room-details__additional-info
+					.room-details__room-info-container
+						.room-details__room-info
+							+room-info()
+						.room-details__chart-container 
+							canvas.room-details__chart
+							.room-details__legend 
+								+list({
+									type: LIST.BULLET_FOR_CHART, 
+									items:['Великолепно', 'Хорошо', 'Удовлетворительно', 'Разочарован']})
+					+review()
+					.room-details__room-rules-container
+						.room-details__room-rules
+							+list({
+								type: LIST.BULLET, 
+								items:[
+									'Нельзя с питомцами', 
+									'Без вечеринок и мероприятий', 
+									'Время прибытия — после 13:00, а выезд до 12:00'
+									]})
+						+title({title: 'Отмена'})
+			
 					
 

@@ -2,11 +2,11 @@ include ../rating/rating.pug
 mixin room-preview(options)
 	-
 		const {hoverDemo=false} = options 
-		let sliderClassName = 'room-preview__slider js-room-preview__slider'
-		hoverDemo ? sliderClassName+=' room-preview__slider_hover_demo' :''
+		let viewPortClassName = 'room-preview__view-port'
+		hoverDemo ? viewPortClassName+=' room-preview__view-port_hover-demo' :''
 	.room-preview__container.room-preview__container_empty.js-room-preview__container
-		div(class=sliderClassName) 
-			.room-preview__view-port 
+		.room-preview__slider.js-room-preview__slider
+			div(class=viewPortClassName)
 				.room-preview__img-container.js-room-preview__img-container
 				.room-preview__prev-button="expand_more"
 				.room-preview__next-button="expand_more"

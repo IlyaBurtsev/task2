@@ -10,4 +10,5 @@ mixin list(options)
 		when LIST.LINKS
 			+list_links({items: items, title: title, open:open, commonModificators})
 		when LIST.BULLET
-			+list_bullet({items: items, title: title})
+		when LIST.BULLET_FOR_CHART
+			+list_bullet({type: type, items: items, title: title})

@@ -3,7 +3,7 @@ import { getElement } from '../../utils/utils';
 import { initLikeButton } from '../button/_like/button_like';
 
 
-export function initReviews(reviews, bindElement, userRepository) {
+export function initReviews(reviews, userRepository, bindElement) {
 	const fragment = document.createDocumentFragment();
 	const review = getElement('.rewiew__container', bindElement);
 	const firstReviewData = reviews.shift();

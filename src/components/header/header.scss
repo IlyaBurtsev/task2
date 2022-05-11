@@ -12,8 +12,7 @@ $header-height: 7rem;
 			height: 6rem;
       position: fixed;
 			z-index: 2;
-    }
-		
+    }	
   }
   &__inner-container {
     display: flex;
@@ -86,11 +85,9 @@ $header-height: 7rem;
 			display: flex;
 		}
   }
-
   &__navigation {
     display: flex;
     gap: 2rem;
-
     @media screen and (max-width: 1100px) {
       flex-direction: column;
     }
@@ -105,7 +102,6 @@ $header-height: 7rem;
       flex-direction: column;
     }
   }
-
   &__signin-button {
     width: 8.7rem;
   }

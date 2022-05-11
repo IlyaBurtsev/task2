@@ -1,8 +1,19 @@
 mixin list_bullet(options) 
-	- const {title, items} = options
-	.list__container_bullet
-		H3.list__title_bullet= title
-		ul.list__items_bullet 
-			each val, index in items
-				li.list__item_bullet= val
+	- const {type= LIST.BULLET, title='', items} = options
+	case type 
+		when LIST.BULLET
+			.list__container_bullet
+				if (title)
+					H3.list__title_bullet= title
+				ul.list__items_bullet 
+					each val, index in items
+						li.list__item_bullet= val
+		when LIST.BULLET_FOR_CHART 
+			.list__container_bullet.list__container_bullet_for-chart
+				if (title)
+					H3.list__title_bullet.list__title_bullet_for-chart= title
+				ul.list__items_bullet.list__items_bullet_for-chart 
+					each val, index in items
+						li.list__item_bullet.list__item_bullet_for-chart= val
+
 				

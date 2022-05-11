@@ -23,6 +23,12 @@
 			line-height: 2rem;
 			text-align: center;
 		}
+		&:hover {
+			opacity: 0.5;
+		}
+		&:active {
+			opacity: 1;
+		}
 	}
 
 	.list__items_links {

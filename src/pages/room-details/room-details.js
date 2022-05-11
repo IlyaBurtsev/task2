@@ -1,21 +1,25 @@
 import './room-details.scss';
-import '../../ui-kit/_theme/ui-kit_theme_custom.scss';
-import '../../ui-kit/header/header';
-import '../../ui-kit/room-card/room-card';
+import '@theme/theme_custom.scss'
+import '../../components/room-card/room-card';
 import '../../page-templates/page-template/page-template';
-import Chart from 'chart.js/auto';
-import { getElement } from '../../utils/utils';
-import { initRoomInfo } from '../../ui-kit/room-info/room-info';
-import { initRoomCards } from '../../ui-kit/room-card/room-card';
-import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
-import { initReviews } from '../../ui-kit/review/review';
-const room = getRoomRepository().getRoomByNumber(888);
-initChart();
-initRoomInfo(888);
-initRoomCards(room);
-initReviews('.rewiew__container', room);
+import '../../components/list/list'
 
-function initChart() {
+import Chart from 'chart.js/auto';
+
+import { getElement } from '../../utils/utils';
+import { initRoomInfo } from '../../components/room-info/room-info';
+import { initRoomCards } from '../../components/room-card/room-card';
+import { initReviews } from '../../components/review/review';
+import { getRoomRepository } from '../../repository/roomRepository/RoomRepository';
+
+import { getServiceRepository } from '../../repository/serviceRepository/serviceRepository';
+import { getUserRepository } from '../../repository/userRepository/UserRepository';
+
+
+
+
+
+const setChart = (chartData=[]) => {
   const ctx = getElement('.room-details__chart').getContext('2d');
 
   const amazing = ctx.createLinearGradient(0, 0, 0, 170);
@@ -45,6 +49,12 @@ function initChart() {
     backgroundColors.push(gradient);
   });
 
+	const total = () => {
+		let counter = 0;
+		chartData.forEach(count => counter +=count);
+		return counter;
+	}
+
   const title = {
     beforeDraw(chart) {
       const {
@@ -52,12 +62,12 @@ function initChart() {
         chartArea: { top, width, height },
       } = chart;
       ctx.save();
-      ctx.font = '24px MontserratBold';
+      ctx.font = 'bold 24px Montserrat';
       ctx.textAlign = 'center';
       ctx.fillStyle = backgroundColors[1];
-      ctx.fillText('260', width / 2, top - 2 + height / 2);
+      ctx.fillText(`${total()}`, width / 2, top - 2 + height / 2);
       ctx.save();
-      ctx.font = '15px MontserratBold';
+      ctx.font = 'bold 15px Montserrat';
       ctx.textAlign = 'center';
       ctx.fillText('голосов', width / 2, top + 17 + height / 2);
     },
@@ -68,18 +78,19 @@ function initChart() {
     datasets: [
       {
         label: '',
-        data: [0, 65, 65, 130],
+        data: chartData,
         backgroundColor: backgroundColors,
         borderWidth: 3,
         cutout: '89%',
       },
     ],
   };
+
   return new Chart(ctx, {
     type: 'doughnut',
     data: data,
     options: {
-      responsive: true,
+      // responsive: true,
       maintainAspectRatio: false,
       plugins: {
         legend: {
@@ -90,3 +101,14 @@ function initChart() {
     plugins: [title],
   });
 }
+const initRoomDetails = () => {
+	const room = getRoomRepository().getRoomByNumber(888);
+
+	setChart([0, 65, 65, 130]);
+	initRoomInfo(room);
+	initRoomCards(room, getServiceRepository().getServiceInfo());
+	initReviews(room.getReviews(), getUserRepository());
+}
+
+initRoomDetails();
+

@@ -26,6 +26,8 @@
     position: absolute;
     display: flex;
     align-items: center;
+		background: none;
+		border: none;
   }
   &__aside-button {
     cursor: pointer;
@@ -38,7 +40,15 @@
     border-top-right-radius: 2rem;
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.1);
+		border: none;
 		z-index: 5;
+		&:hover,
+		&:disabled{
+			opacity: 0.5;
+		}
+		&:active {
+			opacity: 1;
+		}
 
     &::after {
       content: 'expand_more';
@@ -70,14 +80,14 @@
 		display: flex;
 		flex-direction: column;
 		background-color: white;
+		z-index: 4;
 		@media screen and (max-width: 1230px) {
       display: none;
     }
     &_show {
       display: flex;
       padding: 2rem 5rem;
-      position: absolute;
-      z-index: 4;
+      position: absolute; 
       top: 0;
       left: 0;
 			border-bottom-right-radius: 1rem;
@@ -113,12 +123,12 @@
 	&__title {
 		@media screen and (max-width: 655px) {
 			text-align: center;
+			padding-right: 2.7rem;
     }
 	}
   &__rooms {
     display: flex;
     flex-direction: column;
-		align-items: center;
     @media screen and (max-width: 655px) {
       max-width: 30rem;
       margin-top: 7rem;

@@ -18,8 +18,6 @@ class ServiceRepositoryMock extends ServiceRepository{
 	}
 }
 
-
-
 export function getServiceRepository(){
 	return new ServiceRepositoryMock(serviceMock)
 }

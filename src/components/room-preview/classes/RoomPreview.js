@@ -1,5 +1,4 @@
 import { bindObserverMetods } from '../../../utils/observerMetods';
-import { setRatingGroupName } from '../../rating/rating';
 import {
   bindRoomPreview,
   createImg,
@@ -9,10 +8,7 @@ import {
   getSlider,
   initRatingBlock,
   removeNavButtonSelected,
-  removeSliderHovered,
   setNavButtonSelected,
-  setRating,
-  setSliderHovered,
   setTitlePreview,
   sliderNavButtonPressed,
   sliderNextButtonPressed,
@@ -81,10 +77,7 @@ class RoomPreview {
 
   bindEvents() {
     this.preview.addEventListener('click', this.onClickPreview);
-		this.preview.addEventListener('mouseover', this.onSliderHover);
-		this.preview.addEventListener('mouseout', this.onSliderOut);
     this.on(previewConsts.changeImagePosition, this.onChangeImagePosition);
-
   }
 
   onClickPreview = (e) => {
@@ -97,14 +90,6 @@ class RoomPreview {
   onChangeImagePosition = () => {
     this.setNavButtonCurrentPosition();
   };
-
-	onSliderHover = () => {
-		setSliderHovered(this.slider);
-	}
-
-	onSliderOut = () => {
-		removeSliderHovered(this.slider);
-	}
 
   showNextImage = () => {
     if (this.currentImagePosition < this.imagePaths.length - 1) {
