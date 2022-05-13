@@ -32,5 +32,11 @@
 			margin-right: 1.1rem;
 			flex-shrink: 0;
 		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+		&_empty {
+			display: none;
+		}
 	}
 }

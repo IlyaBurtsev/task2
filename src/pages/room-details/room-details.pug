@@ -11,9 +11,12 @@ block title
 	title Room details
 block content
 	.room-details__container
-		section.room-details__picture-container
-			img.room-details__main-picture
+		section.room-details__picture-container.js-room-details__picture-container
+			.room-details__main-picture-container
+				img.room-details__main-picture
 			.room-details__other-picture-container
+				img.room-details__additional-picture
+				img.room-details__additional-picture
 		.room-details__flexable-container
 			section.room-details__info
 				.room-details__main-info
@@ -25,23 +28,17 @@ block content
 								+room-info()
 						+title({type: TITLE.FOR_SECTION, title: 'Впечатления от номера'})
 								.room-details__chart-container 
-									canvas.room-details__chart
+									canvas.room-details__chart.js-room-details__chart
 									.room-details__legend 
-										+list({
-											type: LIST.BULLET_FOR_CHART, 
-											items:['Великолепно', 'Хорошо', 'Удовлетворительно', 'Разочарован']})
+										+list({type: LIST.BULLET_FOR_CHART})
 					+title({type: TITLE.FOR_SECTION, title: 'Отзывы посетителей номера', description: '2 отзыва'})
-						+review()
+						.room-details__review-container
+							+review()
 					.room-details__room-rules-container
-						.room-details__room-rules
-							+title({type: TITLE.FOR_SECTION, title: 'Правила'})
-								+list({
-									type: LIST.BULLET, 
-									items:[
-										'Нельзя с питомцами', 
-										'Без вечеринок и мероприятий', 
-										'Время прибытия — после 13:00, а выезд до 12:00'
-										]})
+						.room-details__room-rules.js-room-details__room-rules
+							.room-details__title-container
+								+title({type: TITLE.FOR_SECTION, title: 'Правила'})
+							+list({type: LIST.BULLET})
 						+title({type: TITLE.FOR_SECTION, title: 'Отмена'})
 							.room-details__cancel-rules
 

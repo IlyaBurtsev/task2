@@ -14,13 +14,10 @@ import { getRoomRepository } from '../../repository/roomRepository/RoomRepositor
 
 import { getServiceRepository } from '../../repository/serviceRepository/serviceRepository';
 import { getUserRepository } from '../../repository/userRepository/UserRepository';
+import { setListBullet } from '../../components/list/_bullet/list_bullet';
 
-
-
-
-
-const setChart = (chartData=[]) => {
-  const ctx = getElement('.room-details__chart').getContext('2d');
+const setChart = (chartData=[], element) => {
+  const ctx = element.getContext('2d');
 
   const amazing = ctx.createLinearGradient(0, 0, 0, 170);
   amazing.addColorStop(0, ' #FFE39C');
@@ -74,7 +71,6 @@ const setChart = (chartData=[]) => {
   };
 
   const data = {
-    labels: ['Разочарован', 'Уовлетворительно', 'Хорошо', 'Великолепно'],
     datasets: [
       {
         label: '',
@@ -90,7 +86,7 @@ const setChart = (chartData=[]) => {
     type: 'doughnut',
     data: data,
     options: {
-      // responsive: true,
+      responsive: true,
       maintainAspectRatio: false,
       plugins: {
         legend: {
@@ -101,13 +97,39 @@ const setChart = (chartData=[]) => {
     plugins: [title],
   });
 }
+
+
 const initRoomDetails = () => {
+	const selector = {
+		imageContainer: '.js-room-details__picture-container',
+		chart: '.js-room-details__chart',
+		rulesContainer: '.js-room-details__room-rules'
+	}
 	const room = getRoomRepository().getRoomByNumber(888);
 
-	setChart([0, 65, 65, 130]);
+	const imageConteiner = getElement(selector.imageContainer);
+
+	imageConteiner.firstElementChild.firstElementChild.src = room.getMainPicture();
+
+	imageConteiner.lastElementChild.firstElementChild.src = room.getRoomPictures()[1];
+	imageConteiner.lastElementChild.lastElementChild.src = room.getRoomPictures()[2];
+
+	const chart = getElement(selector.chart);
+
+	const vote = room.getRoomVote();
+
+
+	setChart(Object.values(vote), chart);
+	setListBullet(Object.keys(vote).reverse(), chart.nextElementSibling);
 	initRoomInfo(room);
 	initRoomCards(room, getServiceRepository().getServiceInfo());
 	initReviews(room.getReviews(), getUserRepository());
+
+	const rulesContainer = getElement(selector.rulesContainer);
+
+	setListBullet(room.getRoomRules(), rulesContainer);
+
+	rulesContainer.nextElementSibling.lastElementChild.innerHTML = room.getCancelInfo();
 }
 
 initRoomDetails();

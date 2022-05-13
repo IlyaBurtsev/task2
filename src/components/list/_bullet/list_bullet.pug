@@ -5,15 +5,21 @@ mixin list_bullet(options)
 			.list__container_bullet
 				if (title)
 					H3.list__title_bullet= title
-				ul.list__items_bullet 
-					each val, index in items
-						li.list__item_bullet= val
+				ul.list__items_bullet
+					if (!items)
+						li.list__item_bullet.list__item_bullet_empty.js-list__item_bullet_empty
+					else
+						each val, index in items
+							li.list__item_bullet= val
 		when LIST.BULLET_FOR_CHART 
 			.list__container_bullet.list__container_bullet_for-chart
 				if (title)
 					H3.list__title_bullet.list__title_bullet_for-chart= title
 				ul.list__items_bullet.list__items_bullet_for-chart 
-					each val, index in items
-						li.list__item_bullet.list__item_bullet_for-chart= val
+					if (!items)
+						li.list__item_bullet.list__item_bullet_for-chart.list__item_bullet_empty.js-list__item_bullet_empty
+					else
+						each val, index in items
+							li.list__item_bullet.list__item_bullet_for-chart= val
 
 				

@@ -9,6 +9,10 @@ export default class Room{
 		this.rating = room.rating;
 		this.ratingCounter = room.ratingCounter;
 		this.pictures = room.pictures;
+		this.mainPicture = room.mainPicture;
+		this.vote = room.vote;
+		this.rules = room.rules;
+		this.cancelInfo = room.cancelInfo;
 	}
 
 	getRoomNumber(){
@@ -43,5 +47,21 @@ export default class Room{
 	getRoomPictures(){
 		return this.pictures;
 	}
+	getMainPicture() {
+		return this.mainPicture;
+	}
+
+	getRoomVote () {
+		return this.vote;
+	}
+
+	getRoomRules() {
+		return this.rules;
+	}
+
+	getCancelInfo() {
+		return this.cancelInfo;
+	}
+
 	
 }
