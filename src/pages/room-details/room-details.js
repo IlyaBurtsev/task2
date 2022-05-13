@@ -15,6 +15,7 @@ import { getRoomRepository } from '../../repository/roomRepository/RoomRepositor
 import { getServiceRepository } from '../../repository/serviceRepository/serviceRepository';
 import { getUserRepository } from '../../repository/userRepository/UserRepository';
 import { setListBullet } from '../../components/list/_bullet/list_bullet';
+import { initHeader } from '../../components/header/header';
 
 const setChart = (chartData=[], element) => {
   const ctx = element.getContext('2d');
@@ -118,7 +119,7 @@ const initRoomDetails = () => {
 
 	const vote = room.getRoomVote();
 
-
+	initHeader();
 	setChart(Object.values(vote), chart);
 	setListBullet(Object.keys(vote).reverse(), chart.nextElementSibling);
 	initRoomInfo(room);

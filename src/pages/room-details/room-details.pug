@@ -18,23 +18,26 @@ block content
 				img.room-details__additional-picture
 				img.room-details__additional-picture
 		.room-details__flexable-container
-			section.room-details__info
-				.room-details__main-info
-					+room-card()
-				.room-details__additional-info
+			.room-details__content
+				section.room-details__info
+					.room-details__main-info
+						+room-card()
+					//- .room-details__additional-info
 					.room-details__room-info-container
-						.room-details__room-info
-							+title({type: TITLE.FOR_SECTION, title: 'Сведения о номере'})
-								+room-info()
-						+title({type: TITLE.FOR_SECTION, title: 'Впечатления от номера'})
-								.room-details__chart-container 
-									canvas.room-details__chart.js-room-details__chart
-									.room-details__legend 
-										+list({type: LIST.BULLET_FOR_CHART})
-					+title({type: TITLE.FOR_SECTION, title: 'Отзывы посетителей номера', description: '2 отзыва'})
-						.room-details__review-container
-							+review()
-					.room-details__room-rules-container
+							.room-details__room-info
+								+title({type: TITLE.FOR_SECTION, title: 'Сведения о номере'})
+									+room-info()
+							.room-details__chart-info
+								+title({type: TITLE.FOR_SECTION, title: 'Впечатления от номера'})
+										.room-details__chart-container 
+											canvas.room-details__chart.js-room-details__chart
+											.room-details__legend 
+												+list({type: LIST.BULLET_FOR_CHART})
+				.room-details__review-section
+						+title({type: TITLE.FOR_SECTION, title: 'Отзывы посетителей номера', description: '2 отзыва'})
+							.room-details__review-container
+								+review()
+				.room-details__room-rules-container
 						.room-details__room-rules.js-room-details__room-rules
 							.room-details__title-container
 								+title({type: TITLE.FOR_SECTION, title: 'Правила'})

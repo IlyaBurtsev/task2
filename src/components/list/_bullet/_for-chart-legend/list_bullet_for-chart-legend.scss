@@ -1,6 +1,9 @@
 .list {
 	&__items_bullet_for-chart{
 		padding-left: 2.6rem;
+		@media screen and (max-width: 420px) {
+      padding-left: 1rem;
+    }
 	}
 	&__item_bullet_for-chart {
 		width: auto;

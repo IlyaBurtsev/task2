@@ -1,13 +1,15 @@
 .room-card {
   &__container {
-    width: 38rem;
-    height: 51.2rem;
+    max-width: 38rem;
     border: 0.1rem solid rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
     box-shadow: 0 0 2.5rem rgba(0, 0, 0, 0.2);
-    padding: 4.1rem 2.9rem 2.3rem 3rem;
+    padding: 4rem 3rem 2.8rem 2.9rem;
     background: #ffffff;
-		border-radius: 0.4rem;
+    border-radius: 0.4rem;
+    @media screen and (max-width: 420px) {
+      padding: 3rem 1rem;
+    }
   }
   &__title-container {
     display: flex;
@@ -34,7 +36,7 @@
     }
   }
   &__items-dropdown {
-    margin-top: 2.1rem;
+    margin-top: 2rem;
     margin-bottom: 1.8rem;
   }
 
@@ -42,8 +44,10 @@
     margin-bottom: 1.3rem;
   }
   &__service-info {
-    width: 23.9rem;
+    max-width: 23.9rem;
+		min-width: 20rem;
     display: flex;
+		flex-shrink: 1;
     flex-direction: row;
     line-height: 1.8rem;
     &::after {
@@ -61,10 +65,15 @@
       margin-left: 0.5rem;
       margin-bottom: 1.4rem;
       flex-shrink: 0;
+			@media screen and (max-width: 420px) {
+				margin-left: 0.2rem;
+			}
     }
+
   }
   &__total {
     display: flex;
+    min-width: 0;
     align-items: baseline;
   }
   &__total-info {

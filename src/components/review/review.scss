@@ -1,10 +1,12 @@
 .review {
   &__container {
+		width: 100%;
     //display: none;
     margin-bottom: 2.2rem;
   }
 
   &__title-container {
+		padding-top: 0.2rem;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -33,7 +35,6 @@
 	}
   &__review {
     display: flex;
-    align-items: baseline;
 		box-sizing: border-box;
   }
 	&__like-button{
