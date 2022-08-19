@@ -14,12 +14,14 @@ const initCurrentType = (dropdown, callbackFunc) => {
 	}
 }
 
-export const initDropdowns = (elementContainer) => {
+const initDropdowns = (elementContainer) => {
 	getElements('.js-dropdown__container', elementContainer).forEach(dropdown => initCurrentType(dropdown));
 }
 
-export const initDropdown = (elementContainer, callbackFunc) => {
+const initDropdown = (elementContainer, callbackFunc) => {
 	const dropdown = getElement('.js-dropdown__container', elementContainer);
 	initCurrentType(dropdown, callbackFunc);
 }
+
+export {initDropdown, initDropdowns}
 

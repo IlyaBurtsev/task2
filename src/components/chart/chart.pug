@@ -1,7 +1,6 @@
+include ../list/list.pug
 mixin chart(options)
-	.chart__container 
-		.chart__title= options.title
-		.chart__chart-container 
-			.chart__chart 
-			.chart__description
+	canvas.chart__chart.js-chart__chart
+	.chart__legend 
+		+list({type: LIST.BULLET_FOR_CHART})
 				

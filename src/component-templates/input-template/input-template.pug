@@ -27,7 +27,7 @@ mixin input-tamplate(options={})
 		each jsClass in useJS
 			case jsClass
 				when JS_CLASS.CONTAINER 
-					- jsContainerClasses= modificatorName ? 'js-' + containerClassName + '_' + modificatorName : 'js-' + containerClassName
+					- jsContainerClasses= 'js-' + containerClassName
 				when JS_CLASS.INPUT
 					- jsInputClasses= modificatorName ? 'js-' + inputClassName + '_' + modificatorName : 'js-' + inputClassName
 	-

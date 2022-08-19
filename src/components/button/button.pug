@@ -8,21 +8,21 @@ mixin button(options={})
 	case type 
 		when BUTTON.WHITE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'white-text', inputType: 'button', 
-			inputValue: label, commonModificators: commonModificators, disabled: disabled})
+			inputValue: label, commonModificators: commonModificators, disabled: disabled, useJS: [JS_CLASS.CONTAINER]})
 		when BUTTON.PURPLE_TEXT
 			+input-tamplate({blockName: 'button', modificatorName: 'purple-text', inputType: 'button', 
-			inputValue: label, commonModificators: commonModificators, disabled: disabled})
+			inputValue: label, commonModificators: commonModificators, disabled: disabled, useJS: [JS_CLASS.CONTAINER]})
 		when BUTTON.PAY 	
 			+input-tamplate({blockName: 'button', modificatorName: 'pay', inputType: 'button', 
-			inputValue: label, disabled: disabled})
+			inputValue: label, disabled: disabled, useJS: [JS_CLASS.CONTAINER]})
 		when BUTTON.LINK	
 			+input-tamplate({blockName: 'button', modificatorName: 'link', inputType: 'button', 
-			inputValue: label, disabled: disabled})
+			inputValue: label, disabled: disabled, useJS: [JS_CLASS.CONTAINER]})
 		when BUTTON.LIKE 	
 			- let counter = 0;
 			if (label)
 				- counter = label
 			+input-tamplate({blockName: 'button', modificatorName: 'like', inputType: 'button',
 			 inputValue: counter, commonModificators: commonModificators, disabled: disabled, 
-			 useJS: [JS_CLASS.CONTAINER, JS_CLASS.INPUT]})
+			 useJS: [JS_CLASS.CONTAINER]})
 		

@@ -1,52 +1,82 @@
 import {
-  addClass,
   getElement,
-  removeClass,
 } from '../../../../utils/utils';
 
-export const getItemNameWhenAddButtonClicked = (e) => {
-  if (e.target.classList.contains('dropdown-item__add-button_active')) {
-    return e.target.getAttribute('item-name');
+
+const initDefaultItem = (bindElement) => {
+  const className = {
+    itemContainer: 'js-dropdown-item__container',
+    title: 'js-dropdown-item__title',
+    counter: 'js-dropdown-item__counter',
+    addButton: 'js-dropdown-item__add-button',
+    subButton: 'js-dropdown-item__sub-button',
+    buttonActive: 'dropdown-item__button_active',
+  };
+  const container = getElement(`.${className.itemContainer}`, bindElement)
+  if (container === null) {
+    throw new Error('Default item container is null!');
   }
-	return false;
+
+  const setValue = (value, parentElement) => {
+    const counter = getElement(`.${className.counter}`, parentElement);
+    if (counter !== null) {
+      counter.value = value;
+    }
+  };
+
+  const setItemName = (name, parentElement) => {
+    const title = getElement(`.${className.title}`, parentElement);
+    if (title !== null) {
+      title.innerHTML = name;
+    }
+  };
+
+  const item = {
+    container: container,
+    addButtonClassName: className.addButton,
+    subButtonClassName: className.subButton,
+    setValue: setValue,
+    setItemName: setItemName,
+  };
+  const switchToActive = (item, add) => {
+    if (item !== null) {
+      let button;
+      if (add) {
+        button = getElement(`.${className.addButton}`, item);
+      } else {
+        button = getElement(`.${className.subButton}`, item);
+      }
+      if (button !== null) {
+        if (!button.classList.contains(className.buttonActive)) {
+          button.classList.add(className.buttonActive);
+          button.removeAttribute('disabled');
+        }
+      }
+    }
+  };
+
+  const switchToDisable = (item, add) => {
+
+    if (item !== null) {
+      let button;
+      if (add) {
+        button =getElement(`.${className.addButton}`, item);
+      } else {
+        button =getElement(`.${className.subButton}`, item);
+      }
+      if (button !== null) {
+        if (button.classList.contains(className.buttonActive)) {
+          button.classList.remove(className.buttonActive);
+          button.setAttribute('disabled', '');
+        }
+      }
+    }
+  };
+  return {
+    item: item,
+    switchToActive: switchToActive,
+    switchToDisable: switchToDisable,
+  };
 };
 
-export const activeAddButton = (itemName, container) => {
-  const button = getElement(`.js-dropdown-item__add-button[item-name="${itemName}"]`, container);
-	button.removeAttribute('disabled');
-	addClass(button, 'dropdown-item__add-button_active');
-  return true;
-};
-
-export const disableAddButton = (itemName, container) => {
-  const button = getElement(`.js-dropdown-item__add-button[item-name="${itemName}"]`, container);
-  button.setAttribute('disabled', '');
-  removeClass(button, 'dropdown-item__add-button_active');
-  return true;
-};
-
-export const getItemNameWhenubtractButtonClicked = (e) => {
-  if (e.target.classList.contains('dropdown-item__sub-button_active')) {
-    return e.target.getAttribute('item-name');
-  }
-	return false;
-};
-
-export const activeSubtractButton = (itemName, container) => {
-	const button = getElement(`.js-dropdown-item__sub-button[item-name="${itemName}"]`, container);
-  button.removeAttribute('disabled');
-  addClass(button, 'dropdown-item__sub-button_active');
-  return true;
-};
-
-export const disableSubtractButton = (itemName, container) => {
-	const button = getElement(`.js-dropdown-item__sub-button[item-name="${itemName}"]`, container);
-  button.setAttribute('disabled', '');
-  removeClass(button, 'dropdown-item__sub-button_active');
-  return true;
-};
-
-export const updateCounterView = (itemName, value, container) => {
-	const counter = getElement(`.js-dropdown-item__counter[item-name="${itemName}"]`, container);
-	counter.value = value;
-}
+export default initDefaultItem;

@@ -5,8 +5,10 @@ include ../../components/button/button.pug
 mixin dropdown-template(options={})
 	-
 		const {blockName='dropdown', modificatorName='', thirdPartyPlugin=false, commonModificators=[],
-		 items=[], selectedDates, doubleInput=false, firstDate,  secondDate, firstTitle='', secondTitle,
+		 items=[], selectedDates =[], doubleInput=false, firstTitle='', secondTitle='',
 		  placeholder, footerButtonActive=false, useJS=[JS_CLASS.CONTAINER ] } = options
+		
+		//- const [firstDate, secondDate] = selectedDates.split(' ')
 
 		let containerClassName = blockName + '__container'
 		
@@ -43,18 +45,17 @@ mixin dropdown-template(options={})
 						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: selectedDates})
 					.dropdown__input-container
 						+title({title: secondTitle})
-						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: secondDate})
+						+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: ''})
 			else 	
 				+input-field({type: INPUT_FIELD.FOR_DATE_DROPDOWN, placeholder: placeholder, inputText: selectedDates})
 		else
 			+input-field({type: INPUT_FIELD.FOR_ITEMS_DROPDOWN, placeholder: placeholder})
 			.dropdown__expand-container
-				each value, itemName in items
-					+dropdown-item(itemName, value)
-				if (footerButtonActive)
-					.dropdown__footer
-						.dropdown__clear-button.js-dropdown__clear-button
-							+button({type: BUTTON.LINK, label: 'очистить'})
-						.dropdown__apply-button.js-dropdown__apply-button
-							+button({type: BUTTON.LINK, label: 'применить'})
+					+dropdown-item('', 0)
+					if (footerButtonActive)
+						.dropdown__footer
+							.dropdown__clear-button.js-dropdown__clear-button
+								+button({type: BUTTON.LINK, label: 'очистить'})
+							.dropdown__apply-button.js-dropdown__apply-button
+								+button({type: BUTTON.LINK, label: 'применить'})
 			

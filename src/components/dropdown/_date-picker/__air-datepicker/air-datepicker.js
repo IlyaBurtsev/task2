@@ -1,6 +1,8 @@
-import { getElement } from "../../../../utils/utils";
+import { getElement } from '../../../../utils/utils';
 
-
-export function clearBackgroundForRangeFrom(){
-	getElement('.-range-from-').classList.add('-range-to-');
+export function clearBackgroundForRangeFrom() {
+  const cell = getElement('.-range-from-');
+  if (cell !== null) {
+    cell.classList.add('-range-to-');
+  }
 }

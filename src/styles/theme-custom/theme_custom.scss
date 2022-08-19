@@ -10,9 +10,9 @@
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('@theme/assets/fonts/Montserrat-Bold.svg') format('woff'),
+  src: url('@theme/assets/fonts/Montserrat-Bold.woff') format('woff'),
     url('@theme/assets/fonts/Montserrat-Bold.ttf') format('truetype'),
-    url('@theme/assets/fonts/Montserrat-Bold.woff') format('svg');
+    url('@theme/assets/fonts/Montserrat-Bold.svg') format('svg');
   font-weight: 700;
   font-style: normal;
 }

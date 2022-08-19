@@ -32,8 +32,7 @@
 		background: none;
 		font-weight: bold;
 	}
-	&__sub-button_active, 
-	&__add-button_active{
+	&__button_active{
 		cursor: pointer;
 		border-color: $dark-50;
 	}

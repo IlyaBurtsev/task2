@@ -5,6 +5,7 @@ include ../../components/room-card/room-card.pug
 include ../../components/review/review.pug
 include ../../components/list/list.pug
 include ../../components/title/title.pug
+include ../../components/chart/chart.pug
 
 
 block title 	
@@ -30,9 +31,7 @@ block content
 							.room-details__chart-info
 								+title({type: TITLE.FOR_SECTION, title: 'Впечатления от номера'})
 										.room-details__chart-container 
-											canvas.room-details__chart.js-room-details__chart
-											.room-details__legend 
-												+list({type: LIST.BULLET_FOR_CHART})
+											+chart()
 				.room-details__review-section
 						+title({type: TITLE.FOR_SECTION, title: 'Отзывы посетителей номера', description: '2 отзыва'})
 							.room-details__review-container

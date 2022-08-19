@@ -1,0 +1,10 @@
+.chart{
+	&__chart {
+    width: 12.5rem;
+    height: 12.5rem;
+		@media screen and (max-width: 420px) {
+      width: 10rem;
+			height: 10rem;
+    }
+  }
+}
