@@ -2,9 +2,11 @@
 
 .radio {
   &__container {
-   max-width: 26rem;
+    cursor: pointer;
+    max-width: 26rem;
   }
   &__input {
+    cursor: pointer;
     opacity: 0;
     position: absolute;
     width: 2rem;

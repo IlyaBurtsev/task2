@@ -30,6 +30,7 @@
   }
 }
 .rating__container_actived {
+	cursor: pointer;
   .rating__input:hover,
   .rating__input:hover ~ .rating__input {
 		&::before {

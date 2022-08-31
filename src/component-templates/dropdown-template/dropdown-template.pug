@@ -54,8 +54,8 @@ mixin dropdown-template(options={})
 					+dropdown-item('', 0)
 					if (footerButtonActive)
 						.dropdown__footer
-							.dropdown__clear-button.js-dropdown__clear-button
+							.dropdown__clear-button
 								+button({type: BUTTON.LINK, label: 'очистить'})
-							.dropdown__apply-button.js-dropdown__apply-button
+							.dropdown__apply-button
 								+button({type: BUTTON.LINK, label: 'применить'})
 			

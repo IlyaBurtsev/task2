@@ -9,12 +9,12 @@ mixin choose()
 				doubleInput: true,
 				firstTitle: 'прибытие',
 				secondTitle: 'выезд',
+				selectedDates: '2019-08-19 2019-08-23',
 			})
 		.choose__dropdown-guests
 				+title({title: 'Гости'})
 					+dropdown({
-						type: DROPDOWN.ITEM_QUANTITY, 
-						items: {'взрослые':0, 'дети':0, 'младенцы':0}, 
+						type: DROPDOWN.ITEM_QUANTITY,  
 						footerButtonActive: true, 
 						placeholder: 'Сколько гостей',
 					})

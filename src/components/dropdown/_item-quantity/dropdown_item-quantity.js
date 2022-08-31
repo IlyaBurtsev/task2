@@ -1,7 +1,6 @@
 import './dropdown_item-quantity.scss';
 import './__dropdown-item/dropdown-item.scss';
 import dropdownCreator from 'dropdown/dropdown/dropdown';
-
 import { getElement } from '../../../utils/utils';
 import initDefaultItem from './__dropdown-item/dropdown-item';
 import initButton from '../../button/button';
@@ -42,24 +41,19 @@ const initQuantityDropdown = (bindElement, callback) => {
   dropdownPlugin.changeTitle(changeTitle(values, titleNames));
 
   dropdownPlugin.subscribeToChangeState(onChangeState);
+  setParametrs();
   if (clearButton) {
-    dropdownPlugin.changeItemParametrs({ maxValue: 5, minValue:1 }, 0);
-    dropdownPlugin.changeItemParametrs({ maxValue: 3 }, 1);
-    dropdownPlugin.changeItemParametrs({ maxValue: 2 }, 2);
     const applayButtonComponent = initButton(
       clearButton.parentElement.nextElementSibling
     );
     const applayButton = applayButtonComponent.button;
     clearButton.addEventListener('click', onClickClearButton);
     applayButton.addEventListener('click', onClickApplayButton);
-  }else {
-		dropdownPlugin.changeItemParametrs({ maxValue: 3, minValue:1 }, 0);
-    dropdownPlugin.changeItemParametrs({ maxValue: 8, minValue:1 }, 1);
-    dropdownPlugin.changeItemParametrs({ maxValue: 3 }, 2);
-	}
+  }
 
   function onClickClearButton() {
     dropdownPlugin.updateDropdownOptions({ startValues: [] });
+    setParametrs();
   }
 
   function onClickApplayButton() {
@@ -71,15 +65,39 @@ const initQuantityDropdown = (bindElement, callback) => {
     }
   }
 
+  function setParametrs() {
+    if (clearButton) {
+      dropdownPlugin.changeItemParametrs({ maxValue: 5 }, 0);
+      dropdownPlugin.changeItemParametrs({ maxValue: 3 }, 1);
+      dropdownPlugin.changeItemParametrs({ maxValue: 2 }, 2);
+    } else {
+      dropdownPlugin.changeItemParametrs({ maxValue: 3 }, 0);
+      dropdownPlugin.changeItemParametrs({ maxValue: 8 }, 1);
+      dropdownPlugin.changeItemParametrs({ maxValue: 3 }, 2);
+    }
+  }
+
   function onChangeState(state, payload) {
     const { itemStates } = state;
     const { id, changeType } = payload;
     values = [];
+    let summ = 0;
     if (
       changeType === dropdownChangeTypes.addButtonClicked ||
       changeType === dropdownChangeTypes.subButtonClicked
     ) {
-      itemStates.forEach((state) => values.push(state.value));
+      itemStates.forEach((state) => {
+        summ += state.value;
+        values.push(state.value);
+      });
+      if (summ > 0 && values[0] === 0 && clearButton) {
+        dropdownPlugin.changeTitle('Без взрослых не заселяем!');
+        return;
+      }
+      if (summ > 0 && values[0] === 0 && !clearButton) {
+        dropdownPlugin.changeTitle('Выберите колличество спален.');
+        return;
+      }
       changeTitle(values, titleNames);
     }
   }

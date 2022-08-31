@@ -25,7 +25,7 @@ const getButtons = (callbackFunc, doubleInput, element) => {
     onClick: (dp) => {
       dp.clear();
       doubleInput ? (element.value = '') : '';
-			if (typeof callbackFunc === 'function') {
+      if (typeof callbackFunc === 'function') {
         callbackFunc(dp.selectedDates);
       }
     },
@@ -42,6 +42,7 @@ const initDateDropdown = (bindElement, callbackFunc) => {
   const doubleInput = bindElement.classList.contains(className.doubleInput);
 
   let selectedDates = [];
+  let startDate = new Date();
   let dateFormat = 'dd MMM';
   let input = '';
   let inputs = '';
@@ -56,13 +57,13 @@ const initDateDropdown = (bindElement, callbackFunc) => {
     inputs = getElements(`.${className.input}`, inputsContainer);
     input = inputs[0];
     dateFormat = '';
-    input.value ? (selectedDates = input.value.split(' ')) : '';
-    if (!selectedDates[1]) {
-      selectedDates = [];
-      input.value = '';
+		if (input.value.split(' ')[1]){
+			selectedDates = input.value.split(' ')
+			startDate = '2019-08-08'
+		}else {
+			input.value = '';
       inputs[1].value = '';
-    }
-
+		}
     inputs[1].addEventListener('click', () => {
       dp.show();
       dp.$el.focus();
@@ -113,6 +114,7 @@ const initDateDropdown = (bindElement, callbackFunc) => {
   checkScreenSize();
 
   let dp = new AirDatepicker(input, {
+    startDate: startDate,
     locale: ru,
     container: bindElement,
     visible: bindElement.classList.contains(className.openedDropdown),
@@ -161,7 +163,8 @@ const initDateDropdown = (bindElement, callbackFunc) => {
 };
 
 const calendarDemo = (selector) => {
-  new AirDatepicker(selector, {
+  const dp = new AirDatepicker(selector, {
+    startDate: '2019-08-08',
     range: true,
     multipleDatesSeparator: ' - ',
     prevHtml:
@@ -174,6 +177,8 @@ const calendarDemo = (selector) => {
     },
     buttons: getButtons(false),
   });
+
+  console.log(dp.selectedDates);
 };
 
 export { initDateDropdown, calendarDemo };

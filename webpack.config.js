@@ -64,7 +64,7 @@ module.exports = (env, argv = {}) => {
       }),
       // ...htmlPlugins,
       new HtmlWebpackPlugin({
-        template: `${pagesDir}/room-details/room-details.pug`
+        template: `${pagesDir}/cards/cards.pug`
       }),
     ];
     if (isProduction) {
@@ -84,8 +84,8 @@ module.exports = (env, argv = {}) => {
       assetModuleFilename: 'assets/[name][ext]',
       clean: true,
     },
-    // entry: ...entries,
-    entry: `${pagesDir}/room-details/room-details.js`,
+    // entry: entries,
+    entry: `${pagesDir}/cards/cards.js`,
     resolve: {
       alias: {
         '@theme': path.resolve(__dirname, 'src/styles/theme-custom'),

@@ -5,16 +5,16 @@ mixin room-preview(options)
 		let viewPortClassName = 'room-preview__view-port'
 		hoverDemo ? viewPortClassName+=' room-preview__view-port_hover-demo' :''
 	.room-preview__container.room-preview__container_empty.js-room-preview__container
-		.room-preview__slider.js-room-preview__slider
+		.room-preview__slider
 			div(class=viewPortClassName)
-				.room-preview__img-container.js-room-preview__img-container
+				.room-preview__img-container
 				.room-preview__prev-button="expand_more"
 				.room-preview__next-button="expand_more"
-				.room-preview__button-container.js-room-preview__button-container
+				.room-preview__button-container
 		.room-preview__title-container
-			H2.room-preview__room-number.js-room-preview__room-number
+			H2.room-preview__room-number
 			.room-preview__price
 		.room-preview__separator
 		.room-preview__rate-container 
 			+rating({disabled: true})
-			.room-preview__rating-counter.js-room-preview__rating-counter
+			.room-preview__rating-counter
