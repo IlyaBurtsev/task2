@@ -11,6 +11,6 @@ import { initFooterMobileDemo } from '../../components/footer/footer'
 
 const user =getUserRepository().getCurrentUser();
 
-initHeader(getElement('.js-headers-and-footers__signin-header'), user.userToString());
+initHeader(user.userToString(), getElement('.js-headers-and-footers__signin-header'));
 
 initFooterMobileDemo(getElement('.headers-and-footers__footer_mobile'))

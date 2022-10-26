@@ -57,13 +57,15 @@ const initDateDropdown = (bindElement, callbackFunc) => {
     inputs = getElements(`.${className.input}`, inputsContainer);
     input = inputs[0];
     dateFormat = '';
-		if (input.value.split(' ')[1]){
-			selectedDates = input.value.split(' ')
-			startDate = '2019-08-08'
-		}else {
-			input.value = '';
-      inputs[1].value = '';
-		}
+    if (input.value.split(' ')[1]) {
+      selectedDates = input.value.split(' ');
+      startDate = '2019-08-08';
+    } else {
+      input.value = '';
+      if (!inputs[1].value) {
+        inputs[1].value = '';
+      }
+    }
     inputs[1].addEventListener('click', () => {
       dp.show();
       dp.$el.focus();

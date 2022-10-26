@@ -11,13 +11,13 @@ module.exports = (env, argv = {}) => {
   const isDevelopment = mode === 'development';
   const pagesDir = path.resolve(__dirname, 'src', 'pages');
   const pages = [];
-	const entries = [];
+	const entries = {};
   fs.readdirSync(pagesDir).forEach((file) => {
     pages.push(file);
   });
   const htmlPlugins = pages.map((fileName) => {
 
-		entries.push(`${pagesDir}/${fileName}/${fileName}.js`);
+		entries[fileName] =`${pagesDir}/${fileName}/${fileName}.js`;
 
     return new HtmlWebpackPlugin({
       filename: `${fileName}.html`,
@@ -62,10 +62,10 @@ module.exports = (env, argv = {}) => {
         'window.jQuery': 'jquery',
         noUiSlider: 'nouislider',
       }),
-      // ...htmlPlugins,
-      new HtmlWebpackPlugin({
-        template: `${pagesDir}/cards/cards.pug`
-      }),
+      ...htmlPlugins,
+      // new HtmlWebpackPlugin({
+      //   template: `${pagesDir}/cards/cards.pug`
+      // }),
     ];
     if (isProduction) {
       plugins.push(
@@ -84,8 +84,8 @@ module.exports = (env, argv = {}) => {
       assetModuleFilename: 'assets/[name][ext]',
       clean: true,
     },
-    // entry: entries,
-    entry: `${pagesDir}/cards/cards.js`,
+    entry: entries,
+    // entry: `${pagesDir}/index/index.js`,
     resolve: {
       alias: {
         '@theme': path.resolve(__dirname, 'src/styles/theme-custom'),

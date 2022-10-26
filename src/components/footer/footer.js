@@ -7,6 +7,7 @@ import { addClass, getElement} from '../../utils/utils';
 
 const initFooterMobileDemo = (bindElement) => {
 	const mobileFooter = getElement('.footer__container', bindElement);
+	console.log(mobileFooter)
 	const footerWidth = mobileFooter.offsetWidth;
 	if (footerWidth <1100) {
 		addClass(mobileFooter, 'footer__container_mobile-demo')

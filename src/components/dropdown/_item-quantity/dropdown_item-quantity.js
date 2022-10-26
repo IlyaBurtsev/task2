@@ -4,7 +4,7 @@ import dropdownCreator from 'dropdown/dropdown/dropdown';
 import { getElement } from '../../../utils/utils';
 import initDefaultItem from './__dropdown-item/dropdown-item';
 import initButton from '../../button/button';
-const initQuantityDropdown = (bindElement, callback) => {
+const initQuantityDropdown = (bindElement, callback, startValues) => {
   const component = initComponentDropdown(bindElement);
   const { view, switchButtonToActive, switchButtonToDisable } = component;
   const { createDropdownPlugin, ChangeStateTypes: dropdownChangeTypes } =
@@ -32,10 +32,9 @@ const initQuantityDropdown = (bindElement, callback) => {
     itemNames.push('спальни', 'кровати', 'ванные комнаты');
     values.push(2, 2, 0);
   }
-
   dropdownPlugin = createDropdownPlugin(view, {
     itemNames: itemNames,
-    startValues: values,
+    startValues: startValues? startValues : values,
     externalCheckState: customCheck,
   });
   dropdownPlugin.changeTitle(changeTitle(values, titleNames));
@@ -145,6 +144,7 @@ const initQuantityDropdown = (bindElement, callback) => {
     currentItem.value = Number(value.toFixed(1));
     return state;
   }
+	return dropdownPlugin
 };
 
 function switchResult(itemValue, itemName) {

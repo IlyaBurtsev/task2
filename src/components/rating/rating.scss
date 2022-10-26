@@ -30,11 +30,13 @@
   }
 }
 .rating__container_actived {
-	cursor: pointer;
+  .rating__input {
+    cursor: pointer;
+  }
   .rating__input:hover,
   .rating__input:hover ~ .rating__input {
-		&::before {
-			content: 'star';
-		}
+    &::before {
+      content: 'star';
+    }
   }
 }

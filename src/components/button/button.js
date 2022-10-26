@@ -11,7 +11,12 @@ const initButton = (bindElement) => {
     container: 'js-button__container',
     buttonSelected: 'button__container_like_selected',
   };
-  const button = getElement(`.${className.container}`, bindElement);
+	let button
+	if (bindElement.classList.contains(className.container)){
+		button = bindElement
+	} else {
+		button = getElement(`.${className.container}`, bindElement);
+	}
   return {
     button,
     setValue: (likeCounter) => {
@@ -22,6 +27,15 @@ const initButton = (bindElement) => {
     },
     removeSelected: () => {
       removeClass(button, className.buttonSelected);
+    },
+    isSelected: () => {
+      return button.classList.contains(className.buttonSelected);
+    },
+    incrementValue: () => {
+      button.firstElementChild.value++;
+    },
+    decrementValue: () => {
+      button.firstElementChild.value--;
     },
   };
 };

@@ -15,8 +15,6 @@ include ../../components/slider/slider.pug
 include ../../components/room-info/room-info.pug
 include ../../components/review/review.pug
 
-
-
 block title 	
 	title Form Elements 
 block header 
@@ -25,7 +23,7 @@ block content
 		.form-elements__page-container
 			.logo
 			.form-elements__container 
-				.form-elements__column1 
+				.form-elements__column1
 					+title({title: 'text field', description: 'default'})
 						+input-field({placeholder: 'Email'})
 					+title({title: 'text field', description: 'hover / focus'})
@@ -34,7 +32,6 @@ block content
 						+dropdown({
 							type: DROPDOWN.ITEM_QUANTITY, 
 							placeholder: 'Сколько гостей',
-							items: {'взрослые':0, 'дети':0, 'младенцы':0}, 
 							footerButtonActive:true
 							})
 					.form-elements__masked-field
@@ -57,13 +54,11 @@ block content
 							+title({title: 'Dropdown', description: 'Default'})
 								+dropdown({
 									type: DROPDOWN.ITEM_QUANTITY, 
-									items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
 									placeholder: 'Сколько комнат'
 									})
 							+title({title: 'Dropdown', description: 'expanded'})
 								+dropdown({
 									type: DROPDOWN.ITEM_QUANTITY, 
-									items: { 'спальни': 2, 'кровати': 2, 'ванные комнаты': 0 },
 									placeholder: 'Сколько комнат',
 									commonModificators: [MODIFICATOR.OPEN, MODIFICATOR.INLINE]
 									})
@@ -91,17 +86,17 @@ block content
 						title: 'Checkbox Buttons',
 						items: {'Можно курить':0, 'Можно с питомцами':1, 'Можно пригласить гостей \n(до 10 человек)':1},
 						})
-					+title({title: 'Radio Buttons', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+					+title({type: TITLE.FOR_BUTTON, title: 'Radio Buttons'})
 						+radio-block()
-					+title({title: 'Toggle', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+					+title({type: TITLE.FOR_BUTTON, title: 'Toggle'})
 						+toggle({label: 'Получать спецпредложения', checked: true})
 						.form-elements__toggle-container
 							+toggle({label: 'Получать спецпредложения'})
-					+title({title: 'like button', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
-						.form-elements__like-container
+					+title({type: TITLE.FOR_BUTTON, title: 'like button'})
+						.form-elements__like-container.js-form-elements__like-container
 							+button({type: BUTTON.LIKE, label: 2})
 							+button({type: BUTTON.LIKE, label: 12, commonModificators: [MODIFICATOR.SELECTED]})
-					+title({title: 'rate button', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+					+title({type: TITLE.FOR_BUTTON, title: 'rate button'})
 						.form-elements__rate-container
 							+rating({inputValue: 4, groupName: 'rating4'})
 							+rating({inputValue: 5, groupName: 'rating5'})
@@ -109,7 +104,6 @@ block content
 						+title({title: 'Dropdown'})
 							+dropdown({
 								type: DROPDOWN.ITEM_QUANTITY, 
-								items: {'взрослые':0, 'дети':0, 'младенцы':0}, 
 								footerButtonActive: true, 
 								placeholder: 'Сколько гостей',
 								commonModificators: [MODIFICATOR.OPEN, MODIFICATOR.INLINE]
@@ -126,7 +120,7 @@ block content
 						})
 				.form-elements__column3
 					+slider({title: 'Range Slider'})
-					+title({title: 'buttons', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+					+title({type: TITLE.FOR_BUTTON, title: 'buttons'})
 						.form-elements__buttons-container 
 							+button({type: BUTTON.WHITE_TEXT, label: 'click me'})
 							+button({type: BUTTON.WHITE_TEXT, label: 'click me', disabled: true})
@@ -137,7 +131,7 @@ block content
 							+button({type: BUTTON.LINK, label: 'click me'})
 							+button({type: BUTTON.LINK, label: 'click me', disabled: true})
 						+button({type: BUTTON.PAY, label: 'Перейти к оплате'})
-					+title({title: 'pagination', commonModificators: [MODIFICATOR.CUSTOM_PARAMETR]})
+					+title({type: TITLE.FOR_BUTTON, title: 'pagination'})
 						+pagination
 					.form-elements__column3-dropdown-container
 						+title({title: 'Dropdown'})

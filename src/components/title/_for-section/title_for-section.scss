@@ -1,18 +1,17 @@
 .title {
   &__container_for-section {
     max-width: unset;
-  }
-  &__title-container_for-section {
     margin-bottom: 2rem;
-		align-items: flex-end;
-		flex-wrap: wrap;
-  }
-	&__title {
-		padding-right: 1rem;
-	}
-	&__description {
-    text-transform: unset;
-		font-size: 1.4rem;
-    line-height: 1.4rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+
+    .title__title {
+      padding-right: 1rem;
+    }
+    .title__description {
+      text-transform: unset;
+      font-size: 1.4rem;
+      line-height: 1.4rem;
+    }
   }
 }

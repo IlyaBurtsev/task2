@@ -1,58 +1,61 @@
-.slider__container{
-	display: flex;
-	flex-direction: column;
-	width: 26.6rem;
-	// height: 4.4rem;
-	padding-bottom: 0.3rem;
-	.slider__info{
-		height: 1.5rem;
-		display: flex;
-		justify-content: space-between;
-		align-items: start;
-		margin-bottom: 2.3rem;
-		.slider__data-range{
-			height: 1.5rem;
-			font-size: 1.2rem;
-			color: rgba(31, 32, 65, 0.5);
-			line-height: 1.4rem;
-		}
-		
-	}
-
-
-}
-
-.slider__range-slider {
-	width: 26.6rem;
-	height: 0.6rem;
-	border: 0.1rem solid rgba(31, 32, 65, 0.25);
-	margin-bottom: 1.5rem;
-	.noUi-connects{
-		overflow: unset;
-	}
-	.noUi-connect {
-		background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-		z-index: 2;
+.slider {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 26.6rem;
+    .slider__info {
+      height: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 2.3rem;
+      .slider__data-range {
+        height: 1.5rem;
+        font-size: 1.2rem;
+        color: rgba(31, 32, 65, 0.5);
+        line-height: 1.4rem;
+      }
+    }
+  }
+	&__range-slider {
+		width: 26.6rem;
 		height: 0.6rem;
-		top: -0.1rem;
-		
+		border: 0.1rem solid rgba(31, 32, 65, 0.25);
+		border-radius: 0.3rem;
+		margin-bottom: 0.5rem;
+		box-sizing: border-box;
+		position: relative;
+		user-select: none;
 	}
-	.noUi-handle::before,
-	.noUi-handle::after {
-		display: none;
-	}
-	.noUi-handle {
-		width: 1.6rem;
-		height: 1.6rem;
-		border-radius: 50%;
-		// top: -0.6rem;
-		right: -0.8rem;
+	&__handler{
+		cursor: pointer;
+		width: 1.5rem;
+		height: 1.5rem;
+		top: -0.5rem;
+		left: -0.75rem;
 		background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+		border-radius: 50%;
 		border: 2px solid rgba(255, 255, 255, 1);
-		box-shadow: none;
+		box-sizing: border-box;
+		position: absolute;
+		user-select: none;
+		z-index: 2;
+	}
+	&__progress-bar {
+    width: 100%;
+    position: absolute;
+		border-radius: 0.3rem;
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    height: 0.6rem;
+		top:-0.1rem;
+    z-index: 1;
+  }
+	&__description {
+		margin-top: 1rem;
+		font-size: 1.2rem;
+		line-height: 1.4rem;
 	}
 }
-.slider__description{
-	font-size: 1.2rem;
-	line-height: 1.4rem;
-}
+
+
+
