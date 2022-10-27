@@ -2,14 +2,13 @@ include ../../components/dropdown/dropdown.pug
 include ../../components/title/title.pug
 include ../../components/button/button.pug
 mixin choose() 
-	.choose__container
+	.choose__container.js-choose__container
 		h1.choose__title= 'Найдём номера под ваши пожелания'
 		+dropdown({
 				type: DROPDOWN.DATE_PICKER,
 				doubleInput: true,
 				firstTitle: 'прибытие',
 				secondTitle: 'выезд',
-				selectedDates: '2019-08-19 2019-08-23',
 			})
 		.choose__dropdown-guests
 				+title({title: 'Гости'})

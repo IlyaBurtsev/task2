@@ -1,7 +1,11 @@
-import './choose.scss'
-import '../dropdown/dropdown'
-import { initDropdowns } from '../dropdown/dropdown'
-import { getElement } from '../../utils/utils'
+import './choose.scss';
+import '../dropdown/dropdown';
+import { initDropdowns } from '../dropdown/dropdown';
+import { getElement } from '../../utils/utils';
 
-initDropdowns(getElement('.choose__container'))
+const quantityDropdowns = [];
+initDropdowns(getElement('.choose__container'), quantityDropdowns);
 
+quantityDropdowns[0].updateDropdownOptions({
+  startValues: 0,
+});
