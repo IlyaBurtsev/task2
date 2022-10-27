@@ -59,7 +59,7 @@
 		justify-content: space-between;
 		align-items: center;
     margin: 0 auto;
-		padding: 0rem 5rem;	
+		padding: 0rem auto;	
 	}
 	&__social {
 		&::after {
@@ -92,17 +92,17 @@
 		}
 	}
 	@media screen and (max-width: 1099px){
-		.footer__main-info {
+		&__main-info {
 			flex-basis: 10.57rem;
 			padding: 12rem 0 0 1.1rem;
 			:not(:first-child){
 				display: none;
 			}
 		}
-		.footer__flexable-container_copyright {
+		&__flexable-container_copyright {
 			border-top: unset;
 		}
-		.footer__copyright-bar {
+		&__copyright-bar {
 			flex-direction: column;
 			padding-bottom: 12rem;
 		}

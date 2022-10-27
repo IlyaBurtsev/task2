@@ -10,6 +10,7 @@
 
 .landing-page {
   &__container {
+		min-height: 12rem;
     display: flex;
     flex-grow: 1;
     justify-content: center;
@@ -30,6 +31,9 @@
     bottom: 2rem;
   }
   @media screen and (max-width: 1260px) {
+		&__flexable-container {
+			padding: 0rem 1rem;
+		}
     &__additional {
       right: 4.4rem;
     }
