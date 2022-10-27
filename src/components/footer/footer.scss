@@ -36,7 +36,7 @@
 		width: 11rem;
 		height: 4rem;
 		background: left no-repeat url('@theme/assets/Toxin.svg');
-		margin-bottom: 1.8rem;
+		margin-bottom: 1.6rem;
 	}
 	&__subscribe-column {
 		width: 26rem;
@@ -92,23 +92,19 @@
 		}
 	}
 	@media screen and (max-width: 1099px){
-		&__main-info {
+		.footer__main-info {
 			flex-basis: 10.57rem;
-			padding: 12rem 0 1.8rem 1rem;
+			padding: 12rem 0 0 1.1rem;
 			:not(:first-child){
 				display: none;
 			}
 		}
-		&__flexable-container_copyright {
+		.footer__flexable-container_copyright {
 			border-top: unset;
 		}
-		&__copyright-bar {
+		.footer__copyright-bar {
 			flex-direction: column;
 			padding-bottom: 12rem;
-			gap: 2.1rem;
-		}
-		&__links {
-			padding-left: 2rem;
 		}
 	}
 
@@ -126,7 +122,6 @@
 		.footer__copyright-bar {
 			flex-direction: column;
 			padding-bottom: 12rem;
-			gap: 2.1rem;
 		}
 	}
 }
