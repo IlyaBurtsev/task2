@@ -26,7 +26,7 @@ const initQuantityDropdown = (bindElement, callback, startValues) => {
   } else {
     titleNames.push(
       ['спальня', 'спальни', 'спален'],
-      ['кровать', 'кровати', 'кроватей'],
+      ['кровать', 'кровати   ', 'кроватей'],
       ['ванная комната', 'ванных комнаты', 'ванных комнат']
     );
     itemNames.push('спальни', 'кровати', 'ванные комнаты');
@@ -34,7 +34,7 @@ const initQuantityDropdown = (bindElement, callback, startValues) => {
   }
   dropdownPlugin = createDropdownPlugin(view, {
     itemNames: itemNames,
-    startValues: startValues? startValues : values,
+    startValues: startValues ? startValues : values,
     externalCheckState: customCheck,
   });
   dropdownPlugin.changeTitle(changeTitle(values, titleNames));
@@ -83,7 +83,8 @@ const initQuantityDropdown = (bindElement, callback, startValues) => {
     let summ = 0;
     if (
       changeType === dropdownChangeTypes.addButtonClicked ||
-      changeType === dropdownChangeTypes.subButtonClicked
+      changeType === dropdownChangeTypes.subButtonClicked ||
+      changeType === dropdownChangeTypes.changeItem
     ) {
       itemStates.forEach((state) => {
         summ += state.value;
@@ -144,7 +145,7 @@ const initQuantityDropdown = (bindElement, callback, startValues) => {
     currentItem.value = Number(value.toFixed(1));
     return state;
   }
-	return dropdownPlugin
+  return dropdownPlugin;
 };
 
 function switchResult(itemValue, itemName) {

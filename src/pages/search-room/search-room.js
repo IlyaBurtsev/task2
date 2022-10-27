@@ -18,7 +18,6 @@ import { initHeader } from '../../components/header/header';
 import { addClass, getElement, removeClass } from '../../utils/utils';
 import initSlider from '../../components/slider/slider';
 
-
 const initAsidePanel = () => {
   const SELECTOR = {
     PREFERENCES: '.js-search-room__preferences-container',
@@ -55,11 +54,13 @@ const initSearchRoom = (page) => {
     currentPage * 12 - 11,
     currentPage * 12
   );
+  const quantityDropdowns = [];
   initAsidePanel();
   initHeader();
-  initDropdowns();
-	initSlider();
+  initSlider();
   initRoomPreviews(roomsData);
+  initDropdowns(document, quantityDropdowns);
+  quantityDropdowns[0].changeItemParametrs({ value: 1 }, 2);
 };
 
 initSearchRoom();
